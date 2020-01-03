@@ -26,10 +26,12 @@ steps:
   - alias apt-get='rm -f /var/cache/apt/archives/lock && apt-get'
   - apt-get update -q
   - apt-get install -qq build-essential cmake
+  - apt-get install -qq catch
   - rm -rf build && mkdir -p build && cd build
-  - cmake -G "Unix Makefiles" ..
+  - cmake -G "Unix Makefiles" -DWITH_TESTS=YES ..
   - make VERBOSE=1
   - make install DESTDIR=install
+  - cd tests && ctest -V
   volumes:
   - name: debian-package-cache
     path: /var/cache/apt/archives
@@ -47,10 +49,12 @@ steps:
   - alias apt-get='rm -f /var/cache/apt/archives/lock && apt-get'
   - apt-get update -q
   - apt-get install -qq build-essential cmake
+  - apt-get install -qq catch
   - rm -rf build && mkdir -p build && cd build
-  - cmake -G "Unix Makefiles" ..
+  - cmake -G "Unix Makefiles" -DWITH_TESTS=YES ..
   - make VERBOSE=1
   - make install DESTDIR=install
+  - cd tests && ctest -V
   volumes:
   - name: debian-package-cache
     path: /var/cache/apt/archives

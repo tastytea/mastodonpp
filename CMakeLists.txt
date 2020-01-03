@@ -18,7 +18,7 @@ project(mastodonpp
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 # Project build options.
-# option(WITH_TESTS "Compile tests." NO)
+option(WITH_TESTS "Compile tests." NO)
 # option(WITH_DOC "Generate HTML documentation." YES)
 # option(WITH_EXAMPLES "Compile examples." NO)
 # option(WITH_DEB "Prepare for the building of .deb packages." NO)
@@ -32,8 +32,8 @@ include(debug_flags)
 
 add_subdirectory(src)
 
-# if(WITH_TESTS)
-#   add_subdirectory(tests)
-# endif()
+if(WITH_TESTS)
+  add_subdirectory(tests)
+endif()
 
 # include(cmake/packages.cmake)
