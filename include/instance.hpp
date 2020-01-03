@@ -24,13 +24,16 @@ namespace mastodonpp
 
 using std::string;
 
+/*!
+ *  @brief  Holds the hostname and access token of an instance.
+ *
+ *  @since  0.1.0
+ */
 class Instance
 {
 public:
     /*!
      *  @brief  Construct a new Instance object.
-     *
-     *  Holds the hostname and access token of the instance.
      *
      *  @param  instance     The hostname of the instance.
      *  @param  access_token Your access token.

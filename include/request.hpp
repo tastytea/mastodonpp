@@ -22,9 +22,21 @@
 namespace mastodonpp
 {
 
+/*!
+ *  @brief  Used to make a request to the Mastodon API.
+ *
+ *  @since  0.1.0
+ */
 class Request
 {
 public:
+    /*!
+     *  @brief  Construct a new Request object.
+     *
+     *  @param  instance An Instance with the access data.
+     *
+     *  @since  0.1.0
+     */
     explicit Request(Instance &instance);
 
 private:
