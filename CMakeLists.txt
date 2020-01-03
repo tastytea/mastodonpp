@@ -20,7 +20,7 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # Project build options.
 option(WITH_TESTS "Compile tests." NO)
 # option(WITH_DOC "Generate HTML documentation." YES)
-# option(WITH_EXAMPLES "Compile examples." NO)
+option(WITH_EXAMPLES "Compile examples." NO)
 # option(WITH_DEB "Prepare for the building of .deb packages." NO)
 # option(WITH_RPM "Prepare for the building of .rpm packages." NO)
 
@@ -34,6 +34,10 @@ add_subdirectory(src)
 
 if(WITH_TESTS)
   add_subdirectory(tests)
+endif()
+
+if(WITH_EXAMPLES)
+  add_subdirectory(examples)
 endif()
 
 # include(cmake/packages.cmake)
