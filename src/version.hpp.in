@@ -1,0 +1,15 @@
+#ifndef MASTODONPP_VERSION_HPP
+#define MASTODONPP_VERSION_HPP
+
+#include <string_view>
+
+namespace mastodonpp
+{
+
+using std::string_view;
+
+static constexpr string_view version = "@PROJECT_VERSION@";
+
+} // namespace mastodonpp
+
+#endif // MASTODONPP_VERSION_HPP

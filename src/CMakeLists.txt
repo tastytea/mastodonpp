@@ -1,5 +1,9 @@
 include(GNUInstallDirs)
 
+# Write version in header.
+configure_file ("version.hpp.in"
+  "${PROJECT_BINARY_DIR}/version.hpp" @ONLY)
+
 add_library(${PROJECT_NAME})
 
 file(GLOB_RECURSE sources_lib *.cpp)
