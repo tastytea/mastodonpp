@@ -1,0 +1,69 @@
+# -*- fill-column: 1000 -*-
+kind: pipeline
+name: build x86_64
+
+volumes:
+- name: debian-package-cache
+  host:
+    path: /var/cache/debian-package-cache
+
+trigger:
+  event:
+    exclude:
+    - tag
+
+steps:
+- name: GCC 8 on Debian buster
+  image: debian:buster-slim
+  pull: always
+  environment:
+    CXX: g++-8
+    CXXFLAGS: -pipe -O2
+    DEBIAN_FRONTEND: noninteractive
+    LANG: C.utf8
+  commands:
+  - rm /etc/apt/apt.conf.d/docker-clean
+  - alias apt-get='rm -f /var/cache/apt/archives/lock && apt-get'
+  - apt-get update -q
+  - apt-get install -qq build-essential cmake
+  - rm -rf build && mkdir -p build && cd build
+  - cmake -G "Unix Makefiles" ..
+  - make VERBOSE=1
+  - make install DESTDIR=install
+  volumes:
+  - name: debian-package-cache
+    path: /var/cache/apt/archives
+
+- name: GCC 7 on Ubuntu bionic
+  image: ubuntu:bionic
+  pull: always
+  environment:
+    CXX: g++-7
+    CXXFLAGS: -pipe -O2
+    DEBIAN_FRONTEND: noninteractive
+    LANG: C.utf8
+  commands:
+  - rm /etc/apt/apt.conf.d/docker-clean
+  - alias apt-get='rm -f /var/cache/apt/archives/lock && apt-get'
+  - apt-get update -q
+  - apt-get install -qq build-essential cmake
+  - rm -rf build && mkdir -p build && cd build
+  - cmake -G "Unix Makefiles" ..
+  - make VERBOSE=1
+  - make install DESTDIR=install
+  volumes:
+  - name: debian-package-cache
+    path: /var/cache/apt/archives
+
+- name: notify
+  image: drillster/drone-email
+  pull: always
+  settings:
+    host: cryptoparty-celle.de
+    from: drone@tzend.de
+    username:
+      from_secret: email_username
+    password:
+      from_secret: email_password
+  when:
+    status: [ changed, failure ]
