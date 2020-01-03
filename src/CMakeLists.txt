@@ -9,8 +9,7 @@ add_library(${PROJECT_NAME})
 file(GLOB_RECURSE sources_lib *.cpp)
 file(GLOB_RECURSE headers_lib ../include/*.hpp)
 target_sources(${PROJECT_NAME}
-  PRIVATE "${sources_lib}"
-  PUBLIC "${headers_lib}")
+  PRIVATE "${sources_lib}" "${headers_lib}")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
   VERSION ${PROJECT_VERSION}
