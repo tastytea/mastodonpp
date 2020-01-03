@@ -19,6 +19,7 @@
 
 #include "api.hpp"
 #include "instance.hpp"
+#include "request.hpp"
 #include "return_types.hpp"
 
 /*!
@@ -45,6 +46,7 @@
  *
  *  @code
  *  mastodonpp::Instance instance{"example.com", ""};
+ *  mastodonpp::Request request{instance};
  *  @endcode
  */
 
