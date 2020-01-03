@@ -17,6 +17,7 @@
 #ifndef MASTODONPP_HPP
 #define MASTODONPP_HPP
 
+#include "api.hpp"
 #include "instance.hpp"
 #include "return_types.hpp"
 
