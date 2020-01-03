@@ -31,7 +31,9 @@ include(debug_flags)
 
 add_subdirectory(src)
 add_subdirectory(include)
+
 add_subdirectory(cmake)
+add_subdirectory(pkg-config)
 
 if(WITH_TESTS)
   add_subdirectory(tests)
