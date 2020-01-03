@@ -30,6 +30,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(debug_flags)
 
 add_subdirectory(src)
+add_subdirectory(include)
 
 if(WITH_TESTS)
   add_subdirectory(tests)
