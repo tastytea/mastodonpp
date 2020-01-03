@@ -14,11 +14,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mastodonpp.hpp"
+#ifndef MASTODONPP_REQUEST_HPP
+#define MASTODONPP_REQUEST_HPP
+
+#include "instance.hpp"
 
 namespace mastodonpp
 {
 
+class Request
+{
+public:
+    explicit Request(Instance &instance);
 
+private:
+    Instance &_instance;
+};
 
 } // namespace mastodonpp
+
+#endif  // MASTODONPP_REQUEST_HPP

@@ -14,11 +14,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mastodonpp.hpp"
+#include "request.hpp"
 
 namespace mastodonpp
 {
 
-
+Request::Request(Instance &instance)
+    : _instance{instance}
+{}
 
 } // namespace mastodonpp

@@ -14,11 +14,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mastodonpp.hpp"
+#include "instance.hpp"
+
+#include <utility>
 
 namespace mastodonpp
 {
 
+using std::move;
 
+Instance::Instance(string instance, string access_token)
+    : _instance{move(instance)}
+    , _access_token{move(access_token)}
+{}
 
 } // namespace mastodonpp

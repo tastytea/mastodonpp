@@ -14,11 +14,36 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mastodonpp.hpp"
+#ifndef MASTODONPP_INSTANCE_HPP
+#define MASTODONPP_INSTANCE_HPP
+
+#include <string>
 
 namespace mastodonpp
 {
 
+using std::string;
 
+class Instance
+{
+public:
+    /*!
+     *  @brief  Construct a new Instance object.
+     *
+     *  Holds the hostname and access token of the instance.
+     *
+     *  @param  instance     The hostname of the instance.
+     *  @param  access_token Your access token.
+     *
+     *  @since  0.1.0
+     */
+    explicit Instance(string instance, string access_token);
+
+private:
+    const string _instance;
+    string _access_token;
+};
 
 } // namespace mastodonpp
+
+#endif  // MASTODONPP_INSTANCE_HPP
