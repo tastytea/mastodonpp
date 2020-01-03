@@ -7,3 +7,5 @@
 
 *{project}* is a C++ wrapper for the Mastodon API. It replaces
  link:{uri-mastodon-cpp}[mastodon-cpp].
+
+include::{uri-base}/raw/branch/main/CONTRIBUTING.adoc[]
