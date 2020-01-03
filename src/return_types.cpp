@@ -14,27 +14,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MASTODONPP_HPP
-#define MASTODONPP_HPP
-
 #include "return_types.hpp"
-#include <string>
 
 namespace mastodonpp
 {
 
-using std::string;
-
-class API
+answer::operator bool() const
 {
-public:
-    explicit API(string instance, string access_token);
+    return (error_code == 0);
+}
 
-private:
-    const string _instance;
-    const string _access_token;
-};
+answer::operator string_view() const
+{
+    return body;
+}
+
+std::ostream &operator <<(std::ostream &out, const answer &answer)
+{
+    out << answer.body;
+    return out;
+}
 
 } // namespace mastodonpp
-
-#endif  // MASTODONPP_HPP

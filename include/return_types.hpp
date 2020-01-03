@@ -14,27 +14,33 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MASTODONPP_HPP
-#define MASTODONPP_HPP
+#ifndef MASTODONPP_RETURN_TYPES_HPP
+#define MASTODONPP_RETURN_TYPES_HPP
 
-#include "return_types.hpp"
+#include <cstdint>
 #include <string>
+#include <string_view>
 
 namespace mastodonpp
 {
 
+using std::uint8_t;
+using std::uint16_t;
 using std::string;
+using std::string_view;
 
-class API
+struct answer
 {
-public:
-    explicit API(string instance, string access_token);
+    uint8_t error_code;
+    string error_message;
+    uint16_t http_status;
+    string body;
 
-private:
-    const string _instance;
-    const string _access_token;
+    explicit operator bool() const;
+    explicit operator string_view() const;
+    friend std::ostream &operator <<(std::ostream &out, const answer &answer);
 };
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_HPP
+#endif  // MASTODONPP_RETURN_TYPES_HPP
