@@ -1,0 +1,27 @@
+# -*- mode: conf-unix -*-
+INPUT                  = src/ include/
+RECURSIVE              = YES
+STRIP_FROM_INC_PATH    = "include"
+EXAMPLE_PATH           = examples/
+EXAMPLE_RECURSIVE      = YES
+GENERATE_HTML          = YES
+HTML_OUTPUT            = doc/html
+GENERATE_LATEX         = NO
+ALLOW_UNICODE_NAMES    = YES
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+ALWAYS_DETAILED_SEC    = YES
+INLINE_INHERITED_MEMB  = NO
+INHERIT_DOCS           = YES
+SEPARATE_MEMBER_PAGES  = NO
+TAB_SIZE               = 4
+MARKDOWN_SUPPORT       = YES
+AUTOLINK_SUPPORT       = YES
+INLINE_SIMPLE_STRUCTS  = NO
+QUIET                  = NO
+WARNINGS               = YES
+BUILTIN_STL_SUPPORT    = YES
+VERBATIM_HEADERS       = YES
+INLINE_SOURCES         = YES
+SEARCHENGINE           = YES
+SHOW_FILES             = YES

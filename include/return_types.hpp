@@ -29,15 +29,62 @@ using std::uint16_t;
 using std::string;
 using std::string_view;
 
+/*!
+ *  @brief  Return type for API calls.
+ *
+ *  @since  0.1.0
+ *
+ *  @section error Error codes
+ *  |      Code | Explanation                                                  |
+ *  | --------: |:-------------------------------------------------------------|
+ *  |         0 | No error.                                                    |
+ */
 struct answer
 {
+    /*!
+     *  @brief  @ref error "Error code".
+     *
+     *  @since  0.1.0
+     */
     uint8_t error_code;
+    /*!
+     *  @brief  The error message.
+     *
+     *  @since  0.1.0
+     */
     string error_message;
+    /*!
+     *  @brief  HTTP status code.
+     *
+     *  @since  0.1.0
+     */
     uint16_t http_status;
+    /*!
+     *  @brief  The response from the server, usually JSON.
+     *
+     *  @since  0.1.0
+     */
     string body;
 
+    /*!
+     *  @brief  Returns true if answer::error_code is 0, false otherwise.
+     *
+     *  @since  0.1.0
+     */
     explicit operator bool() const;
+
+    /*!
+     *  @brief  Returns answer::body as std::string_view.
+     *
+     *  @since  0.1.0
+     */
     explicit operator string_view() const;
+
+    /*!
+     *  @brief  Returns answer::body as std::ostream.
+     *
+     *  @since  0.1.0
+     */
     friend std::ostream &operator <<(std::ostream &out, const answer &answer);
 };
 
