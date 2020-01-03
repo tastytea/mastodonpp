@@ -1,0 +1,9 @@
+= mastodonpp
+:toc: preamble
+:project: mastodonpp
+:uri-base: https://schlomp.space/tastytea/{project}
+:uri-branch-main: {uri-base}/src/branch/main
+:uri-mastodon-cpp: https://schlomp.space/tastytea/mastodon-cpp
+
+*{project}* is a C++ wrapper for the Mastodon API. It replaces
+ link:{uri-mastodon-cpp}[mastodon-cpp].
