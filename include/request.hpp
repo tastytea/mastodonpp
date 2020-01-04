@@ -17,10 +17,16 @@
 #ifndef MASTODONPP_REQUEST_HPP
 #define MASTODONPP_REQUEST_HPP
 
+#include "api.hpp"
 #include "instance.hpp"
+#include "return_types.hpp"
+
+#include <string>
 
 namespace mastodonpp
 {
+
+using std::string;
 
 /*!
  *  @brief  Used to make a request to the Mastodon API.
@@ -38,6 +44,13 @@ public:
      *  @since  0.1.0
      */
     explicit Request(Instance &instance);
+
+    /*!
+     *  @brief  Make a HTTP GET call.
+     *
+     *  @since  0.1.0
+     */
+    answer_type get(API::endpoint_type endpoint) const;
 
 private:
     Instance &_instance;

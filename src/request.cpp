@@ -23,4 +23,11 @@ Request::Request(Instance &instance)
     : _instance{instance}
 {}
 
+answer_type Request::get(API::endpoint_type endpoint) const
+{
+    answer_type answer;
+    answer.body = API{endpoint}.to_string();
+    return answer;
+}
+
 } // namespace mastodonpp
