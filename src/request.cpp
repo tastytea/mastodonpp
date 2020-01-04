@@ -23,17 +23,17 @@ Request::Request(Instance &instance)
     : _instance{instance}
 {}
 
-answer_type Request::get(API::endpoint_type endpoint) const
+answer_type Request::get(API::endpoint_type endpoint)
 {
     answer_type answer;
     answer.body = API{endpoint}.to_string();
     return answer;
 }
 
-answer_type Request::get(string endpoint) const
+answer_type Request::get(string endpoint)
 {
     answer_type answer;
-    answer.body = endpoint;
+    answer.body = make_request(http_method::GET, "https://ip.tastytea.de/");
     return answer;
 }
 

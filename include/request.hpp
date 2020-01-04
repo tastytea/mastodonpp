@@ -57,7 +57,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    answer_type get(API::endpoint_type endpoint) const;
+    answer_type get(API::endpoint_type endpoint);
 
     /*!
      *  @brief  Make a HTTP GET call.
@@ -67,7 +67,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    answer_type get(string endpoint) const;
+    answer_type get(string endpoint);
 
 private:
     Instance &_instance;
