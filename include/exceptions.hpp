@@ -56,6 +56,8 @@ public:
     /*!
      *  @brief  The error code returned by libcurl.
      *
+     *  For more information consult libcurl-errors(3).
+     *
      *  @since  0.1.0
      */
     const CURLcode error_code;
