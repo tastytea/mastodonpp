@@ -45,7 +45,21 @@ public:
      *  @since  0.1.0
      */
     explicit Instance(string instance, string access_token);
-    ~Instance();
+
+    //! Copy constructor
+    Instance(const Instance &other) = default;
+
+    //! Move constructor
+    Instance(Instance &&other) = default;
+
+    //! Destructor
+    virtual ~Instance();
+
+    //! Copy assignment operator
+    Instance& operator=(const Instance &other) = delete;
+
+    //! Move assignment operator
+    Instance& operator=(Instance &&other) = delete;
 
 private:
     const string _instance;
