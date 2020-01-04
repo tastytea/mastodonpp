@@ -17,7 +17,7 @@
 #ifndef MASTODONPP_INSTANCE_HPP
 #define MASTODONPP_INSTANCE_HPP
 
-#include <curl/curl.h>
+#include "curl_wrapper.hpp"
 
 #include <string>
 
@@ -26,26 +26,18 @@ namespace mastodonpp
 
 using std::string;
 
-//! Internal use only.
-extern bool curl_initialized;
-
 /*!
- *  @brief  Holds the access data of and the connection to an instance.
+ *  @brief  Holds the access data of an instance.
  *
  *  @since  0.1.0
  *
  *  @headerfile instance.hpp mastodonpp/instance.hpp
  */
-class Instance
+class Instance : public CURLWrapper
 {
 public:
     /*!
      *  @brief  Construct a new Instance object.
-     *
-     *  The first construction of an Instance object will call
-     *  `curl_global_init`, which is not thread-safe. For more information
-     *  consult [curl_global_init(3)]
-     *  (https://curl.haxx.se/libcurl/c/curl_global_init.html).
      *
      *  @param  instance     The hostname of the instance.
      *  @param  access_token Your access token.
@@ -54,43 +46,9 @@ public:
      */
     explicit Instance(string instance, string access_token);
 
-    //! Copy constructor
-    Instance(const Instance &other) = default;
-
-    //! Move constructor
-    Instance(Instance &&other) = default;
-
-    //! Destructor
-    virtual ~Instance();
-
-    //! Copy assignment operator
-    Instance& operator=(const Instance &other) = delete;
-
-    //! Move assignment operator
-    Instance& operator=(Instance &&other) = delete;
-
 private:
     const string _instance;
     string _access_token;
-    CURL *_connection;
-    char _curl_buffer_error[CURL_ERROR_SIZE];
-    string _curl_buffer;
-
-
-    /*!
-     *  @brief  libcurl write callback function.
-     *
-     *  @since  0.1.0
-     */
-    static int writer(char *data, size_t size, size_t nmemb,
-                      string *writerData);
-
-    /*!
-     *  @brief  Setup libcurl connection.
-     *
-     *  @since  0.1.0
-     */
-    void setup_curl();
 };
 
 } // namespace mastodonpp

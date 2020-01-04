@@ -30,4 +30,11 @@ answer_type Request::get(API::endpoint_type endpoint) const
     return answer;
 }
 
+answer_type Request::get(string endpoint) const
+{
+    answer_type answer;
+    answer.body = endpoint;
+    return answer;
+}
+
 } // namespace mastodonpp

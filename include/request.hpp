@@ -18,6 +18,7 @@
 #define MASTODONPP_REQUEST_HPP
 
 #include "api.hpp"
+#include "curl_wrapper.hpp"
 #include "instance.hpp"
 #include "return_types.hpp"
 
@@ -35,7 +36,7 @@ using std::string;
  *
  *  @headerfile request.hpp mastodonpp/request.hpp
  */
-class Request
+class Request : public CURLWrapper
 {
 public:
     /*!
@@ -50,10 +51,23 @@ public:
     /*!
      *  @brief  Make a HTTP GET call.
      *
+     *  @param endpoint Endpoint as API::endpoint_type, for example:
+     *                  `mastodonpp::API::v1::instance`.
+     *
      *  @since  0.1.0
      */
     [[nodiscard]]
     answer_type get(API::endpoint_type endpoint) const;
+
+    /*!
+     *  @brief  Make a HTTP GET call.
+     *
+     *  @param  endpoint Endpoint as string, for example: "/api/v1/instance".
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    answer_type get(string endpoint) const;
 
 private:
     Instance &_instance;
