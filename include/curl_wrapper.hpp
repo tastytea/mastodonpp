@@ -37,6 +37,8 @@ enum class http_method
 /*!
  *  @brief  Handles the details of network connections.
  *
+ *  You don't need to use this.
+ *
  *  @since  0.1.0
  *
  *  @headerfile curl_wrapper.hpp mastodonpp/curl_wrapper.hpp
@@ -78,6 +80,14 @@ public:
     //! Move assignment operator
     CURLWrapper& operator=(CURLWrapper &&other) noexcept = default;
 
+    /*!
+     *  @brief  Make a request.
+     *
+     *  @param  method The HTTP method.
+     *  @param  uri    The full URI.
+     *
+     *  @since  0.1.0
+     */
     [[nodiscard]]
     string make_request(const http_method &meth, const string_view &uri);
 
