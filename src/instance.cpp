@@ -29,10 +29,11 @@ bool curl_initialized{false};
 Instance::Instance(string instance, string access_token)
     : _instance{move(instance)}
     , _access_token{move(access_token)}
+    , _curl_buffer_error{}
 {
     if (!curl_initialized)
     {
-        curl_global_init(CURL_GLOBAL_DEFAULT);
+        curl_global_init(CURL_GLOBAL_ALL); // NOLINT(hicpp-signed-bitwise)
         curl_initialized = true;
     }
     _connection = curl_easy_init();
@@ -68,6 +69,7 @@ void Instance::setup_curl()
         throw CURLException{CURLE_FAILED_INIT, "Failed to initialize curl."};
     }
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     CURLcode code{curl_easy_setopt(_connection, CURLOPT_ERRORBUFFER,
                                    _curl_buffer_error)};
     if (code != CURLE_OK)
@@ -75,12 +77,14 @@ void Instance::setup_curl()
         throw CURLException{code, "Failed to set error buffer."};
     }
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     code = curl_easy_setopt(_connection, CURLOPT_WRITEFUNCTION, writer);
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set writer", _curl_buffer_error};
     }
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     code = curl_easy_setopt(_connection, CURLOPT_WRITEDATA, &_curl_buffer);
     if (code != CURLE_OK)
     {
