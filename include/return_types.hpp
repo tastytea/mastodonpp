@@ -39,7 +39,7 @@ using std::string_view;
  *  | --------: |:-------------------------------------------------------------|
  *  |         0 | No error.                                                    |
  */
-struct answer
+struct answer_type
 {
     /*!
      *  @brief  @ref error "Error code".
@@ -85,7 +85,8 @@ struct answer
      *
      *  @since  0.1.0
      */
-    friend std::ostream &operator <<(std::ostream &out, const answer &answer);
+    friend std::ostream &operator <<(std::ostream &out,
+                                     const answer_type &answer);
 };
 
 } // namespace mastodonpp

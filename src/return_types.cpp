@@ -19,17 +19,17 @@
 namespace mastodonpp
 {
 
-answer::operator bool() const
+answer_type::operator bool() const
 {
     return (error_code == 0);
 }
 
-answer::operator string_view() const
+answer_type::operator string_view() const
 {
     return body;
 }
 
-std::ostream &operator <<(std::ostream &out, const answer &answer)
+std::ostream &operator <<(std::ostream &out, const answer_type &answer)
 {
     out << answer.body;
     return out;
