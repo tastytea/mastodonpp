@@ -20,11 +20,19 @@
 #include "curl/curl.h"
 
 #include <string>
+#include <string_view>
 
 namespace mastodonpp
 {
 
 using std::string;
+using std::string_view;
+
+enum class http_method
+{
+    GET,
+    POST
+};
 
 /*!
  *  @brief  Handles the details of network connections.
@@ -69,6 +77,8 @@ public:
 
     //! Move assignment operator
     CURLWrapper& operator=(CURLWrapper &&other) noexcept = default;
+
+    string make_request(const http_method &meth, const string_view &uri);
 
 private:
     CURL *_connection;

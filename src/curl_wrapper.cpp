@@ -33,7 +33,50 @@ CURLWrapper::~CURLWrapper() noexcept
     curl_global_cleanup();
 }
 
-int CURLWrapper::writer(char *data, size_t size, size_t nmemb, string *writerData)
+string CURLWrapper::make_request(const http_method &meth,
+                                 const string_view &uri)
+{
+    CURLcode code;
+    switch (meth)
+    {
+    case http_method::GET:
+    {
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+        code = curl_easy_setopt(_connection, CURLOPT_HTTPGET, 1L);
+        break;
+    }
+    case http_method::POST:
+    {
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+        code = curl_easy_setopt(_connection, CURLOPT_POST, 1L);
+        break;
+    }
+    }
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set HTTP method",
+                _curl_buffer_error};
+    }
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    code = curl_easy_setopt(_connection, CURLOPT_URL, uri.data());
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set URI", _curl_buffer_error};
+    }
+
+    code = curl_easy_perform(_connection);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to perform request",
+                _curl_buffer_error};
+    }
+
+    return _curl_buffer;
+}
+
+int CURLWrapper::writer(char *data, size_t size, size_t nmemb,
+                        string *writerData)
 {
     if(writerData == nullptr)
     {
