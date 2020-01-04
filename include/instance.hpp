@@ -27,7 +27,7 @@ namespace mastodonpp
 using std::string;
 
 /*!
- *  @brief  Holds the hostname and access token of an instance.
+ *  @brief  Holds the access data of and the connection to an instance.
  *
  *  @since  0.1.0
  *
