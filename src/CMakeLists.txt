@@ -25,7 +25,7 @@ target_include_directories(${PROJECT_NAME}
   "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
 target_link_libraries(${PROJECT_NAME}
-  PRIVATE CURL::libcurl)
+  PUBLIC CURL::libcurl)
 
 
 install(TARGETS ${PROJECT_NAME}
