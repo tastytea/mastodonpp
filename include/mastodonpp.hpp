@@ -68,7 +68,7 @@
  */
 
 /*!
- *  @brief  C++ wrapper for the Mastodon API.
+ *  @brief  C++ wrapper for the Mastodon %API.
  *
  *  All text input is expected to be UTF-8.
  *

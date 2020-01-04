@@ -29,7 +29,7 @@ namespace mastodonpp
 using std::string;
 
 /*!
- *  @brief  Used to make a request to the Mastodon API.
+ *  @brief  Used to make a request to the Mastodon %API.
  *
  *  @since  0.1.0
  *
