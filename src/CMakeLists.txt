@@ -24,8 +24,16 @@ target_include_directories(${PROJECT_NAME}
   "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
-target_link_libraries(${PROJECT_NAME}
-  PUBLIC CURL::libcurl)
+# FindCURL provides an IMPORTED target since CMake 3.12.
+if(NOT ${CMAKE_VERSION} VERSION_LESS 3.12)
+  target_link_libraries(${PROJECT_NAME}
+    PUBLIC CURL::libcurl)
+else()
+  target_include_directories(${PROJECT_NAME}
+    PUBLIC ${CURL_INCLUDE_DIRS})
+  target_link_libraries(${PROJECT_NAME}
+    PUBLIC ${CURL_LIBRARIES})
+endif()
 
 
 install(TARGETS ${PROJECT_NAME}
