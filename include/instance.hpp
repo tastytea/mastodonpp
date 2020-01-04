@@ -26,6 +26,9 @@ namespace mastodonpp
 
 using std::string;
 
+//! Internal use only.
+extern bool curl_initialized;
+
 /*!
  *  @brief  Holds the access data of and the connection to an instance.
  *
@@ -38,6 +41,11 @@ class Instance
 public:
     /*!
      *  @brief  Construct a new Instance object.
+     *
+     *  The first construction of an Instance object will call
+     *  `curl_global_init`, which is not thread-safe. For more information
+     *  consult [curl_global_init(3)]
+     *  (https://curl.haxx.se/libcurl/c/curl_global_init.html).
      *
      *  @param  instance     The hostname of the instance.
      *  @param  access_token Your access token.

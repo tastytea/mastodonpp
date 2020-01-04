@@ -24,16 +24,29 @@ namespace mastodonpp
 
 using std::move;
 
+bool curl_initialized{false};
+
 Instance::Instance(string instance, string access_token)
     : _instance{move(instance)}
     , _access_token{move(access_token)}
-    , _connection{curl_easy_init()}
 {
+    if (!curl_initialized)
+    {
+        curl_global_init(CURL_GLOBAL_DEFAULT);
+        curl_initialized = true;
+    }
+    _connection = curl_easy_init();
     setup_curl();
 }
 Instance::~Instance()
 {
     curl_easy_cleanup(_connection);
+
+    if (curl_initialized)
+    {
+        curl_global_cleanup();
+        curl_initialized = false;
+    }
 }
 
 int Instance::writer(char *data, size_t size, size_t nmemb, string *writerData)
