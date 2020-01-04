@@ -20,28 +20,17 @@
 namespace mastodonpp
 {
 
-bool curl_initialized{false};
-
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
 {
-    if (!curl_initialized)
-    {
-        curl_global_init(CURL_GLOBAL_ALL); // NOLINT(hicpp-signed-bitwise)
-        curl_initialized = true;
-    }
+    curl_global_init(CURL_GLOBAL_ALL); // NOLINT(hicpp-signed-bitwise)
     _connection = curl_easy_init();
     setup_curl();
 }
 CURLWrapper::~CURLWrapper() noexcept
 {
     curl_easy_cleanup(_connection);
-
-    if (curl_initialized)
-    {
-        curl_global_cleanup();
-        curl_initialized = false;
-    }
+    curl_global_cleanup();
 }
 
 int CURLWrapper::writer(char *data, size_t size, size_t nmemb, string *writerData)

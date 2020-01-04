@@ -26,9 +26,6 @@ namespace mastodonpp
 
 using std::string;
 
-//! Internal use only.
-extern bool curl_initialized;
-
 /*!
  *  @brief  Handles the details of network connections.
  *
@@ -40,10 +37,9 @@ class CURLWrapper
 {
 public:
     /*!
-     *  @brief  Constructs a CURLWrapper object.
+     *  @brief  Initializes curl and sets up connection.
      *
-     *  The first construction of an CurlWrapper object will call
-     *  `curl_global_init`, which is not thread-safe. For more information
+     *  Calls `curl_global_init`, which is not thread-safe. For more information
      *  consult [curl_global_init(3)]
      *  (https://curl.haxx.se/libcurl/c/curl_global_init.html).
      *
@@ -57,7 +53,15 @@ public:
     //! Move constructor
     CURLWrapper(CURLWrapper &&other) noexcept = default;
 
-    //! Destructor
+    /*!
+     *  @brief  Cleans up curl and connection.
+     *
+     *  Calls `curl_global_cleanup`, which is not thread-safe. For more
+     *  information consult [curl_global_cleanup(3)]
+     *  (https://curl.haxx.se/libcurl/c/curl_global_cleanup.html).
+     *
+     *  @since  0.1.0
+     */
     virtual ~CURLWrapper() noexcept;
 
     //! Copy assignment operator
