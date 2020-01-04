@@ -18,6 +18,7 @@
 #define MASTODONPP_HPP
 
 #include "api.hpp"
+#include "exceptions.hpp"
 #include "instance.hpp"
 #include "request.hpp"
 #include "return_types.hpp"
@@ -42,12 +43,26 @@
  *
  *  Or compile your code with `g++ $(pkg-config --cflags --libs mastodonpp)`.
  *
- *  @section Example
+ *  @subsection Example
  *
  *  @code
- *  mastodonpp::Instance instance{"example.com", ""};
- *  mastodonpp::Request request{instance};
+ *  try
+ *  {
+ *      mastodonpp::Instance instance{"example.com", ""};
+ *      mastodonpp::Request request{instance};
+ *      auto answer{request.get(mastodonpp::API::v1::instance)};
+ *      std::cout << answer << std::endl;
+ *  }
+ *  catch (const mastodonpp::CURLException &e)
+ *  {
+ *      std::cerr << e.what() << std::endl;
+ *  }
  *  @endcode
+ *
+ *  @section exceptions Exceptions
+ *
+ *  Any unrecoverable libcurl error will be thrown as a
+ *  mastodonpp::CURLException.
  */
 
 /*!
