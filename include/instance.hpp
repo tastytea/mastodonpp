@@ -17,6 +17,8 @@
 #ifndef MASTODONPP_INSTANCE_HPP
 #define MASTODONPP_INSTANCE_HPP
 
+#include <curl/curl.h>
+
 #include <string>
 
 namespace mastodonpp
@@ -41,10 +43,30 @@ public:
      *  @since  0.1.0
      */
     explicit Instance(string instance, string access_token);
+    ~Instance();
 
 private:
     const string _instance;
     string _access_token;
+    CURL *_connection;
+    char _curl_buffer_error[CURL_ERROR_SIZE];
+    string _curl_buffer;
+
+
+    /*!
+     *  @brief  libcurl write callback function.
+     *
+     *  @since  0.1.0
+     */
+    static int writer(char *data, size_t size, size_t nmemb,
+                      string *writerData);
+
+    /*!
+     *  @brief  Setup libcurl connection.
+     *
+     *  @since  0.1.0
+     */
+    void setup_curl();
 };
 
 } // namespace mastodonpp

@@ -1,5 +1,7 @@
 include(GNUInstallDirs)
 
+find_package(CURL REQUIRED)
+
 # Write version in header.
 configure_file ("version.hpp.in"
   "${PROJECT_BINARY_DIR}/version.hpp" @ONLY)
@@ -22,9 +24,8 @@ target_include_directories(${PROJECT_NAME}
   "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
-# target_link_libraries(${PROJECT_NAME}
-#   PRIVATE
-#   PUBLIC)
+target_link_libraries(${PROJECT_NAME}
+  PRIVATE CURL::libcurl)
 
 
 install(TARGETS ${PROJECT_NAME}
