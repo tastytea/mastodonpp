@@ -78,6 +78,7 @@ public:
     //! Move assignment operator
     CURLWrapper& operator=(CURLWrapper &&other) noexcept = default;
 
+    [[nodiscard]]
     string make_request(const http_method &meth, const string_view &uri);
 
 private:
