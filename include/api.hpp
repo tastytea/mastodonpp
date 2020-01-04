@@ -17,21 +17,76 @@
 #ifndef MASTODONPP_API_HPP
 #define MASTODONPP_API_HPP
 
-namespace mastodonpp::API
+#include <map>
+#include <string>
+#include <variant>
+
+namespace mastodonpp
 {
 
+using std::string;
+using std::variant;
+
 /*!
- *  @brief  A list of all v1 API calls.
- *
- *  The original `/` are substituted by `_`.
+ *  @brief  Holds API endpoints.
  *
  *  @since  0.1.0
  */
-enum class v1
+class API
 {
-    instance
+public:
+    /*!
+     *  @brief  An enumeration of all v1 API endpoints.
+     *
+     *  The original `/` are substituted with `_`.
+     *
+     *  @since  0.1.0
+     */
+    enum class v1
+    {
+        instance
+    };
+
+    /*!
+     *  @brief  An enumeration of all v2 API endpoints.
+     *
+     *  The original `/` are substituted with `_`.
+     *
+     *  @since  0.1.0
+     */
+    enum class v2
+    {
+        search
+    };
+
+    /*!
+     *  @brief  Type for endpoints. Either API::v1 or API::v2.
+     *
+     *  @since  0.1.0
+     */
+    using endpoint_type = variant<v1,v2>;
+
+    /*!
+     *  @brief  Constructs an API object. You should never need this.
+     *
+     *  This constructor exists to hide away the class members, which are used
+     *  internally.
+     *
+     *  @since  0.1.0
+     */
+    explicit API(endpoint_type &endpoint);
+
+    /*!
+     *  @brief  Convert #endpoint_type to string.
+     *
+     *  @since  0.1.0
+     */
+    string to_string() const;
+
+private:
+    const endpoint_type _endpoint;
 };
 
-} // namespace mastodonpp::API
+} // namespace mastodonpp
 
 #endif  // MASTODONPP_API_HPP
