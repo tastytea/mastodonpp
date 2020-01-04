@@ -17,10 +17,15 @@
 #ifndef MASTODONPP_HPP
 #define MASTODONPP_HPP
 
+#include "api.hpp"
+#include "exceptions.hpp"
+#include "instance.hpp"
+#include "request.hpp"
 #include "return_types.hpp"
-#include <string>
 
 /*!
+ *  @headerfile mastodonpp.hpp mastodonpp/mastodonpp.hpp
+ *
  *  @mainpage mastodonpp Reference
  *
  *  @section using Using the library
@@ -40,17 +45,27 @@
  *
  *  Or compile your code with `g++ $(pkg-config --cflags --libs mastodonpp)`.
  *
- *  @section Example
+ *  @subsection Example
  *
  *  @code
- *  mastodonpp::API masto("example.com", "");
+ *  try
+ *  {
+ *      mastodonpp::Instance instance{"example.com", ""};
+ *      mastodonpp::Request request{instance};
+ *      auto answer{request.get(mastodonpp::API::v1::instance)};
+ *      std::cout << answer << std::endl;
+ *  }
+ *  catch (const mastodonpp::CURLException &e)
+ *  {
+ *      std::cerr << e.what() << std::endl;
+ *  }
  *  @endcode
+ *
+ *  @section exceptions Exceptions
+ *
+ *  Any unrecoverable libcurl error will be thrown as a
+ *  mastodonpp::CURLException.
  */
-
-namespace mastodonpp
-{
-
-using std::string;
 
 /*!
  *  @brief  C++ wrapper for the Mastodon API.
@@ -58,29 +73,11 @@ using std::string;
  *  All text input is expected to be UTF-8.
  *
  *  @since  0.1.0
- *
  */
-
-class API
+namespace mastodonpp
 {
-public:
-    /*!
-     *  @brief  Construct a new API object.
-     *
-     *  To register your application, leave access_token blank and call
-     *  API::register_app1() and API::register_app2().
-     *
-     *  @param  instance     The hostname of your instance.
-     *  @param  access_token Your access token.
-     *
-     *  @since  0.1.0
-     */
-    explicit API(string instance, string access_token);
 
-private:
-    const string _instance;
-    const string _access_token;
-};
+
 
 } // namespace mastodonpp
 

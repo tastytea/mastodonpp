@@ -14,25 +14,37 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "return_types.hpp"
+#include "exceptions.hpp"
+
+#include <utility>
 
 namespace mastodonpp
 {
 
-answer_type::operator bool() const
-{
-    return (error_code == 0);
-}
+using std::to_string;
+using std::move;
 
-answer_type::operator string_view() const
-{
-    return body;
-}
+CURLException::CURLException(const CURLcode &error, string message)
+    : error_code{error}
+    , _message{move(message)}
+{}
 
-std::ostream &operator <<(std::ostream &out, const answer_type &answer)
+CURLException::CURLException(const CURLcode &error, string message,
+                             string error_buffer)
+    : error_code{error}
+    , _message{move(message)}
+    , _error_buffer{move(error_buffer)}
+{}
+
+const char *CURLException::what() const noexcept
 {
-    out << answer.body;
-    return out;
+    static string error_string{"libCURL error: " + to_string(error_code)
+        + " - " + _message};
+    if (!_error_buffer.empty())
+    {
+        error_string.append("[" + _error_buffer + "]");
+    }
+    return error_string.c_str();
 }
 
 } // namespace mastodonpp

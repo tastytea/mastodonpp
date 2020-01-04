@@ -30,16 +30,18 @@ using std::string;
 using std::string_view;
 
 /*!
- *  @brief  Return type for API calls.
+ *  @brief  Return type for Request%s.
  *
  *  @since  0.1.0
+ *
+ *  @headerfile return_types.hpp mastodonpp/return_types.hpp
  *
  *  @section error Error codes
  *  |      Code | Explanation                                                  |
  *  | --------: |:-------------------------------------------------------------|
  *  |         0 | No error.                                                    |
  */
-struct answer
+struct answer_type
 {
     /*!
      *  @brief  @ref error "Error code".
@@ -67,25 +69,26 @@ struct answer
     string body;
 
     /*!
-     *  @brief  Returns true if answer::error_code is 0, false otherwise.
+     *  @brief  Returns true if #error_code is 0, false otherwise.
      *
      *  @since  0.1.0
      */
     explicit operator bool() const;
 
     /*!
-     *  @brief  Returns answer::body as std::string_view.
+     *  @brief  Returns #body as `std::string_view`.
      *
      *  @since  0.1.0
      */
     explicit operator string_view() const;
 
     /*!
-     *  @brief  Returns answer::body as std::ostream.
+     *  @brief  Returns #body as `std::ostream`.
      *
      *  @since  0.1.0
      */
-    friend std::ostream &operator <<(std::ostream &out, const answer &answer);
+    friend std::ostream &operator <<(std::ostream &out,
+                                     const answer_type &answer);
 };
 
 } // namespace mastodonpp

@@ -16,16 +16,9 @@
 
 #include "mastodonpp.hpp"
 
-#include <utility>
-
 namespace mastodonpp
 {
 
-using std::move;
 
-API::API(string instance, string access_token)
-    : _instance{move(instance)}
-    , _access_token{move(access_token)}
-{}
 
 } // namespace mastodonpp

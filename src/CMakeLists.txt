@@ -1,9 +1,17 @@
 include(GNUInstallDirs)
 
+find_package(CURL REQUIRED)
+
+# Write version in header.
+configure_file ("version.hpp.in"
+  "${PROJECT_BINARY_DIR}/version.hpp" @ONLY)
+
+add_library(${PROJECT_NAME})
+
 file(GLOB_RECURSE sources_lib *.cpp)
 file(GLOB_RECURSE headers_lib ../include/*.hpp)
-
-add_library(${PROJECT_NAME} "${sources_lib}" "${headers_lib}")
+target_sources(${PROJECT_NAME}
+  PRIVATE "${sources_lib}" "${headers_lib}")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
   VERSION ${PROJECT_VERSION}
@@ -16,9 +24,16 @@ target_include_directories(${PROJECT_NAME}
   "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
-# target_link_libraries(${PROJECT_NAME}
-#   PRIVATE
-#   PUBLIC)
+# FindCURL provides an IMPORTED target since CMake 3.12.
+if(NOT ${CMAKE_VERSION} VERSION_LESS 3.12)
+  target_link_libraries(${PROJECT_NAME}
+    PUBLIC CURL::libcurl)
+else()
+  target_include_directories(${PROJECT_NAME}
+    PUBLIC ${CURL_INCLUDE_DIRS})
+  target_link_libraries(${PROJECT_NAME}
+    PUBLIC ${CURL_LIBRARIES})
+endif()
 
 
 install(TARGETS ${PROJECT_NAME}

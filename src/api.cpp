@@ -14,25 +14,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "return_types.hpp"
+#include "api.hpp"
+
+#include <map>
+#include <string_view>
+#include <utility>
 
 namespace mastodonpp
 {
 
-answer_type::operator bool() const
-{
-    return (error_code == 0);
-}
+using std::map;
+using std::string_view;
+using std::move;
 
-answer_type::operator string_view() const
-{
-    return body;
-}
+API::API(endpoint_type &endpoint)
+    : _endpoint{move(endpoint)}
+{}
 
-std::ostream &operator <<(std::ostream &out, const answer_type &answer)
+string API::to_string() const
 {
-    out << answer.body;
-    return out;
+    static const map<endpoint_type,string_view> endpoint_map
+        {
+            {v1::instance, "/api/v1/instance"},
+            {v2::search, "/api/v2/search"}
+        };
+    return endpoint_map.at(_endpoint).data();
 }
-
 } // namespace mastodonpp

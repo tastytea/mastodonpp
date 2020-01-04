@@ -14,25 +14,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "return_types.hpp"
+#include "request.hpp"
 
 namespace mastodonpp
 {
 
-answer_type::operator bool() const
-{
-    return (error_code == 0);
-}
+Request::Request(Instance &instance)
+    : _instance{instance}
+{}
 
-answer_type::operator string_view() const
+answer_type Request::get(API::endpoint_type endpoint) const
 {
-    return body;
-}
-
-std::ostream &operator <<(std::ostream &out, const answer_type &answer)
-{
-    out << answer.body;
-    return out;
+    answer_type answer;
+    answer.body = API{endpoint}.to_string();
+    return answer;
 }
 
 } // namespace mastodonpp

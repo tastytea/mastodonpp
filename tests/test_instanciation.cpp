@@ -14,7 +14,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mastodonpp.hpp"
+#include "instance.hpp"
+#include "request.hpp"
 
 #include <catch.hpp>
 
@@ -26,15 +27,33 @@ namespace mastodonpp
 
 using std::string;
 
-SCENARIO ("API can be instantiated.")
+SCENARIO ("Instantiations.")
 {
     bool exception = false;
 
-    GIVEN ("One instanciation.")
+    WHEN ("Instance is instantiated.")
     {
         try
         {
-            API masto("example.com", "");
+            Instance instance{"example.com", ""};
+        }
+        catch (const std::exception &e)
+        {
+            exception = true;
+        }
+
+        THEN ("No exception is thrown")
+        {
+            REQUIRE_FALSE(exception);
+        }
+    }
+
+    WHEN ("Request is instantiated.")
+    {
+        try
+        {
+            Instance instance{"example.com", ""};
+            Request request{instance};
         }
         catch (const std::exception &e)
         {

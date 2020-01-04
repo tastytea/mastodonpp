@@ -19,7 +19,6 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 # Project build options.
 option(WITH_TESTS "Compile tests." NO)
-# option(WITH_DOC "Generate HTML documentation." YES)
 option(WITH_EXAMPLES "Compile examples." NO)
 # option(WITH_DEB "Prepare for the building of .deb packages." NO)
 # option(WITH_RPM "Prepare for the building of .rpm packages." NO)
@@ -31,6 +30,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(debug_flags)
 
 add_subdirectory(src)
+add_subdirectory(include)
+
+add_subdirectory(cmake)
+add_subdirectory(pkg-config)
 
 if(WITH_TESTS)
   add_subdirectory(tests)

@@ -14,25 +14,50 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MASTODONPP_REQUEST_HPP
+#define MASTODONPP_REQUEST_HPP
+
+#include "api.hpp"
+#include "instance.hpp"
 #include "return_types.hpp"
+
+#include <string>
 
 namespace mastodonpp
 {
 
-answer_type::operator bool() const
-{
-    return (error_code == 0);
-}
+using std::string;
 
-answer_type::operator string_view() const
+/*!
+ *  @brief  Used to make a request to the Mastodon API.
+ *
+ *  @since  0.1.0
+ *
+ *  @headerfile request.hpp mastodonpp/request.hpp
+ */
+class Request
 {
-    return body;
-}
+public:
+    /*!
+     *  @brief  Construct a new Request object.
+     *
+     *  @param  instance An Instance with the access data.
+     *
+     *  @since  0.1.0
+     */
+    explicit Request(Instance &instance);
 
-std::ostream &operator <<(std::ostream &out, const answer_type &answer)
-{
-    out << answer.body;
-    return out;
-}
+    /*!
+     *  @brief  Make a HTTP GET call.
+     *
+     *  @since  0.1.0
+     */
+    answer_type get(API::endpoint_type endpoint) const;
+
+private:
+    Instance &_instance;
+};
 
 } // namespace mastodonpp
+
+#endif  // MASTODONPP_REQUEST_HPP

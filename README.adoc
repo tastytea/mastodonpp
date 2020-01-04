@@ -4,8 +4,76 @@
 :uri-base: https://schlomp.space/tastytea/{project}
 :uri-branch-main: {uri-base}/src/branch/main
 :uri-mastodon-cpp: https://schlomp.space/tastytea/mastodon-cpp
+:uri-reference: https://doc.schlomp.space/{project}/
+:uri-gcc: https://gcc.gnu.org/
+:uri-cmake: https://cmake.org/
+:uri-doxygen: http://www.doxygen.nl/
+:uri-catch: https://github.com/catchorg/Catch2
+:uri-dpkg: https://packages.qa.debian.org/dpkg
+:uri-rpm-build: http://www.rpm.org
 
 *{project}* is a C++ wrapper for the Mastodon API. It replaces
  link:{uri-mastodon-cpp}[mastodon-cpp].
+
+== Usage
+
+Have a look at the link:{uri-reference}[reference].
+
+// === Examples
+
+== Install
+
+// === Gentoo
+
+// [source,shell]
+// --------------------------------------------------------------------------------
+// eselect repository enable tastytea
+// echo 'dev-cpp/mastodonpp' >> /etc/portage/package.accept_keywords/mastodonpp
+// emaint sync -r tastytea
+// emerge -a dev-cpp/mastodonpp
+// --------------------------------------------------------------------------------
+
+=== From source
+
+==== Dependencies
+
+* Tested OS: Linux
+* C++ compiler (tested: link:{uri-gcc}[GCC] 7/8/9)
+* link:{uri-cmake}[CMake] (at least: 3.9)
+* Optional
+  ** Documentation: link:{uri-doxygen}[Doxygen] (tested: 1.8)
+  ** Tests: link:{uri-catch}[Catch] (tested: 2.5 / 1.2)
+//   ** DEB package: link:{uri-dpkg}[dpkg] (tested: 1.18)
+//   ** RPM package: link:{uri-rpm-build}[rpm-build] (tested: 4.11)
+
+==== Get sourcecode
+
+===== Release
+
+Download the current release at link:{uri-base}/releases[schlomp.space].
+
+===== Development version
+
+[source,shell]
+--------------------------------------------------------------------------------
+git clone https://schlomp.space/tastytea/mastodonpp.git
+--------------------------------------------------------------------------------
+
+==== Compile
+
+[source,shell]
+--------------------------------------------------------------------------------
+mkdir -p build && cd build
+cmake ..
+cmake --build . -- -j$(nproc --ignore=1)
+--------------------------------------------------------------------------------
+
+.CMake options:
+* `-DCMAKE_BUILD_TYPE=Debug` for a debug build.
+* `-DWITH_TESTS=YES` if you want to compile the tests.
+* `-DWITH_EXAMPLES=YES` if you want to compile the examples.
+// * One of:
+//   ** `-DWITH_DEB=YES` if you want to be able to generate a deb-package.
+//   ** `-DWITH_RPM=YES` if you want to be able to generate an rpm-package.
 
 include::{uri-base}/raw/branch/main/CONTRIBUTING.adoc[]
