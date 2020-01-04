@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['request_11',['Request',['../classmastodonpp_1_1Request.html',1,'mastodonpp']]]
+  ['mastodonpp_20reference_10',['mastodonpp Reference',['../index.html',1,'']]],
+  ['mastodonpp_11',['mastodonpp',['../namespacemastodonpp.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['body_1',['body',['../structmastodonpp_1_1answer.html#a6ea3eebf8b9d51f4af487ff23833d512',1,'mastodonpp::answer']]]
+  ['body_2',['body',['../structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38',1,'mastodonpp::answer_type']]]
 ];

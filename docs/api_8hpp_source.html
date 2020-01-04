@@ -89,18 +89,50 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef MASTODONPP_API_HPP</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define MASTODONPP_API_HPP</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>mastodonpp::API</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">enum class</span> v1</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    instance</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <span class="comment">// namespace mastodonpp::API</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_API_HPP</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;variant&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> std::variant;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1API.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1API.html">API</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1API.html#aee8f590426914a36f948dafa78e330f2">   45</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="classmastodonpp_1_1API.html#aee8f590426914a36f948dafa78e330f2">v1</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        instance</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    };</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1API.html#a67ba7c7a8d94ec7905e45466255648ba">   57</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="classmastodonpp_1_1API.html#a67ba7c7a8d94ec7905e45466255648ba">v2</a></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        search</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    };</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">   67</a></span>&#160;    <span class="keyword">using</span> <a class="code" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">endpoint_type</a> = variant&lt;v1,v2&gt;;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1API.html#ab119ba2638c43388423e9c01c14c9246">API</a>(<a class="code" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">endpoint_type</a> &amp;endpoint);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classmastodonpp_1_1API.html#a0dc773350528fe78be20cf57d3109a9c">to_string</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">endpoint_type</a> _endpoint;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_API_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassmastodonpp_1_1API_html_a67ba7c7a8d94ec7905e45466255648ba"><div class="ttname"><a href="classmastodonpp_1_1API.html#a67ba7c7a8d94ec7905e45466255648ba">mastodonpp::API::v2</a></div><div class="ttdeci">v2</div><div class="ttdoc">An enumeration of all v2 API endpoints.</div><div class="ttdef"><b>Definition:</b> api.hpp:57</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1API_html_a0dc773350528fe78be20cf57d3109a9c"><div class="ttname"><a href="classmastodonpp_1_1API.html#a0dc773350528fe78be20cf57d3109a9c">mastodonpp::API::to_string</a></div><div class="ttdeci">string to_string() const</div><div class="ttdoc">Convert endpoint_type to string.</div><div class="ttdef"><b>Definition:</b> api.cpp:34</div></div>
+<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:23</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1API_html_ab119ba2638c43388423e9c01c14c9246"><div class="ttname"><a href="classmastodonpp_1_1API.html#ab119ba2638c43388423e9c01c14c9246">mastodonpp::API::API</a></div><div class="ttdeci">API(endpoint_type &amp;endpoint)</div><div class="ttdoc">Constructs an API object. You should never need this.</div><div class="ttdef"><b>Definition:</b> api.cpp:30</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1API_html"><div class="ttname"><a href="classmastodonpp_1_1API.html">mastodonpp::API</a></div><div class="ttdoc">Holds API endpoints.</div><div class="ttdef"><b>Definition:</b> api.hpp:35</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1API_html_aee8f590426914a36f948dafa78e330f2"><div class="ttname"><a href="classmastodonpp_1_1API.html#aee8f590426914a36f948dafa78e330f2">mastodonpp::API::v1</a></div><div class="ttdeci">v1</div><div class="ttdoc">An enumeration of all v1 API endpoints.</div><div class="ttdef"><b>Definition:</b> api.hpp:45</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1API_html_afab8f6d794dbe28dde47d39b53822e82"><div class="ttname"><a href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">mastodonpp::API::endpoint_type</a></div><div class="ttdeci">variant&lt; v1, v2 &gt; endpoint_type</div><div class="ttdoc">Type for endpoints. Either API::v1 or API::v2.</div><div class="ttdef"><b>Definition:</b> api.hpp:67</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

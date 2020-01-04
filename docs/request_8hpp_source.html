@@ -89,27 +89,39 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef MASTODONPP_REQUEST_HPP</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define MASTODONPP_REQUEST_HPP</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;instance.hpp&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Request.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1Request.html">Request</a></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1Request.html">Request</a>(<a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;instance);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;_instance;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_REQUEST_HPP</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;api.hpp&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;instance.hpp&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;return_types.hpp&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Request.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1Request.html">Request</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1Request.html#ab79b1b1c9172b6bd6aebd212f31d9a85">Request</a>(<a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;instance);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> <a class="code" href="classmastodonpp_1_1Request.html#abf980d36a6ccb5eadee1cd9ef80baf0d">get</a>(<a class="code" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">API::endpoint_type</a> endpoint) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;_instance;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_REQUEST_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> instance.cpp:21</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Request_html"><div class="ttname"><a href="classmastodonpp_1_1Request.html">mastodonpp::Request</a></div><div class="ttdef"><b>Definition:</b> request.hpp:25</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdef"><b>Definition:</b> instance.hpp:27</div></div>
+<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:23</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Request_html"><div class="ttname"><a href="classmastodonpp_1_1Request.html">mastodonpp::Request</a></div><div class="ttdoc">Used to make a request to the Mastodon API.</div><div class="ttdef"><b>Definition:</b> request.hpp:36</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Request_html_ab79b1b1c9172b6bd6aebd212f31d9a85"><div class="ttname"><a href="classmastodonpp_1_1Request.html#ab79b1b1c9172b6bd6aebd212f31d9a85">mastodonpp::Request::Request</a></div><div class="ttdeci">Request(Instance &amp;instance)</div><div class="ttdoc">Construct a new Request object.</div><div class="ttdef"><b>Definition:</b> request.cpp:22</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Request_html_abf980d36a6ccb5eadee1cd9ef80baf0d"><div class="ttname"><a href="classmastodonpp_1_1Request.html#abf980d36a6ccb5eadee1cd9ef80baf0d">mastodonpp::Request::get</a></div><div class="ttdeci">answer_type get(API::endpoint_type endpoint) const</div><div class="ttdoc">Make a HTTP GET call.</div><div class="ttdef"><b>Definition:</b> request.cpp:26</div></div>
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html">mastodonpp::answer_type</a></div><div class="ttdoc">Return type for Requests.</div><div class="ttdef"><b>Definition:</b> return_types.hpp:42</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdoc">Holds the hostname and access token of an instance.</div><div class="ttdef"><b>Definition:</b> instance.hpp:34</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1API_html_afab8f6d794dbe28dde47d39b53822e82"><div class="ttname"><a href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">mastodonpp::API::endpoint_type</a></div><div class="ttdeci">variant&lt; v1, v2 &gt; endpoint_type</div><div class="ttdoc">Type for endpoints. Either API::v1 or API::v2.</div><div class="ttdef"><b>Definition:</b> api.hpp:67</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

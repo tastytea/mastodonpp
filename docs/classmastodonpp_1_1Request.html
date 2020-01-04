@@ -73,13 +73,89 @@ $(function() {
 <div class="title">mastodonpp::Request Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Used to make a request to the Mastodon <a class="el" href="classmastodonpp_1_1API.html" title="Holds API endpoints.">API</a>.  
+ <a href="classmastodonpp_1_1Request.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="request_8hpp_source.html">request.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab79b1b1c9172b6bd6aebd212f31d9a85"><td class="memItemLeft" align="right" valign="top"><a id="ab79b1b1c9172b6bd6aebd212f31d9a85"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Request</b> (<a class="el" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;instance)</td></tr>
+<tr class="memitem:ab79b1b1c9172b6bd6aebd212f31d9a85"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Request.html#ab79b1b1c9172b6bd6aebd212f31d9a85">Request</a> (<a class="el" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;instance)</td></tr>
+<tr class="memdesc:ab79b1b1c9172b6bd6aebd212f31d9a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classmastodonpp_1_1Request.html" title="Used to make a request to the Mastodon API.">Request</a> object.  <a href="classmastodonpp_1_1Request.html#ab79b1b1c9172b6bd6aebd212f31d9a85">More...</a><br /></td></tr>
 <tr class="separator:ab79b1b1c9172b6bd6aebd212f31d9a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf980d36a6ccb5eadee1cd9ef80baf0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Request.html#abf980d36a6ccb5eadee1cd9ef80baf0d">get</a> (<a class="el" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">API::endpoint_type</a> endpoint) const</td></tr>
+<tr class="memdesc:abf980d36a6ccb5eadee1cd9ef80baf0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a HTTP GET call.  <a href="classmastodonpp_1_1Request.html#abf980d36a6ccb5eadee1cd9ef80baf0d">More...</a><br /></td></tr>
+<tr class="separator:abf980d36a6ccb5eadee1cd9ef80baf0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Used to make a request to the Mastodon <a class="el" href="classmastodonpp_1_1API.html" title="Holds API endpoints.">API</a>. </p>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab79b1b1c9172b6bd6aebd212f31d9a85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab79b1b1c9172b6bd6aebd212f31d9a85">&#9670;&nbsp;</a></span>Request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mastodonpp::Request::Request </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classmastodonpp_1_1Request.html" title="Used to make a request to the Mastodon API.">Request</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>An <a class="el" href="classmastodonpp_1_1Instance.html" title="Holds the hostname and access token of an instance.">Instance</a> with the access data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    : _instance{instance}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="abf980d36a6ccb5eadee1cd9ef80baf0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf980d36a6ccb5eadee1cd9ef80baf0d">&#9670;&nbsp;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a> mastodonpp::Request::get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">API::endpoint_type</a>&#160;</td>
+          <td class="paramname"><em>endpoint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Make a HTTP GET call. </p>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    answer_type answer;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    answer.body = API{endpoint}.to_string();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> answer;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="request_8hpp_source.html">request.hpp</a></li>
 <li>src/request.cpp</li>

@@ -73,14 +73,22 @@ $(function() {
 <div class="title">mastodonpp::Instance Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Holds the hostname and access token of an instance.  
+ <a href="classmastodonpp_1_1Instance.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="instance_8hpp_source.html">instance.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0d14b67b0aa681eefc9479fb1695b3b3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#a0d14b67b0aa681eefc9479fb1695b3b3">Instance</a> (string instance, string access_token)</td></tr>
-<tr class="memdesc:a0d14b67b0aa681eefc9479fb1695b3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classmastodonpp_1_1Instance.html">Instance</a> object.  <a href="classmastodonpp_1_1Instance.html#a0d14b67b0aa681eefc9479fb1695b3b3">More...</a><br /></td></tr>
+<tr class="memdesc:a0d14b67b0aa681eefc9479fb1695b3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classmastodonpp_1_1Instance.html" title="Holds the hostname and access token of an instance.">Instance</a> object.  <a href="classmastodonpp_1_1Instance.html#a0d14b67b0aa681eefc9479fb1695b3b3">More...</a><br /></td></tr>
 <tr class="separator:a0d14b67b0aa681eefc9479fb1695b3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Holds the hostname and access token of an instance. </p>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0d14b67b0aa681eefc9479fb1695b3b3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0d14b67b0aa681eefc9479fb1695b3b3">&#9670;&nbsp;</a></span>Instance()</h2>
 
@@ -115,8 +123,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classmastodonpp_1_1Instance.html">Instance</a> object. </p>
-<p>Holds the hostname and access token of the instance.</p>
+<p>Construct a new <a class="el" href="classmastodonpp_1_1Instance.html" title="Holds the hostname and access token of an instance.">Instance</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">instance</td><td>The hostname of the instance. </td></tr>
@@ -125,9 +132,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    : _instance{move(instance)}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    , _access_token{move(access_token)}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{}</div>
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    : _instance{move(instance)}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    , _access_token{move(access_token)}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    , _connection{curl_easy_init()}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    setup_curl();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

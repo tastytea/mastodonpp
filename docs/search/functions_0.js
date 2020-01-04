@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instance_16',['Instance',['../classmastodonpp_1_1Instance.html#a0d14b67b0aa681eefc9479fb1695b3b3',1,'mastodonpp::Instance']]]
+  ['api_26',['API',['../classmastodonpp_1_1API.html#ab119ba2638c43388423e9c01c14c9246',1,'mastodonpp::API']]]
 ];
