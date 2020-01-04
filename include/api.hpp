@@ -83,6 +83,7 @@ public:
      *
      *  @since  0.1.0
      */
+    [[nodiscard]]
     string to_string() const;
 
 private:

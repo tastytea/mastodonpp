@@ -52,6 +52,7 @@ public:
      *
      *  @since  0.1.0
      */
+    [[nodiscard]]
     answer_type get(API::endpoint_type endpoint) const;
 
 private:
