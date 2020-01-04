@@ -34,6 +34,8 @@ using std::string;
  *  @brief  Exception for libcurl errors.
  *
  *  @since  0.1.0
+ *
+ *  @headerfile exceptions.hpp mastodonpp/exceptions.hpp
  */
 class CURLException : public exception
 {

@@ -31,12 +31,14 @@ using std::variant;
  *  @brief  Holds API endpoints.
  *
  *  @since  0.1.0
+ *
+ *  @headerfile api.hpp mastodonpp/api.hpp
  */
 class API
 {
 public:
     /*!
-     *  @brief  An enumeration of all v1 API endpoints.
+     *  @brief  An enumeration of all v1 %API endpoints.
      *
      *  The original `/` are substituted with `_`.
      *
@@ -48,7 +50,7 @@ public:
     };
 
     /*!
-     *  @brief  An enumeration of all v2 API endpoints.
+     *  @brief  An enumeration of all v2 %API endpoints.
      *
      *  The original `/` are substituted with `_`.
      *

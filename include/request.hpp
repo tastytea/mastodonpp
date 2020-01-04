@@ -32,6 +32,8 @@ using std::string;
  *  @brief  Used to make a request to the Mastodon API.
  *
  *  @since  0.1.0
+ *
+ *  @headerfile request.hpp mastodonpp/request.hpp
  */
 class Request
 {

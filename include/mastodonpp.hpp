@@ -24,6 +24,8 @@
 #include "return_types.hpp"
 
 /*!
+ *  @headerfile mastodonpp.hpp mastodonpp/mastodonpp.hpp
+ *
  *  @mainpage mastodonpp Reference
  *
  *  @section using Using the library

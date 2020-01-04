@@ -30,6 +30,8 @@ using std::string;
  *  @brief  Holds the hostname and access token of an instance.
  *
  *  @since  0.1.0
+ *
+ *  @headerfile instance.hpp mastodonpp/instance.hpp
  */
 class Instance
 {

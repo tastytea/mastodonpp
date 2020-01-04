@@ -34,6 +34,8 @@ using std::string_view;
  *
  *  @since  0.1.0
  *
+ *  @headerfile return_types.hpp mastodonpp/return_types.hpp
+ *
  *  @section error Error codes
  *  |      Code | Explanation                                                  |
  *  | --------: |:-------------------------------------------------------------|
