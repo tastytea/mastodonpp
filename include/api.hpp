@@ -24,6 +24,7 @@
 namespace mastodonpp
 {
 
+using std::map;
 using std::string_view;
 using std::variant;
 
@@ -240,7 +241,7 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit API(const endpoint_type &endpoint);
+    explicit API();
 
     /*!
      *  @brief  Convert #endpoint_type to `std::string_view`.
@@ -248,10 +249,14 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    string_view to_string_view() const;
+    inline string_view endpoint_to_string_view(const endpoint_type &endpoint)
+        const
+    {
+        return _endpoint_map.at(endpoint).data();
+    }
 
 private:
-    const endpoint_type _endpoint;
+    const map<endpoint_type,string_view> _endpoint_map;
 };
 
 } // namespace mastodonpp
