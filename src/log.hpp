@@ -25,7 +25,7 @@ namespace mastodonpp
 using std::cerr;
 
 #ifndef NDEBUG
-    #define debuglog cerr << "[" << __FILE__ << ":" << __LINE__ << "] DEBUG: "
+    #define debuglog cerr << "[" << __func__ << "():" << __LINE__ << "] DEBUG: "
 #else
     #define debuglog false && cerr
 #endif
