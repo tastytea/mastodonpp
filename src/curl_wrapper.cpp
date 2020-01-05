@@ -65,6 +65,12 @@ answer_type CURLWrapper::make_request(const http_method &method,
         code = curl_easy_setopt(_connection, CURLOPT_CUSTOMREQUEST, "PATCH");
         break;
     }
+    case http_method::PUT:
+    {
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+        code = curl_easy_setopt(_connection, CURLOPT_UPLOAD, 1L);
+        break;
+    }
     case http_method::DELETE:
     {
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)

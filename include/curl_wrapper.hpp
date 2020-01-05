@@ -40,6 +40,7 @@ enum class http_method
     GET,
     POST,
     PATCH,
+    PUT,
     DELETE
 };
 
