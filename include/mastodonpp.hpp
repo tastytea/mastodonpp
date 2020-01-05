@@ -18,9 +18,9 @@
 #define MASTODONPP_HPP
 
 #include "api.hpp"
+#include "connection.hpp"
 #include "exceptions.hpp"
 #include "instance.hpp"
-#include "connection.hpp"
 #include "return_types.hpp"
 
 /*!
