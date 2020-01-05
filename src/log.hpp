@@ -39,12 +39,14 @@ constexpr auto shorten_filename(const string_view &filename)
     return filename;
 }
 
+#define commonlog cerr << '[' << shorten_filename(__FILE__) \
+                       << ':' << __LINE__ << ']'
 #ifndef NDEBUG
-#define debuglog cerr << "[" << shorten_filename(__FILE__) \
-                      << ':' << __LINE__ << "] DEBUG: "
+#define debuglog commonlog << " DEBUG: "
 #else
     #define debuglog false && cerr
 #endif
+#define errorlog commonlog << " ERROR: "
 
 } // namespace mastodonpp
 
