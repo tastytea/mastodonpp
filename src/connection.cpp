@@ -22,14 +22,13 @@ namespace mastodonpp
 Connection::Connection(Instance &instance)
     : _instance{instance}
     , _baseuri{instance.get_baseuri()}
-    , _api{}
 {}
 
 answer_type Connection::get(const API::endpoint_type &endpoint)
 {
     return make_request(
         http_method::GET,
-        string(_baseuri).append(_api.endpoint_to_string_view(endpoint)));
+        string(_baseuri).append(API{endpoint}.to_string_view()));
 }
 
 answer_type Connection::get(const string_view &endpoint)

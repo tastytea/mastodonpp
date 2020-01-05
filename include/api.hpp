@@ -302,7 +302,7 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit API();
+    explicit API(const endpoint_type &endpoint);
 
     /*!
      *  @brief  Convert #endpoint_type to `std::string_view`.
@@ -310,14 +310,14 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    inline string_view endpoint_to_string_view(const endpoint_type &endpoint)
-        const
+    inline string_view to_string_view() const
     {
-        return _endpoint_map.at(endpoint).data();
+        return _endpoint_map.at(_endpoint).data();
     }
 
 private:
-    const map<endpoint_type,string_view> _endpoint_map;
+    const endpoint_type _endpoint;
+    static const map<endpoint_type,string_view> _endpoint_map;
 };
 
 } // namespace mastodonpp
