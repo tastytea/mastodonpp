@@ -38,7 +38,9 @@ using std::string_view;
 enum class http_method
 {
     GET,
-    POST
+    POST,
+    PATCH,
+    DELETE
 };
 
 /*!

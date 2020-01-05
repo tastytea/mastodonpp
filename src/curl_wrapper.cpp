@@ -59,6 +59,18 @@ answer_type CURLWrapper::make_request(const http_method &method,
         code = curl_easy_setopt(_connection, CURLOPT_POST, 1L);
         break;
     }
+    case http_method::PATCH:
+    {
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+        code = curl_easy_setopt(_connection, CURLOPT_CUSTOMREQUEST, "PATCH");
+        break;
+    }
+    case http_method::DELETE:
+    {
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+        code = curl_easy_setopt(_connection, CURLOPT_CUSTOMREQUEST, "DELETE");
+        break;
+    }
     }
     if (code != CURLE_OK)
     {
