@@ -19,12 +19,14 @@
 
 #include "curl_wrapper.hpp"
 
+#include <cstdint>
 #include <string>
 #include <string_view>
 
 namespace mastodonpp
 {
 
+using std::uint64_t;
 using std::string;
 using std::string_view;
 
@@ -40,6 +42,8 @@ class Instance : public CURLWrapper
 public:
     /*!
      *  @brief  Construct a new Instance object.
+     *
+     *  Also queries `/api/v1/instance` for `max_toot_chars'.
      *
      *  @param  hostname     The hostname of the instance.
      *  @param  access_token Your access token.
@@ -83,10 +87,22 @@ public:
         return _access_token;
     }
 
+    /*!
+     *  @brief  Returns the maximum number of characters per post.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    inline uint64_t get_max_chars() const
+    {
+        return _max_chars;
+    }
+
 private:
     const string _hostname;
     const string _baseuri;
     string _access_token;
+    uint64_t _max_chars;
 };
 
 } // namespace mastodonpp

@@ -15,6 +15,8 @@
  */
 
 #include "instance.hpp"
+#include "log.hpp"
+#include "return_types.hpp"
 
 #include <utility>
 
@@ -27,6 +29,35 @@ Instance::Instance(string hostname, string access_token)
     : _hostname{move(hostname)}
     , _baseuri{"https://" + _hostname}
     , _access_token{move(access_token)}
-{}
+    , _max_chars{500}
+{
+    try
+    {
+        const auto answer{make_request(http_method::GET,
+                                       _baseuri + "/api/v1/instance")};
+        if (answer)
+        {
+            debuglog << "Querying instance for max_toot_chars…\n";
+            auto &body{answer.body};
+            size_t pos_start{body.find("max_toot_chars")};
+            if (pos_start == string::npos)
+            {
+                debuglog << "max_toot_chars not found.";
+                return;
+            }
+            pos_start = body.find(':', pos_start) + 1;
+            const size_t pos_end{body.find(',', pos_start)};
+
+            const auto max_toot_chars{body.substr(pos_start,
+                                                  pos_end - pos_start)};
+            _max_chars = std::stoull(max_toot_chars);
+            debuglog << "Set _max_chars to: " << _max_chars << '\n';
+        }
+    }
+    catch (const std::exception &e)
+    {
+        debuglog << "Unexpected exception: " << e.what() << '\n';
+    }
+}
 
 } // namespace mastodonpp
