@@ -30,6 +30,11 @@ namespace mastodonpp
 using std::string;
 using std::string_view;
 
+/*!
+ *  @brief  The HTTP method.
+ *
+ *  @since  0.1.0
+ */
 enum class http_method
 {
     GET,
@@ -91,7 +96,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    answer_type make_request(const http_method &meth, const string_view &uri);
+    answer_type make_request(const http_method &method, const string_view &uri);
 
 private:
     CURL *_connection;

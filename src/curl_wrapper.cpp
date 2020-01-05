@@ -33,11 +33,13 @@ CURLWrapper::~CURLWrapper() noexcept
     curl_global_cleanup();
 }
 
-answer_type CURLWrapper::make_request(const http_method &meth,
-                                 const string_view &uri)
+answer_type CURLWrapper::make_request(const http_method &method,
+                                      const string_view &uri)
 {
+    debuglog << "Making request to: " << uri << '\n';
+
     CURLcode code;
-    switch (meth)
+    switch (method)
     {
     case http_method::GET:
     {
