@@ -30,6 +30,8 @@ namespace mastodonpp
 using std::string;
 using std::string_view;
 
+extern uint16_t curl_inits;
+
 /*!
  *  @brief  The HTTP method.
  *
@@ -59,7 +61,8 @@ public:
     /*!
      *  @brief  Initializes curl and sets up connection.
      *
-     *  Calls `curl_global_init`, which is not thread-safe. For more information
+     *  The first time an instance of CURLWrapper is created, it calls
+     *  `curl_global_init`, which is not thread-safe. For more information
      *  consult [curl_global_init(3)]
      *  (https://curl.haxx.se/libcurl/c/curl_global_init.html).
      *
