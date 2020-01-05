@@ -74,23 +74,66 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Holds the hostname and access token of an instance.  
+<p>Holds the access data of an instance.  
  <a href="classmastodonpp_1_1Instance.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="instance_8hpp_source.html">mastodonpp/instance.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for mastodonpp::Instance:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classmastodonpp_1_1Instance.png" usemap="#mastodonpp::Instance_map" alt=""/>
+  <map id="mastodonpp::Instance_map" name="mastodonpp::Instance_map">
+<area href="classmastodonpp_1_1CURLWrapper.html" title="Handles the details of network connections." alt="mastodonpp::CURLWrapper" shape="rect" coords="0,0,166,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0d14b67b0aa681eefc9479fb1695b3b3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#a0d14b67b0aa681eefc9479fb1695b3b3">Instance</a> (string instance, string access_token)</td></tr>
-<tr class="memdesc:a0d14b67b0aa681eefc9479fb1695b3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classmastodonpp_1_1Instance.html" title="Holds the hostname and access token of an instance.">Instance</a> object.  <a href="classmastodonpp_1_1Instance.html#a0d14b67b0aa681eefc9479fb1695b3b3">More...</a><br /></td></tr>
-<tr class="separator:a0d14b67b0aa681eefc9479fb1695b3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a690f25aaaefe2384e26caae3f30d03a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#a690f25aaaefe2384e26caae3f30d03a3">Instance</a> (string hostname, string access_token)</td></tr>
+<tr class="memdesc:a690f25aaaefe2384e26caae3f30d03a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classmastodonpp_1_1Instance.html" title="Holds the access data of an instance.">Instance</a> object.  <a href="classmastodonpp_1_1Instance.html#a690f25aaaefe2384e26caae3f30d03a3">More...</a><br /></td></tr>
+<tr class="separator:a690f25aaaefe2384e26caae3f30d03a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24518d4603779ffc5cd89c814a687724"><td class="memItemLeft" align="right" valign="top">string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">get_hostname</a> () const</td></tr>
+<tr class="memdesc:a24518d4603779ffc5cd89c814a687724"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the hostname.  <a href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">More...</a><br /></td></tr>
+<tr class="separator:a24518d4603779ffc5cd89c814a687724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb5e018b566f8ab1a3c50193ead6be81"><td class="memItemLeft" align="right" valign="top">string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#aeb5e018b566f8ab1a3c50193ead6be81">get_baseuri</a> () const</td></tr>
+<tr class="memdesc:aeb5e018b566f8ab1a3c50193ead6be81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the base URI.  <a href="classmastodonpp_1_1Instance.html#aeb5e018b566f8ab1a3c50193ead6be81">More...</a><br /></td></tr>
+<tr class="separator:aeb5e018b566f8ab1a3c50193ead6be81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab59e3ce5f1d5c00110465c6f562a1574"><td class="memItemLeft" align="right" valign="top">string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">get_access_token</a> () const</td></tr>
+<tr class="memdesc:ab59e3ce5f1d5c00110465c6f562a1574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the access token.  <a href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">More...</a><br /></td></tr>
+<tr class="separator:ab59e3ce5f1d5c00110465c6f562a1574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b3b579f912f20bcce2a7b8c9236748"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#a35b3b579f912f20bcce2a7b8c9236748">get_max_chars</a> () const</td></tr>
+<tr class="memdesc:a35b3b579f912f20bcce2a7b8c9236748"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum number of characters per post.  <a href="classmastodonpp_1_1Instance.html#a35b3b579f912f20bcce2a7b8c9236748">More...</a><br /></td></tr>
+<tr class="separator:a35b3b579f912f20bcce2a7b8c9236748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classmastodonpp_1_1CURLWrapper"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classmastodonpp_1_1CURLWrapper')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></td></tr>
+<tr class="memitem:a736572303fbec7a307514e611e6a468c inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">CURLWrapper</a> ()</td></tr>
+<tr class="memdesc:a736572303fbec7a307514e611e6a468c inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes curl and sets up connection.  <a href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">More...</a><br /></td></tr>
+<tr class="separator:a736572303fbec7a307514e611e6a468c inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ff58f1038ea1d6c8d327b5f261ae39 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a51ff58f1038ea1d6c8d327b5f261ae39">CURLWrapper</a> (const <a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other)=default</td></tr>
+<tr class="memdesc:a51ff58f1038ea1d6c8d327b5f261ae39 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="classmastodonpp_1_1CURLWrapper.html#a51ff58f1038ea1d6c8d327b5f261ae39">More...</a><br /></td></tr>
+<tr class="separator:a51ff58f1038ea1d6c8d327b5f261ae39 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1969bc0fb2e104d896c606b38f3199e7 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a1969bc0fb2e104d896c606b38f3199e7">CURLWrapper</a> (<a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept=default</td></tr>
+<tr class="memdesc:a1969bc0fb2e104d896c606b38f3199e7 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="classmastodonpp_1_1CURLWrapper.html#a1969bc0fb2e104d896c606b38f3199e7">More...</a><br /></td></tr>
+<tr class="separator:a1969bc0fb2e104d896c606b38f3199e7 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a350f7061c9cb54cb5992ae983db3fc19 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19">~CURLWrapper</a> () noexcept</td></tr>
+<tr class="memdesc:a350f7061c9cb54cb5992ae983db3fc19 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up curl and connection.  <a href="classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19">More...</a><br /></td></tr>
+<tr class="separator:a350f7061c9cb54cb5992ae983db3fc19 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ab0da0f9186df2bdbf65189df57aeaf inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a9ab0da0f9186df2bdbf65189df57aeaf">operator=</a> (const <a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other)=default</td></tr>
+<tr class="memdesc:a9ab0da0f9186df2bdbf65189df57aeaf inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator.  <a href="classmastodonpp_1_1CURLWrapper.html#a9ab0da0f9186df2bdbf65189df57aeaf">More...</a><br /></td></tr>
+<tr class="separator:a9ab0da0f9186df2bdbf65189df57aeaf inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab516c58e5887eedc4b3b475c8faa060a inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#ab516c58e5887eedc4b3b475c8faa060a">operator=</a> (<a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept=default</td></tr>
+<tr class="memdesc:ab516c58e5887eedc4b3b475c8faa060a inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator.  <a href="classmastodonpp_1_1CURLWrapper.html#ab516c58e5887eedc4b3b475c8faa060a">More...</a><br /></td></tr>
+<tr class="separator:ab516c58e5887eedc4b3b475c8faa060a inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a0c0ff6e894e43cdb5df9dd8b55c785 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">make_request</a> (const <a class="el" href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">http_method</a> &amp;method, const string_view &amp;uri)</td></tr>
+<tr class="memdesc:a6a0c0ff6e894e43cdb5df9dd8b55c785 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a request.  <a href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">More...</a><br /></td></tr>
+<tr class="separator:a6a0c0ff6e894e43cdb5df9dd8b55c785 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Holds the hostname and access token of an instance. </p>
+<div class="textblock"><p>Holds the access data of an instance. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0d14b67b0aa681eefc9479fb1695b3b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d14b67b0aa681eefc9479fb1695b3b3">&#9670;&nbsp;</a></span>Instance()</h2>
+<a id="a690f25aaaefe2384e26caae3f30d03a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a690f25aaaefe2384e26caae3f30d03a3">&#9670;&nbsp;</a></span>Instance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -102,7 +145,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">mastodonpp::Instance::Instance </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>instance</em>, </td>
+          <td class="paramname"><em>hostname</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -123,21 +166,175 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classmastodonpp_1_1Instance.html" title="Holds the hostname and access token of an instance.">Instance</a> object. </p>
+<p>Construct a new <a class="el" href="classmastodonpp_1_1Instance.html" title="Holds the access data of an instance.">Instance</a> object. </p>
+<p>Also queries <code>/api/v1/instance</code> for &lsquo;max_toot_chars&rsquo;.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">instance</td><td>The hostname of the instance. </td></tr>
+    <tr><td class="paramname">hostname</td><td>The hostname of the instance. </td></tr>
     <tr><td class="paramname">access_token</td><td>Your access token.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    : _instance{move(instance)}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    , _access_token{move(access_token)}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    , _connection{curl_easy_init()}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    setup_curl();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    : _hostname{move(hostname)}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    , _baseuri{<span class="stringliteral">&quot;https://&quot;</span> + _hostname}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    , _access_token{move(access_token)}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    , _max_chars{500}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> answer{<a class="code" href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">make_request</a>(http_method::GET,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                       _baseuri + <span class="stringliteral">&quot;/api/v1/instance&quot;</span>)};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">if</span> (answer)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            debuglog &lt;&lt; <span class="stringliteral">&quot;Querying instance for max_toot_chars…\n&quot;</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">auto</span> &amp;body{answer.body};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordtype">size_t</span> pos_start{body.find(<span class="stringliteral">&quot;max_toot_chars&quot;</span>)};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">if</span> (pos_start == string::npos)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                debuglog &lt;&lt; <span class="stringliteral">&quot;max_toot_chars not found.&quot;</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            pos_start = body.find(<span class="charliteral">&#39;:&#39;</span>, pos_start) + 1;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">size_t</span> pos_end{body.find(<span class="charliteral">&#39;,&#39;</span>, pos_start)};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> max_toot_chars{body.substr(pos_start,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                  pos_end - pos_start)};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            _max_chars = std::stoull(max_toot_chars);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            debuglog &lt;&lt; <span class="stringliteral">&quot;Set _max_chars to: &quot;</span> &lt;&lt; _max_chars &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        debuglog &lt;&lt; <span class="stringliteral">&quot;Unexpected exception: &quot;</span> &lt;&lt; e.what() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab59e3ce5f1d5c00110465c6f562a1574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab59e3ce5f1d5c00110465c6f562a1574">&#9670;&nbsp;</a></span>get_access_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string_view mastodonpp::Instance::get_access_token </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the access token. </p>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> _access_token;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aeb5e018b566f8ab1a3c50193ead6be81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb5e018b566f8ab1a3c50193ead6be81">&#9670;&nbsp;</a></span>get_baseuri()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string_view mastodonpp::Instance::get_baseuri </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the base URI. </p>
+<p>The base URI is “https://” + the hostname.</p>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> _baseuri;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a24518d4603779ffc5cd89c814a687724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24518d4603779ffc5cd89c814a687724">&#9670;&nbsp;</a></span>get_hostname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string_view mastodonpp::Instance::get_hostname </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the hostname. </p>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> _hostname;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a35b3b579f912f20bcce2a7b8c9236748"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35b3b579f912f20bcce2a7b8c9236748">&#9670;&nbsp;</a></span>get_max_chars()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t mastodonpp::Instance::get_max_chars </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the maximum number of characters per post. </p>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">return</span> _max_chars;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -146,6 +343,7 @@ Public Member Functions</h2></td></tr>
 <li>src/instance.cpp</li>
 </ul>
 </div><!-- contents -->
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a6a0c0ff6e894e43cdb5df9dd8b55c785"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, const string_view &amp;uri)</div><div class="ttdoc">Make a request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:42</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
