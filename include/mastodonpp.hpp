@@ -48,16 +48,22 @@
  *  @subsection Example
  *
  *  @code
- *  try
+ *  #include <mastodonpp/mastodonpp.hpp>
+ *  #include <iostream>
+ *
+ *  int main()
  *  {
  *      mastodonpp::Instance instance{"example.com", ""};
- *      mastodonpp::Request request{instance};
- *      auto answer{request.get(mastodonpp::API::v1::instance)};
- *      std::cout << answer << std::endl;
- *  }
- *  catch (const mastodonpp::CURLException &e)
- *  {
- *      std::cerr << e.what() << std::endl;
+ *      std::cout << "Maximum characters per post: "
+ *                << instance.get_max_chars() << std::endl;
+ *
+ *      mastodonpp::Connection connection{instance};
+ *
+ *      auto answer{connection.get(mastodonpp::API::v1::instance)};
+ *      if (answer)
+ *      {
+ *          std::cout << answer << std::endl;
+ *      }
  *  }
  *  @endcode
  *
