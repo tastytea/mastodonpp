@@ -36,19 +36,18 @@ using std::string_view;
  *
  *  @headerfile return_types.hpp mastodonpp/return_types.hpp
  *
- *  @section error Error codes
- *  |      Code | Explanation                                                  |
- *  | --------: |:-------------------------------------------------------------|
- *  |         0 | No error.                                                    |
  */
 struct answer_type
 {
     /*!
-     *  @brief  @ref error "Error code".
+     *  @brief  The error code returned by libcurl.
+     *
+     *  For more information consult
+     *  [libcurl-errors(3)](https://curl.haxx.se/libcurl/c/libcurl-errors.html).
      *
      *  @since  0.1.0
      */
-    uint8_t error_code;
+    uint8_t curl_error_code;
     /*!
      *  @brief  The error message.
      *
