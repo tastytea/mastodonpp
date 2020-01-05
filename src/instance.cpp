@@ -23,6 +23,7 @@
 namespace mastodonpp
 {
 
+using std::stoull;
 using std::move;
 
 Instance::Instance(string hostname, string access_token)
@@ -38,19 +39,22 @@ Instance::Instance(string hostname, string access_token)
         if (answer)
         {
             debuglog << "Querying instance for max_toot_chars…\n";
-            auto &body{answer.body};
-            size_t pos_start{body.find("max_toot_chars")};
-            if (pos_start == string::npos)
+            _max_chars = [&answer]
             {
-                debuglog << "max_toot_chars not found.";
-                return;
-            }
-            pos_start = body.find(':', pos_start) + 1;
-            const size_t pos_end{body.find(',', pos_start)};
+                auto &body{answer.body};
+                size_t pos_start{body.find("max_toot_chars")};
+                if (pos_start == string::npos)
+                {
+                    debuglog << "max_toot_chars not found.\n";
+                    return static_cast<uint64_t>(500);
+                }
+                pos_start = body.find(':', pos_start) + 1;
+                const size_t pos_end{body.find(',', pos_start)};
 
-            const auto max_toot_chars{body.substr(pos_start,
-                                                  pos_end - pos_start)};
-            _max_chars = std::stoull(max_toot_chars);
+                const auto max_toot_chars{body.substr(pos_start,
+                                                      pos_end - pos_start)};
+                return static_cast<uint64_t>(stoull(max_toot_chars));
+            }();
             debuglog << "Set _max_chars to: " << _max_chars << '\n';
         }
     }
