@@ -14,23 +14,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "request.hpp"
+#include "connection.hpp"
 
 namespace mastodonpp
 {
 
-Request::Request(Instance &instance)
+Connection::Connection(Instance &instance)
     : _instance{instance}
 {}
 
-answer_type Request::get(API::endpoint_type endpoint)
+answer_type Connection::get(API::endpoint_type endpoint)
 {
     answer_type answer;
     answer.body = API{endpoint}.to_string();
     return answer;
 }
 
-answer_type Request::get(string endpoint)
+answer_type Connection::get(string endpoint)
 {
     answer_type answer;
     answer.body = make_request(http_method::GET, "https://ip.tastytea.de/");

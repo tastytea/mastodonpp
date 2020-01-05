@@ -15,7 +15,7 @@
  */
 
 #include "instance.hpp"
-#include "request.hpp"
+#include "connection.hpp"
 
 #include <catch.hpp>
 
@@ -48,12 +48,12 @@ SCENARIO ("Instantiations.")
         }
     }
 
-    WHEN ("Request is instantiated.")
+    WHEN ("Connection is instantiated.")
     {
         try
         {
             Instance instance{"example.com", ""};
-            Request request{instance};
+            Connection connection{instance};
         }
         catch (const std::exception &e)
         {

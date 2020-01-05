@@ -20,7 +20,7 @@
 #include "api.hpp"
 #include "exceptions.hpp"
 #include "instance.hpp"
-#include "request.hpp"
+#include "connection.hpp"
 #include "return_types.hpp"
 
 /*!

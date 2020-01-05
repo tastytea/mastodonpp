@@ -14,8 +14,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MASTODONPP_REQUEST_HPP
-#define MASTODONPP_REQUEST_HPP
+#ifndef MASTODONPP_CONNECTION_HPP
+#define MASTODONPP_CONNECTION_HPP
 
 #include "api.hpp"
 #include "curl_wrapper.hpp"
@@ -30,23 +30,23 @@ namespace mastodonpp
 using std::string;
 
 /*!
- *  @brief  Used to make a request to the Mastodon %API.
+ *  @brief  Represents a connection to an instance. Used for requests.
  *
  *  @since  0.1.0
  *
- *  @headerfile request.hpp mastodonpp/request.hpp
+ *  @headerfile connection.hpp mastodonpp/connection.hpp
  */
-class Request : public CURLWrapper
+class Connection : public CURLWrapper
 {
 public:
     /*!
-     *  @brief  Construct a new Request object.
+     *  @brief  Construct a new Connection object.
      *
      *  @param  instance An Instance with the access data.
      *
      *  @since  0.1.0
      */
-    explicit Request(Instance &instance);
+    explicit Connection(Instance &instance);
 
     /*!
      *  @brief  Make a HTTP GET call.
@@ -75,4 +75,4 @@ private:
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_REQUEST_HPP
+#endif  // MASTODONPP_CONNECTION_HPP
