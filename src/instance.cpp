@@ -34,29 +34,31 @@ Instance::Instance(string hostname, string access_token)
 {
     try
     {
+        debuglog << "Querying " << _hostname << " for max_toot_chars…\n";
         const auto answer{make_request(http_method::GET,
                                        _baseuri + "/api/v1/instance")};
-        if (answer)
+        if (!answer)
         {
-            debuglog << "Querying instance for max_toot_chars…\n";
-            _max_chars = [&answer]
-            {
-                auto &body{answer.body};
-                size_t pos_start{body.find("max_toot_chars")};
-                if (pos_start == string::npos)
-                {
-                    debuglog << "max_toot_chars not found.\n";
-                    return static_cast<uint64_t>(500);
-                }
-                pos_start = body.find(':', pos_start) + 1;
-                const size_t pos_end{body.find(',', pos_start)};
-
-                const auto max_toot_chars{body.substr(pos_start,
-                                                      pos_end - pos_start)};
-                return static_cast<uint64_t>(stoull(max_toot_chars));
-            }();
-            debuglog << "Set _max_chars to: " << _max_chars << '\n';
+            return;
         }
+
+        _max_chars = [&answer]
+        {
+            auto &body{answer.body};
+            size_t pos_start{body.find("max_toot_chars")};
+            if (pos_start == string::npos)
+            {
+                debuglog << "max_toot_chars not found.\n";
+                return static_cast<uint64_t>(500);
+            }
+            pos_start = body.find(':', pos_start) + 1;
+            const size_t pos_end{body.find(',', pos_start)};
+
+            const auto max_toot_chars{body.substr(pos_start,
+                                                  pos_end - pos_start)};
+            return static_cast<uint64_t>(stoull(max_toot_chars));
+        }();
+        debuglog << "Set _max_chars to: " << _max_chars << '\n';
     }
     catch (const std::exception &e)
     {
