@@ -20,11 +20,13 @@
 #include "curl_wrapper.hpp"
 
 #include <string>
+#include <string_view>
 
 namespace mastodonpp
 {
 
 using std::string;
+using std::string_view;
 
 /*!
  *  @brief  Holds the access data of an instance.
@@ -39,15 +41,51 @@ public:
     /*!
      *  @brief  Construct a new Instance object.
      *
-     *  @param  instance     The hostname of the instance.
+     *  @param  hostname     The hostname of the instance.
      *  @param  access_token Your access token.
      *
      *  @since  0.1.0
      */
-    explicit Instance(string instance, string access_token);
+    explicit Instance(string hostname, string access_token);
+
+    /*!
+     *  @brief  Returns the hostname.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    inline string_view get_hostname() const
+    {
+        return _hostname;
+    }
+
+    /*!
+     *  @brief  Returns the base URI.
+     *
+     *  The base URI is “https://” + the hostname.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    inline string_view get_baseuri() const
+    {
+        return _baseuri;
+    }
+
+    /*!
+     *  @brief  Returns the access token.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    inline string_view get_access_token() const
+    {
+        return _access_token;
+    }
 
 private:
-    const string _instance;
+    const string _hostname;
+    const string _baseuri;
     string _access_token;
 };
 

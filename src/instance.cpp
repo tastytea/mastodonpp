@@ -23,8 +23,9 @@ namespace mastodonpp
 
 using std::move;
 
-Instance::Instance(string instance, string access_token)
-    : _instance{move(instance)}
+Instance::Instance(string hostname, string access_token)
+    : _hostname{move(hostname)}
+    , _baseuri{"https://" + _hostname}
     , _access_token{move(access_token)}
 {}
 
