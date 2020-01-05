@@ -48,18 +48,28 @@ struct answer_type
      *  @since  0.1.0
      */
     uint8_t curl_error_code;
+
     /*!
      *  @brief  The error message.
      *
      *  @since  0.1.0
      */
     string error_message;
+
     /*!
      *  @brief  HTTP status code.
      *
      *  @since  0.1.0
      */
     uint16_t http_status;
+
+    /*!
+     *  @brief  The headers of the response from the server.
+     *
+     *  @since  0.1.0
+     */
+    string headers;
+
     /*!
      *  @brief  The response from the server, usually JSON.
      *

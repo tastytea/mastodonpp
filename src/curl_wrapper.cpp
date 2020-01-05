@@ -113,7 +113,16 @@ void CURLWrapper::setup_curl()
     }
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_WRITEDATA, &_curl_buffer);
+    code = curl_easy_setopt(_connection, CURLOPT_HEADERDATA,
+                            &_curl_buffer_headers);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set header data",
+                _curl_buffer_error};
+    }
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    code = curl_easy_setopt(_connection, CURLOPT_WRITEDATA, &_curl_buffer_body);
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set write data",

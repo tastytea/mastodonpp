@@ -96,7 +96,8 @@ public:
 private:
     CURL *_connection;
     char _curl_buffer_error[CURL_ERROR_SIZE];
-    string _curl_buffer;
+    string _curl_buffer_headers;
+    string _curl_buffer_body;
 
     /*!
      *  @brief  libcurl write callback function.
