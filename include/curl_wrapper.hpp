@@ -30,8 +30,6 @@ namespace mastodonpp
 using std::string;
 using std::string_view;
 
-extern uint16_t curl_inits;
-
 /*!
  *  @brief  The HTTP method.
  *

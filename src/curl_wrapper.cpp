@@ -26,7 +26,7 @@ namespace mastodonpp
 using std::uint8_t;
 using std::uint16_t;
 
-uint16_t curlwrapper_instances{0};
+static uint16_t curlwrapper_instances{0};
 
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
