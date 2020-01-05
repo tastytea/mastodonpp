@@ -76,26 +76,33 @@ Using the library</h1>
 </div><!-- fragment --><p>Or compile your code with <code>g++ $(pkg-config --cflags --libs mastodonpp)</code>.</p>
 <h2><a class="anchor" id="Example"></a>
 Example</h2>
-<div class="fragment"><div class="line"><span class="keywordflow">try</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;mastodonpp/mastodonpp.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">    <a class="code" href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a> instance{<span class="stringliteral">&quot;example.com&quot;</span>, <span class="stringliteral">&quot;&quot;</span>};</div>
-<div class="line">    mastodonpp::Request request{instance};</div>
-<div class="line">    <span class="keyword">auto</span> answer{request.get(mastodonpp::API::v1::instance)};</div>
-<div class="line">    std::cout &lt;&lt; answer &lt;&lt; std::endl;</div>
-<div class="line">}</div>
-<div class="line"><span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1CURLException.html">mastodonpp::CURLException</a> &amp;e)</div>
-<div class="line">{</div>
-<div class="line">    std::cerr &lt;&lt; e.<a class="code" href="classmastodonpp_1_1CURLException.html#aa5d6aaec95758bc7db42ef1ee8831ecc">what</a>() &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Maximum characters per post: &quot;</span></div>
+<div class="line">              &lt;&lt; instance.<a class="code" href="classmastodonpp_1_1Instance.html#a35b3b579f912f20bcce2a7b8c9236748">get_max_chars</a>() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="classmastodonpp_1_1Connection.html">mastodonpp::Connection</a> connection{instance};</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> answer{connection.<a class="code" href="classmastodonpp_1_1Connection.html#a048b38d07a5cd90ad939257bd554a860">get</a>(mastodonpp::API::v1::instance)};</div>
+<div class="line">    <span class="keywordflow">if</span> (answer)</div>
+<div class="line">    {</div>
+<div class="line">        std::cout &lt;&lt; answer &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="exceptions"></a>
 Exceptions</h1>
 <p>Any unrecoverable libcurl error will be thrown as a <a class="el" href="classmastodonpp_1_1CURLException.html" title="Exception for libcurl errors.">mastodonpp::CURLException</a>. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1CURLException_html"><div class="ttname"><a href="classmastodonpp_1_1CURLException.html">mastodonpp::CURLException</a></div><div class="ttdoc">Exception for libcurl errors.</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:40</div></div>
 <div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:21</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLException_html_aa5d6aaec95758bc7db42ef1ee8831ecc"><div class="ttname"><a href="classmastodonpp_1_1CURLException.html#aa5d6aaec95758bc7db42ef1ee8831ecc">mastodonpp::CURLException::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdoc">Returns the error code, message and error buffer.</div><div class="ttdef"><b>Definition:</b> exceptions.cpp:39</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html_a048b38d07a5cd90ad939257bd554a860"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#a048b38d07a5cd90ad939257bd554a860">mastodonpp::Connection::get</a></div><div class="ttdeci">answer_type get(const API::endpoint_type &amp;endpoint)</div><div class="ttdoc">Make a HTTP GET call.</div><div class="ttdef"><b>Definition:</b> connection.cpp:27</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a35b3b579f912f20bcce2a7b8c9236748"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a35b3b579f912f20bcce2a7b8c9236748">mastodonpp::Instance::get_max_chars</a></div><div class="ttdeci">uint64_t get_max_chars() const</div><div class="ttdoc">Returns the maximum number of characters per post.</div><div class="ttdef"><b>Definition:</b> instance.hpp:96</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdoc">Holds the access data of an instance.</div><div class="ttdef"><b>Definition:</b> instance.hpp:40</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html"><div class="ttname"><a href="classmastodonpp_1_1Connection.html">mastodonpp::Connection</a></div><div class="ttdoc">Represents a connection to an instance. Used for requests.</div><div class="ttdef"><b>Definition:</b> connection.hpp:41</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
