@@ -47,7 +47,7 @@ struct answer_type
      *
      *  @since  0.1.0
      */
-    uint8_t curl_error_code;
+    uint8_t curl_error_code{0};
 
     /*!
      *  @brief  The error message.
@@ -61,7 +61,7 @@ struct answer_type
      *
      *  @since  0.1.0
      */
-    uint16_t http_status;
+    uint16_t http_status{0};
 
     /*!
      *  @brief  The headers of the response from the server.
@@ -78,7 +78,8 @@ struct answer_type
     string body;
 
     /*!
-     *  @brief  Returns true if #error_code is 0, false otherwise.
+     *  @brief  Returns true if #curl_error_code is 0 and #http_status is 200,
+     *          false otherwise.
      *
      *  @since  0.1.0
      */
