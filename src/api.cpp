@@ -102,7 +102,7 @@ API::API()
     {v1::scheduled_statuses_id, "/api/v1/scheduled/statuses/id"},
 
     {v1::timelines_public, "/api/v1/timelines/public"},
-    {v1::timelines_tag_hashtag, "/api/v1/timelines/tag/hashtag"},
+    {v1::timelines_tag_hashtag, "/api/v1/timelines/tag/<HASHTAG>"},
     {v1::timelines_home, "/api/v1/timelines/home"},
     {v1::timelines_list_list_id, "/api/v1/timelines/list/list/id"},
 
