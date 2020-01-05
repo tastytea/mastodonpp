@@ -31,7 +31,7 @@ using std::variant;
 /*!
  *  @brief  Holds %API endpoints.
  *
- *  Supported %API endpoints: Mastodon 3.0.
+ *  Supported %API endpoints: Mastodon 3.0.1, Pleroma 1.1.7.
  *
  *  @since  0.1.0
  *
@@ -181,7 +181,22 @@ public:
         admin_reports_id_assign_to_self,
         admin_reports_id_unassign,
         admin_reports_id_resolve,
-        admin_reports_id_reopen
+        admin_reports_id_reopen,
+
+        pleroma_notifications_read,
+
+        pleroma_accounts_id_subscribe,
+        pleroma_accounts_id_unsubscribe,
+        pleroma_accounts_id_favourites,
+        pleroma_accounts_update_avatar,
+        pleroma_accounts_update_banner,
+        pleroma_accounts_update_background,
+        pleroma_accounts_confirmation_resend,
+
+        pleroma_mascot,
+
+        pleroma_conversations_id_statuses,
+        pleroma_conversations_id,
     };
 
     /*!
@@ -226,12 +241,58 @@ public:
     };
 
     /*!
-     *  @brief  Type for endpoints. Can be API::v1, API::v2, API::oauth or
-     *          API::other.
+     *  @brief  An enumeration of all pleroma %API endpoints.
+     *
+     *  The original `/` are substituted with `_`.
      *
      *  @since  0.1.0
      */
-    using endpoint_type = variant<v1,v2,oauth,other>;
+    enum class pleroma
+    {
+        admin_users,
+        admin_users_follow,
+        admin_users_unfollow,
+        admin_users_nickname,
+        admin_users_tag,
+        admin_users_nickname_permission_group,
+        admin_users_nickname_permission_group_permission_group,
+        admin_users_nickname_activation_status,
+        admin_users_nickname_or_id,
+        admin_users_nickname_or_id_statuses,
+        admin_relay,
+        admin_users_invite_token,
+        admin_users_invites,
+        admin_users_revoke_invite,
+        admin_users_email_invite,
+        admin_users_nickname_password_reset,
+        admin_reports,
+        admin_reports_id,
+        admin_reports_id_respond,
+        admin_statuses_id,
+        admin_config_migrate_to_db,
+        admin_config_migrate_from_db,
+        admin_config,
+
+        emoji,
+        follow_import,
+        captcha,
+
+        delete_account,
+        disable_account,
+        account_register,
+
+        pleroma_notification_settings,
+        pleroma_healthcheck,
+        pleroma_change_email
+    };
+
+    /*!
+     *  @brief  Type for endpoints. Can be API::v1, API::v2, API::oauth,
+     *          API::other or API::pleroma.
+     *
+     *  @since  0.1.0
+     */
+    using endpoint_type = variant<v1,v2,oauth,other,pleroma>;
 
     /*!
      *  @brief  Constructs an API object. You should never need this.
