@@ -17,58 +17,92 @@
 #ifndef MASTODONPP_INSTANCE_HPP
 #define MASTODONPP_INSTANCE_HPP
 
-#include <curl/curl.h>
+#include "curl_wrapper.hpp"
 
+#include <cstdint>
 #include <string>
+#include <string_view>
 
 namespace mastodonpp
 {
 
+using std::uint64_t;
 using std::string;
+using std::string_view;
 
 /*!
- *  @brief  Holds the hostname and access token of an instance.
+ *  @brief  Holds the access data of an instance.
  *
  *  @since  0.1.0
  *
  *  @headerfile instance.hpp mastodonpp/instance.hpp
  */
-class Instance
+class Instance : public CURLWrapper
 {
 public:
     /*!
      *  @brief  Construct a new Instance object.
      *
-     *  @param  instance     The hostname of the instance.
+     *  Also queries `/api/v1/instance` for `max_toot_chars'.
+     *
+     *  @param  hostname     The hostname of the instance.
      *  @param  access_token Your access token.
      *
      *  @since  0.1.0
      */
-    explicit Instance(string instance, string access_token);
-    ~Instance();
+    explicit Instance(string hostname, string access_token);
+
+    /*!
+     *  @brief  Returns the hostname.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    inline string_view get_hostname() const
+    {
+        return _hostname;
+    }
+
+    /*!
+     *  @brief  Returns the base URI.
+     *
+     *  The base URI is “https://” + the hostname.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    inline string_view get_baseuri() const
+    {
+        return _baseuri;
+    }
+
+    /*!
+     *  @brief  Returns the access token.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    inline string_view get_access_token() const
+    {
+        return _access_token;
+    }
+
+    /*!
+     *  @brief  Returns the maximum number of characters per post.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    inline uint64_t get_max_chars() const
+    {
+        return _max_chars;
+    }
 
 private:
-    const string _instance;
+    const string _hostname;
+    const string _baseuri;
     string _access_token;
-    CURL *_connection;
-    char _curl_buffer_error[CURL_ERROR_SIZE];
-    string _curl_buffer;
-
-
-    /*!
-     *  @brief  libcurl write callback function.
-     *
-     *  @since  0.1.0
-     */
-    static int writer(char *data, size_t size, size_t nmemb,
-                      string *writerData);
-
-    /*!
-     *  @brief  Setup libcurl connection.
-     *
-     *  @since  0.1.0
-     */
-    void setup_curl();
+    uint64_t _max_chars;
 };
 
 } // namespace mastodonpp

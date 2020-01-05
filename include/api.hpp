@@ -18,13 +18,13 @@
 #define MASTODONPP_API_HPP
 
 #include <map>
-#include <string>
+#include <string_view>
 #include <variant>
 
 namespace mastodonpp
 {
 
-using std::string;
+using std::string_view;
 using std::variant;
 
 /*!
@@ -76,14 +76,15 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit API(endpoint_type &endpoint);
+    explicit API(const endpoint_type &endpoint);
 
     /*!
-     *  @brief  Convert #endpoint_type to string.
+     *  @brief  Convert #endpoint_type to `std::string_view`.
      *
      *  @since  0.1.0
      */
-    string to_string() const;
+    [[nodiscard]]
+    string_view to_string_view() const;
 
 private:
     const endpoint_type _endpoint;

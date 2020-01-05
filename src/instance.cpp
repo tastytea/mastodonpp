@@ -15,7 +15,8 @@
  */
 
 #include "instance.hpp"
-#include "exceptions.hpp"
+#include "log.hpp"
+#include "return_types.hpp"
 
 #include <utility>
 
@@ -24,55 +25,38 @@ namespace mastodonpp
 
 using std::move;
 
-Instance::Instance(string instance, string access_token)
-    : _instance{move(instance)}
+Instance::Instance(string hostname, string access_token)
+    : _hostname{move(hostname)}
+    , _baseuri{"https://" + _hostname}
     , _access_token{move(access_token)}
-    , _connection{curl_easy_init()}
+    , _max_chars{500}
 {
-    setup_curl();
-}
-Instance::~Instance()
-{
-    curl_easy_cleanup(_connection);
-}
-
-int Instance::writer(char *data, size_t size, size_t nmemb, string *writerData)
-{
-    if(writerData == nullptr)
+    try
     {
-        return 0;
+        const auto answer{make_request(http_method::GET,
+                                       _baseuri + "/api/v1/instance")};
+        if (answer)
+        {
+            debuglog << "Querying instance for max_toot_chars…\n";
+            auto &body{answer.body};
+            size_t pos_start{body.find("max_toot_chars")};
+            if (pos_start == string::npos)
+            {
+                debuglog << "max_toot_chars not found.";
+                return;
+            }
+            pos_start = body.find(':', pos_start) + 1;
+            const size_t pos_end{body.find(',', pos_start)};
+
+            const auto max_toot_chars{body.substr(pos_start,
+                                                  pos_end - pos_start)};
+            _max_chars = std::stoull(max_toot_chars);
+            debuglog << "Set _max_chars to: " << _max_chars << '\n';
+        }
     }
-
-    writerData->append(data, size*nmemb);
-
-    return static_cast<int>(size * nmemb);
-}
-
-void Instance::setup_curl()
-{
-    if (_connection == nullptr)
+    catch (const std::exception &e)
     {
-        throw CURLException{CURLE_FAILED_INIT, "Failed to initialize curl."};
-    }
-
-    CURLcode code{curl_easy_setopt(_connection, CURLOPT_ERRORBUFFER,
-                                   _curl_buffer_error)};
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set error buffer."};
-    }
-
-    code = curl_easy_setopt(_connection, CURLOPT_WRITEFUNCTION, writer);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set writer", _curl_buffer_error};
-    }
-
-    code = curl_easy_setopt(_connection, CURLOPT_WRITEDATA, &_curl_buffer);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set write data",
-                _curl_buffer_error};
+        debuglog << "Unexpected exception: " << e.what() << '\n';
     }
 }
 

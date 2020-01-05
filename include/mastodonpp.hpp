@@ -18,9 +18,9 @@
 #define MASTODONPP_HPP
 
 #include "api.hpp"
+#include "connection.hpp"
 #include "exceptions.hpp"
 #include "instance.hpp"
-#include "request.hpp"
 #include "return_types.hpp"
 
 /*!
@@ -68,7 +68,7 @@
  */
 
 /*!
- *  @brief  C++ wrapper for the Mastodon API.
+ *  @brief  C++ wrapper for the Mastodon %API.
  *
  *  All text input is expected to be UTF-8.
  *

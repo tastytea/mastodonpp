@@ -21,7 +21,7 @@ namespace mastodonpp
 
 answer_type::operator bool() const
 {
-    return (error_code == 0);
+    return (curl_error_code == 0 && http_status == 200);
 }
 
 answer_type::operator string_view() const

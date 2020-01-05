@@ -58,7 +58,8 @@ public:
     /*!
      *  @brief  The error code returned by libcurl.
      *
-     *  For more information consult libcurl-errors(3).
+     *  For more information consult
+     *  [libcurl-errors(3)](https://curl.haxx.se/libcurl/c/libcurl-errors.html).
      *
      *  @since  0.1.0
      */

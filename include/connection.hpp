@@ -14,50 +14,68 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MASTODONPP_REQUEST_HPP
-#define MASTODONPP_REQUEST_HPP
+#ifndef MASTODONPP_CONNECTION_HPP
+#define MASTODONPP_CONNECTION_HPP
 
 #include "api.hpp"
+#include "curl_wrapper.hpp"
 #include "instance.hpp"
 #include "return_types.hpp"
 
 #include <string>
+#include <string_view>
 
 namespace mastodonpp
 {
 
 using std::string;
+using std::string_view;
 
 /*!
- *  @brief  Used to make a request to the Mastodon API.
+ *  @brief  Represents a connection to an instance. Used for requests.
  *
  *  @since  0.1.0
  *
- *  @headerfile request.hpp mastodonpp/request.hpp
+ *  @headerfile connection.hpp mastodonpp/connection.hpp
  */
-class Request
+class Connection : public CURLWrapper
 {
 public:
     /*!
-     *  @brief  Construct a new Request object.
+     *  @brief  Construct a new Connection object.
      *
      *  @param  instance An Instance with the access data.
      *
      *  @since  0.1.0
      */
-    explicit Request(Instance &instance);
+    explicit Connection(Instance &instance);
 
     /*!
      *  @brief  Make a HTTP GET call.
      *
+     *  @param endpoint Endpoint as API::endpoint_type, for example:
+     *                  `mastodonpp::API::v1::instance`.
+     *
      *  @since  0.1.0
      */
-    answer_type get(API::endpoint_type endpoint) const;
+    [[nodiscard]]
+    answer_type get(const API::endpoint_type &endpoint);
+
+    /*!
+     *  @brief  Make a HTTP GET call.
+     *
+     *  @param  endpoint Endpoint as string, for example: "/api/v1/instance".
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    answer_type get(const string_view &endpoint);
 
 private:
     Instance &_instance;
+    const string_view _baseuri;
 };
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_REQUEST_HPP
+#endif  // MASTODONPP_CONNECTION_HPP

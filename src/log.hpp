@@ -14,11 +14,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mastodonpp.hpp"
+#ifndef MASTODONPP_LOG_HPP
+#define MASTODONPP_LOG_HPP
+
+#include <iostream>
 
 namespace mastodonpp
 {
 
+using std::cerr;
 
+#ifndef NDEBUG
+    #define debuglog cerr << "[" << __func__ << "():" << __LINE__ << "] DEBUG: "
+#else
+    #define debuglog false && cerr
+#endif
 
 } // namespace mastodonpp
+
+#endif  // MASTODONPP_LOG_HPP

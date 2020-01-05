@@ -29,6 +29,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(debug_flags)
 
+# Disable debug log.
+if(NOT ${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+  add_definitions("-DNDEBUG")
+endif()
+
 add_subdirectory(src)
 add_subdirectory(include)
 

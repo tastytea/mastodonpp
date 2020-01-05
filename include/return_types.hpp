@@ -36,31 +36,40 @@ using std::string_view;
  *
  *  @headerfile return_types.hpp mastodonpp/return_types.hpp
  *
- *  @section error Error codes
- *  |      Code | Explanation                                                  |
- *  | --------: |:-------------------------------------------------------------|
- *  |         0 | No error.                                                    |
  */
 struct answer_type
 {
     /*!
-     *  @brief  @ref error "Error code".
+     *  @brief  The error code returned by libcurl.
+     *
+     *  For more information consult
+     *  [libcurl-errors(3)](https://curl.haxx.se/libcurl/c/libcurl-errors.html).
      *
      *  @since  0.1.0
      */
-    uint8_t error_code;
+    uint8_t curl_error_code{0};
+
     /*!
      *  @brief  The error message.
      *
      *  @since  0.1.0
      */
     string error_message;
+
     /*!
      *  @brief  HTTP status code.
      *
      *  @since  0.1.0
      */
-    uint16_t http_status;
+    uint16_t http_status{0};
+
+    /*!
+     *  @brief  The headers of the response from the server.
+     *
+     *  @since  0.1.0
+     */
+    string headers;
+
     /*!
      *  @brief  The response from the server, usually JSON.
      *
@@ -69,7 +78,8 @@ struct answer_type
     string body;
 
     /*!
-     *  @brief  Returns true if #error_code is 0, false otherwise.
+     *  @brief  Returns true if #curl_error_code is 0 and #http_status is 200,
+     *          false otherwise.
      *
      *  @since  0.1.0
      */
