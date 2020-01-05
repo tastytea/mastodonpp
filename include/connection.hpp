@@ -23,11 +23,13 @@
 #include "return_types.hpp"
 
 #include <string>
+#include <string_view>
 
 namespace mastodonpp
 {
 
 using std::string;
+using std::string_view;
 
 /*!
  *  @brief  Represents a connection to an instance. Used for requests.
@@ -57,7 +59,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    answer_type get(API::endpoint_type endpoint);
+    answer_type get(const API::endpoint_type &endpoint);
 
     /*!
      *  @brief  Make a HTTP GET call.
@@ -67,10 +69,11 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    answer_type get(string endpoint);
+    answer_type get(const string_view &endpoint);
 
 private:
     Instance &_instance;
+    const string_view _baseuri;
 };
 
 } // namespace mastodonpp

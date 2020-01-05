@@ -21,20 +21,19 @@ namespace mastodonpp
 
 Connection::Connection(Instance &instance)
     : _instance{instance}
+    , _baseuri{instance.get_baseuri()}
 {}
 
-answer_type Connection::get(API::endpoint_type endpoint)
+answer_type Connection::get(const API::endpoint_type &endpoint)
 {
-    answer_type answer;
-    answer.body = API{endpoint}.to_string();
-    return answer;
+    return make_request(
+        http_method::GET,
+        string(_baseuri).append(API{endpoint}.to_string_view()));
 }
 
-answer_type Connection::get(string endpoint)
+answer_type Connection::get(const string_view &endpoint)
 {
-    answer_type answer;
-    answer.body = make_request(http_method::GET, "https://ip.tastytea.de/");
-    return answer;
+    return make_request(http_method::GET, string(_baseuri).append(endpoint));
 }
 
 } // namespace mastodonpp

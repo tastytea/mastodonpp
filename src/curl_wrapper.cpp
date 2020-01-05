@@ -33,7 +33,7 @@ CURLWrapper::~CURLWrapper() noexcept
     curl_global_cleanup();
 }
 
-string CURLWrapper::make_request(const http_method &meth,
+answer_type CURLWrapper::make_request(const http_method &meth,
                                  const string_view &uri)
 {
     CURLcode code;
@@ -72,7 +72,9 @@ string CURLWrapper::make_request(const http_method &meth,
                 _curl_buffer_error};
     }
 
-    return _curl_buffer;
+    answer_type answer;
+    answer.body = _curl_buffer;
+    return answer;
 }
 
 int CURLWrapper::writer(char *data, size_t size, size_t nmemb,

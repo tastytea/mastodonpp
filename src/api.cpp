@@ -17,21 +17,18 @@
 #include "api.hpp"
 
 #include <map>
-#include <string_view>
-#include <utility>
 
 namespace mastodonpp
 {
 
 using std::map;
 using std::string_view;
-using std::move;
 
-API::API(endpoint_type &endpoint)
-    : _endpoint{move(endpoint)}
+API::API(const endpoint_type &endpoint)
+    : _endpoint{endpoint}
 {}
 
-string API::to_string() const
+string_view API::to_string_view() const
 {
     static const map<endpoint_type,string_view> endpoint_map
         {

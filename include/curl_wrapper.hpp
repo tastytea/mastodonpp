@@ -17,6 +17,8 @@
 #ifndef MASTODONPP_CURL_WRAPPER_HPP
 #define MASTODONPP_CURL_WRAPPER_HPP
 
+#include "return_types.hpp"
+
 #include "curl/curl.h"
 
 #include <string>
@@ -89,7 +91,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    string make_request(const http_method &meth, const string_view &uri);
+    answer_type make_request(const http_method &meth, const string_view &uri);
 
 private:
     CURL *_connection;
