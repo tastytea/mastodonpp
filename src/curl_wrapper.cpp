@@ -16,9 +16,15 @@
 
 #include "curl_wrapper.hpp"
 #include "exceptions.hpp"
+#include "log.hpp"
+
+#include <cstdint>
 
 namespace mastodonpp
 {
+
+using std::uint8_t;
+using std::uint16_t;
 
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
@@ -67,15 +73,27 @@ answer_type CURLWrapper::make_request(const http_method &method,
         throw CURLException{code, "Failed to set URI", _curl_buffer_error};
     }
 
+    answer_type answer;
     code = curl_easy_perform(_connection);
-    if (code != CURLE_OK)
+    if (code == CURLE_OK)
     {
-        throw CURLException{code, "Failed to perform request",
-                _curl_buffer_error};
+        long http_status;       // NOLINT(google-runtime-int)
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+        curl_easy_getinfo(_connection, CURLINFO_RESPONSE_CODE, &http_status);
+        answer.http_status = static_cast<uint16_t>(http_status);
+        debuglog << "HTTP status code: " << http_status << '\n';
+
+        answer.headers = _curl_buffer_headers;
+        answer.body = _curl_buffer_body;
+    }
+    else
+    {
+        answer.curl_error_code = static_cast<uint8_t>(code);
+        answer.error_message = _curl_buffer_error;
+        debuglog << "libcurl error: " << code << '\n';
+        debuglog << _curl_buffer_error << '\n';
     }
 
-    answer_type answer;
-    answer.body = _curl_buffer;
     return answer;
 }
 
