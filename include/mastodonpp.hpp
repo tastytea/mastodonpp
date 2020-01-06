@@ -72,6 +72,8 @@
  *  Any unrecoverable libcurl error will be thrown as a
  *  mastodonpp::CURLException. Network errors will **not** be thrown, but
  *  reported via the return value.
+ *
+ *  @example example01_instance_info.cpp
  */
 
 /*!
