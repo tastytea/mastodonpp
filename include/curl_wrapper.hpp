@@ -17,7 +17,7 @@
 #ifndef MASTODONPP_CURL_WRAPPER_HPP
 #define MASTODONPP_CURL_WRAPPER_HPP
 
-#include "return_types.hpp"
+#include "answer.hpp"
 
 #include "curl/curl.h"
 

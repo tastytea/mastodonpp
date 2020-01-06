@@ -14,9 +14,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "answer.hpp"
 #include "instance.hpp"
 #include "log.hpp"
-#include "return_types.hpp"
 
 namespace mastodonpp
 {

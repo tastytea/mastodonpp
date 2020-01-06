@@ -14,8 +14,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MASTODONPP_RETURN_TYPES_HPP
-#define MASTODONPP_RETURN_TYPES_HPP
+#ifndef MASTODONPP_ANSWER_HPP
+#define MASTODONPP_ANSWER_HPP
 
 #include <cstdint>
 #include <string>
@@ -34,7 +34,7 @@ using std::string_view;
  *
  *  @since  0.1.0
  *
- *  @headerfile return_types.hpp mastodonpp/return_types.hpp
+ *  @headerfile answer.hpp mastodonpp/answer.hpp
  *
  */
 struct answer_type
@@ -103,4 +103,4 @@ struct answer_type
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_RETURN_TYPES_HPP
+#endif  // MASTODONPP_ANSWER_HPP

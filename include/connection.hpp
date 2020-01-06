@@ -17,10 +17,10 @@
 #ifndef MASTODONPP_CONNECTION_HPP
 #define MASTODONPP_CONNECTION_HPP
 
+#include "answer.hpp"
 #include "api.hpp"
 #include "curl_wrapper.hpp"
 #include "instance.hpp"
-#include "return_types.hpp"
 
 #include <string>
 #include <string_view>
