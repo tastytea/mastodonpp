@@ -50,7 +50,8 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit Instance(string hostname, string access_token);
+    explicit Instance(const string_view &hostname,
+                      const string_view &access_token);
 
     /*!
      *  @brief  Returns the hostname.

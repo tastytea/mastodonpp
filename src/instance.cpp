@@ -18,18 +18,15 @@
 #include "log.hpp"
 #include "return_types.hpp"
 
-#include <utility>
-
 namespace mastodonpp
 {
 
 using std::stoull;
-using std::move;
 
-Instance::Instance(string hostname, string access_token)
-    : _hostname{move(hostname)}
+Instance::Instance(const string_view &hostname, const string_view &access_token)
+    : _hostname{hostname}
     , _baseuri{"https://" + _hostname}
-    , _access_token{move(access_token)}
+    , _access_token{access_token}
     , _max_chars{500}
 {
     try
