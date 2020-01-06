@@ -94,10 +94,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    inline uint64_t get_max_chars() const
-    {
-        return _max_chars;
-    }
+    uint64_t get_max_chars();
 
 private:
     const string _hostname;
