@@ -89,10 +89,10 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef MASTODONPP_CONNECTION_HPP</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define MASTODONPP_CONNECTION_HPP</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;api.hpp&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;curl_wrapper.hpp&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;instance.hpp&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;return_types.hpp&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;answer.hpp&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;api.hpp&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;curl_wrapper.hpp&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;instance.hpp&quot;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
@@ -124,13 +124,13 @@ $(function() {
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_CONNECTION_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassmastodonpp_1_1Connection_html_ac5fedffbd59686c26b1e44a7a96c216a"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ac5fedffbd59686c26b1e44a7a96c216a">mastodonpp::Connection::Connection</a></div><div class="ttdeci">Connection(Instance &amp;instance)</div><div class="ttdoc">Construct a new Connection object.</div><div class="ttdef"><b>Definition:</b> connection.cpp:22</div></div>
-<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:19</div></div>
+<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> answer.cpp:19</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Connection_html_a048b38d07a5cd90ad939257bd554a860"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#a048b38d07a5cd90ad939257bd554a860">mastodonpp::Connection::get</a></div><div class="ttdeci">answer_type get(const API::endpoint_type &amp;endpoint)</div><div class="ttdoc">Make a HTTP GET call.</div><div class="ttdef"><b>Definition:</b> connection.cpp:27</div></div>
-<div class="ttc" id="astructmastodonpp_1_1answer__type_html"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html">mastodonpp::answer_type</a></div><div class="ttdoc">Return type for Requests.</div><div class="ttdef"><b>Definition:</b> return_types.hpp:40</div></div>
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html">mastodonpp::answer_type</a></div><div class="ttdoc">Return type for Requests.</div><div class="ttdef"><b>Definition:</b> answer.hpp:40</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdoc">Holds the access data of an instance.</div><div class="ttdef"><b>Definition:</b> instance.hpp:40</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1API_html_a66d340a2e61c4254feb79f17f6773e4f"><div class="ttname"><a href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">mastodonpp::API::endpoint_type</a></div><div class="ttdeci">variant&lt; v1, v2, oauth, other, pleroma &gt; endpoint_type</div><div class="ttdoc">Type for endpoints. Can be API::v1, API::v2, API::oauth, API::other or API::pleroma.</div><div class="ttdef"><b>Definition:</b> api.hpp:295</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Connection_html"><div class="ttname"><a href="classmastodonpp_1_1Connection.html">mastodonpp::Connection</a></div><div class="ttdoc">Represents a connection to an instance. Used for requests.</div><div class="ttdef"><b>Definition:</b> connection.hpp:41</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></div><div class="ttdoc">Handles the details of network connections.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:56</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></div><div class="ttdoc">Handles the details of network connections.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:78</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
