@@ -18,17 +18,35 @@
 #define MASTODONPP_LOG_HPP
 
 #include <iostream>
+#include <string_view>
 
 namespace mastodonpp
 {
 
 using std::cerr;
+using std::string_view;
 
+constexpr auto shorten_filename(const string_view &filename)
+{
+    for (const string_view &dir : {"/src/", "/include/"})
+    {
+        auto pos{filename.rfind("/src/")};
+        if (pos != string_view::npos)
+        {
+            return filename.substr(pos + dir.size());
+        }
+    }
+    return filename;
+}
+
+#define commonlog cerr << '[' << shorten_filename(__FILE__) \
+                       << ':' << __LINE__ << ']'
 #ifndef NDEBUG
-    #define debuglog cerr << "[" << __func__ << "():" << __LINE__ << "] DEBUG: "
+#define debuglog commonlog << " DEBUG: "
 #else
     #define debuglog false && cerr
 #endif
+#define errorlog commonlog << " ERROR: "
 
 } // namespace mastodonpp
 

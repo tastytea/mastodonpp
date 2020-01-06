@@ -50,7 +50,8 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit Instance(string hostname, string access_token);
+    explicit Instance(const string_view &hostname,
+                      const string_view &access_token);
 
     /*!
      *  @brief  Returns the hostname.
@@ -93,10 +94,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    inline uint64_t get_max_chars() const
-    {
-        return _max_chars;
-    }
+    uint64_t get_max_chars();
 
 private:
     const string _hostname;

@@ -74,7 +74,6 @@ public:
 private:
     Instance &_instance;
     const string_view _baseuri;
-    const API _api;
 };
 
 } // namespace mastodonpp

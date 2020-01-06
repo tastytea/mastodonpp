@@ -26,17 +26,31 @@ namespace mastodonpp
 using std::uint8_t;
 using std::uint16_t;
 
+static uint16_t curlwrapper_instances{0};
+
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
 {
-    curl_global_init(CURL_GLOBAL_ALL); // NOLINT(hicpp-signed-bitwise)
+    if (curlwrapper_instances == 0)
+    {
+        curl_global_init(CURL_GLOBAL_ALL); // NOLINT(hicpp-signed-bitwise)
+    }
+    ++curlwrapper_instances;
+    debuglog << "CURLWrapper instances: " << curlwrapper_instances << " (+1)\n";
+
     _connection = curl_easy_init();
     setup_curl();
 }
 CURLWrapper::~CURLWrapper() noexcept
 {
     curl_easy_cleanup(_connection);
-    curl_global_cleanup();
+
+    --curlwrapper_instances;
+    debuglog << "CURLWrapper instances: " << curlwrapper_instances << " (-1)\n";
+    if (curlwrapper_instances == 0)
+    {
+        curl_global_cleanup();
+    }
 }
 
 answer_type CURLWrapper::make_request(const http_method &method,

@@ -19,8 +19,11 @@
 namespace mastodonpp
 {
 
-API::API()
-    : _endpoint_map
+API::API(const endpoint_type &endpoint)
+    : _endpoint{endpoint}
+{}
+
+const map<API::endpoint_type,string_view> API::_endpoint_map
 {
     {v1::apps, "/api/v1/apps"},
     {v1::apps_verify_credentials, "/api/v1/apps/verify/credentials"},
@@ -238,7 +241,6 @@ API::API()
      "/api/pleroma/pleroma/notification_settings"},
     {pleroma::pleroma_healthcheck, "/api/pleroma/pleroma/healthcheck"},
     {pleroma::pleroma_change_email, "/api/pleroma/pleroma/change_email"},
-}
-{}
+};
 
 } // namespace mastodonpp

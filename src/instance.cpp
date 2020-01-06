@@ -18,46 +18,60 @@
 #include "log.hpp"
 #include "return_types.hpp"
 
-#include <utility>
-
 namespace mastodonpp
 {
 
-using std::move;
+using std::stoull;
 
-Instance::Instance(string hostname, string access_token)
-    : _hostname{move(hostname)}
+Instance::Instance(const string_view &hostname, const string_view &access_token)
+    : _hostname{hostname}
     , _baseuri{"https://" + _hostname}
-    , _access_token{move(access_token)}
-    , _max_chars{500}
-{
-    try
-    {
-        const auto answer{make_request(http_method::GET,
-                                       _baseuri + "/api/v1/instance")};
-        if (answer)
-        {
-            debuglog << "Querying instance for max_toot_chars…\n";
-            auto &body{answer.body};
-            size_t pos_start{body.find("max_toot_chars")};
-            if (pos_start == string::npos)
-            {
-                debuglog << "max_toot_chars not found.";
-                return;
-            }
-            pos_start = body.find(':', pos_start) + 1;
-            const size_t pos_end{body.find(',', pos_start)};
+    , _access_token{access_token}
+    , _max_chars{0}
+{}
 
-            const auto max_toot_chars{body.substr(pos_start,
-                                                  pos_end - pos_start)};
-            _max_chars = std::stoull(max_toot_chars);
+uint64_t Instance::get_max_chars()
+{
+    constexpr uint64_t default_max_chars{500};
+
+    if (_max_chars == 0)
+    {
+        try
+        {
+            debuglog << "Querying " << _hostname << " for max_toot_chars…\n";
+            const auto answer{make_request(http_method::GET,
+                                           _baseuri + "/api/v1/instance")};
+            if (!answer)
+            {
+                debuglog << "Could not get instance info.\n";
+                return default_max_chars;
+            }
+
+            _max_chars = [&answer]
+            {
+                auto &body{answer.body};
+                size_t pos_start{body.find("max_toot_chars")};
+                if (pos_start == string::npos)
+                {
+                    debuglog << "max_toot_chars not found.\n";
+                    return default_max_chars;
+                }
+                pos_start = body.find(':', pos_start) + 1;
+                const size_t pos_end{body.find(',', pos_start)};
+
+                const auto max_toot_chars{body.substr(pos_start,
+                                                      pos_end - pos_start)};
+                return static_cast<uint64_t>(stoull(max_toot_chars));
+            }();
             debuglog << "Set _max_chars to: " << _max_chars << '\n';
         }
+        catch (const std::exception &e)
+        {
+            debuglog << "Unexpected exception: " << e.what() << '\n';
+        }
     }
-    catch (const std::exception &e)
-    {
-        debuglog << "Unexpected exception: " << e.what() << '\n';
-    }
+
+    return _max_chars;
 }
 
 } // namespace mastodonpp
