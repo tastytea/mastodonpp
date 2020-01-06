@@ -105,50 +105,53 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">   38</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">http_method</a></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    GET,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    POST</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1CURLWrapper.html">   53</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">CURLWrapper</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">CURLWrapper</a>(<span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">CURLWrapper</a>(<a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19">~CURLWrapper</a>() noexcept;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a>&amp; <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a9ab0da0f9186df2bdbf65189df57aeaf">operator=</a>(<span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a>&amp; <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a9ab0da0f9186df2bdbf65189df57aeaf">operator=</a>(<a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    [[nodiscard]]</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">make_request</a>(<span class="keyword">const</span> <a class="code" href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">http_method</a> &amp;method, <span class="keyword">const</span> string_view &amp;uri);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    CURL *_connection;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">char</span> _curl_buffer_error[CURL_ERROR_SIZE];</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">string</span> _curl_buffer_headers;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">string</span> _curl_buffer_body;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> writer(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> nmemb,</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                      <span class="keywordtype">string</span> *writerData);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> setup_curl();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;};</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_CURL_WRAPPER_HPP</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    POST,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    PATCH,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    PUT,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    DELETE</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1CURLWrapper.html">   56</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">CURLWrapper</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">CURLWrapper</a>(<span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">CURLWrapper</a>(<a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19">~CURLWrapper</a>() noexcept;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a>&amp; <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a9ab0da0f9186df2bdbf65189df57aeaf">operator=</a>(<span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a>&amp; <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a9ab0da0f9186df2bdbf65189df57aeaf">operator=</a>(<a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    [[nodiscard]]</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">make_request</a>(<span class="keyword">const</span> <a class="code" href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">http_method</a> &amp;method, <span class="keyword">const</span> string_view &amp;uri);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    CURL *_connection;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">char</span> _curl_buffer_error[CURL_ERROR_SIZE];</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">string</span> _curl_buffer_headers;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">string</span> _curl_buffer_body;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> writer(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> nmemb,</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                      <span class="keywordtype">string</span> *writerData);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> setup_curl();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;};</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_CURL_WRAPPER_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacemastodonpp_html_a7d60fc71ad0fb1fbd467b37fe1f1f100"><div class="ttname"><a href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">mastodonpp::http_method</a></div><div class="ttdeci">http_method</div><div class="ttdoc">The HTTP method.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:38</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a736572303fbec7a307514e611e6a468c"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">mastodonpp::CURLWrapper::CURLWrapper</a></div><div class="ttdeci">CURLWrapper()</div><div class="ttdoc">Initializes curl and sets up connection.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:29</div></div>
-<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:21</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a736572303fbec7a307514e611e6a468c"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">mastodonpp::CURLWrapper::CURLWrapper</a></div><div class="ttdeci">CURLWrapper()</div><div class="ttdoc">Initializes curl and sets up connection.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:31</div></div>
+<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:19</div></div>
 <div class="ttc" id="astructmastodonpp_1_1answer__type_html"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html">mastodonpp::answer_type</a></div><div class="ttdoc">Return type for Requests.</div><div class="ttdef"><b>Definition:</b> return_types.hpp:40</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a6a0c0ff6e894e43cdb5df9dd8b55c785"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, const string_view &amp;uri)</div><div class="ttdoc">Make a request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:42</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></div><div class="ttdoc">Handles the details of network connections.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:53</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a350f7061c9cb54cb5992ae983db3fc19"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19">mastodonpp::CURLWrapper::~CURLWrapper</a></div><div class="ttdeci">virtual ~CURLWrapper() noexcept</div><div class="ttdoc">Cleans up curl and connection.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:36</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a6a0c0ff6e894e43cdb5df9dd8b55c785"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, const string_view &amp;uri)</div><div class="ttdoc">Make a request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:56</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></div><div class="ttdoc">Handles the details of network connections.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:56</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a350f7061c9cb54cb5992ae983db3fc19"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19">mastodonpp::CURLWrapper::~CURLWrapper</a></div><div class="ttdeci">virtual ~CURLWrapper() noexcept</div><div class="ttdoc">Cleans up curl and connection.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:44</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a9ab0da0f9186df2bdbf65189df57aeaf"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a9ab0da0f9186df2bdbf65189df57aeaf">mastodonpp::CURLWrapper::operator=</a></div><div class="ttdeci">CURLWrapper &amp; operator=(const CURLWrapper &amp;other)=default</div><div class="ttdoc">Copy assignment operator.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['endpoint_5ftype_62',['endpoint_type',['../classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82',1,'mastodonpp::API']]]
+  ['endpoint_5ftype_65',['endpoint_type',['../classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f',1,'mastodonpp::API']]]
 ];

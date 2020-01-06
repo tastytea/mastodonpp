@@ -4,5 +4,5 @@ var searchData=
   ['get_5faccess_5ftoken_11',['get_access_token',['../classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574',1,'mastodonpp::Instance']]],
   ['get_5fbaseuri_12',['get_baseuri',['../classmastodonpp_1_1Instance.html#aeb5e018b566f8ab1a3c50193ead6be81',1,'mastodonpp::Instance']]],
   ['get_5fhostname_13',['get_hostname',['../classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724',1,'mastodonpp::Instance']]],
-  ['get_5fmax_5fchars_14',['get_max_chars',['../classmastodonpp_1_1Instance.html#a35b3b579f912f20bcce2a7b8c9236748',1,'mastodonpp::Instance']]]
+  ['get_5fmax_5fchars_14',['get_max_chars',['../classmastodonpp_1_1Instance.html#a2f07b2e79fc7f128f26c88c2d954ecab',1,'mastodonpp::Instance']]]
 ];

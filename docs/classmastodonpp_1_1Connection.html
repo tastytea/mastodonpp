@@ -93,7 +93,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5fedffbd59686c26b1e44a7a96c216a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Connection.html#ac5fedffbd59686c26b1e44a7a96c216a">Connection</a> (<a class="el" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;instance)</td></tr>
 <tr class="memdesc:ac5fedffbd59686c26b1e44a7a96c216a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classmastodonpp_1_1Connection.html" title="Represents a connection to an instance. Used for requests.">Connection</a> object.  <a href="classmastodonpp_1_1Connection.html#ac5fedffbd59686c26b1e44a7a96c216a">More...</a><br /></td></tr>
 <tr class="separator:ac5fedffbd59686c26b1e44a7a96c216a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a048b38d07a5cd90ad939257bd554a860"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Connection.html#a048b38d07a5cd90ad939257bd554a860">get</a> (const <a class="el" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">API::endpoint_type</a> &amp;endpoint)</td></tr>
+<tr class="memitem:a048b38d07a5cd90ad939257bd554a860"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Connection.html#a048b38d07a5cd90ad939257bd554a860">get</a> (const <a class="el" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">API::endpoint_type</a> &amp;endpoint)</td></tr>
 <tr class="memdesc:a048b38d07a5cd90ad939257bd554a860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a HTTP GET call.  <a href="classmastodonpp_1_1Connection.html#a048b38d07a5cd90ad939257bd554a860">More...</a><br /></td></tr>
 <tr class="separator:a048b38d07a5cd90ad939257bd554a860"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8466753749a01803ce616bc45f6e7a1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Connection.html#a8466753749a01803ce616bc45f6e7a1c">get</a> (const string_view &amp;endpoint)</td></tr>
@@ -174,7 +174,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a> mastodonpp::Connection::get </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82">API::endpoint_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">API::endpoint_type</a> &amp;&#160;</td>
           <td class="paramname"><em>endpoint</em></td><td>)</td>
           <td></td>
         </tr>
@@ -184,7 +184,7 @@ Public Member Functions</h2></td></tr>
 <p>Make a HTTP GET call. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">endpoint</td><td>Endpoint as <a class="el" href="classmastodonpp_1_1API.html#afab8f6d794dbe28dde47d39b53822e82" title="Type for endpoints. Either API::v1 or API::v2.">API::endpoint_type</a>, for example: <code>mastodonpp::API::v1::instance</code>.</td></tr>
+    <tr><td class="paramname">endpoint</td><td>Endpoint as <a class="el" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f" title="Type for endpoints. Can be API::v1, API::v2, API::oauth, API::other or API::pleroma.">API::endpoint_type</a>, for example: <code>mastodonpp::API::v1::instance</code>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -232,7 +232,7 @@ Public Member Functions</h2></td></tr>
 <li>src/connection.cpp</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a6a0c0ff6e894e43cdb5df9dd8b55c785"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, const string_view &amp;uri)</div><div class="ttdoc">Make a request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:42</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a6a0c0ff6e894e43cdb5df9dd8b55c785"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a6a0c0ff6e894e43cdb5df9dd8b55c785">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, const string_view &amp;uri)</div><div class="ttdoc">Make a request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:56</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -80,7 +80,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return type for Requests.  <a href="structmastodonpp_1_1answer__type.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1API.html">API</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds <a class="el" href="classmastodonpp_1_1API.html" title="Holds API endpoints.">API</a> endpoints.  <a href="classmastodonpp_1_1API.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds API endpoints.  <a href="classmastodonpp_1_1API.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Connection.html">Connection</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a connection to an instance. Used for requests.  <a href="classmastodonpp_1_1Connection.html#details">More...</a><br /></td></tr>
@@ -97,14 +97,23 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a7d60fc71ad0fb1fbd467b37fe1f1f100"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">http_method</a> { <b>GET</b>, 
-<b>POST</b>
+<tr class="memitem:a7d60fc71ad0fb1fbd467b37fe1f1f100"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">http_method</a> { <br />
+&#160;&#160;<b>GET</b>, 
+<b>POST</b>, 
+<b>PATCH</b>, 
+<b>PUT</b>, 
+<br />
+&#160;&#160;<b>DELETE</b>
+<br />
  }</td></tr>
 <tr class="memdesc:a7d60fc71ad0fb1fbd467b37fe1f1f100"><td class="mdescLeft">&#160;</td><td class="mdescRight">The HTTP method.  <a href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">More...</a><br /></td></tr>
 <tr class="separator:a7d60fc71ad0fb1fbd467b37fe1f1f100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a9dae9fc343d7dfabc5384ce1650a7f68"><td class="memItemLeft" align="right" valign="top"><a id="a9dae9fc343d7dfabc5384ce1650a7f68"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>shorten_filename</b> (const string_view &amp;filename)</td></tr>
+<tr class="separator:a9dae9fc343d7dfabc5384ce1650a7f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a5182698aabe03eb3a682b40053083d"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemastodonpp.html#a9a5182698aabe03eb3a682b40053083d">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a> &amp;answer)</td></tr>
 <tr class="separator:a9a5182698aabe03eb3a682b40053083d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -137,8 +146,11 @@ Functions</h2></td></tr>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
 <div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    GET,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    POST</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    POST,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    PATCH,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    PUT,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    DELETE</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
 </div><!-- fragment -->
 </div>
 </div>

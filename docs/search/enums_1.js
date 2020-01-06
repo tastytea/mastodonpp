@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['v1_64',['v1',['../classmastodonpp_1_1API.html#aee8f590426914a36f948dafa78e330f2',1,'mastodonpp::API']]],
-  ['v2_65',['v2',['../classmastodonpp_1_1API.html#a67ba7c7a8d94ec7905e45466255648ba',1,'mastodonpp::API']]]
+  ['oauth_67',['oauth',['../classmastodonpp_1_1API.html#a36332bb17e8603f0ba40b63b0b604bcc',1,'mastodonpp::API']]],
+  ['other_68',['other',['../classmastodonpp_1_1API.html#abd51b671f4bd4f6021d8044e281d4c76',1,'mastodonpp::API']]]
 ];
