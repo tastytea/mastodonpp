@@ -114,6 +114,21 @@ public:
     CURLWrapper& operator=(CURLWrapper &&other) noexcept = default;
 
     /*!
+     *  @brief  Returns pointer to the CURL easy handle.
+     *
+     *  You can use this handle to set or modify curl options. For more
+     *  information consult [curl_easy_setopt(3)]
+     *  (https://curl.haxx.se/libcurl/c/curl_easy_setopt.html).
+     *
+     *  @since  0.1.0
+     */
+    inline CURL *get_curl_easy_handle()
+    {
+        return _connection;
+    }
+
+protected:
+    /*!
      *  @brief  Make a request.
      *
      *  @param  method The HTTP method.
