@@ -21,14 +21,20 @@
 
 #include "curl/curl.h"
 
+#include <map>
 #include <string>
 #include <string_view>
+#include <variant>
+#include <vector>
 
 namespace mastodonpp
 {
 
+using std::map;
 using std::string;
 using std::string_view;
+using std::variant;
+using std::vector;
 
 /*!
  *  @brief  The HTTP method.
@@ -43,6 +49,22 @@ enum class http_method
     PUT,
     DELETE
 };
+
+/*!
+ *  @brief  std::map of parameters for API calls.
+ *
+ *  Example:
+ *  @code
+ *  parametermap parameters
+ *      {
+ *          {"id", "12"},
+ *          {"poll[options]", vector<string>{"Yes", "No", "Maybe"}}
+ *      };
+ *  @endcode
+ *
+ *  @since  0.1.0
+ */
+using parametermap = map<string, variant<string, vector<string>>>;
 
 /*!
  *  @brief  Handles the details of network connections.
