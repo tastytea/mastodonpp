@@ -4,7 +4,7 @@ find_package(CURL REQUIRED)
 
 # Write version in header.
 configure_file ("version.hpp.in"
-  "${PROJECT_BINARY_DIR}/version.hpp" @ONLY)
+  "${CMAKE_CURRENT_BINARY_DIR}/version.hpp" @ONLY)
 
 add_library(${PROJECT_NAME})
 
@@ -19,7 +19,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 target_include_directories(${PROJECT_NAME}
   PRIVATE
-  "$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/src>" # version.hpp
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>" # version.hpp
   PUBLIC
   "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")

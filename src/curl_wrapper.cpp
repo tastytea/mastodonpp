@@ -17,8 +17,10 @@
 #include "curl_wrapper.hpp"
 #include "exceptions.hpp"
 #include "log.hpp"
+#include "version.hpp"
 
 #include <cstdint>
+#include <cstring>
 
 namespace mastodonpp
 {
@@ -178,6 +180,15 @@ void CURLWrapper::setup_curl()
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set write data",
+                _curl_buffer_error};
+    }
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    code = curl_easy_setopt(_connection, CURLOPT_USERAGENT,
+                            string("mastorss/").append(version).c_str());
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set User-Agent",
                 _curl_buffer_error};
     }
 }
