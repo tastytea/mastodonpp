@@ -17,11 +17,11 @@
 #ifndef MASTODONPP_HPP
 #define MASTODONPP_HPP
 
+#include "answer.hpp"
 #include "api.hpp"
 #include "connection.hpp"
 #include "exceptions.hpp"
 #include "instance.hpp"
-#include "return_types.hpp"
 
 /*!
  *  @headerfile mastodonpp.hpp mastodonpp/mastodonpp.hpp
@@ -72,6 +72,8 @@
  *  Any unrecoverable libcurl error will be thrown as a
  *  mastodonpp::CURLException. Network errors will **not** be thrown, but
  *  reported via the return value.
+ *
+ *  @example example01_instance_info.cpp
  */
 
 /*!

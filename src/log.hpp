@@ -26,6 +26,7 @@ namespace mastodonpp
 using std::cerr;
 using std::string_view;
 
+//! @private
 constexpr auto shorten_filename(const string_view &filename)
 {
     for (const string_view &dir : {"/src/", "/include/"})
