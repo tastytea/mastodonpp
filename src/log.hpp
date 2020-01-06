@@ -31,7 +31,7 @@ constexpr auto shorten_filename(const string_view &filename)
 {
     for (const string_view &dir : {"/src/", "/include/"})
     {
-        auto pos{filename.rfind("/src/")};
+        const auto pos{filename.rfind(dir)};
         if (pos != string_view::npos)
         {
             return filename.substr(pos + dir.size());
