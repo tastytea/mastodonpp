@@ -15,7 +15,7 @@
 
 // Print information about an instance (/api/v1/instance).
 
-#include <mastodonpp.hpp>
+#include "mastodonpp.hpp"
 
 #include <iostream>
 #include <string>
