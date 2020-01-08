@@ -18,7 +18,7 @@
 link:{uri-mastodon-cpp}[mastodon-cpp].
 
 We aim to create a library that is comfortable, yet minimal. All API endpoints
-from Mastodon and Pleroma are stored in `enum class`es, to counteract typos and
+from Mastodon and Pleroma are stored in ``enum class``es, to counteract typos and
 make your life easier. The network-facing code is built on
 link:{uri-curl}[libcurl], a mature and stable library that is available on
 virtually every operating system. The library does not parse the responses
