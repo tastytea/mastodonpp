@@ -83,6 +83,7 @@ public:
 
     /*!
      *  @brief  Make a HTTP GET call.
+     *
      *  Example:
      *  @code
      *  auto answer{connection.get("/api/v1/instance")};

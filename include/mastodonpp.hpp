@@ -74,17 +74,17 @@
  *  @section exceptions Exceptions
  *
  *  Any unrecoverable libcurl error will be thrown as a
- *  mastodonpp::CURLException. Network errors will **not** be thrown, but
- *  reported via the return value.
+ *  mastodonpp::CURLException. Network errors will not be thrown, but reported
+ *  via the return value.
  *
  *  @section thread_safety Thread safety
  *
  *  The first time you construct an @link mastodonpp::Instance Instance @endlink
- *  or @link mastodonpp::Connection Connection @endlink, [curl_global_init()]
+ *  or @link mastodonpp::Connection Connection @endlink, [curl_global_init(3)]
  *  (https://curl.haxx.se/libcurl/c/curl_global_init.html) is called. When the
  *  last @link mastodonpp::Instance Instance @endlink or @link
  *  mastodonpp::Connection Connection @endlink is destroyed,
- *  [curl_global_cleanup()]
+ *  [curl_global_cleanup(3)]
  *  (https://curl.haxx.se/libcurl/c/curl_global_cleanup.html) is called. Both
  *  are not thread safe.
  *
