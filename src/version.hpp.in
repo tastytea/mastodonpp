@@ -8,7 +8,7 @@ namespace mastodonpp
 
 using std::string_view;
 
-static constexpr string_view version = "@PROJECT_VERSION@";
+static constexpr string_view version{"@PROJECT_VERSION@"};
 
 } // namespace mastodonpp
 

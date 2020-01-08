@@ -17,16 +17,26 @@
 #include "curl_wrapper.hpp"
 #include "exceptions.hpp"
 #include "log.hpp"
+#include "version.hpp"
 
+#include <algorithm>
+#include <array>
+#include <atomic>
 #include <cstdint>
+#include <cstring>
 
 namespace mastodonpp
 {
 
+using std::get;
+using std::holds_alternative;
+using std::any_of;
+using std::array;
+using std::atomic;
 using std::uint8_t;
 using std::uint16_t;
 
-static uint16_t curlwrapper_instances{0};
+static atomic<uint16_t> curlwrapper_instances{0};
 
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
@@ -53,11 +63,9 @@ CURLWrapper::~CURLWrapper() noexcept
     }
 }
 
-answer_type CURLWrapper::make_request(const http_method &method,
-                                      const string_view &uri)
+answer_type CURLWrapper::make_request(const http_method &method, string uri,
+                                      const parametermap &parameters)
 {
-    debuglog << "Making request to: " << uri << '\n';
-
     CURLcode code;
     switch (method)
     {
@@ -65,6 +73,52 @@ answer_type CURLWrapper::make_request(const http_method &method,
     {
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         code = curl_easy_setopt(_connection, CURLOPT_HTTPGET, 1L);
+
+        for (const auto &param : parameters)
+        {
+            static constexpr array replace_in_uri
+                {
+                    "id", "nickname", "nickname_or_id",
+                    "hashtag", "permission_group"
+                };
+            if (any_of(replace_in_uri.begin(), replace_in_uri.end(),
+                       [&param](const auto &s) { return s == param.first; }))
+            {
+                const auto pos{uri.find('<')};
+                if (pos != string::npos)
+                {
+                    uri.replace(pos, param.first.size() + 2,
+                                get<string>(param.second));
+                }
+                continue;
+            }
+            static bool first{true};
+            if (first)
+            {
+                uri.append("?");
+                first = false;
+            }
+            else
+            {
+                uri.append("&");
+            }
+            if (holds_alternative<string>(param.second))
+            {
+                uri.append(param.first + '=' + get<string>(param.second));
+            }
+            else
+            {
+                for (const auto &arg : get<vector<string>>(param.second))
+                {
+                    uri.append(param.first + "[]=" + arg);
+                    if (arg != *get<vector<string>>(param.second).rbegin())
+                    {
+                        uri.append("&");
+                    }
+                }
+            }
+        }
+
         break;
     }
     case http_method::POST:
@@ -97,6 +151,7 @@ answer_type CURLWrapper::make_request(const http_method &method,
         throw CURLException{code, "Failed to set HTTP method",
                 _curl_buffer_error};
     }
+    debuglog << "Making request to: " << uri << '\n';
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     code = curl_easy_setopt(_connection, CURLOPT_URL, uri.data());
@@ -180,6 +235,25 @@ void CURLWrapper::setup_curl()
         throw CURLException{code, "Failed to set write data",
                 _curl_buffer_error};
     }
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    code = curl_easy_setopt(_connection, CURLOPT_USERAGENT,
+                            string("mastorss/").append(version).c_str());
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set User-Agent",
+                _curl_buffer_error};
+    }
+
+    // The next 2 only fail if HTTP is not supported.
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    code = curl_easy_setopt(_connection, CURLOPT_FOLLOWLOCATION, 1L);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "HTTP is not supported.", _curl_buffer_error};
+    }
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_MAXREDIRS, 10L);
 }
 
 } // namespace mastodonpp

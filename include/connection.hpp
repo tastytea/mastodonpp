@@ -24,12 +24,16 @@
 
 #include <string>
 #include <string_view>
+#include <variant>
 
 namespace mastodonpp
 {
 
 using std::string;
 using std::string_view;
+using std::variant;
+
+using endpoint_variant = variant<API::endpoint_type,string>;
 
 /*!
  *  @brief  Represents a connection to an instance. Used for requests.
@@ -51,25 +55,43 @@ public:
     explicit Connection(Instance &instance);
 
     /*!
-     *  @brief  Make a HTTP GET call.
+     *  @brief  Make a HTTP GET call with parameters.
      *
-     *  @param endpoint Endpoint as API::endpoint_type, for example:
-     *                  `mastodonpp::API::v1::instance`.
+     *  Example:
+     *  @code
+     *  auto answer{connection.get(mastodonpp::API::v1::accounts_id_followers,
+     *                             {
+     *                                 {"id", "12"},
+     *                                 {"limit", "10"}
+     *                             })};
+     *  @endcode
+     *
+     *  @param endpoint   Endpoint as API::endpoint_type or `std::string`.
+     *  @param parameters A map of parameters.
+     *
      *
      *  @since  0.1.0
      */
     [[nodiscard]]
-    answer_type get(const API::endpoint_type &endpoint);
+    answer_type get(const endpoint_variant &endpoint,
+                    const parametermap &parameters);
 
     /*!
      *  @brief  Make a HTTP GET call.
+     *  Example:
+     *  @code
+     *  auto answer{connection.get("/api/v1/instance")};
+     *  @endcode
      *
-     *  @param  endpoint Endpoint as string, for example: "/api/v1/instance".
+     *  @param endpoint Endpoint as API::endpoint_type or `std::string`.
      *
      *  @since  0.1.0
      */
     [[nodiscard]]
-    answer_type get(const string_view &endpoint);
+    inline answer_type get(const endpoint_variant &endpoint)
+    {
+        return get(endpoint, {});
+    }
 
 private:
     Instance &_instance;

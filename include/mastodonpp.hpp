@@ -45,7 +45,7 @@
  *
  *  Or compile your code with `g++ $(pkg-config --cflags --libs mastodonpp)`.
  *
- *  @subsection Example
+ *  @subsection example Example
  *
  *  @code
  *  #include <mastodonpp/mastodonpp.hpp>
@@ -67,11 +67,26 @@
  *  }
  *  @endcode
  *
+ *  @subsection input Input
+ *
+ *  All text input is expected to be UTF-8.
+ *
  *  @section exceptions Exceptions
  *
  *  Any unrecoverable libcurl error will be thrown as a
  *  mastodonpp::CURLException. Network errors will **not** be thrown, but
  *  reported via the return value.
+ *
+ *  @section thread_safety Thread safety
+ *
+ *  The first time you construct an @link mastodonpp::Instance Instance @endlink
+ *  or @link mastodonpp::Connection Connection @endlink, [curl_global_init()]
+ *  (https://curl.haxx.se/libcurl/c/curl_global_init.html) is called. When the
+ *  last @link mastodonpp::Instance Instance @endlink or @link
+ *  mastodonpp::Connection Connection @endlink is destroyed,
+ *  [curl_global_cleanup()]
+ *  (https://curl.haxx.se/libcurl/c/curl_global_cleanup.html) is called. Both
+ *  are not thread safe.
  *
  *  @example example01_instance_info.cpp
  */
@@ -79,15 +94,9 @@
 /*!
  *  @brief  C++ wrapper for the Mastodon %API.
  *
- *  All text input is expected to be UTF-8.
- *
  *  @since  0.1.0
  */
 namespace mastodonpp
-{
-
-
-
-} // namespace mastodonpp
+{} // namespace mastodonpp
 
 #endif  // MASTODONPP_HPP

@@ -40,7 +40,7 @@ uint64_t Instance::get_max_chars()
         {
             debuglog << "Querying " << _hostname << " for max_toot_chars…\n";
             const auto answer{make_request(http_method::GET,
-                                           _baseuri + "/api/v1/instance")};
+                                           _baseuri + "/api/v1/instance", {})};
             if (!answer)
             {
                 debuglog << "Could not get instance info.\n";
