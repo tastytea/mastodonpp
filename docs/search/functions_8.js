@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ecurlwrapper_59',['~CURLWrapper',['../classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19',1,'mastodonpp::CURLWrapper']]]
+  ['_7ecurlwrapper_61',['~CURLWrapper',['../classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19',1,'mastodonpp::CURLWrapper']]]
 ];

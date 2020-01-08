@@ -74,7 +74,7 @@ Using the library</h1>
 <div class="fragment"><div class="line">find_package(<a class="code" href="namespacemastodonpp.html">mastodonpp</a> REQUIRED CONFIG)</div>
 <div class="line">target_link_libraries(MyProject mastodonpp::mastodonpp)</div>
 </div><!-- fragment --><p>Or compile your code with <code>g++ $(pkg-config --cflags --libs mastodonpp)</code>.</p>
-<h2><a class="anchor" id="Example"></a>
+<h2><a class="anchor" id="example"></a>
 Example</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;mastodonpp/mastodonpp.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
@@ -93,9 +93,15 @@ Example</h2>
 <div class="line">        std::cout &lt;&lt; answer &lt;&lt; std::endl;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="exceptions"></a>
+</div><!-- fragment --><h2><a class="anchor" id="input"></a>
+Input</h2>
+<p>All text input is expected to be UTF-8.</p>
+<h1><a class="anchor" id="exceptions"></a>
 Exceptions</h1>
-<p>Any unrecoverable libcurl error will be thrown as a <a class="el" href="classmastodonpp_1_1CURLException.html" title="Exception for libcurl errors.">mastodonpp::CURLException</a>. Network errors will <b>not</b> be thrown, but reported via the return value. </p>
+<p>Any unrecoverable libcurl error will be thrown as a <a class="el" href="classmastodonpp_1_1CURLException.html" title="Exception for libcurl errors.">mastodonpp::CURLException</a>. Network errors will <b>not</b> be thrown, but reported via the return value.</p>
+<h1><a class="anchor" id="thread_safety"></a>
+Thread safety</h1>
+<p>The first time you construct an <a class="el" href="classmastodonpp_1_1Instance.html">Instance </a> or <a class="el" href="classmastodonpp_1_1Connection.html">Connection </a>, <a href="https://curl.haxx.se/libcurl/c/curl_global_init.html">curl_global_init()</a> is called. When the last <a class="el" href="classmastodonpp_1_1Instance.html">Instance </a> or <a class="el" href="classmastodonpp_1_1Connection.html">Connection </a> is destroyed, <a href="https://curl.haxx.se/libcurl/c/curl_global_cleanup.html">curl_global_cleanup()</a> is called. Both are not thread safe. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> answer.cpp:19</div></div>
