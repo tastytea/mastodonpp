@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['to_5fstring_5fview_31',['to_string_view',['../classmastodonpp_1_1API.html#aa51c43b5c7cc2afd32520d08d51bcfc3',1,'mastodonpp::API']]]
+  ['set_5fproxy_36',['set_proxy',['../classmastodonpp_1_1Connection.html#a174ce4933649d532a5c689ecf0c0a358',1,'mastodonpp::Connection::set_proxy()'],['../classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d',1,'mastodonpp::CURLWrapper::set_proxy()']]]
 ];

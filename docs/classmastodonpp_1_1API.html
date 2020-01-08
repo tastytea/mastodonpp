@@ -715,7 +715,7 @@ Public Member Functions</h2></td></tr>
 <p>Convert <a class="el" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f" title="Type for endpoints. Can be API::v1, API::v2, API::oauth, API::other or API::pleroma.">endpoint_type</a> to <code>std::string_view</code>. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
 <div class="fragment"><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">return</span> _endpoint_map.at(_endpoint).data();</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">return</span> _endpoint_map.at(_endpoint);</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>

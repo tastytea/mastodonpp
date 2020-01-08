@@ -90,9 +90,9 @@ Inheritance diagram for mastodonpp::Instance:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a44a0d692edffb78014df8beccd94874f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#a44a0d692edffb78014df8beccd94874f">Instance</a> (const string_view &amp;hostname, const string_view &amp;access_token)</td></tr>
-<tr class="memdesc:a44a0d692edffb78014df8beccd94874f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classmastodonpp_1_1Instance.html" title="Holds the access data of an instance.">Instance</a> object.  <a href="classmastodonpp_1_1Instance.html#a44a0d692edffb78014df8beccd94874f">More...</a><br /></td></tr>
-<tr class="separator:a44a0d692edffb78014df8beccd94874f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21b859e2b9b5c6f48e8d0a194a659888"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#a21b859e2b9b5c6f48e8d0a194a659888">Instance</a> (string_view hostname, string_view access_token)</td></tr>
+<tr class="memdesc:a21b859e2b9b5c6f48e8d0a194a659888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classmastodonpp_1_1Instance.html" title="Holds the access data of an instance.">Instance</a> object.  <a href="classmastodonpp_1_1Instance.html#a21b859e2b9b5c6f48e8d0a194a659888">More...</a><br /></td></tr>
+<tr class="separator:a21b859e2b9b5c6f48e8d0a194a659888"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24518d4603779ffc5cd89c814a687724"><td class="memItemLeft" align="right" valign="top">string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">get_hostname</a> () const</td></tr>
 <tr class="memdesc:a24518d4603779ffc5cd89c814a687724"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the hostname.  <a href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">More...</a><br /></td></tr>
 <tr class="separator:a24518d4603779ffc5cd89c814a687724"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,38 +109,51 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a736572303fbec7a307514e611e6a468c inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">CURLWrapper</a> ()</td></tr>
 <tr class="memdesc:a736572303fbec7a307514e611e6a468c inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes curl and sets up connection.  <a href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">More...</a><br /></td></tr>
 <tr class="separator:a736572303fbec7a307514e611e6a468c inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51ff58f1038ea1d6c8d327b5f261ae39 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a51ff58f1038ea1d6c8d327b5f261ae39">CURLWrapper</a> (const <a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other)=default</td></tr>
-<tr class="memdesc:a51ff58f1038ea1d6c8d327b5f261ae39 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="classmastodonpp_1_1CURLWrapper.html#a51ff58f1038ea1d6c8d327b5f261ae39">More...</a><br /></td></tr>
-<tr class="separator:a51ff58f1038ea1d6c8d327b5f261ae39 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1969bc0fb2e104d896c606b38f3199e7 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a1969bc0fb2e104d896c606b38f3199e7">CURLWrapper</a> (<a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept=default</td></tr>
-<tr class="memdesc:a1969bc0fb2e104d896c606b38f3199e7 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="classmastodonpp_1_1CURLWrapper.html#a1969bc0fb2e104d896c606b38f3199e7">More...</a><br /></td></tr>
-<tr class="separator:a1969bc0fb2e104d896c606b38f3199e7 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a108929a9985c76a8e2cd1f531ac6d321 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a108929a9985c76a8e2cd1f531ac6d321">CURLWrapper</a> (const <a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other)=delete</td></tr>
+<tr class="memdesc:a108929a9985c76a8e2cd1f531ac6d321 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="classmastodonpp_1_1CURLWrapper.html#a108929a9985c76a8e2cd1f531ac6d321">More...</a><br /></td></tr>
+<tr class="separator:a108929a9985c76a8e2cd1f531ac6d321 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d79b9a4525ac4b4b8954ccc794af0f9 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a4d79b9a4525ac4b4b8954ccc794af0f9">CURLWrapper</a> (<a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept=delete</td></tr>
+<tr class="memdesc:a4d79b9a4525ac4b4b8954ccc794af0f9 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="classmastodonpp_1_1CURLWrapper.html#a4d79b9a4525ac4b4b8954ccc794af0f9">More...</a><br /></td></tr>
+<tr class="separator:a4d79b9a4525ac4b4b8954ccc794af0f9 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a350f7061c9cb54cb5992ae983db3fc19 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19">~CURLWrapper</a> () noexcept</td></tr>
 <tr class="memdesc:a350f7061c9cb54cb5992ae983db3fc19 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up curl and connection.  <a href="classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19">More...</a><br /></td></tr>
 <tr class="separator:a350f7061c9cb54cb5992ae983db3fc19 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ab0da0f9186df2bdbf65189df57aeaf inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a9ab0da0f9186df2bdbf65189df57aeaf">operator=</a> (const <a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other)=default</td></tr>
-<tr class="memdesc:a9ab0da0f9186df2bdbf65189df57aeaf inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator.  <a href="classmastodonpp_1_1CURLWrapper.html#a9ab0da0f9186df2bdbf65189df57aeaf">More...</a><br /></td></tr>
-<tr class="separator:a9ab0da0f9186df2bdbf65189df57aeaf inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab516c58e5887eedc4b3b475c8faa060a inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#ab516c58e5887eedc4b3b475c8faa060a">operator=</a> (<a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept=default</td></tr>
-<tr class="memdesc:ab516c58e5887eedc4b3b475c8faa060a inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator.  <a href="classmastodonpp_1_1CURLWrapper.html#ab516c58e5887eedc4b3b475c8faa060a">More...</a><br /></td></tr>
-<tr class="separator:ab516c58e5887eedc4b3b475c8faa060a inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f29b7f4d0b58f70bc96f362cdaa4d0a inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a5f29b7f4d0b58f70bc96f362cdaa4d0a">operator=</a> (const <a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other)=delete</td></tr>
+<tr class="memdesc:a5f29b7f4d0b58f70bc96f362cdaa4d0a inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator.  <a href="classmastodonpp_1_1CURLWrapper.html#a5f29b7f4d0b58f70bc96f362cdaa4d0a">More...</a><br /></td></tr>
+<tr class="separator:a5f29b7f4d0b58f70bc96f362cdaa4d0a inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a506cb49c00a63ef4b9d51d0d52c203dc inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a506cb49c00a63ef4b9d51d0d52c203dc">operator=</a> (<a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept=delete</td></tr>
+<tr class="memdesc:a506cb49c00a63ef4b9d51d0d52c203dc inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator.  <a href="classmastodonpp_1_1CURLWrapper.html#a506cb49c00a63ef4b9d51d0d52c203dc">More...</a><br /></td></tr>
+<tr class="separator:a506cb49c00a63ef4b9d51d0d52c203dc inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b7aaf03245a0730eeb464802168aded inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">CURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a2b7aaf03245a0730eeb464802168aded">get_curl_easy_handle</a> ()</td></tr>
 <tr class="memdesc:a2b7aaf03245a0730eeb464802168aded inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns pointer to the CURL easy handle.  <a href="classmastodonpp_1_1CURLWrapper.html#a2b7aaf03245a0730eeb464802168aded">More...</a><br /></td></tr>
 <tr class="separator:a2b7aaf03245a0730eeb464802168aded inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1564a42794ef7a9d170b725063ef504d inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">set_proxy</a> (string_view proxy)</td></tr>
+<tr class="memdesc:a1564a42794ef7a9d170b725063ef504d inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the proxy to use.  <a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">More...</a><br /></td></tr>
+<tr class="separator:a1564a42794ef7a9d170b725063ef504d inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a892a4fc3d048798fa8e2584545b91861 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a892a4fc3d048798fa8e2584545b91861">cancel_stream</a> ()</td></tr>
+<tr class="memdesc:a892a4fc3d048798fa8e2584545b91861 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cancel the stream.  <a href="classmastodonpp_1_1CURLWrapper.html#a892a4fc3d048798fa8e2584545b91861">More...</a><br /></td></tr>
+<tr class="separator:a892a4fc3d048798fa8e2584545b91861 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classmastodonpp_1_1CURLWrapper"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classmastodonpp_1_1CURLWrapper')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></td></tr>
-<tr class="memitem:adc8808c3fad5397176f6755b09ee0be6 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a> (const <a class="el" href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">http_method</a> &amp;method, string uri, const <a class="el" href="namespacemastodonpp.html#a0e32f4a39b81639733f26f96b0f86b75">parametermap</a> &amp;parameters)</td></tr>
+<tr class="memitem:adc8808c3fad5397176f6755b09ee0be6 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmastodonpp_1_1answer__type.html">answer_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a> (const <a class="el" href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">http_method</a> &amp;method, string uri, const <a class="el" href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">parametermap</a> &amp;parameters)</td></tr>
 <tr class="memdesc:adc8808c3fad5397176f6755b09ee0be6 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a HTTP request.  <a href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">More...</a><br /></td></tr>
 <tr class="separator:adc8808c3fad5397176f6755b09ee0be6 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b3919cfb38716c5a032337e442db95 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95">get_buffer</a> ()</td></tr>
+<tr class="memdesc:a04b3919cfb38716c5a032337e442db95 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the buffer libcurl writes into.  <a href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95">More...</a><br /></td></tr>
+<tr class="separator:a04b3919cfb38716c5a032337e442db95 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classmastodonpp_1_1CURLWrapper"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classmastodonpp_1_1CURLWrapper')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></td></tr>
+<tr class="memitem:aeb3171d955832b8062dc02b4ac67d195 inherit pro_attribs_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a></td></tr>
+<tr class="memdesc:aeb3171d955832b8062dc02b4ac67d195 inherit pro_attribs_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for <a class="el" href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95" title="Returns a reference to the buffer libcurl writes into.">get_buffer</a> a.k.a. _curl_buffer_body.  <a href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">More...</a><br /></td></tr>
+<tr class="separator:aeb3171d955832b8062dc02b4ac67d195 inherit pro_attribs_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Holds the access data of an instance. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a44a0d692edffb78014df8beccd94874f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44a0d692edffb78014df8beccd94874f">&#9670;&nbsp;</a></span>Instance()</h2>
+<a id="a21b859e2b9b5c6f48e8d0a194a659888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21b859e2b9b5c6f48e8d0a194a659888">&#9670;&nbsp;</a></span>Instance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,13 +164,13 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">mastodonpp::Instance::Instance </td>
           <td>(</td>
-          <td class="paramtype">const string_view &amp;&#160;</td>
+          <td class="paramtype">string_view&#160;</td>
           <td class="paramname"><em>hostname</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const string_view &amp;&#160;</td>
+          <td class="paramtype">string_view&#160;</td>
           <td class="paramname"><em>access_token</em>&#160;</td>
         </tr>
         <tr>
@@ -217,9 +230,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns the access token. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> _access_token;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> _access_token;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -249,9 +262,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Returns the base URI. </p>
 <p>The base URI is “https://” + the hostname.</p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> _baseuri;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> _baseuri;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -280,9 +293,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns the hostname. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> _hostname;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> _hostname;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -353,7 +366,7 @@ Additional Inherited Members</h2></td></tr>
 <li>src/instance.cpp</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_adc8808c3fad5397176f6755b09ee0be6"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, string uri, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:66</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_adc8808c3fad5397176f6755b09ee0be6"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, string uri, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:82</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instance_19',['Instance',['../classmastodonpp_1_1Instance.html',1,'mastodonpp::Instance'],['../classmastodonpp_1_1Instance.html#a44a0d692edffb78014df8beccd94874f',1,'mastodonpp::Instance::Instance()']]]
+  ['instance_24',['Instance',['../classmastodonpp_1_1Instance.html',1,'mastodonpp::Instance'],['../classmastodonpp_1_1Instance.html#a21b859e2b9b5c6f48e8d0a194a659888',1,'mastodonpp::Instance::Instance()']]]
 ];
