@@ -173,6 +173,16 @@ private:
      *  @since  0.1.0
      */
     void setup_curl();
+
+    /*!
+     *  @brief  Add parameters to URI.
+     *
+     *  @param  uri        Reference to the URI.
+     *  @param  parameters The parametermap.
+     *
+     *  @since  0.1.0
+     */
+    void add_parameters_to_uri(string &uri, const parametermap &parameters);
 };
 
 } // namespace mastodonpp

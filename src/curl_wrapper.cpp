@@ -84,50 +84,7 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         code = curl_easy_setopt(_connection, CURLOPT_HTTPGET, 1L);
 
-        for (const auto &param : parameters)
-        {
-            static constexpr array replace_in_uri
-                {
-                    "id", "nickname", "nickname_or_id",
-                    "hashtag", "permission_group"
-                };
-            if (any_of(replace_in_uri.begin(), replace_in_uri.end(),
-                       [&param](const auto &s) { return s == param.first; }))
-            {
-                const auto pos{uri.find('<')};
-                if (pos != string::npos)
-                {
-                    uri.replace(pos, param.first.size() + 2,
-                                get<string_view>(param.second));
-                }
-                continue;
-            }
-            static bool first{true};
-            if (first)
-            {
-                uri += "?";
-                first = false;
-            }
-            else
-            {
-                uri += "&";
-            }
-            if (holds_alternative<string_view>(param.second))
-            {
-                ((uri += param.first) += "=") += get<string_view>(param.second);
-            }
-            else
-            {
-                for (const auto &arg : get<vector<string_view>>(param.second))
-                {
-                    ((uri += param.first) += "[]=") += arg;
-                    if (arg != *get<vector<string_view>>(param.second).rbegin())
-                    {
-                        uri += "&";
-                    }
-                }
-            }
-        }
+        add_parameters_to_uri(uri, parameters);
 
         break;
     }
@@ -264,6 +221,57 @@ void CURLWrapper::setup_curl()
     }
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     curl_easy_setopt(_connection, CURLOPT_MAXREDIRS, 10L);
+}
+
+void CURLWrapper::add_parameters_to_uri(string &uri,
+                                        const parametermap &parameters)
+{
+    // Replace <ID> with the value of parameter “id” and so on.
+    for (const auto &param : parameters)
+    {
+        static constexpr array replace_in_uri
+            {
+                "id", "nickname", "nickname_or_id",
+                "hashtag", "permission_group"
+            };
+        if (any_of(replace_in_uri.begin(), replace_in_uri.end(),
+                   [&param](const auto &s) { return s == param.first; }))
+        {
+            const auto pos{uri.find('<')};
+            if (pos != string::npos)
+            {
+                uri.replace(pos, param.first.size() + 2,
+                            get<string_view>(param.second));
+                continue;
+            }
+        }
+
+        static bool first{true};
+        if (first)
+        {
+            uri += "?";
+            first = false;
+        }
+        else
+        {
+            uri += "&";
+        }
+        if (holds_alternative<string_view>(param.second))
+        {
+            ((uri += param.first) += "=") += get<string_view>(param.second);
+        }
+        else
+        {
+            for (const auto &arg : get<vector<string_view>>(param.second))
+            {
+                ((uri += param.first) += "[]=") += arg;
+                if (arg != *get<vector<string_view>>(param.second).rbegin())
+                {
+                    uri += "&";
+                }
+            }
+        }
+    }
 }
 
 } // namespace mastodonpp
