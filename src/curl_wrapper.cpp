@@ -203,70 +203,29 @@ void CURLWrapper::setup_curl()
     }
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    CURLcode code{curl_easy_setopt(_connection, CURLOPT_ERRORBUFFER,
-                                   _curl_buffer_error)};
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set error buffer."};
-    }
+    curl_easy_setopt(_connection, CURLOPT_ERRORBUFFER, _curl_buffer_error);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_WRITEFUNCTION,
-                            writer_body_wrapper);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set write function",
-                _curl_buffer_error};
-    }
+    curl_easy_setopt(_connection, CURLOPT_WRITEFUNCTION, writer_body_wrapper);
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_WRITEDATA, this);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_WRITEDATA, this);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set write data",
-                _curl_buffer_error};
-    }
+    curl_easy_setopt(_connection, CURLOPT_HEADERFUNCTION,
+                     writer_header_wrapper);
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_HEADERDATA, this);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_HEADERFUNCTION,
-                            writer_header_wrapper);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set header function",
-                _curl_buffer_error};
-    }
-
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_HEADERDATA, this);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set header data",
-                _curl_buffer_error};
-    }
-
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_XFERINFOFUNCTION,
-                            progress_wrapper);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set transfer info function",
-                _curl_buffer_error};
-    }
-
+    curl_easy_setopt(_connection, CURLOPT_XFERINFOFUNCTION, progress_wrapper);
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     curl_easy_setopt(_connection, CURLOPT_XFERINFODATA, this);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set transfer info data",
-                _curl_buffer_error};
-    }
-
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     curl_easy_setopt(_connection, CURLOPT_NOPROGRESS, 0L);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_USERAGENT,
-                            (string("mastorss/") += version).c_str());
+    CURLcode code{curl_easy_setopt(_connection, CURLOPT_USERAGENT,
+                                   (string("mastorss/") += version).c_str())};
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set User-Agent",
