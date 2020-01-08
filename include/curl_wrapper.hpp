@@ -22,6 +22,7 @@
 #include "curl/curl.h"
 
 #include <map>
+#include <mutex>
 #include <string>
 #include <string_view>
 #include <variant>
@@ -31,6 +32,7 @@ namespace mastodonpp
 {
 
 using std::map;
+using std::mutex;
 using std::string;
 using std::string_view;
 using std::variant;
@@ -58,13 +60,13 @@ enum class http_method
  *  parametermap parameters
  *      {
  *          {"id", "12"},
- *          {"poll[options]", vector<string>{"Yes", "No", "Maybe"}}
+ *          {"poll[options]", vector<string_view>{"Yes", "No", "Maybe"}}
  *      };
  *  @endcode
  *
  *  @since  0.1.0
  */
-using parametermap = map<string, variant<string, vector<string>>>;
+using parametermap = map<string_view, variant<string_view, vector<string_view>>>;
 
 /*!
  *  @brief  Handles the details of network connections.
@@ -91,10 +93,10 @@ public:
     CURLWrapper();
 
     //! Copy constructor
-    CURLWrapper(const CURLWrapper &other) = default;
+    CURLWrapper(const CURLWrapper &other) = delete;
 
     //! Move constructor
-    CURLWrapper(CURLWrapper &&other) noexcept = default;
+    CURLWrapper(CURLWrapper &&other) noexcept = delete;
 
     /*!
      *  @brief  Cleans up curl and connection.
@@ -108,10 +110,10 @@ public:
     virtual ~CURLWrapper() noexcept;
 
     //! Copy assignment operator
-    CURLWrapper& operator=(const CURLWrapper &other) = default;
+    CURLWrapper& operator=(const CURLWrapper &other) = delete;
 
     //! Move assignment operator
-    CURLWrapper& operator=(CURLWrapper &&other) noexcept = default;
+    CURLWrapper& operator=(CURLWrapper &&other) noexcept = delete;
 
     /*!
      *  @brief  Returns pointer to the CURL easy handle.
@@ -127,7 +129,41 @@ public:
         return _connection;
     }
 
+    /*!
+     *  @brief  Set the proxy to use.
+     *
+     *  See [CURLOPT_PROXY(3)]
+     *  (https://curl.haxx.se/libcurl/c/CURLOPT_PROXY.html).
+     *
+     *  @param  proxy Examples: "socks4a://127.0.0.1:9050", "http://[::1]:3128".
+     *
+     *  @since  0.1.0
+     */
+    void set_proxy(string_view proxy);
+
+    /*!
+     *  @brief  Cancel the stream.
+     *
+     *  The stream will be cancelled, usually whithin a second. The @link
+     *  answer_type::curl_error_code curl_error_code @endlink of the answer will
+     *  be set to 42 (`CURLE_ABORTED_BY_CALLBACK`).
+     *
+     *  @since  0.1.0
+     */
+    void cancel_stream();
+
 protected:
+    /*!
+     *  @brief  Mutex for #get_buffer a.k.a. _curl_buffer_body.
+     *
+     *  This mutex is locked in `writer_body()` and
+     *  Connection::get_new_stream_contents before anything is read or written
+     *  from/to _curl_buffer_body.
+     *
+     *  @since  0.1.0
+     */
+    mutex buffer_mutex;
+
     /*!
      *  @brief  Make a HTTP request.
      *
@@ -141,19 +177,73 @@ protected:
     answer_type make_request(const http_method &method, string uri,
                              const parametermap &parameters);
 
+    /*!
+     *  @brief  Returns a reference to the buffer libcurl writes into.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    string &get_buffer()
+    {
+        return _curl_buffer_body;
+    }
+
 private:
     CURL *_connection;
     char _curl_buffer_error[CURL_ERROR_SIZE];
     string _curl_buffer_headers;
     string _curl_buffer_body;
+    bool _stream_cancelled;
 
     /*!
      *  @brief  libcurl write callback function.
      *
      *  @since  0.1.0
      */
-    static int writer(char *data, size_t size, size_t nmemb,
-                      string *writerData);
+    size_t writer_body(char *data, size_t size, size_t nmemb);
+
+    /*!
+     *  @brief  Wrapper for curl, because it can only call static member
+     *          functions.
+     *
+     *  <https://curl.haxx.se/docs/faq.html#Using_C_non_static_functions_f>
+     *
+     *  @since  0.1.0
+     */
+    static inline size_t writer_body_wrapper(char *data, size_t sz,
+                                             size_t nmemb, void *f)
+    {
+        return static_cast<CURLWrapper*>(f)->writer_body(data, sz, nmemb);
+    }
+
+    //! @copydoc writer_body
+    size_t writer_header(char *data, size_t size, size_t nmemb);
+
+    //! @copydoc writer_body_wrapper
+    static inline size_t writer_header_wrapper(char *data, size_t sz,
+                                               size_t nmemb, void *f)
+    {
+        return static_cast<CURLWrapper*>(f)->writer_header(data, sz, nmemb);
+    }
+
+    /*!
+     *  @brief  libcurl transfer info function.
+     *
+     *  Used to cancel streams.
+     *
+     *  @since  0.1.0
+     */
+    int progress(void *clientp, curl_off_t dltotal, curl_off_t dlnow,
+                 curl_off_t ultotal, curl_off_t ulnow);
+
+    //! @copydoc writer_body_wrapper
+    static inline int progress_wrapper(void *f, void *clientp,
+                                       curl_off_t dltotal, curl_off_t dlnow,
+                                       curl_off_t ultotal, curl_off_t ulnow)
+    {
+        return static_cast<CURLWrapper*>(f)->progress(clientp, dltotal, dlnow,
+                                                      ultotal, ulnow);
+    }
 
     /*!
      *  @brief  Setup libcurl connection.
@@ -161,6 +251,16 @@ private:
      *  @since  0.1.0
      */
     void setup_curl();
+
+    /*!
+     *  @brief  Add parameters to URI.
+     *
+     *  @param  uri        Reference to the URI.
+     *  @param  parameters The parametermap.
+     *
+     *  @since  0.1.0
+     */
+    void add_parameters_to_uri(string &uri, const parametermap &parameters);
 };
 
 } // namespace mastodonpp

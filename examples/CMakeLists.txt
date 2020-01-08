@@ -1,10 +1,12 @@
 include(GNUInstallDirs)
 
+find_package(Threads  REQUIRED)
+
 file(GLOB sources_examples *.cpp)
 foreach(src ${sources_examples})
   get_filename_component(bin ${src} NAME_WE)
   add_executable(${bin} ${src})
-  target_link_libraries(${bin} PRIVATE ${PROJECT_NAME})
+  target_link_libraries(${bin} PRIVATE ${PROJECT_NAME} Threads::Threads)
 endforeach()
 
 if(WITH_DOC)

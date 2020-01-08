@@ -40,6 +40,7 @@ static atomic<uint16_t> curlwrapper_instances{0};
 
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
+    , _stream_cancelled(false)
 {
     if (curlwrapper_instances == 0)
     {
@@ -63,9 +64,26 @@ CURLWrapper::~CURLWrapper() noexcept
     }
 }
 
+void CURLWrapper::set_proxy(const string_view proxy)
+{
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    CURLcode code = curl_easy_setopt(_connection, CURLOPT_PROXY, proxy);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set proxy", _curl_buffer_error};
+    }
+}
+
+void CURLWrapper::cancel_stream()
+{
+    _stream_cancelled = true;
+}
+
 answer_type CURLWrapper::make_request(const http_method &method, string uri,
                                       const parametermap &parameters)
 {
+    _stream_cancelled = false;
+
     CURLcode code;
     switch (method)
     {
@@ -74,50 +92,7 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         code = curl_easy_setopt(_connection, CURLOPT_HTTPGET, 1L);
 
-        for (const auto &param : parameters)
-        {
-            static constexpr array replace_in_uri
-                {
-                    "id", "nickname", "nickname_or_id",
-                    "hashtag", "permission_group"
-                };
-            if (any_of(replace_in_uri.begin(), replace_in_uri.end(),
-                       [&param](const auto &s) { return s == param.first; }))
-            {
-                const auto pos{uri.find('<')};
-                if (pos != string::npos)
-                {
-                    uri.replace(pos, param.first.size() + 2,
-                                get<string>(param.second));
-                }
-                continue;
-            }
-            static bool first{true};
-            if (first)
-            {
-                uri.append("?");
-                first = false;
-            }
-            else
-            {
-                uri.append("&");
-            }
-            if (holds_alternative<string>(param.second))
-            {
-                uri.append(param.first + '=' + get<string>(param.second));
-            }
-            else
-            {
-                for (const auto &arg : get<vector<string>>(param.second))
-                {
-                    uri.append(param.first + "[]=" + arg);
-                    if (arg != *get<vector<string>>(param.second).rbegin())
-                    {
-                        uri.append("&");
-                    }
-                }
-            }
-        }
+        add_parameters_to_uri(uri, parameters);
 
         break;
     }
@@ -162,7 +137,8 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
 
     answer_type answer;
     code = curl_easy_perform(_connection);
-    if (code == CURLE_OK)
+    if (code == CURLE_OK
+        || (code == CURLE_ABORTED_BY_CALLBACK && _stream_cancelled))
     {
         long http_status;       // NOLINT(google-runtime-int)
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
@@ -184,17 +160,40 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     return answer;
 }
 
-int CURLWrapper::writer(char *data, size_t size, size_t nmemb,
-                        string *writerData)
+size_t CURLWrapper::writer_body(char *data, size_t size, size_t nmemb)
 {
-    if(writerData == nullptr)
+    if(data == nullptr)
     {
         return 0;
     }
 
-    writerData->append(data, size*nmemb);
+    buffer_mutex.lock();
+    _curl_buffer_body.append(data, size * nmemb);
+    buffer_mutex.unlock();
 
-    return static_cast<int>(size * nmemb);
+    return size * nmemb;
+}
+
+size_t CURLWrapper::writer_header(char *data, size_t size, size_t nmemb)
+{
+    if(data == nullptr)
+    {
+        return 0;
+    }
+
+    _curl_buffer_headers.append(data, size * nmemb);
+
+    return size * nmemb;
+}
+
+int CURLWrapper::progress(void *, curl_off_t , curl_off_t ,
+                          curl_off_t , curl_off_t )
+{
+    if (_stream_cancelled)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 void CURLWrapper::setup_curl()
@@ -205,40 +204,29 @@ void CURLWrapper::setup_curl()
     }
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    CURLcode code{curl_easy_setopt(_connection, CURLOPT_ERRORBUFFER,
-                                   _curl_buffer_error)};
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set error buffer."};
-    }
+    curl_easy_setopt(_connection, CURLOPT_ERRORBUFFER, _curl_buffer_error);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_WRITEFUNCTION, writer);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set writer", _curl_buffer_error};
-    }
+    curl_easy_setopt(_connection, CURLOPT_WRITEFUNCTION, writer_body_wrapper);
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_WRITEDATA, this);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_HEADERDATA,
-                            &_curl_buffer_headers);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set header data",
-                _curl_buffer_error};
-    }
+    curl_easy_setopt(_connection, CURLOPT_HEADERFUNCTION,
+                     writer_header_wrapper);
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_HEADERDATA, this);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_WRITEDATA, &_curl_buffer_body);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set write data",
-                _curl_buffer_error};
-    }
+    curl_easy_setopt(_connection, CURLOPT_XFERINFOFUNCTION, progress_wrapper);
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_XFERINFODATA, this);
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_NOPROGRESS, 0L);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_USERAGENT,
-                            string("mastorss/").append(version).c_str());
+    CURLcode code{curl_easy_setopt(_connection, CURLOPT_USERAGENT,
+                                   (string("mastorss/") += version).c_str())};
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set User-Agent",
@@ -254,6 +242,57 @@ void CURLWrapper::setup_curl()
     }
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     curl_easy_setopt(_connection, CURLOPT_MAXREDIRS, 10L);
+}
+
+void CURLWrapper::add_parameters_to_uri(string &uri,
+                                        const parametermap &parameters)
+{
+    // Replace <ID> with the value of parameter “id” and so on.
+    for (const auto &param : parameters)
+    {
+        static constexpr array replace_in_uri
+            {
+                "id", "nickname", "nickname_or_id",
+                "hashtag", "permission_group"
+            };
+        if (any_of(replace_in_uri.begin(), replace_in_uri.end(),
+                   [&param](const auto &s) { return s == param.first; }))
+        {
+            const auto pos{uri.find('<')};
+            if (pos != string::npos)
+            {
+                uri.replace(pos, param.first.size() + 2,
+                            get<string_view>(param.second));
+                continue;
+            }
+        }
+
+        static bool first{true};
+        if (first)
+        {
+            uri += "?";
+            first = false;
+        }
+        else
+        {
+            uri += "&";
+        }
+        if (holds_alternative<string_view>(param.second))
+        {
+            ((uri += param.first) += "=") += get<string_view>(param.second);
+        }
+        else
+        {
+            for (const auto &arg : get<vector<string_view>>(param.second))
+            {
+                ((uri += param.first) += "[]=") += arg;
+                if (arg != *get<vector<string_view>>(param.second).rbegin())
+                {
+                    uri += "&";
+                }
+            }
+        }
+    }
 }
 
 } // namespace mastodonpp

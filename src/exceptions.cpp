@@ -42,7 +42,7 @@ const char *CURLException::what() const noexcept
         + " - " + _message};
     if (!_error_buffer.empty())
     {
-        error_string.append(" [" + _error_buffer + "]");
+        error_string += " [" + _error_buffer + "]";
     }
     return error_string.c_str();
 }

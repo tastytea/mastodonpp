@@ -15,13 +15,55 @@
 :uri-curl: https://curl.haxx.se/
 
 *{project}* is a C++ wrapper for the Mastodon API. It replaces
- link:{uri-mastodon-cpp}[mastodon-cpp].
+link:{uri-mastodon-cpp}[mastodon-cpp].
+
+We aim to create a library that is comfortable, yet minimal. All API endpoints
+from Mastodon and Pleroma are stored in `enum class`es, to counteract typos and
+make your life easier. The network-facing code is built on
+link:{uri-curl}[libcurl], a mature and stable library that is available on
+virtually every operating system. The library does not parse the responses
+itself, but returns to you the raw data, because we know everyone has their
+favorite JSON library and we don't want to impose our choice on you!
+
+== Features
+
+This is still a work in progress; here is a rough overview of the features:
+
+* [ ] Requests
+  ** [x] `GET` requests.
+  ** [x] Streaming `GET` requests.
+  ** [ ] `POST` requests.
+  ** [ ] `PATCH` requests.
+  ** [ ] `PUT` requests.
+  ** [ ] `DELETE` requests.
+* [x] Report maximum allowed character per post.
+* [ ] Comfortable access to pagination headers.
+* [ ] Comfortable function to register a new “app” (get an access token).
 
 == Usage
 
 Have a look at the link:{uri-reference}[reference].
 
-// === Examples
+=== Example
+
+[source,cpp]
+--------------------------------------------------------------------------------
+#include "mastodonpp.hpp"
+#include <iostream>
+
+int main()
+{
+    mastodonpp::Instance instance{"example.com", {}};
+    mastodonpp::Connection connection{instance};
+    auto answer{connection.get(mastodonpp::API::v1::instance)};
+    if (answer)
+    {
+        std::cout << answer << std::endl;
+    }
+}
+--------------------------------------------------------------------------------
+
+link:{uri-reference}/examples.html[More examples] are included in the reference.
 
 == Install
 
@@ -42,7 +84,7 @@ Have a look at the link:{uri-reference}[reference].
 * Tested OS: Linux
 * C++ compiler (tested: link:{uri-gcc}[GCC] 7/8/9, link:{uri-lang}[clang] 6/7)
 * link:{uri-cmake}[CMake] (at least: 3.9)
-* link:{uri-curl}[curl] (tested: 7.66 / 7.58)
+* link:{uri-curl}[curl] (at least: 7.32)
 * Optional
   ** Documentation: link:{uri-doxygen}[Doxygen] (tested: 1.8)
   ** Tests: link:{uri-catch}[Catch] (tested: 2.5 / 1.2)

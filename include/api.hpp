@@ -312,7 +312,7 @@ public:
     [[nodiscard]]
     inline string_view to_string_view() const
     {
-        return _endpoint_map.at(_endpoint).data();
+        return _endpoint_map.at(_endpoint);
     }
 
 private:

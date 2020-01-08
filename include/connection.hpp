@@ -33,7 +33,12 @@ using std::string;
 using std::string_view;
 using std::variant;
 
-using endpoint_variant = variant<API::endpoint_type,string>;
+/*!
+ *  @brief  An endpoint. Either API::endpoint_type or `std::string_view`.
+ *
+ *  @since  0.1.0
+ */
+using endpoint_variant = variant<API::endpoint_type,string_view>;
 
 /*!
  *  @brief  Represents a connection to an instance. Used for requests.
@@ -66,7 +71,7 @@ public:
      *                             })};
      *  @endcode
      *
-     *  @param endpoint   Endpoint as API::endpoint_type or `std::string`.
+     *  @param endpoint   Endpoint as API::endpoint_type or `std::string_view`.
      *  @param parameters A map of parameters.
      *
      *
@@ -78,12 +83,13 @@ public:
 
     /*!
      *  @brief  Make a HTTP GET call.
+     *
      *  Example:
      *  @code
      *  auto answer{connection.get("/api/v1/instance")};
      *  @endcode
      *
-     *  @param endpoint Endpoint as API::endpoint_type or `std::string`.
+     *  @param endpoint Endpoint as API::endpoint_type or `std::string_view`.
      *
      *  @since  0.1.0
      */
@@ -92,6 +98,24 @@ public:
     {
         return get(endpoint, {});
     }
+
+    /*! @copydoc CURLWrapper::set_proxy(string_view)
+     *
+     *  Sets also the proxy for the Instance you used to initialize this
+     *  Connection.
+     */
+    void set_proxy(string_view proxy);
+
+    /*!
+     *  @brief  Copy new stream contents and delete the “original”.
+     *
+     *  Note that the last event is not necessarily complete, it could happen
+     *  that you are calling this function mid-transfer. You have to check the
+     *  data integrity yourself.
+     *
+     *  @since  0.1.0
+     */
+    string get_new_stream_contents();
 
 private:
     Instance &_instance;

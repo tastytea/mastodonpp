@@ -29,17 +29,33 @@ Connection::Connection(Instance &instance)
 answer_type Connection::get(const endpoint_variant &endpoint,
                             const parametermap &parameters)
 {
-    string uri{[&]
+    const string uri{[&]
     {
         if (holds_alternative<API::endpoint_type>(endpoint))
         {
-            return string(_baseuri).append(
-                API{std::get<API::endpoint_type>(endpoint)}.to_string_view());
+            return string(_baseuri)
+                += API{std::get<API::endpoint_type>(endpoint)}.to_string_view();
         }
-
-        return std::get<string>(endpoint);
+        return string(std::get<string_view>(endpoint));
     }()};
+
     return make_request(http_method::GET, uri, parameters);
+}
+
+void Connection::set_proxy(const string_view proxy)
+{
+    CURLWrapper::set_proxy(proxy);
+    _instance.set_proxy(proxy);
+}
+
+string Connection::get_new_stream_contents()
+{
+    buffer_mutex.lock();
+    auto &buffer{get_buffer()};
+    auto buffer_copy{buffer};
+    buffer.clear();
+    buffer_mutex.unlock();
+    return buffer_copy;
 }
 
 } // namespace mastodonpp
