@@ -22,6 +22,7 @@
 #include "curl/curl.h"
 
 #include <map>
+#include <mutex>
 #include <string>
 #include <string_view>
 #include <variant>
@@ -31,6 +32,7 @@ namespace mastodonpp
 {
 
 using std::map;
+using std::mutex;
 using std::string;
 using std::string_view;
 using std::variant;
@@ -91,10 +93,10 @@ public:
     CURLWrapper();
 
     //! Copy constructor
-    CURLWrapper(const CURLWrapper &other) = default;
+    CURLWrapper(const CURLWrapper &other) = delete;
 
     //! Move constructor
-    CURLWrapper(CURLWrapper &&other) noexcept = default;
+    CURLWrapper(CURLWrapper &&other) noexcept = delete;
 
     /*!
      *  @brief  Cleans up curl and connection.
@@ -108,10 +110,10 @@ public:
     virtual ~CURLWrapper() noexcept;
 
     //! Copy assignment operator
-    CURLWrapper& operator=(const CURLWrapper &other) = default;
+    CURLWrapper& operator=(const CURLWrapper &other) = delete;
 
     //! Move assignment operator
-    CURLWrapper& operator=(CURLWrapper &&other) noexcept = default;
+    CURLWrapper& operator=(CURLWrapper &&other) noexcept = delete;
 
     /*!
      *  @brief  Returns pointer to the CURL easy handle.
@@ -139,7 +141,29 @@ public:
      */
     void set_proxy(string_view proxy);
 
+    /*!
+     *  @brief  Cancel the stream.
+     *
+     *  The stream will be cancelled, usually whithin a second. The @link
+     *  answer_type::curl_error_code curl_error_code @endlink of the answer will
+     *  be set to 42 (`CURLE_ABORTED_BY_CALLBACK`).
+     *
+     *  @since  0.1.0
+     */
+    void cancel_stream();
+
 protected:
+    /*!
+     *  @brief  Mutex for #get_buffer a.k.a. _curl_buffer_body.
+     *
+     *  This mutex is locked in `writer_body()` and
+     *  Connection::get_new_stream_contents before anything is read or written
+     *  from/to _curl_buffer_body.
+     *
+     *  @since  0.1.0
+     */
+    mutex buffer_mutex;
+
     /*!
      *  @brief  Make a HTTP request.
      *
@@ -153,11 +177,23 @@ protected:
     answer_type make_request(const http_method &method, string uri,
                              const parametermap &parameters);
 
+    /*!
+     *  @brief  Returns a reference to the buffer libcurl writes into.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    string &get_buffer()
+    {
+        return _curl_buffer_body;
+    }
+
 private:
     CURL *_connection;
     char _curl_buffer_error[CURL_ERROR_SIZE];
     string _curl_buffer_headers;
     string _curl_buffer_body;
+    bool _stream_cancelled;
 
     /*!
      *  @brief  libcurl write callback function.
@@ -188,6 +224,25 @@ private:
                                                size_t nmemb, void *f)
     {
         return static_cast<CURLWrapper*>(f)->writer_header(data, sz, nmemb);
+    }
+
+    /*!
+     *  @brief  libcurl transfer info function.
+     *
+     *  Used to cancel streams.
+     *
+     *  @since  0.1.0
+     */
+    int progress(void *clientp, curl_off_t dltotal, curl_off_t dlnow,
+                 curl_off_t ultotal, curl_off_t ulnow);
+
+    //! @copydoc writer_body_wrapper
+    static inline int progress_wrapper(void *f, void *clientp,
+                                       curl_off_t dltotal, curl_off_t dlnow,
+                                       curl_off_t ultotal, curl_off_t ulnow)
+    {
+        return static_cast<CURLWrapper*>(f)->progress(clientp, dltotal, dlnow,
+                                                      ultotal, ulnow);
     }
 
     /*!

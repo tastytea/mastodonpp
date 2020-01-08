@@ -42,7 +42,7 @@ Have a look at the link:{uri-reference}[reference].
 * Tested OS: Linux
 * C++ compiler (tested: link:{uri-gcc}[GCC] 7/8/9, link:{uri-lang}[clang] 6/7)
 * link:{uri-cmake}[CMake] (at least: 3.9)
-* link:{uri-curl}[curl] (tested: 7.66 / 7.58)
+* link:{uri-curl}[curl] (at least: 7.32)
 * Optional
   ** Documentation: link:{uri-doxygen}[Doxygen] (tested: 1.8)
   ** Tests: link:{uri-catch}[Catch] (tested: 2.5 / 1.2)

@@ -106,6 +106,13 @@ public:
      */
     void set_proxy(string_view proxy);
 
+    /*!
+     *  @brief  Get new stream contents and delete them.
+     *
+     *  @since  0.1.0
+     */
+    string get_new_stream_contents();
+
 private:
     Instance &_instance;
     const string_view _baseuri;

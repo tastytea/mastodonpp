@@ -40,6 +40,7 @@ static atomic<uint16_t> curlwrapper_instances{0};
 
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
+    , _stream_cancelled(false)
 {
     if (curlwrapper_instances == 0)
     {
@@ -73,9 +74,16 @@ void CURLWrapper::set_proxy(const string_view proxy)
     }
 }
 
+void CURLWrapper::cancel_stream()
+{
+    _stream_cancelled = true;
+}
+
 answer_type CURLWrapper::make_request(const http_method &method, string uri,
                                       const parametermap &parameters)
 {
+    _stream_cancelled = false;
+
     CURLcode code;
     switch (method)
     {
@@ -158,7 +166,9 @@ size_t CURLWrapper::writer_body(char *data, size_t size, size_t nmemb)
         return 0;
     }
 
+    buffer_mutex.lock();
     _curl_buffer_body.append(data, size * nmemb);
+    buffer_mutex.unlock();
 
     return size * nmemb;
 }
@@ -173,6 +183,16 @@ size_t CURLWrapper::writer_header(char *data, size_t size, size_t nmemb)
     _curl_buffer_headers.append(data, size * nmemb);
 
     return size * nmemb;
+}
+
+int CURLWrapper::progress(void *, curl_off_t , curl_off_t ,
+                          curl_off_t , curl_off_t )
+{
+    if (_stream_cancelled)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 void CURLWrapper::setup_curl()
@@ -223,6 +243,26 @@ void CURLWrapper::setup_curl()
         throw CURLException{code, "Failed to set header data",
                 _curl_buffer_error};
     }
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    code = curl_easy_setopt(_connection, CURLOPT_XFERINFOFUNCTION,
+                            progress_wrapper);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set transfer info function",
+                _curl_buffer_error};
+    }
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_XFERINFODATA, this);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set transfer info data",
+                _curl_buffer_error};
+    }
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_NOPROGRESS, 0L);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     code = curl_easy_setopt(_connection, CURLOPT_USERAGENT,
