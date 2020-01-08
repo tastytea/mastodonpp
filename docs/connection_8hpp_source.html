@@ -96,40 +96,49 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> std::string;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> std::string_view;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Connection.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1Connection.html">Connection</a> : <span class="keyword">public</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1Connection.html#ac5fedffbd59686c26b1e44a7a96c216a">Connection</a>(<a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;instance);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    [[nodiscard]]</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> <a class="code" href="classmastodonpp_1_1Connection.html#a048b38d07a5cd90ad939257bd554a860">get</a>(<span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">API::endpoint_type</a> &amp;endpoint);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    [[nodiscard]]</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> <a class="code" href="classmastodonpp_1_1Connection.html#a048b38d07a5cd90ad939257bd554a860">get</a>(<span class="keyword">const</span> string_view &amp;endpoint);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;_instance;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">const</span> string_view _baseuri;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;variant&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> std::string_view;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> std::variant;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> endpoint_variant = variant&lt;API::endpoint_type,string&gt;;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Connection.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1Connection.html">Connection</a> : <span class="keyword">public</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1Connection.html#ac5fedffbd59686c26b1e44a7a96c216a">Connection</a>(<a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;instance);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    [[nodiscard]]</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> <a class="code" href="classmastodonpp_1_1Connection.html#ade24a99769313ee15c406d97e9543cba">get</a>(<span class="keyword">const</span> endpoint_variant &amp;endpoint,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keyword">const</span> <a class="code" href="namespacemastodonpp.html#a0e32f4a39b81639733f26f96b0f86b75">parametermap</a> &amp;parameters);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_CONNECTION_HPP</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    [[nodiscard]]</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Connection.html#a60034eabe75bd3afade110a171c66d05">   91</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> <a class="code" href="classmastodonpp_1_1Connection.html#a60034eabe75bd3afade110a171c66d05">get</a>(<span class="keyword">const</span> endpoint_variant &amp;endpoint)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#ade24a99769313ee15c406d97e9543cba">get</a>(endpoint, {});</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;_instance;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">const</span> string_view _baseuri;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_CONNECTION_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1Connection_html_ac5fedffbd59686c26b1e44a7a96c216a"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ac5fedffbd59686c26b1e44a7a96c216a">mastodonpp::Connection::Connection</a></div><div class="ttdeci">Connection(Instance &amp;instance)</div><div class="ttdoc">Construct a new Connection object.</div><div class="ttdef"><b>Definition:</b> connection.cpp:22</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html_ade24a99769313ee15c406d97e9543cba"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ade24a99769313ee15c406d97e9543cba">mastodonpp::Connection::get</a></div><div class="ttdeci">answer_type get(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP GET call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:29</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html_ac5fedffbd59686c26b1e44a7a96c216a"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ac5fedffbd59686c26b1e44a7a96c216a">mastodonpp::Connection::Connection</a></div><div class="ttdeci">Connection(Instance &amp;instance)</div><div class="ttdoc">Construct a new Connection object.</div><div class="ttdef"><b>Definition:</b> connection.cpp:24</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html_a60034eabe75bd3afade110a171c66d05"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#a60034eabe75bd3afade110a171c66d05">mastodonpp::Connection::get</a></div><div class="ttdeci">answer_type get(const endpoint_variant &amp;endpoint)</div><div class="ttdoc">Make a HTTP GET call. Example:</div><div class="ttdef"><b>Definition:</b> connection.hpp:91</div></div>
 <div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> answer.cpp:19</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Connection_html_a048b38d07a5cd90ad939257bd554a860"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#a048b38d07a5cd90ad939257bd554a860">mastodonpp::Connection::get</a></div><div class="ttdeci">answer_type get(const API::endpoint_type &amp;endpoint)</div><div class="ttdoc">Make a HTTP GET call.</div><div class="ttdef"><b>Definition:</b> connection.cpp:27</div></div>
 <div class="ttc" id="astructmastodonpp_1_1answer__type_html"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html">mastodonpp::answer_type</a></div><div class="ttdoc">Return type for Requests.</div><div class="ttdef"><b>Definition:</b> answer.hpp:40</div></div>
+<div class="ttc" id="anamespacemastodonpp_html_a0e32f4a39b81639733f26f96b0f86b75"><div class="ttname"><a href="namespacemastodonpp.html#a0e32f4a39b81639733f26f96b0f86b75">mastodonpp::parametermap</a></div><div class="ttdeci">map&lt; string, variant&lt; string, vector&lt; string &gt; &gt;&gt; parametermap</div><div class="ttdoc">std::map of parameters for API calls.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:67</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdoc">Holds the access data of an instance.</div><div class="ttdef"><b>Definition:</b> instance.hpp:40</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1API_html_a66d340a2e61c4254feb79f17f6773e4f"><div class="ttname"><a href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">mastodonpp::API::endpoint_type</a></div><div class="ttdeci">variant&lt; v1, v2, oauth, other, pleroma &gt; endpoint_type</div><div class="ttdoc">Type for endpoints. Can be API::v1, API::v2, API::oauth, API::other or API::pleroma.</div><div class="ttdef"><b>Definition:</b> api.hpp:295</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Connection_html"><div class="ttname"><a href="classmastodonpp_1_1Connection.html">mastodonpp::Connection</a></div><div class="ttdoc">Represents a connection to an instance. Used for requests.</div><div class="ttdef"><b>Definition:</b> connection.hpp:41</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html"><div class="ttname"><a href="classmastodonpp_1_1Connection.html">mastodonpp::Connection</a></div><div class="ttdoc">Represents a connection to an instance. Used for requests.</div><div class="ttdef"><b>Definition:</b> connection.hpp:45</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></div><div class="ttdoc">Handles the details of network connections.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:78</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
