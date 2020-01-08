@@ -33,8 +33,8 @@ answer_type Connection::get(const endpoint_variant &endpoint,
     {
         if (holds_alternative<API::endpoint_type>(endpoint))
         {
-            return string(_baseuri).append(
-                API{std::get<API::endpoint_type>(endpoint)}.to_string_view());
+            return string(_baseuri)
+                += API{std::get<API::endpoint_type>(endpoint)}.to_string_view();
         }
         return string(std::get<string_view>(endpoint));
     }()};
