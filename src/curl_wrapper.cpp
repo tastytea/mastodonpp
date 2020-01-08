@@ -26,6 +26,8 @@
 namespace mastodonpp
 {
 
+using std::get;
+using std::holds_alternative;
 using std::atomic;
 using std::uint8_t;
 using std::uint16_t;
@@ -57,11 +59,9 @@ CURLWrapper::~CURLWrapper() noexcept
     }
 }
 
-answer_type CURLWrapper::make_request(const http_method &method,
-                                      const string_view &uri)
+answer_type CURLWrapper::make_request(const http_method &method, string uri,
+                                      const parametermap &parameters)
 {
-    debuglog << "Making request to: " << uri << '\n';
-
     CURLcode code;
     switch (method)
     {
@@ -69,6 +69,36 @@ answer_type CURLWrapper::make_request(const http_method &method,
     {
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         code = curl_easy_setopt(_connection, CURLOPT_HTTPGET, 1L);
+
+        for (const auto &param : parameters)
+        {
+            static bool first{true};
+            if (first)
+            {
+                uri.append("?");
+                first = false;
+            }
+            else
+            {
+                uri.append("&");
+            }
+            if (holds_alternative<string>(param.second))
+            {
+                uri.append(param.first + '=' + get<string>(param.second));
+            }
+            else
+            {
+                for (const auto &arg : get<vector<string>>(param.second))
+                {
+                    uri.append(param.first + "[]=" + arg);
+                    if (arg != *get<vector<string>>(param.second).rbegin())
+                    {
+                        uri.append("&");
+                    }
+                }
+            }
+        }
+
         break;
     }
     case http_method::POST:
@@ -101,6 +131,7 @@ answer_type CURLWrapper::make_request(const http_method &method,
         throw CURLException{code, "Failed to set HTTP method",
                 _curl_buffer_error};
     }
+    debuglog << "Making request to: " << uri << '\n';
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     code = curl_easy_setopt(_connection, CURLOPT_URL, uri.data());

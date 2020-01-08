@@ -129,15 +129,17 @@ public:
 
 protected:
     /*!
-     *  @brief  Make a request.
+     *  @brief  Make a HTTP request.
      *
-     *  @param  method The HTTP method.
-     *  @param  uri    The full URI.
+     *  @param  method     The HTTP method.
+     *  @param  uri        The full URI.
+     *  @param  parameters A map of parameters.
      *
      *  @since  0.1.0
      */
     [[nodiscard]]
-    answer_type make_request(const http_method &method, const string_view &uri);
+    answer_type make_request(const http_method &method, string uri,
+                             const parametermap &parameters);
 
 private:
     CURL *_connection;

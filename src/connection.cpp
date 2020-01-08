@@ -19,21 +19,27 @@
 namespace mastodonpp
 {
 
+using std::holds_alternative;
+
 Connection::Connection(Instance &instance)
     : _instance{instance}
     , _baseuri{instance.get_baseuri()}
 {}
 
-answer_type Connection::get(const API::endpoint_type &endpoint)
+answer_type Connection::get(const endpoint_variant &endpoint,
+                            const parametermap &parameters)
 {
-    return make_request(
-        http_method::GET,
-        string(_baseuri).append(API{endpoint}.to_string_view()));
-}
+    string uri{[&]
+    {
+        if (holds_alternative<API::endpoint_type>(endpoint))
+        {
+            return string(_baseuri).append(
+                API{std::get<API::endpoint_type>(endpoint)}.to_string_view());
+        }
 
-answer_type Connection::get(const string_view &endpoint)
-{
-    return make_request(http_method::GET, string(_baseuri).append(endpoint));
+        return std::get<string>(endpoint);
+    }()};
+    return make_request(http_method::GET, uri, parameters);
 }
 
 } // namespace mastodonpp
