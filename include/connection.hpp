@@ -107,7 +107,11 @@ public:
     void set_proxy(string_view proxy);
 
     /*!
-     *  @brief  Get new stream contents and delete them.
+     *  @brief  Copy new stream contents and delete the “original”.
+     *
+     *  Note that the last event is not necessarily complete, it could happen
+     *  that you are calling this function mid-transfer. You have to check the
+     *  data integrity yourself.
      *
      *  @since  0.1.0
      */
