@@ -137,7 +137,7 @@ public:
      *
      *  @since  0.1.0
      */
-    void set_proxy(const string_view proxy);
+    void set_proxy(string_view proxy);
 
 protected:
     /*!

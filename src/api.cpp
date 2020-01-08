@@ -23,6 +23,8 @@ API::API(const endpoint_type &endpoint)
     : _endpoint{endpoint}
 {}
 
+// TODO: look for a better way.
+// NOLINTNEXTLINE(cert-err58-cpp)
 const map<API::endpoint_type,string_view> API::_endpoint_map
 {
     {v1::apps, "/api/v1/apps"},

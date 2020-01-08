@@ -104,7 +104,7 @@ public:
      *  Sets also the proxy for the Instance you used to initialize this
      *  Connection.
      */
-    void set_proxy(const string_view proxy);
+    void set_proxy(string_view proxy);
 
 private:
     Instance &_instance;
