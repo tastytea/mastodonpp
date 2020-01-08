@@ -193,6 +193,16 @@ void CURLWrapper::setup_curl()
         throw CURLException{code, "Failed to set User-Agent",
                 _curl_buffer_error};
     }
+
+    // The next 2 only fail if HTTP is not supported.
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    code = curl_easy_setopt(_connection, CURLOPT_FOLLOWLOCATION, 1L);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "HTTP is not supported.", _curl_buffer_error};
+    }
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    curl_easy_setopt(_connection, CURLOPT_MAXREDIRS, 10L);
 }
 
 } // namespace mastodonpp
