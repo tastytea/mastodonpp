@@ -137,7 +137,8 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
 
     answer_type answer;
     code = curl_easy_perform(_connection);
-    if (code == CURLE_OK)
+    if (code == CURLE_OK
+        || (code == CURLE_ABORTED_BY_CALLBACK && _stream_cancelled))
     {
         long http_status;       // NOLINT(google-runtime-int)
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
