@@ -12,7 +12,7 @@
 :uri-catch: https://github.com/catchorg/Catch2
 :uri-dpkg: https://packages.qa.debian.org/dpkg
 :uri-rpm-build: http://www.rpm.org
-:uri-curl: https://curl.haxx.se/
+:uri-libcurl: https://curl.haxx.se/libcurl/
 
 *{project}* is a C++ wrapper for the Mastodon API. It replaces
 link:{uri-mastodon-cpp}[mastodon-cpp].
@@ -20,7 +20,7 @@ link:{uri-mastodon-cpp}[mastodon-cpp].
 We aim to create a library that is comfortable, yet minimal. All API endpoints
 from Mastodon and Pleroma are stored in ``enum class``es, to counteract typos and
 make your life easier. The network-facing code is built on
-link:{uri-curl}[libcurl], a mature and stable library that is available on
+link:{uri-libcurl}[libcurl], a mature and stable library that is available on
 virtually every operating system. The library does not parse the responses
 itself, but returns to you the raw data, because we know everyone has their
 favorite JSON library and we don't want to impose our choice on you!
@@ -84,7 +84,7 @@ link:{uri-reference}/examples.html[More examples] are included in the reference.
 * Tested OS: Linux
 * C++ compiler (tested: link:{uri-gcc}[GCC] 7/8/9, link:{uri-lang}[clang] 6/7)
 * link:{uri-cmake}[CMake] (at least: 3.9)
-* link:{uri-curl}[curl] (at least: 7.32)
+* link:{uri-libcurl}[libcurl] (at least: 7.32)
 * Optional
   ** Documentation: link:{uri-doxygen}[Doxygen] (tested: 1.8)
   ** Tests: link:{uri-catch}[Catch] (tested: 2.5 / 1.2)
