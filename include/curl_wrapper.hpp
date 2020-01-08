@@ -127,6 +127,18 @@ public:
         return _connection;
     }
 
+    /*!
+     *  @brief  Set the proxy to use.
+     *
+     *  See [CURLOPT_PROXY(3)]
+     *  (https://curl.haxx.se/libcurl/c/CURLOPT_PROXY.html).
+     *
+     *  @param  proxy Examples: "socks4a://127.0.0.1:9050", "http://[::1]:3128".
+     *
+     *  @since  0.1.0
+     */
+    void set_proxy(const string_view proxy);
+
 protected:
     /*!
      *  @brief  Make a HTTP request.

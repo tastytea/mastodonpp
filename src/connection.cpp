@@ -42,4 +42,10 @@ answer_type Connection::get(const endpoint_variant &endpoint,
     return make_request(http_method::GET, uri, parameters);
 }
 
+void Connection::set_proxy(const string_view proxy)
+{
+    CURLWrapper::set_proxy(proxy);
+    _instance.set_proxy(proxy);
+}
+
 } // namespace mastodonpp
