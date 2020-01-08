@@ -29,16 +29,16 @@ Connection::Connection(Instance &instance)
 answer_type Connection::get(const endpoint_variant &endpoint,
                             const parametermap &parameters)
 {
-    string uri{[&]
+    const string uri{[&]
     {
         if (holds_alternative<API::endpoint_type>(endpoint))
         {
             return string(_baseuri).append(
                 API{std::get<API::endpoint_type>(endpoint)}.to_string_view());
         }
-
-        return std::get<string>(endpoint);
+        return string(std::get<string_view>(endpoint));
     }()};
+
     return make_request(http_method::GET, uri, parameters);
 }
 

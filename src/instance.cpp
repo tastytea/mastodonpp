@@ -23,7 +23,7 @@ namespace mastodonpp
 
 using std::stoull;
 
-Instance::Instance(const string_view &hostname, const string_view &access_token)
+Instance::Instance(const string_view hostname, const string_view access_token)
     : _hostname{hostname}
     , _baseuri{"https://" + _hostname}
     , _access_token{access_token}

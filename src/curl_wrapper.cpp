@@ -88,32 +88,32 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
                 if (pos != string::npos)
                 {
                     uri.replace(pos, param.first.size() + 2,
-                                get<string>(param.second));
+                                get<string_view>(param.second));
                 }
                 continue;
             }
             static bool first{true};
             if (first)
             {
-                uri.append("?");
+                uri += "?";
                 first = false;
             }
             else
             {
-                uri.append("&");
+                uri += "&";
             }
-            if (holds_alternative<string>(param.second))
+            if (holds_alternative<string_view>(param.second))
             {
-                uri.append(param.first + '=' + get<string>(param.second));
+                ((uri += param.first) += "=") += get<string_view>(param.second);
             }
             else
             {
-                for (const auto &arg : get<vector<string>>(param.second))
+                for (const auto &arg : get<vector<string_view>>(param.second))
                 {
-                    uri.append(param.first + "[]=" + arg);
-                    if (arg != *get<vector<string>>(param.second).rbegin())
+                    ((uri += param.first) += "[]=") += arg;
+                    if (arg != *get<vector<string_view>>(param.second).rbegin())
                     {
-                        uri.append("&");
+                        uri += "&";
                     }
                 }
             }
@@ -238,7 +238,7 @@ void CURLWrapper::setup_curl()
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     code = curl_easy_setopt(_connection, CURLOPT_USERAGENT,
-                            string("mastorss/").append(version).c_str());
+                            (string("mastorss/") += version).c_str());
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set User-Agent",

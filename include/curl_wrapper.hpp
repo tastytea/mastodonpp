@@ -58,13 +58,13 @@ enum class http_method
  *  parametermap parameters
  *      {
  *          {"id", "12"},
- *          {"poll[options]", vector<string>{"Yes", "No", "Maybe"}}
+ *          {"poll[options]", vector<string_view>{"Yes", "No", "Maybe"}}
  *      };
  *  @endcode
  *
  *  @since  0.1.0
  */
-using parametermap = map<string, variant<string, vector<string>>>;
+using parametermap = map<string_view, variant<string_view, vector<string_view>>>;
 
 /*!
  *  @brief  Handles the details of network connections.
