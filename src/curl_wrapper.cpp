@@ -151,17 +151,28 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     return answer;
 }
 
-int CURLWrapper::writer(char *data, size_t size, size_t nmemb,
-                        string *writerData)
+size_t CURLWrapper::writer_body(char *data, size_t size, size_t nmemb)
 {
-    if(writerData == nullptr)
+    if(data == nullptr)
     {
         return 0;
     }
 
-    writerData->append(data, size*nmemb);
+    _curl_buffer_body.append(data, size * nmemb);
 
-    return static_cast<int>(size * nmemb);
+    return size * nmemb;
+}
+
+size_t CURLWrapper::writer_header(char *data, size_t size, size_t nmemb)
+{
+    if(data == nullptr)
+    {
+        return 0;
+    }
+
+    _curl_buffer_headers.append(data, size * nmemb);
+
+    return size * nmemb;
 }
 
 void CURLWrapper::setup_curl()
@@ -180,26 +191,36 @@ void CURLWrapper::setup_curl()
     }
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_WRITEFUNCTION, writer);
+    code = curl_easy_setopt(_connection, CURLOPT_WRITEFUNCTION,
+                            writer_body_wrapper);
     if (code != CURLE_OK)
     {
-        throw CURLException{code, "Failed to set writer", _curl_buffer_error};
-    }
-
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_HEADERDATA,
-                            &_curl_buffer_headers);
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set header data",
+        throw CURLException{code, "Failed to set write function",
                 _curl_buffer_error};
     }
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_WRITEDATA, &_curl_buffer_body);
+    code = curl_easy_setopt(_connection, CURLOPT_WRITEDATA, this);
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set write data",
+                _curl_buffer_error};
+    }
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    code = curl_easy_setopt(_connection, CURLOPT_HEADERFUNCTION,
+                            writer_header_wrapper);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set header function",
+                _curl_buffer_error};
+    }
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    code = curl_easy_setopt(_connection, CURLOPT_HEADERDATA, this);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set header data",
                 _curl_buffer_error};
     }
 

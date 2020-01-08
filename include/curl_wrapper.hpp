@@ -164,8 +164,31 @@ private:
      *
      *  @since  0.1.0
      */
-    static int writer(char *data, size_t size, size_t nmemb,
-                      string *writerData);
+    size_t writer_body(char *data, size_t size, size_t nmemb);
+
+    /*!
+     *  @brief  Wrapper for curl, because it can only call static member
+     *          functions.
+     *
+     *  <https://curl.haxx.se/docs/faq.html#Using_C_non_static_functions_f>
+     *
+     *  @since  0.1.0
+     */
+    static inline size_t writer_body_wrapper(char *data, size_t sz,
+                                             size_t nmemb, void *f)
+    {
+        return static_cast<CURLWrapper*>(f)->writer_body(data, sz, nmemb);
+    }
+
+    //! @copydoc writer_body
+    size_t writer_header(char *data, size_t size, size_t nmemb);
+
+    //! @copydoc writer_body_wrapper
+    static inline size_t writer_header_wrapper(char *data, size_t sz,
+                                               size_t nmemb, void *f)
+    {
+        return static_cast<CURLWrapper*>(f)->writer_header(data, sz, nmemb);
+    }
 
     /*!
      *  @brief  Setup libcurl connection.
