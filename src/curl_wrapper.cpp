@@ -19,6 +19,8 @@
 #include "log.hpp"
 #include "version.hpp"
 
+#include <algorithm>
+#include <array>
 #include <atomic>
 #include <cstdint>
 #include <cstring>
@@ -28,6 +30,8 @@ namespace mastodonpp
 
 using std::get;
 using std::holds_alternative;
+using std::any_of;
+using std::array;
 using std::atomic;
 using std::uint8_t;
 using std::uint16_t;
@@ -72,6 +76,22 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
 
         for (const auto &param : parameters)
         {
+            static constexpr array replace_in_uri
+                {
+                    "id", "nickname", "nickname_or_id",
+                    "hashtag", "permission_group"
+                };
+            if (any_of(replace_in_uri.begin(), replace_in_uri.end(),
+                       [&param](const auto &s) { return s == param.first; }))
+            {
+                const auto pos{uri.find('<')};
+                if (pos != string::npos)
+                {
+                    uri.replace(pos, param.first.size() + 2,
+                                get<string>(param.second));
+                }
+                continue;
+            }
             static bool first{true};
             if (first)
             {
