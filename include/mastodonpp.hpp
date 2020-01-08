@@ -89,6 +89,7 @@
  *  are not thread safe.
  *
  *  @example example01_instance_info.cpp
+ *  @example example02_streaming.cpp
  */
 
 /*!
