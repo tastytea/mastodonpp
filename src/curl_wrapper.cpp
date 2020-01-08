@@ -19,16 +19,18 @@
 #include "log.hpp"
 #include "version.hpp"
 
+#include <atomic>
 #include <cstdint>
 #include <cstring>
 
 namespace mastodonpp
 {
 
+using std::atomic;
 using std::uint8_t;
 using std::uint16_t;
 
-static uint16_t curlwrapper_instances{0};
+static atomic<uint16_t> curlwrapper_instances{0};
 
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
