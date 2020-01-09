@@ -53,7 +53,7 @@ enum class http_method
 };
 
 /*!
- *  @brief  std::map of parameters for API calls.
+ *  @brief  std::map of parameters for %API calls.
  *
  *  Example:
  *  @code
