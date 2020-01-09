@@ -76,8 +76,7 @@ int main(int argc, char *argv[])
 
             // Cancel the stream, …
             connection.cancel_stream();
-            // … and get the rest of the data.
-            cout << connection.get_new_stream_contents() << endl;
+            // … and wait for the thread.
             stream_thread.join();
         }
         else
