@@ -20,8 +20,8 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # Project build options.
 option(WITH_TESTS "Compile tests." NO)
 option(WITH_EXAMPLES "Compile examples." NO)
-# option(WITH_DEB "Prepare for the building of .deb packages." NO)
-# option(WITH_RPM "Prepare for the building of .rpm packages." NO)
+option(WITH_DEB "Prepare for the building of .deb packages." NO)
+option(WITH_RPM "Prepare for the building of .rpm packages." NO)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
