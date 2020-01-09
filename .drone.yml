@@ -117,8 +117,8 @@ steps:
   - apt-get install -qq build-essential cmake lsb-release
   - apt-get install -qq libcurl4-openssl-dev
   - rm -rf build && mkdir -p build && cd build
-  - cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -WITH_DEB=YES ..
-  - make VERBOSE=1
+  - cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DWITH_DEB=YES ..
+  - make
   - make install DESTDIR=install
   - make package
   - cp -v libmastodon-cpp_${DRONE_TAG}-0_amd64_buster.deb ..
@@ -141,8 +141,8 @@ steps:
   - apt-get install -qq build-essential cmake lsb-release
   - apt-get install -qq libcurl4-openssl-dev
   - rm -rf build && mkdir -p build && cd build
-  - cmake -G "Unix Makefiles" -SCMAKE_INSTALL_PREFIX=/usr -WITH_DEB=YES ..
-  - make VERBOSE=1
+  - cmake -G "Unix Makefiles" -SCMAKE_INSTALL_PREFIX=/usr -DWITH_DEB=YES ..
+  - make
   - make install DESTDIR=install
   - make package
   - cp -v libmastodon-cpp_${DRONE_TAG}-0_amd64_bionic.deb ..
@@ -162,7 +162,7 @@ steps:
   - yum install -qy gcc-c++ cmake rpm-build redhat-lsb-core
   - yum install -qy libcurl-devel
   - rm -rf build && mkdir -p build && cd build
-  - cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -WITH_RPM=YES ..
+  - cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DWITH_RPM=YES ..
   - make
   - make install DESTDIR=install
   - make package
