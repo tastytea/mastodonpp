@@ -24,7 +24,13 @@ using std::holds_alternative;
 Connection::Connection(Instance &instance)
     : _instance{instance}
     , _baseuri{instance.get_baseuri()}
-{}
+{
+    auto proxy{_instance.get_proxy()};
+    if (!proxy.empty())
+    {
+        CURLWrapper::set_proxy(proxy);
+    }
+}
 
 answer_type Connection::get(const endpoint_variant &endpoint,
                             const parametermap &parameters)
@@ -40,12 +46,6 @@ answer_type Connection::get(const endpoint_variant &endpoint,
     }()};
 
     return make_request(http_method::GET, uri, parameters);
-}
-
-void Connection::set_proxy(const string_view proxy)
-{
-    CURLWrapper::set_proxy(proxy);
-    _instance.set_proxy(proxy);
 }
 
 string Connection::get_new_stream_contents()

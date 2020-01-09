@@ -99,13 +99,6 @@ public:
         return get(endpoint, {});
     }
 
-    /*! @copydoc CURLWrapper::set_proxy(string_view)
-     *
-     *  Sets also the proxy for the Instance you used to initialize this
-     *  Connection.
-     */
-    void set_proxy(string_view proxy);
-
     /*!
      *  @brief  Copy new stream contents and delete the “original”.
      *
