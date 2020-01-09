@@ -42,7 +42,7 @@ answer_type Connection::get(const endpoint_variant &endpoint,
             return string(_baseuri)
                 += API{std::get<API::endpoint_type>(endpoint)}.to_string_view();
         }
-        return string(std::get<string_view>(endpoint));
+        return string(_baseuri) += std::get<string_view>(endpoint);
     }()};
 
     return make_request(http_method::GET, uri, parameters);
