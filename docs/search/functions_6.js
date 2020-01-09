@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['set_5fproxy_68',['set_proxy',['../classmastodonpp_1_1Connection.html#a174ce4933649d532a5c689ecf0c0a358',1,'mastodonpp::Connection::set_proxy()'],['../classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d',1,'mastodonpp::CURLWrapper::set_proxy()']]]
+  ['set_5fproxy_78',['set_proxy',['../classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d',1,'mastodonpp::CURLWrapper::set_proxy()'],['../classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5',1,'mastodonpp::Instance::set_proxy()']]]
 ];

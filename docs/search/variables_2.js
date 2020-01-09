@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['error_5fcode_75',['error_code',['../classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72',1,'mastodonpp::CURLException']]],
-  ['error_5fmessage_76',['error_message',['../structmastodonpp_1_1answer__type.html#adda74145891e444f223ccdfe623af726',1,'mastodonpp::answer_type']]]
+  ['data_85',['data',['../structmastodonpp_1_1event__type.html#af72ad0a57a762c57f0d4e5d650c5d65c',1,'mastodonpp::event_type']]]
 ];

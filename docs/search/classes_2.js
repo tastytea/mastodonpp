@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instance_47',['Instance',['../classmastodonpp_1_1Instance.html',1,'mastodonpp']]]
+  ['event_5ftype_53',['event_type',['../structmastodonpp_1_1event__type.html',1,'mastodonpp']]]
 ];

@@ -92,6 +92,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the details of network connections.  <a href="classmastodonpp_1_1CURLWrapper.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmastodonpp_1_1event__type.html">event_type</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A stream event.  <a href="structmastodonpp_1_1event__type.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1Instance.html">Instance</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the access data of an instance.  <a href="classmastodonpp_1_1Instance.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,7 +105,7 @@ Typedefs</h2></td></tr>
 <tr class="memdesc:ad228a850ba86374f95d9fa1fece3c33b"><td class="mdescLeft">&#160;</td><td class="mdescRight">An endpoint. Either <a class="el" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f" title="Type for endpoints. Can be API::v1, API::v2, API::oauth, API::other or API::pleroma.">API::endpoint_type</a> or <code>std::string_view</code>.  <a href="namespacemastodonpp.html#ad228a850ba86374f95d9fa1fece3c33b">More...</a><br /></td></tr>
 <tr class="separator:ad228a850ba86374f95d9fa1fece3c33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8b3b89118adeccc71c54dfd36c987f6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">parametermap</a> = map&lt; string_view, variant&lt; string_view, vector&lt; string_view &gt; &gt;&gt;</td></tr>
-<tr class="memdesc:af8b3b89118adeccc71c54dfd36c987f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::map of parameters for <a class="el" href="classmastodonpp_1_1API.html" title="Holds API endpoints.">API</a> calls.  <a href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">More...</a><br /></td></tr>
+<tr class="memdesc:af8b3b89118adeccc71c54dfd36c987f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::map of parameters for API calls.  <a href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">More...</a><br /></td></tr>
 <tr class="separator:af8b3b89118adeccc71c54dfd36c987f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -157,7 +160,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>std::map of parameters for <a class="el" href="classmastodonpp_1_1API.html" title="Holds API endpoints.">API</a> calls. </p>
+<p>std::map of parameters for API calls. </p>
 <p>Example: </p><div class="fragment"><div class="line"><a class="code" href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">parametermap</a> parameters</div>
 <div class="line">    {</div>
 <div class="line">        {<span class="stringliteral">&quot;id&quot;</span>, <span class="stringliteral">&quot;12&quot;</span>},</div>
@@ -227,10 +230,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    out &lt;&lt; answer.body;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    out &lt;&lt; answer.body;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

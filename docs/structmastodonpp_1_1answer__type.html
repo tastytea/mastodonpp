@@ -89,6 +89,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6c90b439bcf65b4a4a655e9213b14a0f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmastodonpp_1_1answer__type.html#a6c90b439bcf65b4a4a655e9213b14a0f">operator string_view</a> () const</td></tr>
 <tr class="memdesc:a6c90b439bcf65b4a4a655e9213b14a0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38" title="The response from the server, usually JSON.">body</a> as <code>std::string_view</code>.  <a href="structmastodonpp_1_1answer__type.html#a6c90b439bcf65b4a4a655e9213b14a0f">More...</a><br /></td></tr>
 <tr class="separator:a6c90b439bcf65b4a4a655e9213b14a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65f4ba85d95c15ebc07377a2b74959da"><td class="memItemLeft" align="right" valign="top">string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmastodonpp_1_1answer__type.html#a65f4ba85d95c15ebc07377a2b74959da">get_header</a> (string_view field) const</td></tr>
+<tr class="memdesc:a65f4ba85d95c15ebc07377a2b74959da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of a header field.  <a href="structmastodonpp_1_1answer__type.html#a65f4ba85d95c15ebc07377a2b74959da">More...</a><br /></td></tr>
+<tr class="separator:a65f4ba85d95c15ebc07377a2b74959da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -118,6 +121,51 @@ Friends</h2></td></tr>
 <div class="textblock"><p>Return type for Requests. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a65f4ba85d95c15ebc07377a2b74959da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65f4ba85d95c15ebc07377a2b74959da">&#9670;&nbsp;</a></span>get_header()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string_view mastodonpp::answer_type::get_header </td>
+          <td>(</td>
+          <td class="paramtype">string_view&#160;</td>
+          <td class="paramname"><em>field</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the value of a header field. </p>
+<p>Is only valid for as long as the <a class="el" href="structmastodonpp_1_1answer__type.html" title="Return type for Requests.">answer_type</a> is in scope.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td>Case insensitive, only ASCII.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">const</span> string_view searchstring{string(field) += <span class="charliteral">&#39;:&#39;</span>};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">auto</span> it{search(<a class="code" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">headers</a>.begin(), <a class="code" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">headers</a>.end(),</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                   searchstring.begin(), searchstring.end(),</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                   [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> a, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> b)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                   { <span class="keywordflow">return</span> tolower(a) == tolower(b); })};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (it != <a class="code" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">headers</a>.end())</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">auto</span> pos{static_cast&lt;size_t&gt;(it - <a class="code" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">headers</a>.begin())};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        pos = <a class="code" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">headers</a>.find(<span class="charliteral">&#39;:&#39;</span>, pos) + 2;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> endpos{<a class="code" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">headers</a>.find(<span class="charliteral">&#39;\n&#39;</span>, pos)};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> string_view(&amp;<a class="code" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">headers</a>[pos], endpos - pos);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> {};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aea7a4e100d215562a1d6b00524f99103"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea7a4e100d215562a1d6b00524f99103">&#9670;&nbsp;</a></span>operator bool()</h2>
 
@@ -143,9 +191,9 @@ Friends</h2></td></tr>
 
 <p>Returns true if <a class="el" href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139" title="The error code returned by libcurl.">curl_error_code</a> is 0 and <a class="el" href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d" title="HTTP status code.">http_status</a> is 200, false otherwise. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">curl_error_code</a> == 0 &amp;&amp; <a class="code" href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d">http_status</a> == 200);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">curl_error_code</a> == 0 &amp;&amp; <a class="code" href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d">http_status</a> == 200);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -174,9 +222,9 @@ Friends</h2></td></tr>
 
 <p>Returns <a class="el" href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38" title="The response from the server, usually JSON.">body</a> as <code>std::string_view</code>. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38">body</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38">body</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -217,10 +265,10 @@ Friends</h2></td></tr>
 
 <p>Returns <a class="el" href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38" title="The response from the server, usually JSON.">body</a> as <code>std::ostream</code>. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    out &lt;&lt; answer.body;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    out &lt;&lt; answer.body;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -316,6 +364,7 @@ Friends</h2></td></tr>
 <li>src/answer.cpp</li>
 </ul>
 </div><!-- contents -->
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html_ab84b7094800ffe32d34b33085dcef9aa"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">mastodonpp::answer_type::headers</a></div><div class="ttdeci">string headers</div><div class="ttdoc">The headers of the response from the server.</div><div class="ttdef"><b>Definition:</b> answer.hpp:71</div></div>
 <div class="ttc" id="astructmastodonpp_1_1answer__type_html_a7c5582c4500034c0ea36ab1694944139"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">mastodonpp::answer_type::curl_error_code</a></div><div class="ttdeci">uint8_t curl_error_code</div><div class="ttdoc">The error code returned by libcurl.</div><div class="ttdef"><b>Definition:</b> answer.hpp:50</div></div>
 <div class="ttc" id="astructmastodonpp_1_1answer__type_html_a9da206eb4954ff15402083379909cc38"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38">mastodonpp::answer_type::body</a></div><div class="ttdeci">string body</div><div class="ttdoc">The response from the server, usually JSON.</div><div class="ttdef"><b>Definition:</b> answer.hpp:78</div></div>
 <div class="ttc" id="astructmastodonpp_1_1answer__type_html_a0716af5033e02551937187a149c3f52d"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d">mastodonpp::answer_type::http_status</a></div><div class="ttdeci">uint16_t http_status</div><div class="ttdoc">HTTP status code.</div><div class="ttdef"><b>Definition:</b> answer.hpp:64</div></div>

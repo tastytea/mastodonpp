@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['answer_5ftype_42',['answer_type',['../structmastodonpp_1_1answer__type.html',1,'mastodonpp']]],
-  ['api_43',['API',['../classmastodonpp_1_1API.html',1,'mastodonpp']]]
+  ['answer_5ftype_48',['answer_type',['../structmastodonpp_1_1answer__type.html',1,'mastodonpp']]],
+  ['api_49',['API',['../classmastodonpp_1_1API.html',1,'mastodonpp']]]
 ];

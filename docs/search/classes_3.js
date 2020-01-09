@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['request_28',['Request',['../classmastodonpp_1_1Request.html',1,'mastodonpp']]]
+  ['instance_54',['Instance',['../classmastodonpp_1_1Instance.html',1,'mastodonpp']]]
 ];
