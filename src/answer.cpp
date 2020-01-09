@@ -54,7 +54,7 @@ string_view answer_type::get_header(const string_view field) const
         auto pos{static_cast<size_t>(it - headers.begin())};
         pos = headers.find(':', pos) + 2;
         const auto endpos{headers.find('\n', pos)};
-        return headers.substr(pos, endpos - pos);
+        return string_view(&headers[pos], endpos - pos);
     }
 
     return {};

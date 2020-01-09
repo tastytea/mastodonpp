@@ -103,7 +103,9 @@ struct answer_type
     /*!
      *  @brief  Returns the value of a header field.
      *
-     *  Case insensitive, only ASCII.
+     *  Is only valid for as long as the answer_type is in scope.
+     *
+     *  @param  field Case insensitive, only ASCII.
      *
      *  @since  0.1.0
      */
