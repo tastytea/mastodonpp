@@ -99,6 +99,15 @@ struct answer_type
      */
     friend std::ostream &operator <<(std::ostream &out,
                                      const answer_type &answer);
+
+    /*!
+     *  @brief  Returns the value of a header field.
+     *
+     *  Case insensitive, only ASCII.
+     *
+     *  @since  0.1.0
+     */
+    string_view get_header(string_view field) const;
 };
 
 } // namespace mastodonpp
