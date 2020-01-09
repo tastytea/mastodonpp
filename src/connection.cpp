@@ -58,4 +58,33 @@ string Connection::get_new_stream_contents()
     return buffer_copy;
 }
 
+vector<event_type> Connection::get_new_events()
+{
+    buffer_mutex.lock();
+    auto &buffer{get_buffer()};
+    vector<event_type> events;
+
+    size_t pos{0};
+    while ((pos = buffer.find("event: ")) != string::npos)
+    {
+        const auto endpos{buffer.find("\n\n", pos)};
+        if (endpos == string::npos)
+        {
+            break;
+        }
+
+        event_type event;
+        pos += 7;               // Length of "event: ".
+        event.type = buffer.substr(pos, buffer.find('\n', pos) - pos);
+        pos = buffer.find("data: ") + 6;
+        event.data = buffer.substr(pos, endpos - pos);
+        events.push_back(event);
+
+        buffer.erase(0, endpos);
+    }
+
+    buffer_mutex.unlock();
+    return events;
+}
+
 } // namespace mastodonpp
