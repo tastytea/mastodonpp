@@ -88,6 +88,14 @@
  *  (https://curl.haxx.se/libcurl/c/curl_global_cleanup.html) is called. Both
  *  are not thread safe.
  *
+ *  Do not make 2 requests with the same @link mastodonpp::Connection Connection
+ *  @endlink at the same time. You can create as many @link
+ *  mastodonpp::Connection Connection@endlink%s as you want from one @link
+ *  mastodonpp::Instance Instance@endlink.
+ *
+ *  If you are using libcurl with OpenSSL before 1.1.0, please read
+ *  [libcurl-thread(3)](https://curl.haxx.se/libcurl/c/threadsafe.html).
+ *
  *  @example example01_instance_info.cpp
  *  @example example02_streaming.cpp
  */

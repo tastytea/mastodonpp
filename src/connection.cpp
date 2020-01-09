@@ -24,7 +24,13 @@ using std::holds_alternative;
 Connection::Connection(Instance &instance)
     : _instance{instance}
     , _baseuri{instance.get_baseuri()}
-{}
+{
+    auto proxy{_instance.get_proxy()};
+    if (!proxy.empty())
+    {
+        CURLWrapper::set_proxy(proxy);
+    }
+}
 
 answer_type Connection::get(const endpoint_variant &endpoint,
                             const parametermap &parameters)
@@ -36,16 +42,10 @@ answer_type Connection::get(const endpoint_variant &endpoint,
             return string(_baseuri)
                 += API{std::get<API::endpoint_type>(endpoint)}.to_string_view();
         }
-        return string(std::get<string_view>(endpoint));
+        return string(_baseuri) += std::get<string_view>(endpoint);
     }()};
 
     return make_request(http_method::GET, uri, parameters);
-}
-
-void Connection::set_proxy(const string_view proxy)
-{
-    CURLWrapper::set_proxy(proxy);
-    _instance.set_proxy(proxy);
 }
 
 string Connection::get_new_stream_contents()
@@ -56,6 +56,35 @@ string Connection::get_new_stream_contents()
     buffer.clear();
     buffer_mutex.unlock();
     return buffer_copy;
+}
+
+vector<event_type> Connection::get_new_events()
+{
+    buffer_mutex.lock();
+    auto &buffer{get_buffer()};
+    vector<event_type> events;
+
+    size_t pos{0};
+    while ((pos = buffer.find("event: ")) != string::npos)
+    {
+        const auto endpos{buffer.find("\n\n", pos)};
+        if (endpos == string::npos)
+        {
+            break;
+        }
+
+        event_type event;
+        pos += 7;               // Length of "event: ".
+        event.type = buffer.substr(pos, buffer.find('\n', pos) - pos);
+        pos = buffer.find("data: ") + 6;
+        event.data = buffer.substr(pos, endpos - pos);
+        events.push_back(event);
+
+        buffer.erase(0, endpos);
+    }
+
+    buffer_mutex.unlock();
+    return events;
 }
 
 } // namespace mastodonpp

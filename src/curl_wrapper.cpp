@@ -36,6 +36,7 @@ using std::atomic;
 using std::uint8_t;
 using std::uint16_t;
 
+// No one will ever need more than 65535 connections. 😉
 static atomic<uint16_t> curlwrapper_instances{0};
 
 CURLWrapper::CURLWrapper()
@@ -83,6 +84,8 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
                                       const parametermap &parameters)
 {
     _stream_cancelled = false;
+    _curl_buffer_headers.clear();
+    _curl_buffer_body.clear();
 
     CURLcode code;
     switch (method)

@@ -65,9 +65,13 @@ int main(int argc, char *argv[])
             // Print new events every 2 seconds, for 10 seconds.
             for (auto counter{0}; counter < 5; ++counter)
             {
-                cout << "----------------------------------------" << endl;
                 sleep_for(2s);
-                cout << connection.get_new_stream_contents() << endl;
+                for (const auto &event : connection.get_new_events())
+                {
+                    // Print typo of event and the beginning of the data.
+                    cout << event.type << ": "
+                         << event.data.substr(0, 70) << " …" << endl;
+                }
             }
 
             // Cancel the stream, …

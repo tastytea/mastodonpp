@@ -16,8 +16,14 @@
 
 #include "answer.hpp"
 
+#include <algorithm>
+#include <cctype>
+
 namespace mastodonpp
 {
+
+using std::search;
+using std::tolower;
 
 answer_type::operator bool() const
 {
@@ -33,6 +39,25 @@ std::ostream &operator <<(std::ostream &out, const answer_type &answer)
 {
     out << answer.body;
     return out;
+}
+
+string_view answer_type::get_header(const string_view field) const
+{
+    const string_view searchstring{string(field) += ':'};
+    auto it{search(headers.begin(), headers.end(),
+                   searchstring.begin(), searchstring.end(),
+                   [](unsigned char a, unsigned char b)
+                   { return tolower(a) == tolower(b); })};
+
+    if (it != headers.end())
+    {
+        auto pos{static_cast<size_t>(it - headers.begin())};
+        pos = headers.find(':', pos) + 2;
+        const auto endpos{headers.find('\n', pos)};
+        return string_view(&headers[pos], endpos - pos);
+    }
+
+    return {};
 }
 
 } // namespace mastodonpp

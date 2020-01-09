@@ -95,11 +95,35 @@ public:
     [[nodiscard]]
     uint64_t get_max_chars();
 
+    /*! @copydoc CURLWrapper::set_proxy(string_view)
+     *
+     *  Sets also the proxy for all Connection%s that are initialized with this
+     *  Instance afterwards.
+     */
+    void set_proxy(const string_view proxy)
+    {
+        _proxy = proxy;
+        CURLWrapper::set_proxy(proxy);
+    }
+
+    /*!
+     *  @brief  Returns the proxy string that was previously set.
+     *
+     *  Does not return the proxy if it was set from an environment variable.
+     *
+     *  @since  0.1.0
+     */
+    string_view get_proxy() const
+    {
+        return _proxy;
+    }
+
 private:
     const string _hostname;
     const string _baseuri;
     string _access_token;
     uint64_t _max_chars;
+    string _proxy;
 };
 
 } // namespace mastodonpp

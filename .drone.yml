@@ -1,6 +1,6 @@
 # -*- fill-column: 1000 -*-
 kind: pipeline
-name: build x86_64
+name: Build x86_64
 
 volumes:
 - name: debian-package-cache
@@ -72,6 +72,119 @@ steps:
     path: /var/cache/apt/archives
 
 - name: notify
+  image: drillster/drone-email
+  pull: always
+  settings:
+    host: cryptoparty-celle.de
+    from: drone@tzend.de
+    username:
+      from_secret: email_username
+    password:
+      from_secret: email_password
+  when:
+    status: [ changed, failure ]
+
+---
+kind: pipeline
+name: Packages x86_64
+
+
+volumes:
+- name: debian-package-cache
+  host:
+    path: /var/cache/debian-package-cache
+- name: centos-package-cache
+  host:
+    path: /var/cache/centos-package-cache
+
+trigger:
+  event:
+  - tag
+
+steps:
+- name: Debian buster
+  image: debian:buster-slim
+  pull: always
+  environment:
+    CXX: g++-8
+    CXXFLAGS: -pipe -O2
+    DEBIAN_FRONTEND: noninteractive
+    LANG: C.utf8
+  commands:
+  - rm /etc/apt/apt.conf.d/docker-clean
+  - alias apt-get='rm -f /var/cache/apt/archives/lock && apt-get'
+  - apt-get update -q
+  - apt-get install -qq build-essential cmake lsb-release
+  - apt-get install -qq libcurl4-openssl-dev
+  - rm -rf build && mkdir -p build && cd build
+  - cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DWITH_DEB=YES ..
+  - make
+  - make install DESTDIR=install
+  - make package
+  - cp -v libmastodon-cpp_${DRONE_TAG}-0_amd64_buster.deb ..
+  volumes:
+  - name: debian-package-cache
+    path: /var/cache/apt/archives
+
+- name: Ubuntu bionic
+  image: ubuntu:bionic
+  pull: always
+  environment:
+    CXX: g++-7
+    CXXFLAGS: -pipe -O2
+    DEBIAN_FRONTEND: noninteractive
+    LANG: C.utf8
+  commands:
+  - rm /etc/apt/apt.conf.d/docker-clean
+  - alias apt-get='rm -f /var/cache/apt/archives/lock && apt-get'
+  - apt-get update -q
+  - apt-get install -qq build-essential cmake lsb-release
+  - apt-get install -qq libcurl4-openssl-dev
+  - rm -rf build && mkdir -p build && cd build
+  - cmake -G "Unix Makefiles" -SCMAKE_INSTALL_PREFIX=/usr -DWITH_DEB=YES ..
+  - make
+  - make install DESTDIR=install
+  - make package
+  - cp -v libmastodon-cpp_${DRONE_TAG}-0_amd64_bionic.deb ..
+  volumes:
+  - name: debian-package-cache
+    path: /var/cache/apt/archives
+
+- name: CentOS 8
+  image: centos:8
+  pull: always
+  environment:
+    CXX: g++
+    CXXFLAGS: -pipe -O2
+    LANG: C.utf8
+  commands:
+  - sed -i 's/keepcache=0/keepcache=1/' /etc/yum.conf
+  - yum install -qy gcc-c++ cmake rpm-build redhat-lsb-core
+  - yum install -qy libcurl-devel
+  - rm -rf build && mkdir -p build && cd build
+  - cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DWITH_RPM=YES ..
+  - make
+  - make install DESTDIR=install
+  - make package
+  - cp -v libmastodonpp-${DRONE_TAG}-0.x86_64.centos8.rpm ..
+
+- name: gitea_release
+  image: plugins/gitea-release
+  pull: always
+  settings:
+    base_url: https://schlomp.space
+    api_key:
+      from_secret: gitea_token
+    title: ${DRONE_TAG}
+    prerelease: true
+    files:
+      - libmastodonpp_${DRONE_TAG}-0_buster_amd64.deb
+      - libmastodonpp_${DRONE_TAG}-0_bionic_amd64.deb
+      - libmastodonpp-${DRONE_TAG}-0.x86_64.centos8.rpm
+    checksum:
+      - sha512
+
+- name: notification
   image: drillster/drone-email
   pull: always
   settings:
