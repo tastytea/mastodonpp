@@ -117,8 +117,8 @@ cmake --build . -- -j$(nproc --ignore=1)
 * `-DCMAKE_BUILD_TYPE=Debug` for a debug build.
 * `-DWITH_TESTS=YES` if you want to compile the tests.
 * `-DWITH_EXAMPLES=YES` if you want to compile the examples.
-// * One of:
-//   ** `-DWITH_DEB=YES` if you want to be able to generate a deb-package.
-//   ** `-DWITH_RPM=YES` if you want to be able to generate an rpm-package.
+* One of:
+  ** `-DWITH_DEB=YES` if you want to be able to generate a deb-package.
+  ** `-DWITH_RPM=YES` if you want to be able to generate an rpm-package.
 
 include::{uri-base}/raw/branch/main/CONTRIBUTING.adoc[]
