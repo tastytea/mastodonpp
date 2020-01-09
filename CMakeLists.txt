@@ -48,4 +48,4 @@ if(WITH_EXAMPLES)
   add_subdirectory(examples)
 endif()
 
-# include(cmake/packages.cmake)
+include(cmake/packages.cmake)

@@ -88,8 +88,8 @@ link:{uri-reference}/examples.html[More examples] are included in the reference.
 * Optional
   ** Documentation: link:{uri-doxygen}[Doxygen] (tested: 1.8)
   ** Tests: link:{uri-catch}[Catch] (tested: 2.5 / 1.2)
-//   ** DEB package: link:{uri-dpkg}[dpkg] (tested: 1.18)
-//   ** RPM package: link:{uri-rpm-build}[rpm-build] (tested: 4.11)
+  ** DEB package: link:{uri-dpkg}[dpkg] (tested: 1.18)
+  ** RPM package: link:{uri-rpm-build}[rpm-build] (tested: 4.11)
 
 ==== Get sourcecode
 
