@@ -121,7 +121,7 @@ steps:
   - make
   - make install DESTDIR=install
   - make package
-  - cp -v libmastodon-cpp_${DRONE_TAG}-0_amd64_buster.deb ..
+  - cp -v libmastodonpp_${DRONE_TAG}-0_amd64_buster.deb ..
   volumes:
   - name: debian-package-cache
     path: /var/cache/apt/archives
@@ -145,7 +145,7 @@ steps:
   - make
   - make install DESTDIR=install
   - make package
-  - cp -v libmastodon-cpp_${DRONE_TAG}-0_amd64_bionic.deb ..
+  - cp -v libmastodonpp_${DRONE_TAG}-0_amd64_bionic.deb ..
   volumes:
   - name: debian-package-cache
     path: /var/cache/apt/archives
