@@ -14,7 +14,7 @@
 :uri-rpm-build: http://www.rpm.org
 :uri-libcurl: https://curl.haxx.se/libcurl/
 
-*{project}* is a C++ wrapper for the Mastodon API. It replaces
+*{project}* is a C++ wrapper for the Mastodon and Pleroma APIs. It replaces
 link:{uri-mastodon-cpp}[mastodon-cpp].
 
 We aim to create a library that is comfortable, yet minimal. All API endpoints

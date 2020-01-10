@@ -12,7 +12,7 @@ option(BUILD_SHARED_LIBS "Build shared libraries." YES)
 
 project(mastodonpp
   VERSION 0.1.0
-  DESCRIPTION "C++ wrapper for the Mastodon API."
+  DESCRIPTION "C++ wrapper for the Mastodon and Pleroma APIs."
   LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
