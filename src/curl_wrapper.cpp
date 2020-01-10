@@ -232,7 +232,7 @@ void CURLWrapper::setup_curl()
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     CURLcode code{curl_easy_setopt(_connection, CURLOPT_USERAGENT,
-                                   (string("mastorss/") += version).c_str())};
+                                   (string("mastodonpp/") += version).c_str())};
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set User-Agent",
