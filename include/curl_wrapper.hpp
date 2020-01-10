@@ -199,6 +199,13 @@ protected:
         return _curl_buffer_body;
     }
 
+    /*!
+     *  @brief  Set OAuth 2.0 Bearer Access Token.
+     *
+     *  @since  0.1.0
+     */
+    void set_access_token(const string_view access_token);
+
 private:
     CURL *_connection;
     char _curl_buffer_error[CURL_ERROR_SIZE];

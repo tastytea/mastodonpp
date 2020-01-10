@@ -30,6 +30,11 @@ Connection::Connection(Instance &instance)
     {
         CURLWrapper::set_proxy(proxy);
     }
+
+    if (!_instance.get_access_token().empty())
+    {
+        CURLWrapper::set_access_token(_instance.get_access_token());
+    }
 }
 
 string Connection::endpoint_to_uri(const endpoint_variant &endpoint) const
