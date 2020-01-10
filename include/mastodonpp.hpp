@@ -98,6 +98,7 @@
  *
  *  @example example01_instance_info.cpp
  *  @example example02_streaming.cpp
+ *  @example example03_post_status.cpp
  */
 
 /*!
