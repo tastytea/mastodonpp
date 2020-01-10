@@ -55,7 +55,15 @@ int main()
 {
     mastodonpp::Instance instance{"example.com", {}};
     mastodonpp::Connection connection{instance};
-    auto answer{connection.get(mastodonpp::API::v1::instance)};
+
+    const mastodonpp::parametermap parameters
+        {
+            {"status", "How is the wheather?"},
+            {"poll[options]", vector<string_view>{"Nice", "not nice"}},
+            {"poll[expires_in]", "86400"}
+        };
+    auto answer{connection.post(mastodonpp::API::v1::statuses, parameters)};
+
     if (answer)
     {
         std::cout << answer << std::endl;
