@@ -1,6 +1,6 @@
 include(GNUInstallDirs)
 
-find_package(CURL 7.32 REQUIRED)
+find_package(CURL 7.56 REQUIRED)
 
 # Write version in header.
 configure_file ("version.hpp.in"

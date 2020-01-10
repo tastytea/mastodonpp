@@ -68,7 +68,7 @@ CURLWrapper::~CURLWrapper() noexcept
 void CURLWrapper::set_proxy(const string_view proxy)
 {
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    CURLcode code = curl_easy_setopt(_connection, CURLOPT_PROXY, proxy);
+    CURLcode code{curl_easy_setopt(_connection, CURLOPT_PROXY, proxy)};
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set proxy", _curl_buffer_error};
@@ -101,8 +101,11 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     }
     case http_method::POST:
     {
+        curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
+
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-        code = curl_easy_setopt(_connection, CURLOPT_POST, 1L);
+        code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+
         break;
     }
     case http_method::PATCH:
@@ -247,27 +250,38 @@ void CURLWrapper::setup_curl()
     curl_easy_setopt(_connection, CURLOPT_MAXREDIRS, 10L);
 }
 
+bool CURLWrapper::replace_parameter_in_uri(string &uri,
+                                           const parameterpair &parameter)
+{
+    static constexpr array replace
+        {
+            "id", "nickname", "nickname_or_id",
+            "hashtag", "permission_group"
+        };
+    if (any_of(replace.begin(), replace.end(),
+               [&parameter](const auto &s) { return s == parameter.first; }))
+    {
+        const auto pos{uri.find('<')};
+        if (pos != string::npos)
+        {
+            uri.replace(pos, parameter.first.size() + 2,
+                        get<string_view>(parameter.second));
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void CURLWrapper::add_parameters_to_uri(string &uri,
                                         const parametermap &parameters)
 {
     // Replace <ID> with the value of parameter “id” and so on.
     for (const auto &param : parameters)
     {
-        static constexpr array replace_in_uri
-            {
-                "id", "nickname", "nickname_or_id",
-                "hashtag", "permission_group"
-            };
-        if (any_of(replace_in_uri.begin(), replace_in_uri.end(),
-                   [&param](const auto &s) { return s == param.first; }))
+        if (replace_parameter_in_uri(uri, param))
         {
-            const auto pos{uri.find('<')};
-            if (pos != string::npos)
-            {
-                uri.replace(pos, param.first.size() + 2,
-                            get<string_view>(param.second));
-                continue;
-            }
+            continue;
         }
 
         static bool first{true};
@@ -296,6 +310,66 @@ void CURLWrapper::add_parameters_to_uri(string &uri,
             }
         }
     }
+}
+
+curl_mime *CURLWrapper::parameters_to_curl_mime(string &uri,
+                                                const parametermap &parameters)
+{
+    debuglog << "Building HTTP form.\n";
+
+    curl_mime *mime{curl_mime_init(_connection)};
+    for (const auto &param : parameters)
+    {
+        if (replace_parameter_in_uri(uri, param))
+        {
+            continue;
+        }
+
+        curl_mimepart *part{curl_mime_addpart(mime)};
+        if (part == nullptr)
+        {
+            throw CURLException{"Could not build HTTP form."};
+        }
+
+        CURLcode code;
+        if (holds_alternative<string_view>(param.second))
+        {
+            code = curl_mime_name(part, param.first.data());
+            if (code != CURLE_OK)
+            {
+                throw CURLException{code, "Could not build HTTP form."};
+            }
+
+            code = curl_mime_data(part, get<string_view>(param.second).data(),
+                                  CURL_ZERO_TERMINATED);
+            if (code != CURLE_OK)
+            {
+                throw CURLException{code, "Could not build HTTP form."};
+            }
+            debuglog << "Set form part: " << param.first << " = "
+                     << get<string_view>(param.second) << '\n';
+        }
+        else
+        {
+            for (const auto &arg : get<vector<string_view>>(param.second))
+            {
+                const string name{string(param.first) += "[]"};
+                code = curl_mime_name(part, name.c_str());
+                if (code != CURLE_OK)
+                {
+                    throw CURLException{code, "Could not build HTTP form."};
+                }
+                code = curl_mime_data(part, arg.data(), CURL_ZERO_TERMINATED);
+                if (code != CURLE_OK)
+                {
+                    throw CURLException{code, "Could not build HTTP form."};
+                }
+                debuglog << "Set form part: " << name << " = " << arg << '\n';
+            }
+        }
+    }
+
+    return mime;
 }
 
 } // namespace mastodonpp

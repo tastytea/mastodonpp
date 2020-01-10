@@ -264,6 +264,18 @@ private:
     void setup_curl();
 
     /*!
+     *  @brief  Replace parameter in URI.
+     *
+     *  @param  uri       Reference to the URI.
+     *  @param  parameter The parameter.
+     *
+     *  @return true if parameter was replaced.
+     *
+     *  @since  0.1.0
+     */
+    bool replace_parameter_in_uri(string &uri, const parameterpair &parameter);
+
+    /*!
      *  @brief  Add parameters to URI.
      *
      *  @param  uri        Reference to the URI.
@@ -272,6 +284,23 @@ private:
      *  @since  0.1.0
      */
     void add_parameters_to_uri(string &uri, const parametermap &parameters);
+
+    /*!
+     *  @brief  Convert parametermap to `*curl_mime`.
+     *
+     *  For more information consult [curl_mime_init(3)]
+     *  (https://curl.haxx.se/libcurl/c/curl_mime_init.html). Calls
+     *  replace_parameter_in_uri().
+     *
+     *  @param  uri        Reference to the URI.
+     *  @param  parameters The parametermap.
+     *
+     *  @return `*curl_mime`.
+     *
+     *  @since  0.1.0
+     */
+    curl_mime *parameters_to_curl_mime(string &uri,
+                                       const parametermap &parameters);
 };
 
 } // namespace mastodonpp
