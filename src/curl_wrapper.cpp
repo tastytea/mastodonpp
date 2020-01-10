@@ -23,7 +23,6 @@
 #include <array>
 #include <atomic>
 #include <cstdint>
-#include <cstring>
 
 namespace mastodonpp
 {
@@ -184,11 +183,14 @@ void CURLWrapper::set_access_token(const string_view access_token)
                 _curl_buffer_error};
     }
 
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg, hicpp-signed-bitwise)
-    code = curl_easy_setopt(_connection, CURLOPT_HTTPAUTH, CURLAUTH_BEARER);
-    if (code == CURLE_NOT_BUILT_IN) // libcurl < 7.61.0.
+    if constexpr (LIBCURL_VERSION_NUM >= 0x073d00) // libcurl >= 7.61.0.
     {
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg, hicpp-signed-bitwise)
+        //NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg,hicpp-signed-bitwise)
+        code = curl_easy_setopt(_connection, CURLOPT_HTTPAUTH, CURLAUTH_BEARER);
+    }
+    else
+    {
+        //NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg,hicpp-signed-bitwise)
         code = curl_easy_setopt(_connection, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
     }
     if (code != CURLE_OK)
