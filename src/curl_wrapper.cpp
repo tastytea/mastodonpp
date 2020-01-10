@@ -175,7 +175,7 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
 
 void CURLWrapper::set_access_token(const string_view access_token)
 {
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg, hicpp-signed-bitwise)
     CURLcode code{curl_easy_setopt(_connection, CURLOPT_XOAUTH2_BEARER,
                                    access_token.data())};
     if (code != CURLE_OK)
@@ -184,11 +184,11 @@ void CURLWrapper::set_access_token(const string_view access_token)
                 _curl_buffer_error};
     }
 
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg, hicpp-signed-bitwise)
     code = curl_easy_setopt(_connection, CURLOPT_HTTPAUTH, CURLAUTH_BEARER);
     if (code == CURLE_NOT_BUILT_IN) // libcurl < 7.61.0.
     {
-        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg, hicpp-signed-bitwise)
         code = curl_easy_setopt(_connection, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
     }
     if (code != CURLE_OK)
