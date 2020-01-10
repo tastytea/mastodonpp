@@ -22,6 +22,7 @@
 #include <cstdint>
 #include <string>
 #include <string_view>
+#include <utility>
 
 namespace mastodonpp
 {
@@ -29,6 +30,7 @@ namespace mastodonpp
 using std::uint64_t;
 using std::string;
 using std::string_view;
+using std::move;
 
 /*!
  *  @brief  Holds the access data of an instance.
@@ -88,6 +90,19 @@ public:
     }
 
     /*!
+     *  @brief  Set OAuth 2.0 Bearer Access Token.
+     *
+     *  Sets also the access token for all Connection%s that are initialized
+     *  with this Instance afterwards.
+     *
+     *  @since  0.1.0
+     */
+    inline void set_access_token(string access_token)
+    {
+        _access_token = move(access_token);
+    }
+
+    /*!
      *  @brief  Returns the maximum number of characters per post.
      *
      *  @since  0.1.0
@@ -113,6 +128,7 @@ public:
      *
      *  @since  0.1.0
      */
+    [[nodiscard]]
     string_view get_proxy() const
     {
         return _proxy;

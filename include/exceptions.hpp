@@ -56,6 +56,13 @@ public:
                            string error_buffer);
 
     /*!
+     *  @brief  Constructor with message.
+     *
+     *  @since  0.1.0
+     */
+    explicit CURLException(string message);
+
+    /*!
      *  @brief  The error code returned by libcurl.
      *
      *  For more information consult

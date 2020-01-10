@@ -15,7 +15,6 @@
  */
 
 #include "instance.hpp"
-#include "connection.hpp"
 
 #include <catch.hpp>
 
@@ -27,7 +26,7 @@ namespace mastodonpp
 
 using std::string;
 
-SCENARIO ("Instantiations.")
+SCENARIO ("mastopp::Instance")
 {
     bool exception = false;
 
@@ -35,7 +34,7 @@ SCENARIO ("Instantiations.")
     {
         try
         {
-            Instance instance{"example.com", ""};
+            Instance instance{"example.com", {}};
         }
         catch (const std::exception &e)
         {
@@ -48,12 +47,17 @@ SCENARIO ("Instantiations.")
         }
     }
 
-    WHEN ("Connection is instantiated.")
+    WHEN ("Variables are set.")
     {
+        constexpr auto hostname{"likeable.space"};
+        constexpr auto proxy{"socks4a://[::1]:9050"};
+        constexpr auto access_token{"abc123"};
+        Instance instance{hostname, {}};
+
         try
         {
-            Instance instance{"example.com", ""};
-            Connection connection{instance};
+            instance.set_proxy(proxy);
+            instance.set_access_token(access_token);
         }
         catch (const std::exception &e)
         {
@@ -61,8 +65,16 @@ SCENARIO ("Instantiations.")
         }
 
         THEN ("No exception is thrown")
+            AND_THEN ("get_proxy() returns the set value.")
+            AND_THEN ("get_access_token() returns the set value.")
+            AND_THEN ("get_hostname() returns the set value.")
+            AND_THEN ("get_baseuri() returns the expected value.")
         {
             REQUIRE_FALSE(exception);
+            REQUIRE(instance.get_proxy() == proxy);
+            REQUIRE(instance.get_access_token() == access_token);
+            REQUIRE(instance.get_hostname() == hostname);
+            REQUIRE(instance.get_baseuri() == (string("https://") += hostname));
         }
     }
 }

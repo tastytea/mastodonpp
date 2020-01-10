@@ -25,6 +25,7 @@
 #include <mutex>
 #include <string>
 #include <string_view>
+#include <utility>
 #include <variant>
 #include <vector>
 
@@ -35,6 +36,7 @@ using std::map;
 using std::mutex;
 using std::string;
 using std::string_view;
+using std::pair;
 using std::variant;
 using std::vector;
 
@@ -53,7 +55,7 @@ enum class http_method
 };
 
 /*!
- *  @brief  std::map of parameters for %API calls.
+ *  @brief  `std::map` of parameters for %API calls.
  *
  *  Example:
  *  @code
@@ -66,7 +68,16 @@ enum class http_method
  *
  *  @since  0.1.0
  */
-using parametermap = map<string_view, variant<string_view, vector<string_view>>>;
+using parametermap =
+    map<string_view, variant<string_view, vector<string_view>>>;
+
+/*!
+ *  @brief  A single parameter of a parametermap.
+ *
+ *  @since  0.1.0
+ */
+using parameterpair =
+    pair<string_view, variant<string_view, vector<string_view>>>;
 
 /*!
  *  @brief  Handles the details of network connections.
@@ -141,24 +152,12 @@ public:
      */
     void set_proxy(string_view proxy);
 
-    /*!
-     *  @brief  Cancel the stream.
-     *
-     *  The stream will be cancelled, usually whithin a second. The @link
-     *  answer_type::curl_error_code curl_error_code @endlink of the answer will
-     *  be set to 42 (`CURLE_ABORTED_BY_CALLBACK`).
-     *
-     *  @since  0.1.0
-     */
-    void cancel_stream();
-
 protected:
     /*!
      *  @brief  Mutex for #get_buffer a.k.a. _curl_buffer_body.
      *
-     *  This mutex is locked in `writer_body()` and
-     *  Connection::get_new_stream_contents before anything is read or written
-     *  from/to _curl_buffer_body.
+     *  This mutex is locked before anything is read or written from/to
+     *  _curl_buffer_body.
      *
      *  @since  0.1.0
      */
@@ -187,6 +186,27 @@ protected:
     {
         return _curl_buffer_body;
     }
+
+    /*!
+     *  @brief  Cancel the stream.
+     *
+     *  The stream will be cancelled, usually whithin a second. The @link
+     *  answer_type::curl_error_code curl_error_code @endlink of the answer will
+     *  be set to 42 (`CURLE_ABORTED_BY_CALLBACK`).
+     *
+     *  @since  0.1.0
+     */
+    inline void cancel_stream()
+    {
+        _stream_cancelled = true;
+    }
+
+    /*!
+     *  @brief  Set OAuth 2.0 Bearer Access Token.
+     *
+     *  @since  0.1.0
+     */
+    void set_access_token(const string_view access_token);
 
 private:
     CURL *_connection;
@@ -253,6 +273,18 @@ private:
     void setup_curl();
 
     /*!
+     *  @brief  Replace parameter in URI.
+     *
+     *  @param  uri       Reference to the URI.
+     *  @param  parameter The parameter.
+     *
+     *  @return true if parameter was replaced.
+     *
+     *  @since  0.1.0
+     */
+    bool replace_parameter_in_uri(string &uri, const parameterpair &parameter);
+
+    /*!
      *  @brief  Add parameters to URI.
      *
      *  @param  uri        Reference to the URI.
@@ -261,6 +293,23 @@ private:
      *  @since  0.1.0
      */
     void add_parameters_to_uri(string &uri, const parametermap &parameters);
+
+    /*!
+     *  @brief  Convert parametermap to `*curl_mime`.
+     *
+     *  For more information consult [curl_mime_init(3)]
+     *  (https://curl.haxx.se/libcurl/c/curl_mime_init.html). Calls
+     *  replace_parameter_in_uri().
+     *
+     *  @param  uri        Reference to the URI.
+     *  @param  parameters The parametermap.
+     *
+     *  @return `*curl_mime`.
+     *
+     *  @since  0.1.0
+     */
+    curl_mime *parameters_to_curl_mime(string &uri,
+                                       const parametermap &parameters);
 };
 
 } // namespace mastodonpp

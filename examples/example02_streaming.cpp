@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
                 sleep_for(2s);
                 for (const auto &event : connection.get_new_events())
                 {
-                    // Print typo of event and the beginning of the data.
+                    // Print type of event and the beginning of the data.
                     cout << event.type << ": "
                          << event.data.substr(0, 70) << " …" << endl;
                 }
@@ -76,8 +76,7 @@ int main(int argc, char *argv[])
 
             // Cancel the stream, …
             connection.cancel_stream();
-            // … and get the rest of the data.
-            cout << connection.get_new_stream_contents() << endl;
+            // … and wait for the thread.
             stream_thread.join();
         }
         else

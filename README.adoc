@@ -32,7 +32,7 @@ This is still a work in progress; here is a rough overview of the features:
 * [ ] Requests
   ** [x] `GET` requests.
   ** [x] Streaming `GET` requests.
-  ** [ ] `POST` requests.
+  ** [x] `POST` requests.
   ** [ ] `PATCH` requests.
   ** [ ] `PUT` requests.
   ** [ ] `DELETE` requests.
@@ -84,7 +84,7 @@ link:{uri-reference}/examples.html[More examples] are included in the reference.
 * Tested OS: Linux
 * C++ compiler (tested: link:{uri-gcc}[GCC] 7/8/9, link:{uri-lang}[clang] 6/7)
 * link:{uri-cmake}[CMake] (at least: 3.9)
-* link:{uri-libcurl}[libcurl] (at least: 7.32)
+* link:{uri-libcurl}[libcurl] (at least: 7.56)
 * Optional
   ** Documentation: link:{uri-doxygen}[Doxygen] (tested: 1.8)
   ** Tests: link:{uri-catch}[Catch] (tested: 2.5 / 1.2)
@@ -117,8 +117,8 @@ cmake --build . -- -j$(nproc --ignore=1)
 * `-DCMAKE_BUILD_TYPE=Debug` for a debug build.
 * `-DWITH_TESTS=YES` if you want to compile the tests.
 * `-DWITH_EXAMPLES=YES` if you want to compile the examples.
-// * One of:
-//   ** `-DWITH_DEB=YES` if you want to be able to generate a deb-package.
-//   ** `-DWITH_RPM=YES` if you want to be able to generate an rpm-package.
+* One of:
+  ** `-DWITH_DEB=YES` if you want to be able to generate a deb-package.
+  ** `-DWITH_RPM=YES` if you want to be able to generate an rpm-package.
 
 include::{uri-base}/raw/branch/main/CONTRIBUTING.adoc[]
