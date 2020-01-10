@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">mastodonpp
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
   </td>
  </tr>
@@ -94,6 +94,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a21a021c5c9ba1631224a6e81e36e242f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLException.html#a21a021c5c9ba1631224a6e81e36e242f">CURLException</a> (const CURLcode &amp;error, string message, string error_buffer)</td></tr>
 <tr class="memdesc:a21a021c5c9ba1631224a6e81e36e242f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with error code, message and error buffer.  <a href="classmastodonpp_1_1CURLException.html#a21a021c5c9ba1631224a6e81e36e242f">More...</a><br /></td></tr>
 <tr class="separator:a21a021c5c9ba1631224a6e81e36e242f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73b235aa9f6699e126641ae93365a39d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLException.html#a73b235aa9f6699e126641ae93365a39d">CURLException</a> (string message)</td></tr>
+<tr class="memdesc:a73b235aa9f6699e126641ae93365a39d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with message.  <a href="classmastodonpp_1_1CURLException.html#a73b235aa9f6699e126641ae93365a39d">More...</a><br /></td></tr>
+<tr class="separator:a73b235aa9f6699e126641ae93365a39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5d6aaec95758bc7db42ef1ee8831ecc"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLException.html#aa5d6aaec95758bc7db42ef1ee8831ecc">what</a> () const noexcept override</td></tr>
 <tr class="memdesc:aa5d6aaec95758bc7db42ef1ee8831ecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the error code, message and error buffer.  <a href="classmastodonpp_1_1CURLException.html#aa5d6aaec95758bc7db42ef1ee8831ecc">More...</a><br /></td></tr>
 <tr class="separator:aa5d6aaec95758bc7db42ef1ee8831ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,7 +112,7 @@ Public Attributes</h2></td></tr>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af43d29b726eceb3f80a71cdd7c3d55d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af43d29b726eceb3f80a71cdd7c3d55d4">&#9670;&nbsp;</a></span>CURLException() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af43d29b726eceb3f80a71cdd7c3d55d4">&#9670;&nbsp;</a></span>CURLException() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,7 +154,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a21a021c5c9ba1631224a6e81e36e242f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21a021c5c9ba1631224a6e81e36e242f">&#9670;&nbsp;</a></span>CURLException() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a21a021c5c9ba1631224a6e81e36e242f">&#9670;&nbsp;</a></span>CURLException() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -199,6 +202,38 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a73b235aa9f6699e126641ae93365a39d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73b235aa9f6699e126641ae93365a39d">&#9670;&nbsp;</a></span>CURLException() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mastodonpp::CURLException::CURLException </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with message. </p>
+<dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    : <a class="code" href="classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72">error_code</a>{CURLE_OK}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    , _message{move(message)}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aa5d6aaec95758bc7db42ef1ee8831ecc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa5d6aaec95758bc7db42ef1ee8831ecc">&#9670;&nbsp;</a></span>what()</h2>
@@ -225,15 +260,19 @@ Public Attributes</h2></td></tr>
 
 <p>Returns the error code, message and error buffer. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">string</span> error_string{<span class="stringliteral">&quot;libCURL error: &quot;</span> + to_string(<a class="code" href="classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72">error_code</a>)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        + <span class="stringliteral">&quot; - &quot;</span> + _message};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span> (!_error_buffer.empty())</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        error_string += <span class="stringliteral">&quot; [&quot;</span> + _error_buffer + <span class="stringliteral">&quot;]&quot;</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> error_string.c_str();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">string</span> error_string{<span class="stringliteral">&quot;libCURL error: &quot;</span>};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72">error_code</a> != CURLE_OK)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        error_string += to_string(<a class="code" href="classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72">error_code</a>) + <span class="stringliteral">&quot; - &quot;</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    error_string += _message;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (!_error_buffer.empty())</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        error_string += <span class="stringliteral">&quot; [&quot;</span> + _error_buffer + <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> error_string.c_str();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -261,7 +300,7 @@ Public Attributes</h2></td></tr>
 <li>src/exceptions.cpp</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1CURLException_html_a91eedb1a1d70015afdb4645d87d10e72"><div class="ttname"><a href="classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72">mastodonpp::CURLException::error_code</a></div><div class="ttdeci">const CURLcode error_code</div><div class="ttdoc">The error code returned by libcurl.</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:66</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLException_html_a91eedb1a1d70015afdb4645d87d10e72"><div class="ttname"><a href="classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72">mastodonpp::CURLException::error_code</a></div><div class="ttdeci">const CURLcode error_code</div><div class="ttdoc">The error code returned by libcurl.</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:73</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

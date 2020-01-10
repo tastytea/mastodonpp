@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">mastodonpp
-   &#160;<span id="projectnumber">0.0.0</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
   </td>
  </tr>
@@ -94,74 +94,83 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> std::uint64_t;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> std::string;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> std::string_view;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> : <span class="keyword">public</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1Instance.html#a21b859e2b9b5c6f48e8d0a194a659888">Instance</a>(string_view hostname, string_view access_token);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    [[nodiscard]]</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">   61</a></span>&#160;    <span class="keyword">inline</span> string_view <a class="code" href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">get_hostname</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> _hostname;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    [[nodiscard]]</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#aeb5e018b566f8ab1a3c50193ead6be81">   74</a></span>&#160;    <span class="keyword">inline</span> string_view <a class="code" href="classmastodonpp_1_1Instance.html#aeb5e018b566f8ab1a3c50193ead6be81">get_baseuri</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> _baseuri;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    [[nodiscard]]</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">   85</a></span>&#160;    <span class="keyword">inline</span> string_view <a class="code" href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">get_access_token</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> _access_token;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    [[nodiscard]]</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    uint64_t <a class="code" href="classmastodonpp_1_1Instance.html#a2f07b2e79fc7f128f26c88c2d954ecab">get_max_chars</a>();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5">  103</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5">set_proxy</a>(<span class="keyword">const</span> string_view proxy)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        _proxy = proxy;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">CURLWrapper::set_proxy</a>(proxy);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#a1d84ff4ba06446a41287f90c373368bf">  116</a></span>&#160;    string_view <a class="code" href="classmastodonpp_1_1Instance.html#a1d84ff4ba06446a41287f90c373368bf">get_proxy</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> _proxy;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> _hostname;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> _baseuri;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">string</span> _access_token;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    uint64_t _max_chars;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">string</span> _proxy;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;};</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_INSTANCE_HPP</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> std::uint64_t;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> std::string_view;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> std::move;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html">   42</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> : <span class="keyword">public</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1Instance.html#a21b859e2b9b5c6f48e8d0a194a659888">Instance</a>(string_view hostname, string_view access_token);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    [[nodiscard]]</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">   63</a></span>&#160;    <span class="keyword">inline</span> string_view <a class="code" href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">get_hostname</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> _hostname;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    [[nodiscard]]</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#aeb5e018b566f8ab1a3c50193ead6be81">   76</a></span>&#160;    <span class="keyword">inline</span> string_view <a class="code" href="classmastodonpp_1_1Instance.html#aeb5e018b566f8ab1a3c50193ead6be81">get_baseuri</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">return</span> _baseuri;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    [[nodiscard]]</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">   87</a></span>&#160;    <span class="keyword">inline</span> string_view <a class="code" href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">get_access_token</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> _access_token;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#a1e606235a69d150b59bd90c78069de22">  100</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classmastodonpp_1_1Instance.html#a1e606235a69d150b59bd90c78069de22">set_access_token</a>(<span class="keywordtype">string</span> access_token)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        _access_token = move(access_token);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    [[nodiscard]]</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    uint64_t <a class="code" href="classmastodonpp_1_1Instance.html#a2f07b2e79fc7f128f26c88c2d954ecab">get_max_chars</a>();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5">  118</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5">set_proxy</a>(<span class="keyword">const</span> string_view proxy)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        _proxy = proxy;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">CURLWrapper::set_proxy</a>(proxy);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    [[nodiscard]]</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#a1d84ff4ba06446a41287f90c373368bf">  132</a></span>&#160;    string_view <a class="code" href="classmastodonpp_1_1Instance.html#a1d84ff4ba06446a41287f90c373368bf">get_proxy</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">return</span> _proxy;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> _hostname;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> _baseuri;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">string</span> _access_token;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    uint64_t _max_chars;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">string</span> _proxy;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;};</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_INSTANCE_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a1d84ff4ba06446a41287f90c373368bf"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a1d84ff4ba06446a41287f90c373368bf">mastodonpp::Instance::get_proxy</a></div><div class="ttdeci">string_view get_proxy() const</div><div class="ttdoc">Returns the proxy string that was previously set.</div><div class="ttdef"><b>Definition:</b> instance.hpp:116</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html_ab59e3ce5f1d5c00110465c6f562a1574"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">mastodonpp::Instance::get_access_token</a></div><div class="ttdeci">string_view get_access_token() const</div><div class="ttdoc">Returns the access token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:85</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a1d84ff4ba06446a41287f90c373368bf"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a1d84ff4ba06446a41287f90c373368bf">mastodonpp::Instance::get_proxy</a></div><div class="ttdeci">string_view get_proxy() const</div><div class="ttdoc">Returns the proxy string that was previously set.</div><div class="ttdef"><b>Definition:</b> instance.hpp:132</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_ab59e3ce5f1d5c00110465c6f562a1574"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">mastodonpp::Instance::get_access_token</a></div><div class="ttdeci">string_view get_access_token() const</div><div class="ttdoc">Returns the access token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:87</div></div>
 <div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> answer.cpp:22</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_a2f07b2e79fc7f128f26c88c2d954ecab"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a2f07b2e79fc7f128f26c88c2d954ecab">mastodonpp::Instance::get_max_chars</a></div><div class="ttdeci">uint64_t get_max_chars()</div><div class="ttdoc">Returns the maximum number of characters per post.</div><div class="ttdef"><b>Definition:</b> instance.cpp:33</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a1e606235a69d150b59bd90c78069de22"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a1e606235a69d150b59bd90c78069de22">mastodonpp::Instance::set_access_token</a></div><div class="ttdeci">void set_access_token(string access_token)</div><div class="ttdoc">Set OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:100</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_a21b859e2b9b5c6f48e8d0a194a659888"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a21b859e2b9b5c6f48e8d0a194a659888">mastodonpp::Instance::Instance</a></div><div class="ttdeci">Instance(string_view hostname, string_view access_token)</div><div class="ttdoc">Construct a new Instance object.</div><div class="ttdef"><b>Definition:</b> instance.cpp:26</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a1564a42794ef7a9d170b725063ef504d"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">mastodonpp::CURLWrapper::set_proxy</a></div><div class="ttdeci">void set_proxy(string_view proxy)</div><div class="ttdoc">Set the proxy to use.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:68</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a4aa276f156e3a770e5fd9cbf5c7c0cd5"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5">mastodonpp::Instance::set_proxy</a></div><div class="ttdeci">void set_proxy(const string_view proxy)</div><div class="ttdoc">Set the proxy to use.</div><div class="ttdef"><b>Definition:</b> instance.hpp:103</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html_aeb5e018b566f8ab1a3c50193ead6be81"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#aeb5e018b566f8ab1a3c50193ead6be81">mastodonpp::Instance::get_baseuri</a></div><div class="ttdeci">string_view get_baseuri() const</div><div class="ttdoc">Returns the base URI.</div><div class="ttdef"><b>Definition:</b> instance.hpp:74</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdoc">Holds the access data of an instance.</div><div class="ttdef"><b>Definition:</b> instance.hpp:40</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></div><div class="ttdoc">Handles the details of network connections.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:80</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a24518d4603779ffc5cd89c814a687724"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">mastodonpp::Instance::get_hostname</a></div><div class="ttdeci">string_view get_hostname() const</div><div class="ttdoc">Returns the hostname.</div><div class="ttdef"><b>Definition:</b> instance.hpp:61</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a1564a42794ef7a9d170b725063ef504d"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">mastodonpp::CURLWrapper::set_proxy</a></div><div class="ttdeci">void set_proxy(string_view proxy)</div><div class="ttdoc">Set the proxy to use.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:67</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a4aa276f156e3a770e5fd9cbf5c7c0cd5"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5">mastodonpp::Instance::set_proxy</a></div><div class="ttdeci">void set_proxy(const string_view proxy)</div><div class="ttdoc">Set the proxy to use.</div><div class="ttdef"><b>Definition:</b> instance.hpp:118</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_aeb5e018b566f8ab1a3c50193ead6be81"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#aeb5e018b566f8ab1a3c50193ead6be81">mastodonpp::Instance::get_baseuri</a></div><div class="ttdeci">string_view get_baseuri() const</div><div class="ttdoc">Returns the base URI.</div><div class="ttdef"><b>Definition:</b> instance.hpp:76</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdoc">Holds the access data of an instance.</div><div class="ttdef"><b>Definition:</b> instance.hpp:42</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></div><div class="ttdoc">Handles the details of network connections.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:91</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a24518d4603779ffc5cd89c814a687724"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a24518d4603779ffc5cd89c814a687724">mastodonpp::Instance::get_hostname</a></div><div class="ttdeci">string_view get_hostname() const</div><div class="ttdoc">Returns the hostname.</div><div class="ttdef"><b>Definition:</b> instance.hpp:63</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
