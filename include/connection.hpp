@@ -125,6 +125,43 @@ public:
     }
 
     /*!
+     *  @brief  Make a HTTP POST call with parameters.
+     *
+     *  Example:
+     *  @code
+     *  auto answer{connection.post(
+     *          mastodonpp::API::v1::statuses,
+     *          {
+     *              {"status", "How is the wheather?"},
+     *              {"poll[options]", vector<string_view>{"Nice", "not nice"}},
+     *              {"poll[expires_in]", to_string(poll_seconds)}
+     *          })};
+     *  @endcode
+     *
+     *  @param endpoint   Endpoint as API::endpoint_type or `std::string_view`.
+     *  @param parameters A map of parameters.
+     *
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    answer_type post(const endpoint_variant &endpoint,
+                     const parametermap &parameters);
+
+    /*!
+     *  @brief  Make a HTTP POST call.
+     *
+     *  @param endpoint Endpoint as API::endpoint_type or `std::string_view`.
+     *
+     *  @since  0.1.0
+     */
+    [[nodiscard]]
+    inline answer_type post(const endpoint_variant &endpoint)
+    {
+        return post(endpoint, {});
+    }
+
+    /*!
      *  @brief  Copy new stream contents and delete the “original”.
      *
      *  Note that the last event is not necessarily complete, it could happen
@@ -147,6 +184,8 @@ public:
 private:
     Instance &_instance;
     const string_view _baseuri;
+
+    string endpoint_to_uri(const endpoint_variant &endpoint) const;
 };
 
 } // namespace mastodonpp
