@@ -156,9 +156,8 @@ protected:
     /*!
      *  @brief  Mutex for #get_buffer a.k.a. _curl_buffer_body.
      *
-     *  This mutex is locked in `writer_body()` and
-     *  Connection::get_new_stream_contents before anything is read or written
-     *  from/to _curl_buffer_body.
+     *  This mutex is locked before anything is read or written from/to
+     *  _curl_buffer_body.
      *
      *  @since  0.1.0
      */
