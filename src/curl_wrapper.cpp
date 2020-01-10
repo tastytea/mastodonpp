@@ -325,15 +325,15 @@ curl_mime *CURLWrapper::parameters_to_curl_mime(string &uri,
             continue;
         }
 
-        curl_mimepart *part{curl_mime_addpart(mime)};
-        if (part == nullptr)
-        {
-            throw CURLException{"Could not build HTTP form."};
-        }
-
         CURLcode code;
         if (holds_alternative<string_view>(param.second))
         {
+            curl_mimepart *part{curl_mime_addpart(mime)};
+            if (part == nullptr)
+            {
+                throw CURLException{"Could not build HTTP form."};
+            }
+
             code = curl_mime_name(part, param.first.data());
             if (code != CURLE_OK)
             {
@@ -353,6 +353,12 @@ curl_mime *CURLWrapper::parameters_to_curl_mime(string &uri,
         {
             for (const auto &arg : get<vector<string_view>>(param.second))
             {
+                curl_mimepart *part{curl_mime_addpart(mime)};
+                if (part == nullptr)
+                {
+                    throw CURLException{"Could not build HTTP form."};
+                }
+
                 const string name{string(param.first) += "[]"};
                 code = curl_mime_name(part, name.c_str());
                 if (code != CURLE_OK)
