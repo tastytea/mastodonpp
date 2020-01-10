@@ -32,7 +32,7 @@ This is still a work in progress; here is a rough overview of the features:
 * [ ] Requests
   ** [x] `GET` requests.
   ** [x] Streaming `GET` requests.
-  ** [ ] `POST` requests.
+  ** [x] `POST` requests.
   ** [ ] `PATCH` requests.
   ** [ ] `PUT` requests.
   ** [ ] `DELETE` requests.
@@ -84,7 +84,7 @@ link:{uri-reference}/examples.html[More examples] are included in the reference.
 * Tested OS: Linux
 * C++ compiler (tested: link:{uri-gcc}[GCC] 7/8/9, link:{uri-lang}[clang] 6/7)
 * link:{uri-cmake}[CMake] (at least: 3.9)
-* link:{uri-libcurl}[libcurl] (at least: 7.32)
+* link:{uri-libcurl}[libcurl] (at least: 7.56)
 * Optional
   ** Documentation: link:{uri-doxygen}[Doxygen] (tested: 1.8)
   ** Tests: link:{uri-catch}[Catch] (tested: 2.5 / 1.2)
