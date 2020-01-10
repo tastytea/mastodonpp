@@ -25,6 +25,7 @@
 #include <mutex>
 #include <string>
 #include <string_view>
+#include <utility>
 #include <variant>
 #include <vector>
 
@@ -35,6 +36,7 @@ using std::map;
 using std::mutex;
 using std::string;
 using std::string_view;
+using std::pair;
 using std::variant;
 using std::vector;
 
@@ -53,7 +55,7 @@ enum class http_method
 };
 
 /*!
- *  @brief  std::map of parameters for %API calls.
+ *  @brief  `std::map` of parameters for %API calls.
  *
  *  Example:
  *  @code
@@ -66,7 +68,16 @@ enum class http_method
  *
  *  @since  0.1.0
  */
-using parametermap = map<string_view, variant<string_view, vector<string_view>>>;
+using parametermap =
+    map<string_view, variant<string_view, vector<string_view>>>;
+
+/*!
+ *  @brief  A single parameter of a parametermap.
+ *
+ *  @since  0.1.0
+ */
+using parameterpair =
+    pair<string_view, variant<string_view, vector<string_view>>>;
 
 /*!
  *  @brief  Handles the details of network connections.
