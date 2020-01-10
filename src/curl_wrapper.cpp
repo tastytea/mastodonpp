@@ -101,10 +101,17 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     }
     case http_method::POST:
     {
-        curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
-
-        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-        code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+        if (parameters.empty())
+        {
+            // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+            code = curl_easy_setopt(_connection, CURLOPT_POST, 1L);
+        }
+        else
+        {
+            curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
+            // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+            code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+        }
 
         break;
     }
