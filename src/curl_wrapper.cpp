@@ -183,17 +183,12 @@ void CURLWrapper::set_access_token(const string_view access_token)
                 _curl_buffer_error};
     }
 
-    #if LIBCURL_VERSION_NUM >= 0x073d00 // libcurl >= 7.61.0.
-    {
-        //NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg,hicpp-signed-bitwise)
-        code = curl_easy_setopt(_connection, CURLOPT_HTTPAUTH, CURLAUTH_BEARER);
-    }
-    #else
-    {
-        //NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg,hicpp-signed-bitwise)
-        code = curl_easy_setopt(_connection, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-    }
-    #endif
+#if (LIBCURL_VERSION_NUM < 0x073d00) // libcurl < 7.61.0.
+#define CURLAUTH_BEARER CURLAUTH_ANY
+#endif
+
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg, hicpp-signed-bitwise)
+    code = curl_easy_setopt(_connection, CURLOPT_HTTPAUTH, CURLAUTH_BEARER);
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Could not set authorization token.",
