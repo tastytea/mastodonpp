@@ -74,11 +74,6 @@ void CURLWrapper::set_proxy(const string_view proxy)
     }
 }
 
-void CURLWrapper::cancel_stream()
-{
-    _stream_cancelled = true;
-}
-
 answer_type CURLWrapper::make_request(const http_method &method, string uri,
                                       const parametermap &parameters)
 {

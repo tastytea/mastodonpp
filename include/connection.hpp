@@ -181,10 +181,16 @@ public:
      */
     vector<event_type> get_new_events();
 
+    //! @copydoc CURLWrapper::cancel_stream
+    inline void cancel_stream()
+    {
+        CURLWrapper::cancel_stream();
+    }
 private:
     Instance &_instance;
     const string_view _baseuri;
 
+    [[nodiscard]]
     string endpoint_to_uri(const endpoint_variant &endpoint) const;
 };
 

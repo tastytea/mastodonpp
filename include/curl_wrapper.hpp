@@ -152,17 +152,6 @@ public:
      */
     void set_proxy(string_view proxy);
 
-    /*!
-     *  @brief  Cancel the stream.
-     *
-     *  The stream will be cancelled, usually whithin a second. The @link
-     *  answer_type::curl_error_code curl_error_code @endlink of the answer will
-     *  be set to 42 (`CURLE_ABORTED_BY_CALLBACK`).
-     *
-     *  @since  0.1.0
-     */
-    void cancel_stream();
-
 protected:
     /*!
      *  @brief  Mutex for #get_buffer a.k.a. _curl_buffer_body.
@@ -197,6 +186,20 @@ protected:
     string &get_buffer()
     {
         return _curl_buffer_body;
+    }
+
+    /*!
+     *  @brief  Cancel the stream.
+     *
+     *  The stream will be cancelled, usually whithin a second. The @link
+     *  answer_type::curl_error_code curl_error_code @endlink of the answer will
+     *  be set to 42 (`CURLE_ABORTED_BY_CALLBACK`).
+     *
+     *  @since  0.1.0
+     */
+    inline void cancel_stream()
+    {
+        _stream_cancelled = true;
     }
 
     /*!
