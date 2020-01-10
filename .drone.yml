@@ -178,8 +178,8 @@ steps:
     title: ${DRONE_TAG}
     prerelease: true
     files:
-      - libmastodonpp_${DRONE_TAG}-0_buster_amd64.deb
-      - libmastodonpp_${DRONE_TAG}-0_bionic_amd64.deb
+      - libmastodonpp_${DRONE_TAG}-0_amd64_buster.deb
+      - libmastodonpp_${DRONE_TAG}-0_amd64_bionic.deb
       - libmastodonpp-${DRONE_TAG}-0.x86_64.centos8.rpm
     checksum:
       - sha512
