@@ -13,7 +13,7 @@
  *  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-// Print information about an instance (/api/v1/instance).
+// Print new public events (/api/v1/streaming/public).
 
 #include "mastodonpp.hpp"
 
