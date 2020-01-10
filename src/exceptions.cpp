@@ -36,10 +36,19 @@ CURLException::CURLException(const CURLcode &error, string message,
     , _error_buffer{move(error_buffer)}
 {}
 
+CURLException::CURLException(string message)
+    : error_code{CURLE_OK}
+    , _message{move(message)}
+{}
+
 const char *CURLException::what() const noexcept
 {
-    static string error_string{"libCURL error: " + to_string(error_code)
-        + " - " + _message};
+    static string error_string{"libCURL error: "};
+    if (error_code != CURLE_OK)
+    {
+        error_string += to_string(error_code) + " - ";
+    }
+    error_string += _message;
     if (!_error_buffer.empty())
     {
         error_string += " [" + _error_buffer + "]";
