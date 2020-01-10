@@ -67,7 +67,7 @@ CURLWrapper::~CURLWrapper() noexcept
 void CURLWrapper::set_proxy(const string_view proxy)
 {
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    CURLcode code{curl_easy_setopt(_connection, CURLOPT_PROXY, proxy)};
+    CURLcode code{curl_easy_setopt(_connection, CURLOPT_PROXY, proxy.data())};
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set proxy", _curl_buffer_error};
