@@ -57,6 +57,10 @@ enum class http_method
 /*!
  *  @brief  `std::map` of parameters for %API calls.
  *
+ *  Note that arrays always have to be specified as vectors, even if they have
+ *  only 1 element. To send a file, use “<tt>\@file:</tt>” followed by the file
+ *  name as value.
+ *
  *  Example:
  *  @code
  *  parametermap parameters
