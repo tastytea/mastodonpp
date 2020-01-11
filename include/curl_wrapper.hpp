@@ -61,8 +61,9 @@ enum class http_method
  *  @code
  *  parametermap parameters
  *      {
- *          {"id", "12"},
- *          {"poll[options]", vector<string_view>{"Yes", "No", "Maybe"}}
+ *          {"poll[expires_in]", "86400"},
+ *          {"poll[options]", vector<string_view>{"Yes", "No", "Maybe"}},
+ *          {"status", "How is the weather?"}
  *      };
  *  @endcode
  *
