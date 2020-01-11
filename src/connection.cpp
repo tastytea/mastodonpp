@@ -99,7 +99,8 @@ vector<event_type> Connection::get_new_events()
     vector<event_type> events;
 
     size_t pos{0};
-    while ((pos = buffer.find("event: ")) != string::npos)
+    constexpr string_view search_event{"event: "};
+    while ((pos = buffer.find(search_event)) != string::npos)
     {
         const auto endpos{buffer.find("\n\n", pos)};
         if (endpos == string::npos)
@@ -108,9 +109,10 @@ vector<event_type> Connection::get_new_events()
         }
 
         event_type event;
-        pos += 7;               // Length of "event: ".
+        pos += search_event.size();
         event.type = buffer.substr(pos, buffer.find('\n', pos) - pos);
-        pos = buffer.find("data: ") + 6;
+        constexpr string_view search_data{"data: "};
+        pos = buffer.find(search_data) + search_data.size();
         event.data = buffer.substr(pos, endpos - pos);
         events.push_back(event);
 
