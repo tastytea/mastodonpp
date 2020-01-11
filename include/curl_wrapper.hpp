@@ -297,9 +297,9 @@ private:
     /*!
      *  @brief  Add `*curl_mimepart` to `*curl_mime`.
      *
-     *  @param  mime Initialized `*curl_mime`.
-     *  @param  name Name of the field.
-     *  @param  data Data of the field, or \@filename.
+     *  @param  mime Initialized `*curl_mime`.  @param name Name of the field.
+     *  @param  data Data of the field. If it begins with <tt>`\@file:<tt>, the
+     *               rest of the ergument is treated as a filename.
      *
      *  @since  0.1.1
      */

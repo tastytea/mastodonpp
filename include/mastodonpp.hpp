@@ -69,7 +69,10 @@
  *
  *  @subsection input Input
  *
- *  All text input is expected to be UTF-8.
+ *  * All text input is expected to be UTF-8.
+ *
+ *  * To send a file, use “<tt>\@file:</tt>” followed by the file name as value
+ *    in the @link mastodonpp::parametermap parametermap@endlink.
  *
  *  @section exceptions Exceptions
  *

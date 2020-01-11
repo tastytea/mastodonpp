@@ -354,7 +354,15 @@ void CURLWrapper::add_mime_part(curl_mime *mime,
         throw CURLException{code, "Could not build HTTP form."};
     }
 
-    code = curl_mime_data(part, data.data(), CURL_ZERO_TERMINATED);
+    if (data.substr(0, 6) == "@file:")
+    {
+        const string_view filename{data.substr(6)};
+        code = curl_mime_filedata(part, filename.data());
+    }
+    else
+    {
+        code = curl_mime_data(part, data.data(), CURL_ZERO_TERMINATED);
+    }
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Could not build HTTP form."};
