@@ -184,7 +184,7 @@ public:
     [[nodiscard]]
     inline answer_type patch(const endpoint_variant &endpoint)
     {
-        return post(endpoint, {});
+        return patch(endpoint, {});
     }
 
     /*!
@@ -210,7 +210,7 @@ public:
     [[nodiscard]]
     inline answer_type put(const endpoint_variant &endpoint)
     {
-        return post(endpoint, {});
+        return put(endpoint, {});
     }
 
     /*!
