@@ -20,7 +20,6 @@
 
 #include <algorithm>
 #include <exception>
-#include <vector>
 
 namespace mastodonpp
 {
@@ -28,7 +27,6 @@ namespace mastodonpp
 using std::sort;
 using std::stoull;
 using std::exception;
-using std::vector;
 
 Instance::Instance(const string_view hostname, const string_view access_token)
     : _hostname{hostname}
@@ -106,6 +104,47 @@ answer_type Instance::get_nodeinfo()
     debuglog << "Selecting href: " << hrefs.back() << '\n';
 
     return make_request(http_method::GET, hrefs.back(), {});
+}
+
+vector<string> Instance::get_post_formats()
+{
+    constexpr auto default_value{"text/plain"};
+
+    if (!_post_formats.empty())
+    {
+        return _post_formats;
+    }
+
+    debuglog << "Querying " << _hostname << " for postFormats…\n";
+    const auto answer{get_nodeinfo()};
+    if (!answer)
+    {
+        debuglog << "Couldn't get NodeInfo.\n";
+        _post_formats = {default_value};
+        return _post_formats;
+    }
+
+    constexpr string_view searchstring{R"("postFormats":[)"};
+    auto pos{answer.body.find(searchstring)};
+    if (pos == string::npos)
+    {
+        debuglog << "Couldn't find metadata.postFormats.\n";
+        _post_formats = {default_value};
+        return _post_formats;
+    }
+    pos += searchstring.size();
+    auto endpos{answer.body.find("],", pos)};
+    string formats{answer.body.substr(pos, endpos - pos)};
+    debuglog << "Extracted postFormats: " << formats << '\n';
+
+    while ((pos = formats.find('"', 1)) != string::npos)
+    {
+        _post_formats.push_back(formats.substr(1, pos - 1));
+        formats.erase(0, pos + 2); // 2 is the length of: ",
+        debuglog << "Found postFormat: " << _post_formats.back() << '\n';
+    }
+
+    return _post_formats;
 }
 
 } // namespace mastodonpp

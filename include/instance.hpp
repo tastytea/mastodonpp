@@ -24,6 +24,7 @@
 #include <string>
 #include <string_view>
 #include <utility>
+#include <vector>
 
 namespace mastodonpp
 {
@@ -32,6 +33,7 @@ using std::uint64_t;
 using std::string;
 using std::string_view;
 using std::move;
+using std::vector;
 
 /*!
  *  @brief  Holds the access data of an instance.
@@ -151,12 +153,26 @@ public:
     [[nodiscard]]
     answer_type get_nodeinfo();
 
+    /*!
+     *  @brief  Returns the allowed mime types for statuses.
+     *
+     *  Extracts `metadata.postFormats` from NodeInfo. If none can be found,
+     *  returns `{"text/plain"}`.
+     *
+     *  After the first call, the value is saved internally. Subsequent calls
+     *  return the saved value.
+     *
+     *  @since  0.3.0
+     */
+    vector<string> get_post_formats();
+
 private:
     const string _hostname;
     const string _baseuri;
     string _access_token;
     uint64_t _max_chars;
     string _proxy;
+    vector<string> _post_formats;
 };
 
 } // namespace mastodonpp
