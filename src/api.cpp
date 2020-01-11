@@ -239,10 +239,9 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {pleroma::disable_account, "/api/pleroma/disable_account"},
     {pleroma::account_register, "/api/pleroma/account/register"},
 
-    {pleroma::pleroma_notification_settings,
-     "/api/pleroma/pleroma/notification_settings"},
-    {pleroma::pleroma_healthcheck, "/api/pleroma/pleroma/healthcheck"},
-    {pleroma::pleroma_change_email, "/api/pleroma/pleroma/change_email"},
+    {pleroma::notification_settings, "/api/pleroma/notification_settings"},
+    {pleroma::healthcheck, "/api/pleroma/healthcheck"},
+    {pleroma::change_email, "/api/pleroma/change_email"},
 };
 
 } // namespace mastodonpp

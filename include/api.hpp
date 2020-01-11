@@ -281,9 +281,9 @@ public:
         disable_account,
         account_register,
 
-        pleroma_notification_settings,
-        pleroma_healthcheck,
-        pleroma_change_email
+        notification_settings,
+        healthcheck,
+        change_email
     };
 
     /*!
