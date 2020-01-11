@@ -31,8 +31,8 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::apps_verify_credentials, "/api/v1/apps/verify/credentials"},
 
     {v1::accounts, "/api/v1/accounts"},
-    {v1::accounts_verify_credentials, "/api/v1/accounts/verify/credentials"},
-    {v1::accounts_update_credentials, "/api/v1/accounts/update/credentials"},
+    {v1::accounts_verify_credentials, "/api/v1/accounts/verify_credentials"},
+    {v1::accounts_update_credentials, "/api/v1/accounts/update_credentials"},
     {v1::accounts_id, "/api/v1/accounts/<ID>"},
     {v1::accounts_id_statuses, "/api/v1/accounts/<ID>/statuses"},
     {v1::accounts_id_followers, "/api/v1/accounts/<ID>/followers"},
