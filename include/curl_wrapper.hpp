@@ -157,6 +157,48 @@ public:
      */
     void set_proxy(string_view proxy);
 
+    /*!
+     *  @brief  URL encodes the given string.
+     *
+     *  For more information consult [curl_easy_escape(3)]
+     *  (https://curl.haxx.se/libcurl/c/curl_easy_escape.html).
+     *
+     *  @param  url String to escape.
+     *
+     *  @return The escaped string or {} if it failed.
+     *
+     *  @since  0.3.0
+     */
+    inline string escape_url(const string_view url) const
+    {
+        char *cbuf{curl_easy_escape(_connection, url.data(),
+                                    static_cast<int>(url.size()))};
+        string sbuf{cbuf};
+        curl_free(cbuf);
+        return sbuf;
+    }
+
+    /*!
+     *  @brief  URL decodes the given string .
+     *
+     *  For more information consult [curl_easy_unescape(3)]
+     *  (https://curl.haxx.se/libcurl/c/curl_easy_unescape.html).
+     *
+     *  @param  url String to unescape.
+     *
+     *  @return The unescaped string or {} if it failed.
+     *
+     *  @since  0.3.0
+     */
+    inline string unescape_url(const string_view url) const
+    {
+        char *cbuf{curl_easy_unescape(_connection, url.data(),
+                                      static_cast<int>(url.size()), nullptr)};
+        string sbuf{cbuf};
+        curl_free(cbuf);
+        return sbuf;
+    }
+
 protected:
     /*!
      *  @brief  Mutex for #get_buffer a.k.a. _curl_buffer_body.
