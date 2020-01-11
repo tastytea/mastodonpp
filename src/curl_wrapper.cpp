@@ -339,12 +339,37 @@ void CURLWrapper::add_parameters_to_uri(string &uri,
     }
 }
 
+void CURLWrapper::add_mime_part(curl_mime *mime,
+                                string_view name, string_view data) const
+{
+    curl_mimepart *part{curl_mime_addpart(mime)};
+    if (part == nullptr)
+    {
+        throw CURLException{"Could not build HTTP form."};
+    }
+
+    CURLcode code{curl_mime_name(part, name.data())};
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Could not build HTTP form."};
+    }
+
+    code = curl_mime_data(part, data.data(), CURL_ZERO_TERMINATED);
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Could not build HTTP form."};
+    }
+
+    debuglog << "Set form part: " << name << " = " << data << '\n';
+}
+
 curl_mime *CURLWrapper::parameters_to_curl_mime(string &uri,
                                                 const parametermap &parameters)
 {
     debuglog << "Building HTTP form.\n";
 
     curl_mime *mime{curl_mime_init(_connection)};
+
     for (const auto &param : parameters)
     {
         if (replace_parameter_in_uri(uri, param))
@@ -352,52 +377,16 @@ curl_mime *CURLWrapper::parameters_to_curl_mime(string &uri,
             continue;
         }
 
-        CURLcode code;
         if (holds_alternative<string_view>(param.second))
         {
-            curl_mimepart *part{curl_mime_addpart(mime)};
-            if (part == nullptr)
-            {
-                throw CURLException{"Could not build HTTP form."};
-            }
-
-            code = curl_mime_name(part, param.first.data());
-            if (code != CURLE_OK)
-            {
-                throw CURLException{code, "Could not build HTTP form."};
-            }
-
-            code = curl_mime_data(part, get<string_view>(param.second).data(),
-                                  CURL_ZERO_TERMINATED);
-            if (code != CURLE_OK)
-            {
-                throw CURLException{code, "Could not build HTTP form."};
-            }
-            debuglog << "Set form part: " << param.first << " = "
-                     << get<string_view>(param.second) << '\n';
+            add_mime_part(mime, param.first, get<string_view>(param.second));
         }
         else
         {
             for (const auto &arg : get<vector<string_view>>(param.second))
             {
-                curl_mimepart *part{curl_mime_addpart(mime)};
-                if (part == nullptr)
-                {
-                    throw CURLException{"Could not build HTTP form."};
-                }
-
-                const string name{string(param.first) += "[]"};
-                code = curl_mime_name(part, name.c_str());
-                if (code != CURLE_OK)
-                {
-                    throw CURLException{code, "Could not build HTTP form."};
-                }
-                code = curl_mime_data(part, arg.data(), CURL_ZERO_TERMINATED);
-                if (code != CURLE_OK)
-                {
-                    throw CURLException{code, "Could not build HTTP form."};
-                }
-                debuglog << "Set form part: " << name << " = " << arg << '\n';
+                const string_view name{string(param.first) += "[]"};
+                add_mime_part(mime, name, arg);
             }
         }
     }

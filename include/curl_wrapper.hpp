@@ -295,6 +295,18 @@ private:
     void add_parameters_to_uri(string &uri, const parametermap &parameters);
 
     /*!
+     *  @brief  Add `*curl_mimepart` to `*curl_mime`.
+     *
+     *  @param  mime Initialized `*curl_mime`.
+     *  @param  name Name of the field.
+     *  @param  data Data of the field, or \@filename.
+     *
+     *  @since  0.1.1
+     */
+    void add_mime_part(curl_mime *mime,
+                       string_view name, string_view data) const;
+
+    /*!
      *  @brief  Convert parametermap to `*curl_mime`.
      *
      *  For more information consult [curl_mime_init(3)]
