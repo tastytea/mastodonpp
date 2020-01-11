@@ -86,10 +86,9 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     {
     case http_method::GET:
     {
-        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-        code = curl_easy_setopt(_connection, CURLOPT_HTTPGET, 1L);
-
         add_parameters_to_uri(uri, parameters);
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+        curl_easy_setopt(_connection, CURLOPT_HTTPGET, 1L);
 
         break;
     }
@@ -98,13 +97,13 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
         if (parameters.empty())
         {
             // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-            code = curl_easy_setopt(_connection, CURLOPT_POST, 1L);
+            curl_easy_setopt(_connection, CURLOPT_POST, 1L);
         }
         else
         {
             curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
             // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-            code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+            curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
         }
 
         break;
@@ -115,11 +114,15 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
         {
             curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
             // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-            code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+            curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
         }
 
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         code = curl_easy_setopt(_connection, CURLOPT_CUSTOMREQUEST, "PATCH");
+        if (code != CURLE_OK)
+        {
+            throw CURLException{code, "Failed to set URI", _curl_buffer_error};
+        }
 
         break;
     }
@@ -129,11 +132,15 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
         {
             curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
             // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-            code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+            curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
         }
 
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         code = curl_easy_setopt(_connection, CURLOPT_CUSTOMREQUEST, "PUT");
+        if (code != CURLE_OK)
+        {
+            throw CURLException{code, "Failed to set URI", _curl_buffer_error};
+        }
 
         break;
     }
@@ -143,19 +150,18 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
         {
             curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
             // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-            code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+            curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
         }
 
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         code = curl_easy_setopt(_connection, CURLOPT_CUSTOMREQUEST, "DELETE");
+        if (code != CURLE_OK)
+        {
+            throw CURLException{code, "Failed to set URI", _curl_buffer_error};
+        }
 
         break;
     }
-    }
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set HTTP method",
-                _curl_buffer_error};
     }
     debuglog << "Making request to: " << uri << '\n';
 
