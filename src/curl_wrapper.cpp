@@ -317,6 +317,8 @@ bool CURLWrapper::replace_parameter_in_uri(string &uri,
         {
             uri.replace(pos, parameter.first.size() + 2,
                         get<string_view>(parameter.second));
+            debuglog << "Replaced :" << parameter.first << " in URI with "
+                     << get<string_view>(parameter.second) << '\n';
             return true;
         }
     }
