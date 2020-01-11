@@ -70,7 +70,6 @@
  *  @subsection input Input
  *
  *  * All text input is expected to be UTF-8.
- *
  *  * To send a file, use “<tt>\@file:</tt>” followed by the file name as value
  *    in the @link mastodonpp::parametermap parametermap@endlink.
  *
@@ -102,6 +101,7 @@
  *  @example example01_instance_info.cpp
  *  @example example02_streaming.cpp
  *  @example example03_post_status.cpp
+ *  @example example04_post_with_attachment.cpp
  */
 
 /*!
