@@ -168,7 +168,7 @@ public:
      *  @param parameters A map of parameters.
      *
      *
-     *  @since  0.1.0
+     *  @since  0.2.0
      */
     [[nodiscard]]
     answer_type patch(const endpoint_variant &endpoint,
@@ -179,7 +179,7 @@ public:
      *
      *  @param endpoint Endpoint as API::endpoint_type or `std::string_view`.
      *
-     *  @since  0.1.0
+     *  @since  0.2.0
      */
     [[nodiscard]]
     inline answer_type patch(const endpoint_variant &endpoint)
@@ -194,7 +194,7 @@ public:
      *  @param parameters A map of parameters.
      *
      *
-     *  @since  0.1.0
+     *  @since  0.2.0
      */
     [[nodiscard]]
     answer_type put(const endpoint_variant &endpoint,
@@ -205,7 +205,7 @@ public:
      *
      *  @param endpoint Endpoint as API::endpoint_type or `std::string_view`.
      *
-     *  @since  0.1.0
+     *  @since  0.2.0
      */
     [[nodiscard]]
     inline answer_type put(const endpoint_variant &endpoint)
