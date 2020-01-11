@@ -162,6 +162,84 @@ public:
     }
 
     /*!
+     *  @brief  Make a HTTP PATCH call with parameters.
+     *
+     *  @param endpoint   Endpoint as API::endpoint_type or `std::string_view`.
+     *  @param parameters A map of parameters.
+     *
+     *
+     *  @since  0.2.0
+     */
+    [[nodiscard]]
+    answer_type patch(const endpoint_variant &endpoint,
+                    const parametermap &parameters);
+
+    /*!
+     *  @brief  Make a HTTP PATCH call.
+     *
+     *  @param endpoint Endpoint as API::endpoint_type or `std::string_view`.
+     *
+     *  @since  0.2.0
+     */
+    [[nodiscard]]
+    inline answer_type patch(const endpoint_variant &endpoint)
+    {
+        return patch(endpoint, {});
+    }
+
+    /*!
+     *  @brief  Make a HTTP PUT call with parameters.
+     *
+     *  @param endpoint   Endpoint as API::endpoint_type or `std::string_view`.
+     *  @param parameters A map of parameters.
+     *
+     *
+     *  @since  0.2.0
+     */
+    [[nodiscard]]
+    answer_type put(const endpoint_variant &endpoint,
+                    const parametermap &parameters);
+
+    /*!
+     *  @brief  Make a HTTP PUT call.
+     *
+     *  @param endpoint Endpoint as API::endpoint_type or `std::string_view`.
+     *
+     *  @since  0.2.0
+     */
+    [[nodiscard]]
+    inline answer_type put(const endpoint_variant &endpoint)
+    {
+        return put(endpoint, {});
+    }
+
+    /*!
+     *  @brief  Make a HTTP DELETE call with parameters.
+     *
+     *  @param endpoint   Endpoint as API::endpoint_type or `std::string_view`.
+     *  @param parameters A map of parameters.
+     *
+     *
+     *  @since  0.2.0
+     */
+    [[nodiscard]]
+    answer_type del(const endpoint_variant &endpoint,
+                    const parametermap &parameters);
+
+    /*!
+     *  @brief  Make a HTTP DELETE call.
+     *
+     *  @param endpoint Endpoint as API::endpoint_type or `std::string_view`.
+     *
+     *  @since  0.2.0
+     */
+    [[nodiscard]]
+    inline answer_type del(const endpoint_variant &endpoint)
+    {
+        return del(endpoint, {});
+    }
+
+    /*!
      *  @brief  Copy new stream contents and delete the “original”.
      *
      *  Note that the last event is not necessarily complete, it could happen

@@ -13,7 +13,7 @@
  *  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-// Post a status (/api/v1/status).
+// Update account display name settings (/api/v1/accounts/update_credentials).
 
 #include "mastodonpp.hpp"
 
@@ -33,11 +33,13 @@ using std::vector;
 int main(int argc, char *argv[])
 {
     const vector<string_view> args(argv, argv + argc);
-    if (args.size() <= 2)
+    if (args.size() <= 3)
     {
-        cerr << "Usage: " << args[0] << " <instance hostname> <access token>\n";
+        cerr << "Usage: " << args[0]
+             << " <instance hostname> <access token> <name>\n";
         return 1;
     }
+    const auto name{args[3]};
 
     try
     {
@@ -45,20 +47,15 @@ int main(int argc, char *argv[])
         masto::Instance instance{args[1], args[2]};
         masto::Connection connection{instance};
 
-        // Set up the parameters.
-        constexpr auto poll_seconds{60 * 60 * 24 * 2}; // 2 days.
-        const masto::parametermap parameters
-            {
-                {"status", "How is the weather?"},
-                {"poll[options]", vector<string_view>{"Nice", "not nice"}},
-                {"poll[expires_in]", to_string(poll_seconds)}
-            };
-
-        // Post the status.
-        auto answer{connection.post(masto::API::v1::statuses, parameters)};
+        // Update the settings.
+        const auto answer{connection.patch(
+                masto::API::v1::accounts_update_credentials,
+                {
+                    {"display_name", name},
+                })};
         if (answer)
         {
-            cout << "Successfully posted a status.\n";
+            cout << "Successfully changed display name.\n";
         }
         else
         {

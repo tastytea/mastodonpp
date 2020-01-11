@@ -13,21 +13,25 @@
  *  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-// Post a status (/api/v1/status).
+// Post a status (/api/v1/status), then delete it (/api/v1/statuses/:id).
 
 #include "mastodonpp.hpp"
 
+#include <chrono>
 #include <iostream>
 #include <string>
 #include <string_view>
+#include <thread>
 #include <vector>
 
 namespace masto = mastodonpp;
+using namespace std::chrono_literals;
 using std::cout;
 using std::cerr;
 using std::endl;
 using std::to_string;
 using std::string_view;
+using std::this_thread::sleep_for;
 using std::vector;
 
 int main(int argc, char *argv[])
@@ -45,20 +49,28 @@ int main(int argc, char *argv[])
         masto::Instance instance{args[1], args[2]};
         masto::Connection connection{instance};
 
-        // Set up the parameters.
-        constexpr auto poll_seconds{60 * 60 * 24 * 2}; // 2 days.
-        const masto::parametermap parameters
-            {
-                {"status", "How is the weather?"},
-                {"poll[options]", vector<string_view>{"Nice", "not nice"}},
-                {"poll[expires_in]", to_string(poll_seconds)}
-            };
-
-        // Post the status.
-        auto answer{connection.post(masto::API::v1::statuses, parameters)};
+        // Post a status.
+        auto answer{connection.post(masto::API::v1::statuses,
+                                    {{"status", "Delete me."}})};
         if (answer)
         {
             cout << "Successfully posted a status.\n";
+
+            // Get the ID of the post.
+            // You normally would use a JSON parser, of course. I don't use one
+            // because I don't want to add a dependency just for an example.
+            const auto pos{answer.body.rfind(R"("id":")") + 6};
+            const auto endpos{answer.body.find(R"(",)", pos)};
+            const auto id{answer.body.substr(pos, endpos - pos)};
+            cout << "Post has ID: " << id << endl;
+            cout << "Waiting 10 seconds…\n";
+            sleep_for(10s);
+
+            answer = connection.del(masto::API::v1::statuses_id, {{"id", id}});
+            if (answer)
+            {
+                cout << "Successfully deleted the status.\n";
+            }
         }
         else
         {

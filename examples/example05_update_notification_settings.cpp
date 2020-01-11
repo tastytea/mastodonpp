@@ -13,7 +13,7 @@
  *  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-// Post a status (/api/v1/status).
+// Update notification settings (/api/pleroma/notification_settings).
 
 #include "mastodonpp.hpp"
 
@@ -45,20 +45,18 @@ int main(int argc, char *argv[])
         masto::Instance instance{args[1], args[2]};
         masto::Connection connection{instance};
 
-        // Set up the parameters.
-        constexpr auto poll_seconds{60 * 60 * 24 * 2}; // 2 days.
-        const masto::parametermap parameters
-            {
-                {"status", "How is the weather?"},
-                {"poll[options]", vector<string_view>{"Nice", "not nice"}},
-                {"poll[expires_in]", to_string(poll_seconds)}
-            };
-
-        // Post the status.
-        auto answer{connection.post(masto::API::v1::statuses, parameters)};
+        // Update the settings.
+        const auto answer{connection.put(
+                masto::API::pleroma::notification_settings,
+                {
+                    {"followers", "true"},
+                    {"follows", "true"},
+                    {"remote", "true"},
+                    {"local", "true"},
+                })};
         if (answer)
         {
-            cout << "Successfully posted a status.\n";
+            cout << answer << endl;
         }
         else
         {

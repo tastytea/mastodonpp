@@ -57,12 +57,17 @@ enum class http_method
 /*!
  *  @brief  `std::map` of parameters for %API calls.
  *
+ *  Note that arrays always have to be specified as vectors, even if they have
+ *  only 1 element. To send a file, use “<tt>\@file:</tt>” followed by the file
+ *  name as value.
+ *
  *  Example:
  *  @code
  *  parametermap parameters
  *      {
- *          {"id", "12"},
- *          {"poll[options]", vector<string_view>{"Yes", "No", "Maybe"}}
+ *          {"poll[expires_in]", "86400"},
+ *          {"poll[options]", vector<string_view>{"Yes", "No", "Maybe"}},
+ *          {"status", "How is the weather?"}
  *      };
  *  @endcode
  *
@@ -293,6 +298,18 @@ private:
      *  @since  0.1.0
      */
     void add_parameters_to_uri(string &uri, const parametermap &parameters);
+
+    /*!
+     *  @brief  Add `*curl_mimepart` to `*curl_mime`.
+     *
+     *  @param  mime Initialized `*curl_mime`.  @param name Name of the field.
+     *  @param  data Data of the field. If it begins with <tt>`\@file:<tt>, the
+     *               rest of the ergument is treated as a filename.
+     *
+     *  @since  0.1.1
+     */
+    void add_mime_part(curl_mime *mime,
+                       string_view name, string_view data) const;
 
     /*!
      *  @brief  Convert parametermap to `*curl_mime`.

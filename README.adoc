@@ -53,12 +53,12 @@ Have a look at the link:{uri-reference}[reference].
 
 int main()
 {
-    mastodonpp::Instance instance{"example.com", {}};
+    mastodonpp::Instance instance{"example.com", "123AccessToken123"};
     mastodonpp::Connection connection{instance};
 
     const mastodonpp::parametermap parameters
         {
-            {"status", "How is the wheather?"},
+            {"status", "How is the weather?"},
             {"poll[options]", vector<string_view>{"Nice", "not nice"}},
             {"poll[expires_in]", "86400"}
         };
@@ -88,7 +88,7 @@ emerge -a dev-cpp/mastodonpp
 === Debian and Ubuntu
 
 We automatically generate packages for Debian buster (10) and Ubuntu bionic
-(18.04), but only for x86_64 (amd64). Download the them at
+(18.04), but only for x86_64 (amd64). Download them at
 link:{uri-base}/releases[schlomp.space].
 
 [source,shell]
@@ -99,7 +99,7 @@ apt install ./libmastodonpp*.deb
 === CentOS
 
 We automatically generate packages for CentOS 8, but only for x86_64
-(amd64). Download the them at link:{uri-base}/releases[schlomp.space].
+(amd64). Download them at link:{uri-base}/releases[schlomp.space].
 
 [source,shell]
 --------------------------------------------------------------------------------
