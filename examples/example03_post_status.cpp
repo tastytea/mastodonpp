@@ -33,7 +33,7 @@ using std::vector;
 int main(int argc, char *argv[])
 {
     const vector<string_view> args(argv, argv + argc);
-    if (args.size() <= 1)
+    if (args.size() <= 2)
     {
         cerr << "Usage: " << args[0] << " <instance hostname> <access token>\n";
         return 1;
