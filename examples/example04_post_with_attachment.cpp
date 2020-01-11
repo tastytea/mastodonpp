@@ -36,7 +36,8 @@ int main(int argc, char *argv[])
     const vector<string_view> args(argv, argv + argc);
     if (args.size() <= 3)
     {
-        cerr << "Usage: " << args[0] << " <instance hostname> <access token> <file>\n";
+        cerr << "Usage: " << args[0]
+             << " <instance hostname> <access token> <file>\n";
         return 1;
     }
 
