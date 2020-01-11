@@ -139,8 +139,16 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     }
     case http_method::DELETE:
     {
+        if (!parameters.empty())
+        {
+            curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
+            // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+            code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+        }
+
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         code = curl_easy_setopt(_connection, CURLOPT_CUSTOMREQUEST, "DELETE");
+
         break;
     }
     }
