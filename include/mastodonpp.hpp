@@ -102,6 +102,8 @@
  *  @example example02_streaming.cpp
  *  @example example03_post_status.cpp
  *  @example example04_post_with_attachment.cpp
+ *  @example example05_update_notification_settings.cpp
+ *  @example example06_update_name.cpp
  */
 
 /*!
