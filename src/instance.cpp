@@ -18,13 +18,17 @@
 #include "instance.hpp"
 #include "log.hpp"
 
+#include <algorithm>
 #include <exception>
+#include <vector>
 
 namespace mastodonpp
 {
 
+using std::sort;
 using std::stoull;
 using std::exception;
+using std::vector;
 
 Instance::Instance(const string_view hostname, const string_view access_token)
     : _hostname{hostname}
@@ -75,6 +79,33 @@ uint64_t Instance::get_max_chars()
     }
 
     return _max_chars;
+}
+
+answer_type Instance::get_nodeinfo()
+{
+    debuglog << "Finding location of NodeInfo on " << _hostname << "…\n";
+    auto answer{make_request(http_method::GET,
+                             _baseuri + "/.well-known/nodeinfo", {})};
+    if (!answer)
+    {
+        debuglog << "NodeInfo not found.\n";
+        return answer;
+    }
+
+    size_t pos{0};
+    vector<string> hrefs;
+    constexpr string_view searchstring{R"("href":")"};
+    while ((pos = answer.body.find(searchstring, pos)) != string::npos)
+    {
+        pos += searchstring.size();
+        auto endpos{answer.body.find('"', pos)};
+        hrefs.push_back(answer.body.substr(pos, endpos - pos));
+        debuglog << "Found href: " << hrefs.back() << '\n';
+    }
+    sort(hrefs.begin(), hrefs.end()); // We assume they are sortable strings.
+    debuglog << "Selecting href: " << hrefs.back() << '\n';
+
+    return make_request(http_method::GET, hrefs.back(), {});
 }
 
 } // namespace mastodonpp

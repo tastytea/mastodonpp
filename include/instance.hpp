@@ -18,6 +18,7 @@
 #define MASTODONPP_INSTANCE_HPP
 
 #include "curl_wrapper.hpp"
+#include "answer.hpp"
 
 #include <cstdint>
 #include <string>
@@ -106,6 +107,9 @@ public:
      *  Queries `/api/v1/instance` for `max_toot_chars'. If the instance doesn't
      *  support it, the limit is assumed to be 500.
      *
+     *  After the first call, the value is saved internally. Subsequent calls
+     *  return the saved value.
+     *
      *  @since  0.1.0
      */
     [[nodiscard]]
@@ -134,6 +138,18 @@ public:
     {
         return _proxy;
     }
+
+    /*!
+     *  @brief  Returns the NodeInfo of the instance.
+     *
+     *  Attempts to download the [NodeInfo]
+     *  (https://nodeinfo.diaspora.software/protocol.html) of the instance and
+     *  returns it. Not every instance has it.
+     *
+     *  @since  0.3.0
+     */
+    [[nodiscard]]
+    answer_type get_nodeinfo();
 
 private:
     const string _hostname;
