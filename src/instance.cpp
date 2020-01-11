@@ -18,10 +18,13 @@
 #include "instance.hpp"
 #include "log.hpp"
 
+#include <exception>
+
 namespace mastodonpp
 {
 
 using std::stoull;
+using std::exception;
 
 Instance::Instance(const string_view hostname, const string_view access_token)
     : _hostname{hostname}
@@ -65,7 +68,7 @@ uint64_t Instance::get_max_chars()
             }();
             debuglog << "Set _max_chars to: " << _max_chars << '\n';
         }
-        catch (const std::exception &e)
+        catch (const exception &e)
         {
             debuglog << "Unexpected exception: " << e.what() << '\n';
         }
