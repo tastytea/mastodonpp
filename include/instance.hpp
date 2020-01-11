@@ -45,8 +45,6 @@ public:
     /*!
      *  @brief  Construct a new Instance object.
      *
-     *  Also queries `/api/v1/instance` for `max_toot_chars'.
-     *
      *  @param  hostname     The hostname of the instance.
      *  @param  access_token Your access token.
      *
@@ -104,6 +102,9 @@ public:
 
     /*!
      *  @brief  Returns the maximum number of characters per post.
+     *
+     *  Queries `/api/v1/instance` for `max_toot_chars'. If the instance doesn't
+     *  support it, the limit is assumed to be 500.
      *
      *  @since  0.1.0
      */
