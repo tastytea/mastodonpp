@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>mastodonpp: example03_post_status.cpp</title>
+<title>mastodonpp: example07_delete_status.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">example03_post_status.cpp</div>  </div>
+<div class="title">example07_delete_status.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><span class="comment">/*  This file is part of mastodonpp.</span></div>
@@ -81,21 +81,25 @@ $(function() {
 <div class="line"><span class="comment"> *  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// Post a status (/api/v1/status).</span></div>
+<div class="line"><span class="comment">// Post a status (/api/v1/status), then delete it (/api/v1/statuses/:id).</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;mastodonpp.hpp&quot;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;chrono&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;thread&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span>masto = <a class="code" href="namespacemastodonpp.html">mastodonpp</a>;</div>
+<div class="line"><span class="keyword">using namespace </span>std::chrono_literals;</div>
 <div class="line"><span class="keyword">using</span> std::cout;</div>
 <div class="line"><span class="keyword">using</span> std::cerr;</div>
 <div class="line"><span class="keyword">using</span> std::endl;</div>
 <div class="line"><span class="keyword">using</span> std::to_string;</div>
 <div class="line"><span class="keyword">using</span> std::string_view;</div>
+<div class="line"><span class="keyword">using</span> std::this_thread::sleep_for;</div>
 <div class="line"><span class="keyword">using</span> std::vector;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
@@ -113,20 +117,28 @@ $(function() {
 <div class="line">        masto::Instance instance{args[1], args[2]};</div>
 <div class="line">        masto::Connection connection{instance};</div>
 <div class="line"> </div>
-<div class="line">        <span class="comment">// Set up the parameters.</span></div>
-<div class="line">        constexpr <span class="keyword">auto</span> poll_seconds{60 * 60 * 24 * 2}; <span class="comment">// 2 days.</span></div>
-<div class="line">        <span class="keyword">const</span> masto::parametermap parameters</div>
-<div class="line">            {</div>
-<div class="line">                {<span class="stringliteral">&quot;status&quot;</span>, <span class="stringliteral">&quot;How is the weather?&quot;</span>},</div>
-<div class="line">                {<span class="stringliteral">&quot;poll[options]&quot;</span>, vector&lt;string_view&gt;{<span class="stringliteral">&quot;Nice&quot;</span>, <span class="stringliteral">&quot;not nice&quot;</span>}},</div>
-<div class="line">                {<span class="stringliteral">&quot;poll[expires_in]&quot;</span>, to_string(poll_seconds)}</div>
-<div class="line">            };</div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">// Post the status.</span></div>
-<div class="line">        <span class="keyword">auto</span> answer{connection.post(masto::API::v1::statuses, parameters)};</div>
+<div class="line">        <span class="comment">// Post a status.</span></div>
+<div class="line">        <span class="keyword">auto</span> answer{connection.post(masto::API::v1::statuses,</div>
+<div class="line">                                    {{<span class="stringliteral">&quot;status&quot;</span>, <span class="stringliteral">&quot;Delete me.&quot;</span>}})};</div>
 <div class="line">        <span class="keywordflow">if</span> (answer)</div>
 <div class="line">        {</div>
 <div class="line">            cout &lt;&lt; <span class="stringliteral">&quot;Successfully posted a status.\n&quot;</span>;</div>
+<div class="line"> </div>
+<div class="line">            <span class="comment">// Get the ID of the post.</span></div>
+<div class="line">            <span class="comment">// You normally would use a JSON parser, of course. I don&#39;t use one</span></div>
+<div class="line">            <span class="comment">// because I don&#39;t want to add a dependency just for an example.</span></div>
+<div class="line">            <span class="keyword">const</span> <span class="keyword">auto</span> pos{answer.body.rfind(R<span class="stringliteral">&quot;(&quot;id&quot;:&quot;)&quot;) + 6};</span></div>
+<div class="line"><span class="stringliteral">            </span><span class="keyword">const</span> <span class="keyword">auto</span> endpos{answer.body.find(R<span class="stringliteral">&quot;(&quot;,)&quot;, pos)};</span></div>
+<div class="line"><span class="stringliteral">            </span><span class="keyword">const</span> <span class="keyword">auto</span> <span class="keywordtype">id</span>{answer.body.substr(pos, endpos - pos)};</div>
+<div class="line">            cout &lt;&lt; <span class="stringliteral">&quot;Post has ID: &quot;</span> &lt;&lt; <span class="keywordtype">id</span> &lt;&lt; endl;</div>
+<div class="line">            cout &lt;&lt; <span class="stringliteral">&quot;Waiting 10 seconds…\n&quot;</span>;</div>
+<div class="line">            sleep_for(10s);</div>
+<div class="line"> </div>
+<div class="line">            answer = connection.del(masto::API::v1::statuses_id, {{<span class="stringliteral">&quot;id&quot;</span>, <span class="keywordtype">id</span>}});</div>
+<div class="line">            <span class="keywordflow">if</span> (answer)</div>
+<div class="line">            {</div>
+<div class="line">                cout &lt;&lt; <span class="stringliteral">&quot;Successfully deleted the status.\n&quot;</span>;</div>
+<div class="line">            }</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">else</span></div>
 <div class="line">        {</div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['make_5frequest_76',['make_request',['../classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6',1,'mastodonpp::CURLWrapper']]]
+  ['instance_79',['Instance',['../classmastodonpp_1_1Instance.html#a21b859e2b9b5c6f48e8d0a194a659888',1,'mastodonpp::Instance']]]
 ];

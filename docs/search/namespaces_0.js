@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mastodonpp_58',['mastodonpp',['../namespacemastodonpp.html',1,'']]]
+  ['mastodonpp_61',['mastodonpp',['../namespacemastodonpp.html',1,'']]]
 ];

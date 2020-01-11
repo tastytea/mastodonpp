@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">mastodonpp
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
   </td>
  </tr>
@@ -95,7 +95,10 @@ Example</h2>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="input"></a>
 Input</h2>
-<p>All text input is expected to be UTF-8.</p>
+<ul>
+<li>All text input is expected to be UTF-8.</li>
+<li>To send a file, use “<code>@file:</code>” followed by the file name as value in the <a class="el" href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">parametermap</a>.</li>
+</ul>
 <h1><a class="anchor" id="exceptions"></a>
 Exceptions</h1>
 <p>Any unrecoverable libcurl error will be thrown as a <a class="el" href="classmastodonpp_1_1CURLException.html" title="Exception for libcurl errors.">mastodonpp::CURLException</a>. Network errors will not be thrown, but reported via the return value.</p>
