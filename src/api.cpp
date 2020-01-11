@@ -61,7 +61,7 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::domain_blocks, "/api/v1/domain/blocks"},
 
     {v1::filters, "/api/v1/filters"},
-    {v1::filters_id, "/api/v1/filters/id"},
+    {v1::filters_id, "/api/v1/filters/<ID>"},
 
     {v1::reports, "/api/v1/reports"},
 
@@ -73,16 +73,16 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::endorsements, "/api/v1/endorsements"},
 
     {v1::featured_tags, "/api/v1/featured/tags"},
-    {v1::featured_tags_id, "/api/v1/featured/tags/id"},
+    {v1::featured_tags_id, "/api/v1/featured/tags/<ID>"},
     {v1::featured_tags_suggestions, "/api/v1/featured/tags/suggestions"},
 
     {v1::preferences, "/api/v1/preferences"},
 
     {v1::suggestions, "/api/v1/suggestions"},
-    {v1::suggestions_account_id, "/api/v1/suggestions/account/id"},
+    {v1::suggestions_account_id, "/api/v1/suggestions/account/<ID>"},
 
     {v1::statuses, "/api/v1/statuses"},
-    {v1::statuses_id, "/api/v1/statuses/id"},
+    {v1::statuses_id, "/api/v1/statuses/<ID>"},
     {v1::statuses_id_context, "/api/v1/statuses/<ID>/context"},
     {v1::statuses_id_reblogged_by, "/api/v1/statuses/<ID>/reblogged/by"},
     {v1::statuses_id_favourited_by, "/api/v1/statuses/<ID>/favourited/by"},
@@ -98,21 +98,21 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::statuses_id_unpin, "/api/v1/statuses/<ID>/unpin"},
 
     {v1::media, "/api/v1/media"},
-    {v1::media_id, "/api/v1/media/id"},
+    {v1::media_id, "/api/v1/media/<ID>"},
 
-    {v1::polls_id, "/api/v1/polls/id"},
+    {v1::polls_id, "/api/v1/polls/<ID>"},
     {v1::polls_id_votes, "/api/v1/polls/<ID>/votes"},
 
     {v1::scheduled_statuses, "/api/v1/scheduled/statuses"},
-    {v1::scheduled_statuses_id, "/api/v1/scheduled/statuses/id"},
+    {v1::scheduled_statuses_id, "/api/v1/scheduled/statuses/<ID>"},
 
     {v1::timelines_public, "/api/v1/timelines/public"},
     {v1::timelines_tag_hashtag, "/api/v1/timelines/tag/<HASHTAG>"},
     {v1::timelines_home, "/api/v1/timelines/home"},
-    {v1::timelines_list_list_id, "/api/v1/timelines/list/list/id"},
+    {v1::timelines_list_list_id, "/api/v1/timelines/list/list/<ID>"},
 
     {v1::conversations, "/api/v1/conversations"},
-    {v1::conversations_id, "/api/v1/conversations/id"},
+    {v1::conversations_id, "/api/v1/conversations/<ID>"},
     {v1::conversations_id_read, "/api/v1/conversations/<ID>/read"},
 
     {v1::lists, "/api/v1/lists"},
@@ -131,7 +131,7 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::streaming_direct, "/api/v1/streaming/direct"},
 
     {v1::notifications, "/api/v1/notifications"},
-    {v1::notifications_id, "/api/v1/notifications/id"},
+    {v1::notifications_id, "/api/v1/notifications/<ID>"},
     {v1::notifications_clear, "/api/v1/notifications/clear"},
     {v1::notifications_id_dismiss, "/api/v1/notifications/<ID>/dismiss"},
 
@@ -148,7 +148,7 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::custom_emojis, "/api/v1/custom/emojis"},
 
     {v1::admin_accounts, "/api/v1/admin/accounts"},
-    {v1::admin_accounts_id, "/api/v1/admin/accounts/id"},
+    {v1::admin_accounts_id, "/api/v1/admin/accounts/<ID>"},
     {v1::admin_accounts_account_id_action,
      "/api/v1/admin/accounts/account/<ID>/action"},
     {v1::admin_accounts_id_approve, "/api/v1/admin/accounts/<ID>/approve"},
@@ -157,11 +157,11 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::admin_accounts_id_unsilence, "/api/v1/admin/accounts/<ID>/unsilence"},
     {v1::admin_accounts_id_unsuspend, "/api/v1/admin/accounts/<ID>/unsuspend"},
     {v1::admin_reports, "/api/v1/admin/reports"},
-    {v1::admin_reports_id, "/api/v1/admin/reports/id"},
+    {v1::admin_reports_id, "/api/v1/admin/reports/<ID>"},
     {v1::admin_reports_id_assign_to_self,
      "/api/v1/admin/reports/<ID>/assign/to/self"},
     {v1::admin_reports_id_unassign, "/api/v1/admin/reports/<ID>/unassign"},
-    {v1::admin_reports_id_resolve, "/api/v1/admin/reports/resolve"},
+    {v1::admin_reports_id_resolve, "/api/v1/admin/reports/<ID>/resolve"},
     {v1::admin_reports_id_reopen, "/api/v1/admin/reports/<ID>/reopen"},
 
     {v1::pleroma_notifications_read, " /api/v1/pleroma/notifications/read"},
@@ -171,7 +171,7 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::pleroma_accounts_id_unsubscribe,
      "/api/v1/pleroma/accounts/<ID>/unsubscribe"},
     {v1::pleroma_accounts_id_favourites,
-     "/api/v1/pleroma/accounts/:id/favourites"},
+     "/api/v1/pleroma/accounts/<ID>/favourites"},
     {v1::pleroma_accounts_update_avatar,
      "/api/v1/pleroma/accounts/update_avatar"},
     {v1::pleroma_accounts_update_banner,
