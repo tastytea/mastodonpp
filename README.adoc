@@ -29,16 +29,11 @@ favorite JSON library and we don't want to impose our choice on you!
 
 This is still a work in progress; here is a rough overview of the features:
 
-* [ ] Requests
-  ** [x] `GET` requests.
-  ** [x] Streaming `GET` requests.
-  ** [x] `POST` requests.
-  ** [ ] `PATCH` requests.
-  ** [ ] `PUT` requests.
-  ** [ ] `DELETE` requests.
+* [x]  `GET`, Streaming `GET`, `POST`, `PATCH`, `PUT` and `DELETE` requests.
 * [x] Report maximum allowed character per post.
 * [ ] Comfortable access to pagination headers.
 * [ ] Comfortable function to register a new “app” (get an access token).
+* [ ] Report which mime types are allowed for posting statuses.
 
 == Usage
 
