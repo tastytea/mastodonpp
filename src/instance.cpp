@@ -73,6 +73,7 @@ uint64_t Instance::get_max_chars()
         catch (const exception &e)
         {
             debuglog << "Unexpected exception: " << e.what() << '\n';
+            return default_max_chars;
         }
     }
 
