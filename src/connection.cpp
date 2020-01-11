@@ -61,6 +61,20 @@ answer_type Connection::post(const endpoint_variant &endpoint,
                         endpoint_to_uri(endpoint), parameters);
 }
 
+answer_type Connection::patch(const endpoint_variant &endpoint,
+                              const parametermap &parameters)
+{
+    return make_request(http_method::PATCH,
+                        endpoint_to_uri(endpoint), parameters);
+}
+
+answer_type Connection::put(const endpoint_variant &endpoint,
+                            const parametermap &parameters)
+{
+    return make_request(http_method::PUT,
+                        endpoint_to_uri(endpoint), parameters);
+}
+
 string Connection::get_new_stream_contents()
 {
     buffer_mutex.lock();

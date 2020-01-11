@@ -111,14 +111,30 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     }
     case http_method::PATCH:
     {
+        if (!parameters.empty())
+        {
+            curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
+            // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+            code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+        }
+
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         code = curl_easy_setopt(_connection, CURLOPT_CUSTOMREQUEST, "PATCH");
+
         break;
     }
     case http_method::PUT:
     {
+        if (!parameters.empty())
+        {
+            curl_mime *mime{parameters_to_curl_mime(uri, parameters)};
+            // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+            code = curl_easy_setopt(_connection, CURLOPT_MIMEPOST, mime);
+        }
+
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-        code = curl_easy_setopt(_connection, CURLOPT_UPLOAD, 1L);
+        code = curl_easy_setopt(_connection, CURLOPT_CUSTOMREQUEST, "PUT");
+
         break;
     }
     case http_method::DELETE:
