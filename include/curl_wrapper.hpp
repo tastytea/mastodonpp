@@ -259,7 +259,7 @@ protected:
     /*!
      *  @brief  Set path to Certificate Authority (CA) bundle.
      *
-     *  @since  0.2.1
+     *  @since  0.3.0
      */
     void set_cainfo(string_view path);
 
@@ -356,7 +356,7 @@ private:
      *  @param  data Data of the field. If it begins with <tt>`\@file:<tt>, the
      *               rest of the ergument is treated as a filename.
      *
-     *  @since  0.1.1
+     *  @since  0.2.0
      */
     void add_mime_part(curl_mime *mime,
                        string_view name, string_view data) const;

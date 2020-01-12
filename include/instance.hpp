@@ -172,7 +172,7 @@ public:
      *  Sets also the CA info for all Connection%s that are initialized with
      *  this Instance afterwards.
      *
-     *  @since  0.2.1
+     *  @since  0.3.0
      */
     void set_cainfo(string_view path)
     {
@@ -185,7 +185,7 @@ public:
      *
      *  This is used when initializing a Connection.
      *
-     *  @since  0.2.1
+     *  @since  0.3.0
      */
     string_view get_cainfo() const noexcept
     {
