@@ -35,6 +35,10 @@ Connection::Connection(Instance &instance)
     {
         CURLWrapper::set_access_token(_instance.get_access_token());
     }
+    if (!_instance.get_cainfo().empty())
+    {
+        CURLWrapper::set_cainfo(_instance.get_cainfo());
+    }
 }
 
 string Connection::endpoint_to_uri(const endpoint_variant &endpoint) const

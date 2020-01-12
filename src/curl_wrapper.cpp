@@ -223,6 +223,15 @@ void CURLWrapper::set_access_token(const string_view access_token)
     debuglog << "Set authorization token.\n";
 }
 
+void CURLWrapper::set_cainfo(string_view path)
+{
+    CURLcode code{curl_easy_setopt(_connection, CURLOPT_CAINFO, path.data())};
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Could not set CA info.", _curl_buffer_error};
+    }
+}
+
 size_t CURLWrapper::writer_body(char *data, size_t size, size_t nmemb)
 {
     if(data == nullptr)
