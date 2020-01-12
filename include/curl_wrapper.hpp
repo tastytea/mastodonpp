@@ -146,18 +146,6 @@ public:
     }
 
     /*!
-     *  @brief  Set the proxy to use.
-     *
-     *  See [CURLOPT_PROXY(3)]
-     *  (https://curl.haxx.se/libcurl/c/CURLOPT_PROXY.html).
-     *
-     *  @param  proxy Examples: "socks4a://127.0.0.1:9050", "http://[::1]:3128".
-     *
-     *  @since  0.1.0
-     */
-    void set_proxy(string_view proxy);
-
-    /*!
      *  @brief  URL encodes the given string.
      *
      *  For more information consult [curl_easy_escape(3)]
@@ -247,6 +235,18 @@ protected:
     {
         _stream_cancelled = true;
     }
+
+    /*!
+     *  @brief  Set the proxy to use.
+     *
+     *  See [CURLOPT_PROXY(3)]
+     *  (https://curl.haxx.se/libcurl/c/CURLOPT_PROXY.html).
+     *
+     *  @param  proxy Examples: "socks4a://127.0.0.1:9050", "http://[::1]:3128".
+     *
+     *  @since  0.1.0
+     */
+    void set_proxy(string_view proxy);
 
     /*!
      *  @brief  Set OAuth 2.0 Bearer Access Token.
