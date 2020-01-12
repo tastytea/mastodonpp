@@ -255,6 +255,14 @@ protected:
      */
     void set_access_token(const string_view access_token);
 
+
+    /*!
+     *  @brief  Set path to Certificate Authority (CA) bundle.
+     *
+     *  @since  0.2.1
+     */
+    void set_cainfo(string_view path);
+
 private:
     CURL *_connection;
     char _curl_buffer_error[CURL_ERROR_SIZE];

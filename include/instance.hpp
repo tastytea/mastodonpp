@@ -166,6 +166,32 @@ public:
      */
     vector<string> get_post_formats();
 
+    /*!
+     *  @brief  Set path to Certificate Authority (CA) bundle.
+     *
+     *  Sets also the CA info for all Connection%s that are initialized with
+     *  this Instance afterwards.
+     *
+     *  @since  0.2.1
+     */
+    void set_cainfo(string_view path)
+    {
+        _cainfo = path;
+        CURLWrapper::set_cainfo(path);
+    }
+
+    /*!
+     *  @brief  Returns the cainfo path that was previously set.
+     *
+     *  This is used when initializing a Connection.
+     *
+     *  @since  0.2.1
+     */
+    string_view get_cainfo()
+    {
+        return _cainfo;
+    }
+
 private:
     const string _hostname;
     const string _baseuri;
@@ -173,6 +199,7 @@ private:
     uint64_t _max_chars;
     string _proxy;
     vector<string> _post_formats;
+    string _cainfo;
 };
 
 } // namespace mastodonpp
