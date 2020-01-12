@@ -20,6 +20,7 @@
 
 #include <algorithm>
 #include <exception>
+#include <regex>
 
 namespace mastodonpp
 {
@@ -27,6 +28,9 @@ namespace mastodonpp
 using std::sort;
 using std::stoull;
 using std::exception;
+using std::regex;
+using std::regex_search;
+using std::smatch;
 
 Instance::Instance(const string_view hostname, const string_view access_token)
     : _hostname{hostname}
@@ -158,24 +162,108 @@ vector<string> Instance::get_post_formats() noexcept
     return _post_formats;
 }
 
+Instance::ObtainToken::ObtainToken(Instance &instance)
+    : _instance{instance}
+    , _baseuri{instance.get_baseuri()}
+{
+    auto proxy{_instance.get_proxy()};
+    if (!proxy.empty())
     {
-        debuglog << "Couldn't find metadata.postFormats.\n";
-        _post_formats = {default_value};
-        return _post_formats;
-    }
-    pos += searchstring.size();
-    auto endpos{answer.body.find("],", pos)};
-    string formats{answer.body.substr(pos, endpos - pos)};
-    debuglog << "Extracted postFormats: " << formats << '\n';
-
-    while ((pos = formats.find('"', 1)) != string::npos)
-    {
-        _post_formats.push_back(formats.substr(1, pos - 1));
-        formats.erase(0, pos + 2); // 2 is the length of: ",
-        debuglog << "Found postFormat: " << _post_formats.back() << '\n';
+        CURLWrapper::set_proxy(proxy);
     }
 
-    return _post_formats;
+    if (!_instance.get_access_token().empty())
+    {
+        CURLWrapper::set_access_token(_instance.get_access_token());
+    }
+    if (!_instance.get_cainfo().empty())
+    {
+        CURLWrapper::set_cainfo(_instance.get_cainfo());
+    }
+}
+
+answer_type Instance::ObtainToken::step_1(const string_view client_name,
+                                          const string_view scopes,
+                                          const string_view website)
+{
+    parametermap parameters
+        {
+            {"client_name", client_name},
+            {"redirect_uris", "urn:ietf:wg:oauth:2.0:oob"}
+        };
+    if (!scopes.empty())
+    {
+        _scopes = scopes;
+        parameters.insert({"scopes", scopes});
+    }
+    if (!website.empty())
+    {
+        parameters.insert({"website", website});
+    }
+
+    auto answer{make_request(http_method::POST, _baseuri + "/api/v1/apps",
+                             parameters)};
+    if (answer)
+    {
+        const regex re_id{R"("client_id"\s*:\s*"([^"]+)\")"};
+        const regex re_secret{R"("client_secret"\s*:\s*"([^"]+)\")"};
+        smatch match;
+
+        if (regex_search(answer.body, match, re_id))
+        {
+            _client_id = match[1].str();
+        }
+        if (regex_search(answer.body, match, re_secret))
+        {
+            _client_secret = match[1].str();
+        }
+
+        string uri{_baseuri + "/oauth/authorize?scope=" + escape_url(scopes)
+            + "&response_type=code"
+            "&redirect_uri=" + escape_url("urn:ietf:wg:oauth:2.0:oob")
+            + "&client_id=" + _client_id};
+        if (!website.empty())
+        {
+            uri += "&website=" + escape_url(website);
+        }
+        answer.body = uri;
+        debuglog << "Built URI.";
+    }
+
+    return answer;
+}
+
+answer_type Instance::ObtainToken::step_2(const string_view code)
+{
+    parametermap parameters
+        {
+            {"client_id", _client_id},
+            {"client_secret", _client_secret},
+            {"redirect_uri", "urn:ietf:wg:oauth:2.0:oob"},
+            {"code", code},
+            {"grant_type", "client_credentials"}
+        };
+    if (!_scopes.empty())
+    {
+        parameters.insert({"scope", _scopes});
+    }
+
+    auto answer{make_request(http_method::POST, _baseuri + "/oauth/token",
+                             parameters)};
+    if (answer)
+    {
+        const regex re_token{R"("access_token"\s*:\s*"([^"]+)\")"};
+        smatch match;
+
+        if (regex_search(answer.body, match, re_token))
+        {
+            answer.body = match[1].str();
+            debuglog << "Got access token.\n";
+            _instance.set_access_token(answer.body);
+        }
+    }
+
+    return answer;
 }
 
 } // namespace mastodonpp

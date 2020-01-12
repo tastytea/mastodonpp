@@ -192,6 +192,84 @@ public:
         return _cainfo;
     }
 
+    /*!
+     *  @brief  Simplifies obtaining an OAuth 2.0 Bearer Access Token.
+     *
+     *  * Create an Instance() and initialize this class with it.
+     *  * Call step_1() to get the URI your user has to visit.
+     *  * Get the authorization code from your user.
+     *  * Call step_2() with the code.
+     *
+     *  Example:
+     *  @code
+     *  mastodonpp::Instance instance("example.com", {});
+     *  mastodonpp::Instance::ObtainToken token(instance);
+     *  auto answer{token.step1("Good program", "read:blocks read:mutes", "")};
+     *  if (answer)
+     *  {
+     *      std::cout << "Please visit " << answer << "\nand paste the code: ";
+     *      std::string code;
+     *      std::cin >> code;
+     *      answer = access_token{token.step2(code)};
+     *      if (answer)
+     *      {
+     *          std::cout << "Success!\n";
+     *      }
+     *  }
+     *  @endcode
+     *
+     *  @since  0.3.0
+     */
+    class ObtainToken : public CURLWrapper
+    {
+    public:
+        ObtainToken(Instance &instance);
+
+        /*!
+         *  @brief  Creates an application via `/api/v1/apps`.
+         *
+         *  The `body` of the returned @link answer_type answer @endlink
+         *  contains only the URI, not the whole JSON response.
+         *
+         *  @param  client_name The name of your application.
+         *  @param  scopes      Space separated list of scopes. Defaults to
+         *                      “read” if empty.
+         *  @param  website     The URI to the homepage of your application. Can
+         *                      be an empty string.
+         *
+         *  @return The URI your user has to visit.
+         *
+         *  @since  0.3.0
+         */
+        [[nodiscard]]
+        answer_type step_1(string_view client_name, string_view scopes,
+                           string_view website);
+
+        /*!
+         *  @brief  Creates a token via `/oauth/token`.
+         *
+         *  The `body` of the returned @link answer_type answer @endlink
+         *  contains only the access token, not the whole JSON response.
+         *
+         *  The access token will be set in the parent Instance.
+         *
+         *  @param  code The authorization code you got from the user.
+         *
+         *  @return The access token.
+         *
+         *  @since  0.3.0
+         */
+        [[nodiscard]]
+        answer_type step_2(string_view code);
+
+    private:
+        Instance &_instance;
+        const string _baseuri;
+        string _scopes;
+        string _client_id;
+        string _client_secret;
+    };
+
 private:
     const string _hostname;
     const string _baseuri;
