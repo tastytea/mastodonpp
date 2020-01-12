@@ -73,7 +73,8 @@ public:
      */
     inline void copy_connection_properties(CURLWrapper &curlwrapper)
     {
-        curlwrapper.setup_connection_properties(_proxy, _access_token, _cainfo);
+        curlwrapper.setup_connection_properties(_proxy, _access_token, _cainfo,
+                                                _useragent);
     }
 
     /*!
@@ -213,6 +214,12 @@ public:
         return _cainfo;
     }
 
+    void set_useragent(const string_view useragent)
+    {
+        _useragent = useragent;
+        CURLWrapper::set_useragent(useragent);
+    }
+
     /*!
      *  @brief  Simplifies obtaining an OAuth 2.0 Bearer Access Token.
      *
@@ -304,6 +311,7 @@ private:
     string _proxy;
     vector<string> _post_formats;
     string _cainfo;
+    string _useragent;
 };
 
 } // namespace mastodonpp

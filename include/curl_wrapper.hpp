@@ -196,8 +196,10 @@ public:
      *
      *  @since  0.3.0
      */
-    void setup_connection_properties(string_view proxy, string_view access_token,
-                                     string_view cainfo);
+    void setup_connection_properties(string_view proxy,
+                                     string_view access_token,
+                                     string_view cainfo,
+                                     string_view useragent);
 
 protected:
     /*!
@@ -274,6 +276,8 @@ protected:
      *  @since  0.3.0
      */
     void set_cainfo(string_view path);
+
+    void set_useragent(string_view useragent);
 
 private:
     CURL *_connection;

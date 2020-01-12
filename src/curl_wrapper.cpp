@@ -187,9 +187,10 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     return answer;
 }
 
-void CURLWrapper::setup_connection_properties(string_view proxy,
-                                              string_view access_token,
-                                              string_view cainfo)
+void CURLWrapper::setup_connection_properties(const string_view proxy,
+                                              const string_view access_token,
+                                              const string_view cainfo,
+                                              const string_view useragent)
 {
     if (!proxy.empty())
     {
@@ -204,6 +205,11 @@ void CURLWrapper::setup_connection_properties(string_view proxy,
     if (!cainfo.empty())
     {
         set_cainfo(cainfo);
+    }
+
+    if (!useragent.empty())
+    {
+        set_useragent(useragent);
     }
 }
 
@@ -250,6 +256,19 @@ void CURLWrapper::set_cainfo(const string_view path)
     {
         throw CURLException{code, "Could not set CA info.", _curl_buffer_error};
     }
+}
+
+void CURLWrapper::set_useragent(const string_view useragent)
+{
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    CURLcode code{curl_easy_setopt(_connection, CURLOPT_USERAGENT,
+                                   useragent.data())};
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set User-Agent",
+                _curl_buffer_error};
+    }
+    debuglog << "Set User-Agent to: " << useragent << '\n';
 }
 
 size_t CURLWrapper::writer_body(char *data, size_t size, size_t nmemb)
@@ -316,18 +335,11 @@ void CURLWrapper::setup_curl()
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     curl_easy_setopt(_connection, CURLOPT_NOPROGRESS, 0L);
 
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    CURLcode code{curl_easy_setopt(_connection, CURLOPT_USERAGENT,
-                                   (string("mastodonpp/") += version).c_str())};
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set User-Agent",
-                _curl_buffer_error};
-    }
+    set_useragent((string("mastodonpp/") += version));
 
     // The next 2 only fail if HTTP is not supported.
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    code = curl_easy_setopt(_connection, CURLOPT_FOLLOWLOCATION, 1L);
+    CURLcode code{curl_easy_setopt(_connection, CURLOPT_FOLLOWLOCATION, 1L)};
     if (code != CURLE_OK)
     {
         throw CURLException{code, "HTTP is not supported.", _curl_buffer_error};
