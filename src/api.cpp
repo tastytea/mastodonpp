@@ -145,7 +145,7 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
 
     {v1::directory, "/api/v1/directory"},
 
-    {v1::custom_emojis, "/api/v1/custom/emojis"},
+    {v1::custom_emojis, "/api/v1/custom_emojis"},
 
     {v1::admin_accounts, "/api/v1/admin/accounts"},
     {v1::admin_accounts_id, "/api/v1/admin/accounts/<ID>"},
