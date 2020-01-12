@@ -28,7 +28,7 @@ API::API(const endpoint_type &endpoint)
 const map<API::endpoint_type,string_view> API::_endpoint_map
 {
     {v1::apps, "/api/v1/apps"},
-    {v1::apps_verify_credentials, "/api/v1/apps/verify/credentials"},
+    {v1::apps_verify_credentials, "/api/v1/apps/verify_credentials"},
 
     {v1::accounts, "/api/v1/accounts"},
     {v1::accounts_verify_credentials, "/api/v1/accounts/verify_credentials"},

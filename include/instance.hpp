@@ -53,7 +53,29 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit Instance(string_view hostname, string_view access_token);
+    explicit Instance(const string_view hostname,
+                      const string_view access_token)
+        : _hostname{hostname}
+        , _baseuri{"https://" + _hostname}
+        , _access_token{access_token}
+        , _max_chars{0}
+    {}
+
+    /*!
+     *  @brief  Set the properties of the connection of the calling class up.
+     *
+     *  Meant for internal use. This aligns the properties of the connection of
+     *  the calling class with the properties of connection of this class.
+     *
+     *  @param  curlwrapper The CURLWrapper parent of the calling class.
+     *
+     *  @since  0.3.0
+     */
+    inline void copy_connection_properties(CURLWrapper &curlwrapper)
+    {
+        curlwrapper.setup_connection_properties(_proxy, _access_token, _cainfo,
+                                                _useragent);
+    }
 
     /*!
      *  @brief  Returns the hostname.
@@ -61,7 +83,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    inline string_view get_hostname() const
+    inline string_view get_hostname() const noexcept
     {
         return _hostname;
     }
@@ -74,7 +96,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    inline string_view get_baseuri() const
+    inline string_view get_baseuri() const noexcept
     {
         return _baseuri;
     }
@@ -85,7 +107,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    inline string_view get_access_token() const
+    inline string_view get_access_token() const noexcept
     {
         return _access_token;
     }
@@ -115,7 +137,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    uint64_t get_max_chars();
+    uint64_t get_max_chars() noexcept;
 
     /*! @copydoc CURLWrapper::set_proxy(string_view)
      *
@@ -126,19 +148,6 @@ public:
     {
         _proxy = proxy;
         CURLWrapper::set_proxy(proxy);
-    }
-
-    /*!
-     *  @brief  Returns the proxy string that was previously set.
-     *
-     *  Does not return the proxy if it was set from an environment variable.
-     *
-     *  @since  0.1.0
-     */
-    [[nodiscard]]
-    string_view get_proxy() const
-    {
-        return _proxy;
     }
 
     /*!
@@ -164,7 +173,7 @@ public:
      *
      *  @since  0.3.0
      */
-    vector<string> get_post_formats();
+    vector<string> get_post_formats() noexcept;
 
     /*!
      *  @brief  Set path to Certificate Authority (CA) bundle.
@@ -172,7 +181,7 @@ public:
      *  Sets also the CA info for all Connection%s that are initialized with
      *  this Instance afterwards.
      *
-     *  @since  0.2.1
+     *  @since  0.3.0
      */
     void set_cainfo(string_view path)
     {
@@ -180,17 +189,94 @@ public:
         CURLWrapper::set_cainfo(path);
     }
 
-    /*!
-     *  @brief  Returns the cainfo path that was previously set.
-     *
-     *  This is used when initializing a Connection.
-     *
-     *  @since  0.2.1
-     */
-    string_view get_cainfo()
+    void set_useragent(const string_view useragent)
     {
-        return _cainfo;
+        _useragent = useragent;
+        CURLWrapper::set_useragent(useragent);
     }
+
+    /*!
+     *  @brief  Simplifies obtaining an OAuth 2.0 Bearer Access Token.
+     *
+     *  * Create an Instance() and initialize this class with it.
+     *  * Call step_1() to get the URI your user has to visit.
+     *  * Get the authorization code from your user.
+     *  * Call step_2() with the code.
+     *
+     *  Example:
+     *  @code
+     *  mastodonpp::Instance instance("example.com", {});
+     *  mastodonpp::Instance::ObtainToken token(instance);
+     *  auto answer{token.step1("Good program", "read:blocks read:mutes", "")};
+     *  if (answer)
+     *  {
+     *      std::cout << "Please visit " << answer << "\nand paste the code: ";
+     *      std::string code;
+     *      std::cin >> code;
+     *      answer = access_token{token.step2(code)};
+     *      if (answer)
+     *      {
+     *          std::cout << "Success!\n";
+     *      }
+     *  }
+     *  @endcode
+     *
+     *  @since  0.3.0
+     */
+    class ObtainToken : public CURLWrapper
+    {
+    public:
+        ObtainToken(Instance &instance)
+            : _instance{instance}
+            , _baseuri{instance.get_baseuri()}
+        {
+            _instance.copy_connection_properties(*this);
+        }
+
+        /*!
+         *  @brief  Creates an application via `/api/v1/apps`.
+         *
+         *  The `body` of the returned @link answer_type answer @endlink
+         *  contains only the URI, not the whole JSON response.
+         *
+         *  @param  client_name The name of your application.
+         *  @param  scopes      Space separated list of scopes. Defaults to
+         *                      “read” if empty.
+         *  @param  website     The URI to the homepage of your application. Can
+         *                      be an empty string.
+         *
+         *  @return The URI your user has to visit.
+         *
+         *  @since  0.3.0
+         */
+        [[nodiscard]]
+        answer_type step_1(string_view client_name, string_view scopes,
+                           string_view website);
+
+        /*!
+         *  @brief  Creates a token via `/oauth/token`.
+         *
+         *  The `body` of the returned @link answer_type answer @endlink
+         *  contains only the access token, not the whole JSON response.
+         *
+         *  The access token will be set in the parent Instance.
+         *
+         *  @param  code The authorization code you got from the user.
+         *
+         *  @return The access token.
+         *
+         *  @since  0.3.0
+         */
+        [[nodiscard]]
+        answer_type step_2(string_view code);
+
+    private:
+        Instance &_instance;
+        const string _baseuri;
+        string _scopes;
+        string _client_id;
+        string _client_secret;
+    };
 
 private:
     const string _hostname;
@@ -200,6 +286,7 @@ private:
     string _proxy;
     vector<string> _post_formats;
     string _cainfo;
+    string _useragent;
 };
 
 } // namespace mastodonpp

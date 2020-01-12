@@ -18,6 +18,7 @@
 #define MASTODONPP_ANSWER_HPP
 
 #include <cstdint>
+#include <ostream>
 #include <string>
 #include <string_view>
 
@@ -26,6 +27,7 @@ namespace mastodonpp
 
 using std::uint8_t;
 using std::uint16_t;
+using std::ostream;
 using std::string;
 using std::string_view;
 
@@ -97,8 +99,7 @@ struct answer_type
      *
      *  @since  0.1.0
      */
-    friend std::ostream &operator <<(std::ostream &out,
-                                     const answer_type &answer);
+    friend ostream &operator <<(ostream &out, const answer_type &answer);
 
     /*!
      *  @brief  Returns the value of a header field.

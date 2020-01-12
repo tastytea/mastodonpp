@@ -82,7 +82,12 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit Connection(Instance &instance);
+    explicit Connection(Instance &instance)
+        : _instance{instance}
+        , _baseuri{instance.get_baseuri()}
+    {
+        _instance.copy_connection_properties(*this);
+    }
 
     /*!
      *  @brief  Make a HTTP GET call with parameters.

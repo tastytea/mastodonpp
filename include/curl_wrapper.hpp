@@ -146,18 +146,6 @@ public:
     }
 
     /*!
-     *  @brief  Set the proxy to use.
-     *
-     *  See [CURLOPT_PROXY(3)]
-     *  (https://curl.haxx.se/libcurl/c/CURLOPT_PROXY.html).
-     *
-     *  @param  proxy Examples: "socks4a://127.0.0.1:9050", "http://[::1]:3128".
-     *
-     *  @since  0.1.0
-     */
-    void set_proxy(string_view proxy);
-
-    /*!
      *  @brief  URL encodes the given string.
      *
      *  For more information consult [curl_easy_escape(3)]
@@ -169,6 +157,7 @@ public:
      *
      *  @since  0.3.0
      */
+    [[nodiscard]]
     inline string escape_url(const string_view url) const
     {
         char *cbuf{curl_easy_escape(_connection, url.data(),
@@ -190,6 +179,7 @@ public:
      *
      *  @since  0.3.0
      */
+    [[nodiscard]]
     inline string unescape_url(const string_view url) const
     {
         char *cbuf{curl_easy_unescape(_connection, url.data(),
@@ -198,6 +188,18 @@ public:
         curl_free(cbuf);
         return sbuf;
     }
+
+    /*!
+     *  @brief  Set some properties of the connection.
+     *
+     *  Meant for internal use. See Instance::copy_connection_properties().
+     *
+     *  @since  0.3.0
+     */
+    void setup_connection_properties(string_view proxy,
+                                     string_view access_token,
+                                     string_view cainfo,
+                                     string_view useragent);
 
 protected:
     /*!
@@ -249,6 +251,18 @@ protected:
     }
 
     /*!
+     *  @brief  Set the proxy to use.
+     *
+     *  See [CURLOPT_PROXY(3)]
+     *  (https://curl.haxx.se/libcurl/c/CURLOPT_PROXY.html).
+     *
+     *  @param  proxy Examples: "socks4a://127.0.0.1:9050", "http://[::1]:3128".
+     *
+     *  @since  0.1.0
+     */
+    void set_proxy(string_view proxy);
+
+    /*!
      *  @brief  Set OAuth 2.0 Bearer Access Token.
      *
      *  @since  0.1.0
@@ -259,9 +273,11 @@ protected:
     /*!
      *  @brief  Set path to Certificate Authority (CA) bundle.
      *
-     *  @since  0.2.1
+     *  @since  0.3.0
      */
     void set_cainfo(string_view path);
+
+    void set_useragent(string_view useragent);
 
 private:
     CURL *_connection;
@@ -356,7 +372,7 @@ private:
      *  @param  data Data of the field. If it begins with <tt>`\@file:<tt>, the
      *               rest of the ergument is treated as a filename.
      *
-     *  @since  0.1.1
+     *  @since  0.2.0
      */
     void add_mime_part(curl_mime *mime,
                        string_view name, string_view data) const;

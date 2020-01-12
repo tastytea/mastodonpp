@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
         const auto answer{connection.patch(
                 masto::API::v1::accounts_update_credentials,
                 {
-                    {"display_name", name},
+                    {"display_name", name}
                 })};
         if (answer)
         {
