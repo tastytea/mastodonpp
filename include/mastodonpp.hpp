@@ -105,6 +105,7 @@
  *  @example example05_update_notification_settings.cpp
  *  @example example06_update_name.cpp
  *  @example example07_delete_status.cpp
+ *  @example example08_obtain_token.cpp
  */
 
 /*!
