@@ -53,7 +53,28 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit Instance(string_view hostname, string_view access_token);
+    explicit Instance(const string_view hostname,
+                      const string_view access_token)
+        : _hostname{hostname}
+        , _baseuri{"https://" + _hostname}
+        , _access_token{access_token}
+        , _max_chars{0}
+    {}
+
+    /*!
+     *  @brief  Set the properties of the connection of the calling class up.
+     *
+     *  Meant for internal use. This aligns the properties of the connection of
+     *  the calling class with the properties of connection of this class.
+     *
+     *  @param  curlwrapper The CURLWrapper parent of the calling class.
+     *
+     *  @since  0.3.0
+     */
+    inline void copy_connection_properties(CURLWrapper &curlwrapper)
+    {
+        curlwrapper.setup_connection_properties(_proxy, _access_token, _cainfo);
+    }
 
     /*!
      *  @brief  Returns the hostname.
@@ -223,7 +244,12 @@ public:
     class ObtainToken : public CURLWrapper
     {
     public:
-        ObtainToken(Instance &instance);
+        ObtainToken(Instance &instance)
+            : _instance{instance}
+            , _baseuri{instance.get_baseuri()}
+        {
+            _instance.copy_connection_properties(*this);
+        }
 
         /*!
          *  @brief  Creates an application via `/api/v1/apps`.

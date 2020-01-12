@@ -189,6 +189,16 @@ public:
         return sbuf;
     }
 
+    /*!
+     *  @brief  Set some properties of the connection.
+     *
+     *  Meant for internal use. See Instance::copy_connection_properties().
+     *
+     *  @since  0.3.0
+     */
+    void setup_connection_properties(string_view proxy, string_view access_token,
+                                     string_view cainfo);
+
 protected:
     /*!
      *  @brief  Mutex for #get_buffer a.k.a. _curl_buffer_body.

@@ -21,26 +21,6 @@ namespace mastodonpp
 
 using std::holds_alternative;
 
-Connection::Connection(Instance &instance)
-    : _instance{instance}
-    , _baseuri{instance.get_baseuri()}
-{
-    auto proxy{_instance.get_proxy()};
-    if (!proxy.empty())
-    {
-        CURLWrapper::set_proxy(proxy);
-    }
-
-    if (!_instance.get_access_token().empty())
-    {
-        CURLWrapper::set_access_token(_instance.get_access_token());
-    }
-    if (!_instance.get_cainfo().empty())
-    {
-        CURLWrapper::set_cainfo(_instance.get_cainfo());
-    }
-}
-
 string Connection::endpoint_to_uri(const endpoint_variant &endpoint) const
 {
     if (holds_alternative<API::endpoint_type>(endpoint))

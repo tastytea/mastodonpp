@@ -32,13 +32,6 @@ using std::regex;
 using std::regex_search;
 using std::smatch;
 
-Instance::Instance(const string_view hostname, const string_view access_token)
-    : _hostname{hostname}
-    , _baseuri{"https://" + _hostname}
-    , _access_token{access_token}
-    , _max_chars{0}
-{}
-
 uint64_t Instance::get_max_chars() noexcept
 {
     constexpr uint64_t default_max_chars{500};
@@ -160,26 +153,6 @@ vector<string> Instance::get_post_formats() noexcept
     }
 
     return _post_formats;
-}
-
-Instance::ObtainToken::ObtainToken(Instance &instance)
-    : _instance{instance}
-    , _baseuri{instance.get_baseuri()}
-{
-    auto proxy{_instance.get_proxy()};
-    if (!proxy.empty())
-    {
-        CURLWrapper::set_proxy(proxy);
-    }
-
-    if (!_instance.get_access_token().empty())
-    {
-        CURLWrapper::set_access_token(_instance.get_access_token());
-    }
-    if (!_instance.get_cainfo().empty())
-    {
-        CURLWrapper::set_cainfo(_instance.get_cainfo());
-    }
 }
 
 answer_type Instance::ObtainToken::step_1(const string_view client_name,

@@ -64,16 +64,6 @@ CURLWrapper::~CURLWrapper() noexcept
     }
 }
 
-void CURLWrapper::set_proxy(const string_view proxy)
-{
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    CURLcode code{curl_easy_setopt(_connection, CURLOPT_PROXY, proxy.data())};
-    if (code != CURLE_OK)
-    {
-        throw CURLException{code, "Failed to set proxy", _curl_buffer_error};
-    }
-}
-
 answer_type CURLWrapper::make_request(const http_method &method, string uri,
                                       const parametermap &parameters)
 {
@@ -195,6 +185,36 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     }
 
     return answer;
+}
+
+void CURLWrapper::setup_connection_properties(string_view proxy,
+                                              string_view access_token,
+                                              string_view cainfo)
+{
+    if (!proxy.empty())
+    {
+        set_proxy(proxy);
+    }
+
+    if (!access_token.empty())
+    {
+        set_access_token(access_token);
+    }
+
+    if (!cainfo.empty())
+    {
+        set_cainfo(cainfo);
+    }
+}
+
+void CURLWrapper::set_proxy(const string_view proxy)
+{
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+    CURLcode code{curl_easy_setopt(_connection, CURLOPT_PROXY, proxy.data())};
+    if (code != CURLE_OK)
+    {
+        throw CURLException{code, "Failed to set proxy", _curl_buffer_error};
+    }
 }
 
 void CURLWrapper::set_access_token(const string_view access_token)
