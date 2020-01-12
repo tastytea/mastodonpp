@@ -61,7 +61,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    inline string_view get_hostname() const
+    inline string_view get_hostname() const noexcept
     {
         return _hostname;
     }
@@ -74,7 +74,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    inline string_view get_baseuri() const
+    inline string_view get_baseuri() const noexcept
     {
         return _baseuri;
     }
@@ -85,7 +85,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    inline string_view get_access_token() const
+    inline string_view get_access_token() const noexcept
     {
         return _access_token;
     }
@@ -115,7 +115,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    uint64_t get_max_chars();
+    uint64_t get_max_chars() noexcept;
 
     /*! @copydoc CURLWrapper::set_proxy(string_view)
      *
@@ -136,7 +136,7 @@ public:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    string_view get_proxy() const
+    string_view get_proxy() const noexcept
     {
         return _proxy;
     }
@@ -164,7 +164,7 @@ public:
      *
      *  @since  0.3.0
      */
-    vector<string> get_post_formats();
+    vector<string> get_post_formats() noexcept;
 
     /*!
      *  @brief  Set path to Certificate Authority (CA) bundle.
@@ -187,7 +187,7 @@ public:
      *
      *  @since  0.2.1
      */
-    string_view get_cainfo()
+    string_view get_cainfo() const noexcept
     {
         return _cainfo;
     }
