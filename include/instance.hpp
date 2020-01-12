@@ -151,19 +151,6 @@ public:
     }
 
     /*!
-     *  @brief  Returns the proxy string that was previously set.
-     *
-     *  Does not return the proxy if it was set from an environment variable.
-     *
-     *  @since  0.1.0
-     */
-    [[nodiscard]]
-    string_view get_proxy() const noexcept
-    {
-        return _proxy;
-    }
-
-    /*!
      *  @brief  Returns the NodeInfo of the instance.
      *
      *  Attempts to download the [NodeInfo]
@@ -200,18 +187,6 @@ public:
     {
         _cainfo = path;
         CURLWrapper::set_cainfo(path);
-    }
-
-    /*!
-     *  @brief  Returns the cainfo path that was previously set.
-     *
-     *  This is used when initializing a Connection.
-     *
-     *  @since  0.3.0
-     */
-    string_view get_cainfo() const noexcept
-    {
-        return _cainfo;
     }
 
     void set_useragent(const string_view useragent)
