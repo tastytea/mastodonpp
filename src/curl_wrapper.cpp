@@ -243,7 +243,7 @@ void CURLWrapper::set_access_token(const string_view access_token)
     debuglog << "Set authorization token.\n";
 }
 
-void CURLWrapper::set_cainfo(string_view path)
+void CURLWrapper::set_cainfo(const string_view path)
 {
     CURLcode code{curl_easy_setopt(_connection, CURLOPT_CAINFO, path.data())};
     if (code != CURLE_OK)
