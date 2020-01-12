@@ -65,13 +65,11 @@ SCENARIO ("mastopp::Instance")
         }
 
         THEN ("No exception is thrown")
-            AND_THEN ("get_proxy() returns the set value.")
             AND_THEN ("get_access_token() returns the set value.")
             AND_THEN ("get_hostname() returns the set value.")
             AND_THEN ("get_baseuri() returns the expected value.")
         {
             REQUIRE_FALSE(exception);
-            REQUIRE(instance.get_proxy() == proxy);
             REQUIRE(instance.get_access_token() == access_token);
             REQUIRE(instance.get_hostname() == hostname);
             REQUIRE(instance.get_baseuri() == (string("https://") += hostname));
