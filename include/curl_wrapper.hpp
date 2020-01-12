@@ -157,6 +157,7 @@ public:
      *
      *  @since  0.3.0
      */
+    [[nodiscard]]
     inline string escape_url(const string_view url) const
     {
         char *cbuf{curl_easy_escape(_connection, url.data(),
@@ -178,6 +179,7 @@ public:
      *
      *  @since  0.3.0
      */
+    [[nodiscard]]
     inline string unescape_url(const string_view url) const
     {
         char *cbuf{curl_easy_unescape(_connection, url.data(),
