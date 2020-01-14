@@ -146,9 +146,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a1564a42794ef7a9d170b725063ef504d inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">set_proxy</a> (string_view proxy)</td></tr>
 <tr class="memdesc:a1564a42794ef7a9d170b725063ef504d inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the proxy to use.  <a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">More...</a><br /></td></tr>
 <tr class="separator:a1564a42794ef7a9d170b725063ef504d inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a229cf9eae6bd03adfc2fdfdff62d88 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">set_access_token</a> (const string_view access_token)</td></tr>
-<tr class="memdesc:a7a229cf9eae6bd03adfc2fdfdff62d88 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set OAuth 2.0 Bearer Access Token.  <a href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">More...</a><br /></td></tr>
-<tr class="separator:a7a229cf9eae6bd03adfc2fdfdff62d88 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94aba6daedea376ccc20e5c983bd3358 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a94aba6daedea376ccc20e5c983bd3358">set_access_token</a> (string_view access_token)</td></tr>
+<tr class="memdesc:a94aba6daedea376ccc20e5c983bd3358 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set OAuth 2.0 Bearer Access Token.  <a href="classmastodonpp_1_1CURLWrapper.html#a94aba6daedea376ccc20e5c983bd3358">More...</a><br /></td></tr>
+<tr class="separator:a94aba6daedea376ccc20e5c983bd3358 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3f2bd4dea7c289d590fe19889360444 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">set_cainfo</a> (string_view path)</td></tr>
 <tr class="memdesc:af3f2bd4dea7c289d590fe19889360444 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set path to Certificate Authority (CA) bundle.  <a href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">More...</a><br /></td></tr>
 <tr class="separator:af3f2bd4dea7c289d590fe19889360444 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,8 +168,8 @@ Additional Inherited Members</h2></td></tr>
 <li>Get the authorization code from your user.</li>
 <li>Call <a class="el" href="classmastodonpp_1_1Instance_1_1ObtainToken.html#addda7f4e1ca4200235764707478f6d51" title="Creates a token via /oauth/token.">step_2()</a> with the code.</li>
 </ul>
-<p>Example: </p><div class="fragment"><div class="line"><a class="code" href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a> instance(<span class="stringliteral">&quot;example.com&quot;</span>, {});</div>
-<div class="line"><a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html">mastodonpp::Instance::ObtainToken</a> token(instance);</div>
+<p>Example: </p><div class="fragment"><div class="line"><a class="code" href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a> instance{<span class="stringliteral">&quot;example.com&quot;</span>, {}};</div>
+<div class="line"><a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html">mastodonpp::Instance::ObtainToken</a> token{instance};</div>
 <div class="line"><span class="keyword">auto</span> answer{token.step1(<span class="stringliteral">&quot;Good program&quot;</span>, <span class="stringliteral">&quot;read:blocks read:mutes&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)};</div>
 <div class="line"><span class="keywordflow">if</span> (answer)</div>
 <div class="line">{</div>

@@ -139,9 +139,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a1564a42794ef7a9d170b725063ef504d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">set_proxy</a> (string_view proxy)</td></tr>
 <tr class="memdesc:a1564a42794ef7a9d170b725063ef504d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the proxy to use.  <a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">More...</a><br /></td></tr>
 <tr class="separator:a1564a42794ef7a9d170b725063ef504d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a229cf9eae6bd03adfc2fdfdff62d88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">set_access_token</a> (const string_view access_token)</td></tr>
-<tr class="memdesc:a7a229cf9eae6bd03adfc2fdfdff62d88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set OAuth 2.0 Bearer Access Token.  <a href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">More...</a><br /></td></tr>
-<tr class="separator:a7a229cf9eae6bd03adfc2fdfdff62d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94aba6daedea376ccc20e5c983bd3358"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a94aba6daedea376ccc20e5c983bd3358">set_access_token</a> (string_view access_token)</td></tr>
+<tr class="memdesc:a94aba6daedea376ccc20e5c983bd3358"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set OAuth 2.0 Bearer Access Token.  <a href="classmastodonpp_1_1CURLWrapper.html#a94aba6daedea376ccc20e5c983bd3358">More...</a><br /></td></tr>
+<tr class="separator:a94aba6daedea376ccc20e5c983bd3358"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3f2bd4dea7c289d590fe19889360444"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">set_cainfo</a> (string_view path)</td></tr>
 <tr class="memdesc:af3f2bd4dea7c289d590fe19889360444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set path to Certificate Authority (CA) bundle.  <a href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">More...</a><br /></td></tr>
 <tr class="separator:af3f2bd4dea7c289d590fe19889360444"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -658,8 +658,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7a229cf9eae6bd03adfc2fdfdff62d88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a229cf9eae6bd03adfc2fdfdff62d88">&#9670;&nbsp;</a></span>set_access_token()</h2>
+<a id="a94aba6daedea376ccc20e5c983bd3358"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94aba6daedea376ccc20e5c983bd3358">&#9670;&nbsp;</a></span>set_access_token()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -670,7 +670,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void mastodonpp::CURLWrapper::set_access_token </td>
           <td>(</td>
-          <td class="paramtype">const string_view&#160;</td>
+          <td class="paramtype">string_view&#160;</td>
           <td class="paramname"><em>access_token</em></td><td>)</td>
           <td></td>
         </tr>
@@ -738,12 +738,13 @@ Protected Attributes</h2></td></tr>
 <p>Set path to Certificate Authority (CA) bundle. </p>
 <dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
 <div class="fragment"><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;{</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    CURLcode code{curl_easy_setopt(_connection, CURLOPT_CAINFO, path.data())};</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">if</span> (code != CURLE_OK)</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">throw</span> CURLException{code, <span class="stringliteral">&quot;Could not set CA info.&quot;</span>, _curl_buffer_error};</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="comment">// NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    CURLcode code{curl_easy_setopt(_connection, CURLOPT_CAINFO, path.data())};</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">if</span> (code != CURLE_OK)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">throw</span> CURLException{code, <span class="stringliteral">&quot;Could not set CA info.&quot;</span>, _curl_buffer_error};</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -817,17 +818,17 @@ Protected Attributes</h2></td></tr>
 
 <p>Sets the User-Agent. </p>
 <dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;{</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="comment">// NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    CURLcode code{curl_easy_setopt(_connection, CURLOPT_USERAGENT,</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                   useragent.data())};</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">if</span> (code != CURLE_OK)</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">throw</span> CURLException{code, <span class="stringliteral">&quot;Failed to set User-Agent&quot;</span>,</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                _curl_buffer_error};</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    }</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    debuglog &lt;&lt; <span class="stringliteral">&quot;Set User-Agent to: &quot;</span> &lt;&lt; useragent &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;{</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="comment">// NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    CURLcode code{curl_easy_setopt(_connection, CURLOPT_USERAGENT,</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                   useragent.data())};</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">if</span> (code != CURLE_OK)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">throw</span> CURLException{code, <span class="stringliteral">&quot;Failed to set User-Agent&quot;</span>,</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                _curl_buffer_error};</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    debuglog &lt;&lt; <span class="stringliteral">&quot;Set User-Agent to: &quot;</span> &lt;&lt; useragent &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -880,7 +881,7 @@ Protected Attributes</h2></td></tr>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">if</span> (!access_token.empty())</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    {</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">set_access_token</a>(access_token);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a94aba6daedea376ccc20e5c983bd3358">set_access_token</a>(access_token);</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">if</span> (!cainfo.empty())</div>
@@ -972,10 +973,10 @@ Protected Attributes</h2></td></tr>
 <li>src/curl_wrapper.cpp</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a7a229cf9eae6bd03adfc2fdfdff62d88"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">mastodonpp::CURLWrapper::set_access_token</a></div><div class="ttdeci">void set_access_token(const string_view access_token)</div><div class="ttdoc">Set OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:226</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a1564a42794ef7a9d170b725063ef504d"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">mastodonpp::CURLWrapper::set_proxy</a></div><div class="ttdeci">void set_proxy(string_view proxy)</div><div class="ttdoc">Set the proxy to use.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:216</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_af3f2bd4dea7c289d590fe19889360444"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">mastodonpp::CURLWrapper::set_cainfo</a></div><div class="ttdeci">void set_cainfo(string_view path)</div><div class="ttdoc">Set path to Certificate Authority (CA) bundle.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:252</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_ae3b1445f9b94b1f7677d3cac6d538612"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#ae3b1445f9b94b1f7677d3cac6d538612">mastodonpp::CURLWrapper::set_useragent</a></div><div class="ttdeci">void set_useragent(string_view useragent)</div><div class="ttdoc">Sets the User-Agent.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:261</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_ae3b1445f9b94b1f7677d3cac6d538612"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#ae3b1445f9b94b1f7677d3cac6d538612">mastodonpp::CURLWrapper::set_useragent</a></div><div class="ttdeci">void set_useragent(string_view useragent)</div><div class="ttdoc">Sets the User-Agent.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:262</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a94aba6daedea376ccc20e5c983bd3358"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a94aba6daedea376ccc20e5c983bd3358">mastodonpp::CURLWrapper::set_access_token</a></div><div class="ttdeci">void set_access_token(string_view access_token)</div><div class="ttdoc">Set OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:226</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
