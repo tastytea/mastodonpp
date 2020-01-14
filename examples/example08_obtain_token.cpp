@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
         // Create an “Application” (/api/v1/apps),
         // and get URI for the authorization code (/oauth/authorize).
         auto answer{token.step_1("Testclient", "read:blocks read:mutes",
-                                 "https://tastytea.de/")};
+                                 "https://example.com/")};
         if (!answer)
         {
             handle_error(answer);
