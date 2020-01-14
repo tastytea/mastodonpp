@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['parametermap_40',['parametermap',['../namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6',1,'mastodonpp']]],
-  ['parameterpair_41',['parameterpair',['../namespacemastodonpp.html#a63b360bdefd56276e903619eb6a76049',1,'mastodonpp']]],
-  ['patch_42',['patch',['../classmastodonpp_1_1Connection.html#a10f838c74d2ccc83f64f29e2aad2f157',1,'mastodonpp::Connection::patch(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)'],['../classmastodonpp_1_1Connection.html#a3f1e0440b68a44cf678bfdbe33295197',1,'mastodonpp::Connection::patch(const endpoint_variant &amp;endpoint)']]],
-  ['pleroma_43',['pleroma',['../classmastodonpp_1_1API.html#a146a96ee58a8829042f406b9d42cf37e',1,'mastodonpp::API']]],
-  ['post_44',['post',['../classmastodonpp_1_1Connection.html#ad7cebeeef7c285ff4666dc6850f20164',1,'mastodonpp::Connection::post(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)'],['../classmastodonpp_1_1Connection.html#af27eb5d94f5a0e39a703988fdcc54173',1,'mastodonpp::Connection::post(const endpoint_variant &amp;endpoint)']]],
-  ['put_45',['put',['../classmastodonpp_1_1Connection.html#ac5afc2e5d419c8bee3a8994ce0a940aa',1,'mastodonpp::Connection::put(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)'],['../classmastodonpp_1_1Connection.html#ad05ff1b33460bfedf0b46f4e5e755399',1,'mastodonpp::Connection::put(const endpoint_variant &amp;endpoint)']]]
+  ['oauth_38',['oauth',['../classmastodonpp_1_1API.html#a36332bb17e8603f0ba40b63b0b604bcc',1,'mastodonpp::API']]],
+  ['obtaintoken_39',['ObtainToken',['../classmastodonpp_1_1Instance_1_1ObtainToken.html',1,'mastodonpp::Instance']]],
+  ['operator_20bool_40',['operator bool',['../structmastodonpp_1_1answer__type.html#aea7a4e100d215562a1d6b00524f99103',1,'mastodonpp::answer_type']]],
+  ['operator_20string_5fview_41',['operator string_view',['../structmastodonpp_1_1answer__type.html#a6c90b439bcf65b4a4a655e9213b14a0f',1,'mastodonpp::answer_type']]],
+  ['operator_3c_3c_42',['operator&lt;&lt;',['../structmastodonpp_1_1answer__type.html#a0154563855aee896209319101c217106',1,'mastodonpp::answer_type::operator&lt;&lt;()'],['../namespacemastodonpp.html#a9a5182698aabe03eb3a682b40053083d',1,'mastodonpp::operator&lt;&lt;()']]],
+  ['operator_3d_43',['operator=',['../classmastodonpp_1_1CURLWrapper.html#a5f29b7f4d0b58f70bc96f362cdaa4d0a',1,'mastodonpp::CURLWrapper::operator=(const CURLWrapper &amp;other)=delete'],['../classmastodonpp_1_1CURLWrapper.html#a506cb49c00a63ef4b9d51d0d52c203dc',1,'mastodonpp::CURLWrapper::operator=(CURLWrapper &amp;&amp;other) noexcept=delete']]],
+  ['other_44',['other',['../classmastodonpp_1_1API.html#abd51b671f4bd4f6021d8044e281d4c76',1,'mastodonpp::API']]]
 ];

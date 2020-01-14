@@ -90,52 +90,53 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define MASTODONPP_ANSWER_HPP</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> std::uint8_t;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> std::uint16_t;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> std::string;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> std::string_view;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html">   40</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">   50</a></span>&#160;    uint8_t <a class="code" href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">curl_error_code</a>{0};</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#adda74145891e444f223ccdfe623af726">   57</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="structmastodonpp_1_1answer__type.html#adda74145891e444f223ccdfe623af726">error_message</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d">   64</a></span>&#160;    uint16_t <a class="code" href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d">http_status</a>{0};</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">   71</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">headers</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38">   78</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38">body</a>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> bool() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> string_view() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">friend</span> std::ostream &amp;<a class="code" href="structmastodonpp_1_1answer__type.html#a2de658b17d3b101a269c666defdd9336">operator &lt;&lt;</a>(std::ostream &amp;out,</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> &amp;answer);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    string_view <a class="code" href="structmastodonpp_1_1answer__type.html#a65f4ba85d95c15ebc07377a2b74959da">get_header</a>(string_view field) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_ANSWER_HPP</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> std::uint8_t;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> std::uint16_t;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> std::ostream;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> std::string_view;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html">   42</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">   52</a></span>&#160;    uint8_t <a class="code" href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">curl_error_code</a>{0};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#adda74145891e444f223ccdfe623af726">   59</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="structmastodonpp_1_1answer__type.html#adda74145891e444f223ccdfe623af726">error_message</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d">   66</a></span>&#160;    uint16_t <a class="code" href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d">http_status</a>{0};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">   73</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">headers</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38">   80</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38">body</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> bool() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> string_view() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">friend</span> ostream &amp;<a class="code" href="structmastodonpp_1_1answer__type.html#a0154563855aee896209319101c217106">operator &lt;&lt;</a>(ostream &amp;out, <span class="keyword">const</span> <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> &amp;answer);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    string_view <a class="code" href="structmastodonpp_1_1answer__type.html#a65f4ba85d95c15ebc07377a2b74959da">get_header</a>(string_view field) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;};</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_ANSWER_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructmastodonpp_1_1answer__type_html_ab84b7094800ffe32d34b33085dcef9aa"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">mastodonpp::answer_type::headers</a></div><div class="ttdeci">string headers</div><div class="ttdoc">The headers of the response from the server.</div><div class="ttdef"><b>Definition:</b> answer.hpp:71</div></div>
-<div class="ttc" id="astructmastodonpp_1_1answer__type_html_a7c5582c4500034c0ea36ab1694944139"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">mastodonpp::answer_type::curl_error_code</a></div><div class="ttdeci">uint8_t curl_error_code</div><div class="ttdoc">The error code returned by libcurl.</div><div class="ttdef"><b>Definition:</b> answer.hpp:50</div></div>
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html_a0154563855aee896209319101c217106"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a0154563855aee896209319101c217106">mastodonpp::answer_type::operator&lt;&lt;</a></div><div class="ttdeci">friend ostream &amp; operator&lt;&lt;(ostream &amp;out, const answer_type &amp;answer)</div><div class="ttdoc">Returns body as std::ostream.</div><div class="ttdef"><b>Definition:</b> answer.cpp:38</div></div>
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html_ab84b7094800ffe32d34b33085dcef9aa"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#ab84b7094800ffe32d34b33085dcef9aa">mastodonpp::answer_type::headers</a></div><div class="ttdeci">string headers</div><div class="ttdoc">The headers of the response from the server.</div><div class="ttdef"><b>Definition:</b> answer.hpp:73</div></div>
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html_a7c5582c4500034c0ea36ab1694944139"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">mastodonpp::answer_type::curl_error_code</a></div><div class="ttdeci">uint8_t curl_error_code</div><div class="ttdoc">The error code returned by libcurl.</div><div class="ttdef"><b>Definition:</b> answer.hpp:52</div></div>
 <div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> answer.cpp:22</div></div>
-<div class="ttc" id="astructmastodonpp_1_1answer__type_html_a9da206eb4954ff15402083379909cc38"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38">mastodonpp::answer_type::body</a></div><div class="ttdeci">string body</div><div class="ttdoc">The response from the server, usually JSON.</div><div class="ttdef"><b>Definition:</b> answer.hpp:78</div></div>
-<div class="ttc" id="astructmastodonpp_1_1answer__type_html_adda74145891e444f223ccdfe623af726"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#adda74145891e444f223ccdfe623af726">mastodonpp::answer_type::error_message</a></div><div class="ttdeci">string error_message</div><div class="ttdoc">The error message.</div><div class="ttdef"><b>Definition:</b> answer.hpp:57</div></div>
-<div class="ttc" id="astructmastodonpp_1_1answer__type_html"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html">mastodonpp::answer_type</a></div><div class="ttdoc">Return type for Requests.</div><div class="ttdef"><b>Definition:</b> answer.hpp:40</div></div>
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html_a9da206eb4954ff15402083379909cc38"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38">mastodonpp::answer_type::body</a></div><div class="ttdeci">string body</div><div class="ttdoc">The response from the server, usually JSON.</div><div class="ttdef"><b>Definition:</b> answer.hpp:80</div></div>
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html_adda74145891e444f223ccdfe623af726"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#adda74145891e444f223ccdfe623af726">mastodonpp::answer_type::error_message</a></div><div class="ttdeci">string error_message</div><div class="ttdoc">The error message.</div><div class="ttdef"><b>Definition:</b> answer.hpp:59</div></div>
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html">mastodonpp::answer_type</a></div><div class="ttdoc">Return type for Requests.</div><div class="ttdef"><b>Definition:</b> answer.hpp:42</div></div>
 <div class="ttc" id="astructmastodonpp_1_1answer__type_html_a65f4ba85d95c15ebc07377a2b74959da"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a65f4ba85d95c15ebc07377a2b74959da">mastodonpp::answer_type::get_header</a></div><div class="ttdeci">string_view get_header(string_view field) const</div><div class="ttdoc">Returns the value of a header field.</div><div class="ttdef"><b>Definition:</b> answer.cpp:44</div></div>
-<div class="ttc" id="astructmastodonpp_1_1answer__type_html_a2de658b17d3b101a269c666defdd9336"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a2de658b17d3b101a269c666defdd9336">mastodonpp::answer_type::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const answer_type &amp;answer)</div><div class="ttdoc">Returns body as std::ostream.</div><div class="ttdef"><b>Definition:</b> answer.cpp:38</div></div>
-<div class="ttc" id="astructmastodonpp_1_1answer__type_html_a0716af5033e02551937187a149c3f52d"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d">mastodonpp::answer_type::http_status</a></div><div class="ttdeci">uint16_t http_status</div><div class="ttdoc">HTTP status code.</div><div class="ttdef"><b>Definition:</b> answer.hpp:64</div></div>
+<div class="ttc" id="astructmastodonpp_1_1answer__type_html_a0716af5033e02551937187a149c3f52d"><div class="ttname"><a href="structmastodonpp_1_1answer__type.html#a0716af5033e02551937187a149c3f52d">mastodonpp::answer_type::http_status</a></div><div class="ttdeci">uint16_t http_status</div><div class="ttdoc">HTTP status code.</div><div class="ttdef"><b>Definition:</b> answer.hpp:66</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

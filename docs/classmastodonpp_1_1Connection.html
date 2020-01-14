@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">mastodonpp
-   &#160;<span id="projectnumber">0.2.0</span>
+   &#160;<span id="projectnumber">0.3.0</span>
    </div>
   </td>
  </tr>
@@ -154,9 +154,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b7aaf03245a0730eeb464802168aded inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">CURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a2b7aaf03245a0730eeb464802168aded">get_curl_easy_handle</a> ()</td></tr>
 <tr class="memdesc:a2b7aaf03245a0730eeb464802168aded inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns pointer to the CURL easy handle.  <a href="classmastodonpp_1_1CURLWrapper.html#a2b7aaf03245a0730eeb464802168aded">More...</a><br /></td></tr>
 <tr class="separator:a2b7aaf03245a0730eeb464802168aded inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1564a42794ef7a9d170b725063ef504d inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">set_proxy</a> (string_view proxy)</td></tr>
-<tr class="memdesc:a1564a42794ef7a9d170b725063ef504d inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the proxy to use.  <a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">More...</a><br /></td></tr>
-<tr class="separator:a1564a42794ef7a9d170b725063ef504d inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a543a0821a275dfce1ad7a0e68b17f inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a11a543a0821a275dfce1ad7a0e68b17f">escape_url</a> (const string_view url) const</td></tr>
+<tr class="memdesc:a11a543a0821a275dfce1ad7a0e68b17f inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">URL encodes the given string.  <a href="classmastodonpp_1_1CURLWrapper.html#a11a543a0821a275dfce1ad7a0e68b17f">More...</a><br /></td></tr>
+<tr class="separator:a11a543a0821a275dfce1ad7a0e68b17f inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed6d09b5c32d71276a851ddf321b5891 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#aed6d09b5c32d71276a851ddf321b5891">unescape_url</a> (const string_view url) const</td></tr>
+<tr class="memdesc:aed6d09b5c32d71276a851ddf321b5891 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">URL decodes the given string .  <a href="classmastodonpp_1_1CURLWrapper.html#aed6d09b5c32d71276a851ddf321b5891">More...</a><br /></td></tr>
+<tr class="separator:aed6d09b5c32d71276a851ddf321b5891 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0059ecb78b53c4b3c941b19f8dc897f7 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a0059ecb78b53c4b3c941b19f8dc897f7">setup_connection_properties</a> (string_view proxy, string_view access_token, string_view cainfo, string_view useragent)</td></tr>
+<tr class="memdesc:a0059ecb78b53c4b3c941b19f8dc897f7 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set some properties of the connection.  <a href="classmastodonpp_1_1CURLWrapper.html#a0059ecb78b53c4b3c941b19f8dc897f7">More...</a><br /></td></tr>
+<tr class="separator:a0059ecb78b53c4b3c941b19f8dc897f7 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -170,9 +176,18 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a892a4fc3d048798fa8e2584545b91861 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a892a4fc3d048798fa8e2584545b91861">cancel_stream</a> ()</td></tr>
 <tr class="memdesc:a892a4fc3d048798fa8e2584545b91861 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cancel the stream.  <a href="classmastodonpp_1_1CURLWrapper.html#a892a4fc3d048798fa8e2584545b91861">More...</a><br /></td></tr>
 <tr class="separator:a892a4fc3d048798fa8e2584545b91861 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1564a42794ef7a9d170b725063ef504d inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">set_proxy</a> (string_view proxy)</td></tr>
+<tr class="memdesc:a1564a42794ef7a9d170b725063ef504d inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the proxy to use.  <a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">More...</a><br /></td></tr>
+<tr class="separator:a1564a42794ef7a9d170b725063ef504d inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a229cf9eae6bd03adfc2fdfdff62d88 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">set_access_token</a> (const string_view access_token)</td></tr>
 <tr class="memdesc:a7a229cf9eae6bd03adfc2fdfdff62d88 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set OAuth 2.0 Bearer Access Token.  <a href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">More...</a><br /></td></tr>
 <tr class="separator:a7a229cf9eae6bd03adfc2fdfdff62d88 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3f2bd4dea7c289d590fe19889360444 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">set_cainfo</a> (string_view path)</td></tr>
+<tr class="memdesc:af3f2bd4dea7c289d590fe19889360444 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set path to Certificate Authority (CA) bundle.  <a href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">More...</a><br /></td></tr>
+<tr class="separator:af3f2bd4dea7c289d590fe19889360444 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b1445f9b94b1f7677d3cac6d538612 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top"><a id="ae3b1445f9b94b1f7677d3cac6d538612"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_useragent</b> (string_view useragent)</td></tr>
+<tr class="separator:ae3b1445f9b94b1f7677d3cac6d538612 inherit pro_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classmastodonpp_1_1CURLWrapper"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classmastodonpp_1_1CURLWrapper')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></td></tr>
 <tr class="memitem:aeb3171d955832b8062dc02b4ac67d195 inherit pro_attribs_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a></td></tr>
 <tr class="memdesc:aeb3171d955832b8062dc02b4ac67d195 inherit pro_attribs_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for <a class="el" href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95" title="Returns a reference to the buffer libcurl writes into.">get_buffer</a> a.k.a. _curl_buffer_body.  <a href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">More...</a><br /></td></tr>
@@ -201,7 +216,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -214,20 +229,11 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    : _instance{instance}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    , _baseuri{instance.get_baseuri()}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">auto</span> proxy{_instance.<a class="code" href="classmastodonpp_1_1Instance.html#a1d84ff4ba06446a41287f90c373368bf">get_proxy</a>()};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span> (!proxy.empty())</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">CURLWrapper::set_proxy</a>(proxy);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">if</span> (!_instance.<a class="code" href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">get_access_token</a>().empty())</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">CURLWrapper::set_access_token</a>(_instance.<a class="code" href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">get_access_token</a>());</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        : _instance{instance}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        , _baseuri{instance.get_baseuri()}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        _instance.<a class="code" href="classmastodonpp_1_1Instance.html#aa486bc453907439e33f8402f270ef384">copy_connection_properties</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -258,9 +264,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Cancel the stream. </p>
 <p>The stream will be cancelled, usually whithin a second. The <a class="el" href="structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139">curl_error_code </a> of the answer will be set to 42 (<code>CURLE_ABORTED_BY_CALLBACK</code>).</p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a892a4fc3d048798fa8e2584545b91861">CURLWrapper::cancel_stream</a>();</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    {</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#a892a4fc3d048798fa8e2584545b91861">CURLWrapper::cancel_stream</a>();</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -296,9 +302,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#a095f752558410fab3dee6782e03a0fdb">del</a>(endpoint, {});</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#a095f752558410fab3dee6782e03a0fdb">del</a>(endpoint, {});</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,10 +343,10 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::DELETE,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::DELETE,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -377,9 +383,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#ade24a99769313ee15c406d97e9543cba">get</a>(endpoint, {});</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#ade24a99769313ee15c406d97e9543cba">get</a>(endpoint, {});</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -423,10 +429,10 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::GET,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::GET,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -447,33 +453,35 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get new stream events. </p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a>.lock();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">auto</span> &amp;buffer{<a class="code" href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95">get_buffer</a>()};</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    vector&lt;event_type&gt; events;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">size_t</span> pos{0};</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">while</span> ((pos = buffer.find(<span class="stringliteral">&quot;event: &quot;</span>)) != string::npos)</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> endpos{buffer.find(<span class="stringliteral">&quot;\n\n&quot;</span>, pos)};</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">if</span> (endpos == string::npos)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        event_type event;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        pos += 7;               <span class="comment">// Length of &quot;event: &quot;.</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keyword">event</span>.type = buffer.substr(pos, buffer.find(<span class="charliteral">&#39;\n&#39;</span>, pos) - pos);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        pos = buffer.find(<span class="stringliteral">&quot;data: &quot;</span>) + 6;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">event</span>.data = buffer.substr(pos, endpos - pos);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        events.push_back(event);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        buffer.erase(0, endpos);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a>.unlock();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> events;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a>.lock();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">auto</span> &amp;buffer{<a class="code" href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95">get_buffer</a>()};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    vector&lt;event_type&gt; events;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">size_t</span> pos{0};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    constexpr string_view search_event{<span class="stringliteral">&quot;event: &quot;</span>};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">while</span> ((pos = buffer.find(search_event)) != string::npos)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> endpos{buffer.find(<span class="stringliteral">&quot;\n\n&quot;</span>, pos)};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span> (endpos == string::npos)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        event_type event;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        pos += search_event.size();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">event</span>.type = buffer.substr(pos, buffer.find(<span class="charliteral">&#39;\n&#39;</span>, pos) - pos);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        constexpr string_view search_data{<span class="stringliteral">&quot;data: &quot;</span>};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        pos = buffer.find(search_data) + search_data.size();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">event</span>.data = buffer.substr(pos, endpos - pos);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        events.push_back(event);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        buffer.erase(0, endpos);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a>.unlock();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> events;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -496,14 +504,14 @@ Additional Inherited Members</h2></td></tr>
 <p>Note that the last event is not necessarily complete, it could happen that you are calling this function mid-transfer. You have to check the data integrity yourself.</p>
 <p>Using <a class="el" href="classmastodonpp_1_1Connection.html#a7e4a50fb73aa50b027d9a0822cfde318" title="Get new stream events.">get_new_events()</a> instead is recommended.</p>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a>.lock();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">auto</span> &amp;buffer{<a class="code" href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95">get_buffer</a>()};</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">auto</span> buffer_copy{buffer};</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    buffer.clear();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a>.unlock();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> buffer_copy;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a>.lock();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">auto</span> &amp;buffer{<a class="code" href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95">get_buffer</a>()};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">auto</span> buffer_copy{buffer};</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    buffer.clear();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">buffer_mutex</a>.unlock();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> buffer_copy;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -539,9 +547,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#a10f838c74d2ccc83f64f29e2aad2f157">patch</a>(endpoint, {});</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#a10f838c74d2ccc83f64f29e2aad2f157">patch</a>(endpoint, {});</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -580,10 +588,10 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::PATCH,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::PATCH,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -619,9 +627,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#ad7cebeeef7c285ff4666dc6850f20164">post</a>(endpoint, {});</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#ad7cebeeef7c285ff4666dc6850f20164">post</a>(endpoint, {});</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -667,10 +675,10 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.1.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::POST,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::POST,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -706,9 +714,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    {</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#ac5afc2e5d419c8bee3a8994ce0a940aa">put</a>(endpoint, {});</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1Connection.html#ac5afc2e5d419c8bee3a8994ce0a940aa">put</a>(endpoint, {});</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -747,10 +755,10 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::PUT,</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">make_request</a>(http_method::PUT,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                        endpoint_to_uri(endpoint), parameters);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -759,19 +767,16 @@ Additional Inherited Members</h2></td></tr>
 <li>src/connection.cpp</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1Connection_html_ade24a99769313ee15c406d97e9543cba"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ade24a99769313ee15c406d97e9543cba">mastodonpp::Connection::get</a></div><div class="ttdeci">answer_type get(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP GET call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:50</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a1d84ff4ba06446a41287f90c373368bf"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a1d84ff4ba06446a41287f90c373368bf">mastodonpp::Instance::get_proxy</a></div><div class="ttdeci">string_view get_proxy() const</div><div class="ttdoc">Returns the proxy string that was previously set.</div><div class="ttdef"><b>Definition:</b> instance.hpp:133</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a7a229cf9eae6bd03adfc2fdfdff62d88"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">mastodonpp::CURLWrapper::set_access_token</a></div><div class="ttdeci">void set_access_token(const string_view access_token)</div><div class="ttdoc">Set OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:200</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html_ab59e3ce5f1d5c00110465c6f562a1574"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#ab59e3ce5f1d5c00110465c6f562a1574">mastodonpp::Instance::get_access_token</a></div><div class="ttdeci">string_view get_access_token() const</div><div class="ttdoc">Returns the access token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:85</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Connection_html_ac5afc2e5d419c8bee3a8994ce0a940aa"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ac5afc2e5d419c8bee3a8994ce0a940aa">mastodonpp::Connection::put</a></div><div class="ttdeci">answer_type put(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP PUT call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:71</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_aeb3171d955832b8062dc02b4ac67d195"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">mastodonpp::CURLWrapper::buffer_mutex</a></div><div class="ttdeci">mutex buffer_mutex</div><div class="ttdoc">Mutex for get_buffer a.k.a. _curl_buffer_body.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:169</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a04b3919cfb38716c5a032337e442db95"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95">mastodonpp::CURLWrapper::get_buffer</a></div><div class="ttdeci">string &amp; get_buffer()</div><div class="ttdoc">Returns a reference to the buffer libcurl writes into.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:190</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Connection_html_a095f752558410fab3dee6782e03a0fdb"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#a095f752558410fab3dee6782e03a0fdb">mastodonpp::Connection::del</a></div><div class="ttdeci">answer_type del(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP DELETE call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:78</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a1564a42794ef7a9d170b725063ef504d"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">mastodonpp::CURLWrapper::set_proxy</a></div><div class="ttdeci">void set_proxy(string_view proxy)</div><div class="ttdoc">Set the proxy to use.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:67</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Connection_html_a10f838c74d2ccc83f64f29e2aad2f157"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#a10f838c74d2ccc83f64f29e2aad2f157">mastodonpp::Connection::patch</a></div><div class="ttdeci">answer_type patch(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP PATCH call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:64</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Connection_html_ad7cebeeef7c285ff4666dc6850f20164"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ad7cebeeef7c285ff4666dc6850f20164">mastodonpp::Connection::post</a></div><div class="ttdeci">answer_type post(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP POST call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:57</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_adc8808c3fad5397176f6755b09ee0be6"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, string uri, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:77</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a892a4fc3d048798fa8e2584545b91861"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a892a4fc3d048798fa8e2584545b91861">mastodonpp::CURLWrapper::cancel_stream</a></div><div class="ttdeci">void cancel_stream()</div><div class="ttdoc">Cancel the stream.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:204</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html_ade24a99769313ee15c406d97e9543cba"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ade24a99769313ee15c406d97e9543cba">mastodonpp::Connection::get</a></div><div class="ttdeci">answer_type get(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP GET call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:34</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html_ac5afc2e5d419c8bee3a8994ce0a940aa"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ac5afc2e5d419c8bee3a8994ce0a940aa">mastodonpp::Connection::put</a></div><div class="ttdeci">answer_type put(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP PUT call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:55</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_aeb3171d955832b8062dc02b4ac67d195"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195">mastodonpp::CURLWrapper::buffer_mutex</a></div><div class="ttdeci">mutex buffer_mutex</div><div class="ttdoc">Mutex for get_buffer a.k.a. _curl_buffer_body.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:175</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a04b3919cfb38716c5a032337e442db95"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a04b3919cfb38716c5a032337e442db95">mastodonpp::CURLWrapper::get_buffer</a></div><div class="ttdeci">string &amp; get_buffer()</div><div class="ttdoc">Returns a reference to the buffer libcurl writes into.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:196</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html_a095f752558410fab3dee6782e03a0fdb"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#a095f752558410fab3dee6782e03a0fdb">mastodonpp::Connection::del</a></div><div class="ttdeci">answer_type del(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP DELETE call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:62</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html_a10f838c74d2ccc83f64f29e2aad2f157"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#a10f838c74d2ccc83f64f29e2aad2f157">mastodonpp::Connection::patch</a></div><div class="ttdeci">answer_type patch(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP PATCH call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:48</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Connection_html_ad7cebeeef7c285ff4666dc6850f20164"><div class="ttname"><a href="classmastodonpp_1_1Connection.html#ad7cebeeef7c285ff4666dc6850f20164">mastodonpp::Connection::post</a></div><div class="ttdeci">answer_type post(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP POST call with parameters.</div><div class="ttdef"><b>Definition:</b> connection.cpp:41</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_aa486bc453907439e33f8402f270ef384"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#aa486bc453907439e33f8402f270ef384">mastodonpp::Instance::copy_connection_properties</a></div><div class="ttdeci">void copy_connection_properties(CURLWrapper &amp;curlwrapper)</div><div class="ttdoc">Set the properties of the connection of the calling class up.</div><div class="ttdef"><b>Definition:</b> instance.hpp:74</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_adc8808c3fad5397176f6755b09ee0be6"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, string uri, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:67</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a892a4fc3d048798fa8e2584545b91861"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a892a4fc3d048798fa8e2584545b91861">mastodonpp::CURLWrapper::cancel_stream</a></div><div class="ttdeci">void cancel_stream()</div><div class="ttdoc">Cancel the stream.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:210</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['set_5faccess_5ftoken_88',['set_access_token',['../classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88',1,'mastodonpp::CURLWrapper::set_access_token()'],['../classmastodonpp_1_1Instance.html#a1e606235a69d150b59bd90c78069de22',1,'mastodonpp::Instance::set_access_token()']]],
-  ['set_5fproxy_89',['set_proxy',['../classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d',1,'mastodonpp::CURLWrapper::set_proxy()'],['../classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5',1,'mastodonpp::Instance::set_proxy()']]]
+  ['operator_20bool_97',['operator bool',['../structmastodonpp_1_1answer__type.html#aea7a4e100d215562a1d6b00524f99103',1,'mastodonpp::answer_type']]],
+  ['operator_20string_5fview_98',['operator string_view',['../structmastodonpp_1_1answer__type.html#a6c90b439bcf65b4a4a655e9213b14a0f',1,'mastodonpp::answer_type']]],
+  ['operator_3c_3c_99',['operator&lt;&lt;',['../namespacemastodonpp.html#a9a5182698aabe03eb3a682b40053083d',1,'mastodonpp']]],
+  ['operator_3d_100',['operator=',['../classmastodonpp_1_1CURLWrapper.html#a5f29b7f4d0b58f70bc96f362cdaa4d0a',1,'mastodonpp::CURLWrapper::operator=(const CURLWrapper &amp;other)=delete'],['../classmastodonpp_1_1CURLWrapper.html#a506cb49c00a63ef4b9d51d0d52c203dc',1,'mastodonpp::CURLWrapper::operator=(CURLWrapper &amp;&amp;other) noexcept=delete']]]
 ];

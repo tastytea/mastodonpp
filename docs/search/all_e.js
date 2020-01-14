@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['what_52',['what',['../classmastodonpp_1_1CURLException.html#aa5d6aaec95758bc7db42ef1ee8831ecc',1,'mastodonpp::CURLException']]]
+  ['unescape_5furl_60',['unescape_url',['../classmastodonpp_1_1CURLWrapper.html#aed6d09b5c32d71276a851ddf321b5891',1,'mastodonpp::CURLWrapper']]]
 ];
