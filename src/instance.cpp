@@ -53,19 +53,16 @@ uint64_t Instance::get_max_chars() noexcept
 
         _max_chars = [&answer]
         {
-            auto &body{answer.body};
-            size_t pos_start{body.find("max_toot_chars")};
-            if (pos_start == string::npos)
-            {
-                debuglog << "max_toot_chars not found.\n";
-                return default_max_chars;
-            }
-            pos_start = body.find(':', pos_start) + 1;
-            const size_t pos_end{body.find(',', pos_start)};
+            const regex re_chars{R"("max_toot_chars"\s*:\s*([^"]+))"};
+            smatch match;
 
-            const auto max_toot_chars{body.substr(pos_start,
-                                                  pos_end - pos_start)};
-            return static_cast<uint64_t>(stoull(max_toot_chars));
+            if (regex_search(answer.body, match, re_chars))
+            {
+                return static_cast<uint64_t>(stoull(match[1].str()));
+            }
+
+            debuglog << "max_toot_chars not found.\n";
+            return default_max_chars;
         }();
         debuglog << "Set _max_chars to: " << _max_chars << '\n';
     }
