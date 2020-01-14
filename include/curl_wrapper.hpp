@@ -229,7 +229,7 @@ protected:
      *
      *  @since  0.1.0
      */
-    void set_access_token(const string_view access_token);
+    void set_access_token(string_view access_token);
 
 
     /*!
