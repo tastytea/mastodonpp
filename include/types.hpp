@@ -189,6 +189,7 @@ private:
      *
      *  @since  0.3.0
      */
+    [[nodiscard]]
     parametermap parse_pagination(bool next) const;
 };
 
