@@ -17,28 +17,20 @@
 #ifndef MASTODONPP_CURL_WRAPPER_HPP
 #define MASTODONPP_CURL_WRAPPER_HPP
 
-#include "answer.hpp"
+#include "types.hpp"
 
 #include "curl/curl.h"
 
-#include <map>
 #include <mutex>
 #include <string>
 #include <string_view>
-#include <utility>
-#include <variant>
-#include <vector>
 
 namespace mastodonpp
 {
 
-using std::map;
 using std::mutex;
 using std::string;
 using std::string_view;
-using std::pair;
-using std::variant;
-using std::vector;
 
 /*!
  *  @brief  The HTTP method.
@@ -53,36 +45,6 @@ enum class http_method
     PUT,
     DELETE
 };
-
-/*!
- *  @brief  `std::map` of parameters for %API calls.
- *
- *  Note that arrays always have to be specified as vectors, even if they have
- *  only 1 element. To send a file, use “<tt>\@file:</tt>” followed by the file
- *  name as value.
- *
- *  Example:
- *  @code
- *  parametermap parameters
- *      {
- *          {"poll[expires_in]", "86400"},
- *          {"poll[options]", vector<string_view>{"Yes", "No", "Maybe"}},
- *          {"status", "How is the weather?"}
- *      };
- *  @endcode
- *
- *  @since  0.1.0
- */
-using parametermap =
-    map<string_view, variant<string_view, vector<string_view>>>;
-
-/*!
- *  @brief  A single parameter of a parametermap.
- *
- *  @since  0.1.0
- */
-using parameterpair =
-    pair<string_view, variant<string_view, vector<string_view>>>;
 
 /*!
  *  @brief  Handles the details of network connections.
