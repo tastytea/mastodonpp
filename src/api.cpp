@@ -38,7 +38,7 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::accounts_id_followers, "/api/v1/accounts/<ID>/followers"},
     {v1::accounts_id_following, "/api/v1/accounts/<ID>/following"},
     {v1::accounts_id_lists, "/api/v1/accounts/<ID>/lists"},
-    {v1::accounts_id_identity_proofs, "/api/v1/accounts/<ID>/identity/proofs"},
+    {v1::accounts_id_identity_proofs, "/api/v1/accounts/<ID>/identity_proofs"},
     {v1::accounts_id_follow, "/api/v1/accounts/<ID>/follow"},
     {v1::accounts_id_unfollow, "/api/v1/accounts/<ID>/unfollow"},
     {v1::accounts_id_block, "/api/v1/accounts/<ID>/block"},
@@ -58,23 +58,23 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
 
     {v1::blocks, "/api/v1/blocks"},
 
-    {v1::domain_blocks, "/api/v1/domain/blocks"},
+    {v1::domain_blocks, "/api/v1/domain_blocks"},
 
     {v1::filters, "/api/v1/filters"},
     {v1::filters_id, "/api/v1/filters/<ID>"},
 
     {v1::reports, "/api/v1/reports"},
 
-    {v1::follow_requests, "/api/v1/follow/requests"},
+    {v1::follow_requests, "/api/v1/follow_requests"},
     {v1::follow_requests_id_authorize,
-     "/api/v1/follow/requests/<ID>/authorize"},
-    {v1::follow_requests_id_reject, "/api/v1/follow/requests/<ID>/reject"},
+            "/api/v1/follow_requests/<ID>/authorize"},
+    {v1::follow_requests_id_reject, "/api/v1/follow_requests/<ID>/reject"},
 
     {v1::endorsements, "/api/v1/endorsements"},
 
     {v1::featured_tags, "/api/v1/featured/tags"},
-    {v1::featured_tags_id, "/api/v1/featured/tags/<ID>"},
-    {v1::featured_tags_suggestions, "/api/v1/featured/tags/suggestions"},
+    {v1::featured_tags_id, "/api/v1/featured_tags/<ID>"},
+    {v1::featured_tags_suggestions, "/api/v1/featured_tags/suggestions"},
 
     {v1::preferences, "/api/v1/preferences"},
 
@@ -84,8 +84,8 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::statuses, "/api/v1/statuses"},
     {v1::statuses_id, "/api/v1/statuses/<ID>"},
     {v1::statuses_id_context, "/api/v1/statuses/<ID>/context"},
-    {v1::statuses_id_reblogged_by, "/api/v1/statuses/<ID>/reblogged/by"},
-    {v1::statuses_id_favourited_by, "/api/v1/statuses/<ID>/favourited/by"},
+    {v1::statuses_id_reblogged_by, "/api/v1/statuses/<ID>/reblogged_by"},
+    {v1::statuses_id_favourited_by, "/api/v1/statuses/<ID>/favourited_by"},
     {v1::statuses_id_favourite, "/api/v1/statuses/<ID>/favourite"},
     {v1::statuses_id_unfavourite, "/api/v1/statuses/<ID>/unfavourite"},
     {v1::statuses_id_reblog, "/api/v1/statuses/<ID>/reblog"},
@@ -103,13 +103,13 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::polls_id, "/api/v1/polls/<ID>"},
     {v1::polls_id_votes, "/api/v1/polls/<ID>/votes"},
 
-    {v1::scheduled_statuses, "/api/v1/scheduled/statuses"},
-    {v1::scheduled_statuses_id, "/api/v1/scheduled/statuses/<ID>"},
+    {v1::scheduled_statuses, "/api/v1/scheduled_statuses"},
+    {v1::scheduled_statuses_id, "/api/v1/scheduled_statuses/<ID>"},
 
     {v1::timelines_public, "/api/v1/timelines/public"},
     {v1::timelines_tag_hashtag, "/api/v1/timelines/tag/<HASHTAG>"},
     {v1::timelines_home, "/api/v1/timelines/home"},
-    {v1::timelines_list_list_id, "/api/v1/timelines/list/list/<ID>"},
+    {v1::timelines_list_list_id, "/api/v1/timelines/list/<LIST_ID>"},
 
     {v1::conversations, "/api/v1/conversations"},
     {v1::conversations_id, "/api/v1/conversations/<ID>"},
@@ -150,7 +150,7 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::admin_accounts, "/api/v1/admin/accounts"},
     {v1::admin_accounts_id, "/api/v1/admin/accounts/<ID>"},
     {v1::admin_accounts_account_id_action,
-     "/api/v1/admin/accounts/account/<ID>/action"},
+     "/api/v1/admin/accounts/<ACCOUNT_ID>/action"},
     {v1::admin_accounts_id_approve, "/api/v1/admin/accounts/<ID>/approve"},
     {v1::admin_accounts_id_reject, "/api/v1/admin/accounts/<ID>/reject"},
     {v1::admin_accounts_id_enable, "/api/v1/admin/accounts/<ID>/enable"},
@@ -159,7 +159,7 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
     {v1::admin_reports, "/api/v1/admin/reports"},
     {v1::admin_reports_id, "/api/v1/admin/reports/<ID>"},
     {v1::admin_reports_id_assign_to_self,
-     "/api/v1/admin/reports/<ID>/assign/to/self"},
+     "/api/v1/admin/reports/<ID>/assign_to_self"},
     {v1::admin_reports_id_unassign, "/api/v1/admin/reports/<ID>/unassign"},
     {v1::admin_reports_id_resolve, "/api/v1/admin/reports/<ID>/resolve"},
     {v1::admin_reports_id_reopen, "/api/v1/admin/reports/<ID>/reopen"},

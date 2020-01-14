@@ -31,9 +31,9 @@ This is still a work in progress; here is a rough overview of the features:
 
 * [x]  `GET`, Streaming `GET`, `POST`, `PATCH`, `PUT` and `DELETE` requests.
 * [x] Report maximum allowed character per post.
-* [ ] Comfortable access to pagination headers.
-* [ ] Comfortable function to register a new “app” (get an access token).
-* [ ] Report which mime types are allowed for posting statuses.
+* [x] Comfortable access to pagination headers.
+* [x] Comfortable function to register a new “app” (get an access token).
+* [x] Report which mime types are allowed for posting statuses.
 
 == Usage
 

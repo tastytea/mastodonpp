@@ -17,11 +17,11 @@
 #ifndef MASTODONPP_HPP
 #define MASTODONPP_HPP
 
-#include "answer.hpp"
 #include "api.hpp"
 #include "connection.hpp"
 #include "exceptions.hpp"
 #include "instance.hpp"
+#include "types.hpp"
 
 /*!
  *  @headerfile mastodonpp.hpp mastodonpp/mastodonpp.hpp

@@ -18,7 +18,7 @@
 #define MASTODONPP_INSTANCE_HPP
 
 #include "curl_wrapper.hpp"
-#include "answer.hpp"
+#include "types.hpp"
 
 #include <cstdint>
 #include <string>

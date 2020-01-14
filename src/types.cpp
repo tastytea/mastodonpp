@@ -14,7 +14,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "answer.hpp"
+#include "log.hpp"
+#include "types.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -58,6 +59,42 @@ string_view answer_type::get_header(const string_view field) const
     }
 
     return {};
+}
+
+parametermap answer_type::parse_pagination(const bool next) const
+{
+    const string_view link{get_header("Link")};
+    if (link.empty())
+    {
+        return {};
+    }
+
+    const auto direction{next ? R"(rel="next")" : R"(rel="prev")"};
+    auto endpos{link.find(direction)};
+    endpos = link.rfind('>', endpos);
+    auto startpos{link.rfind('?', endpos) + 1};
+    const string_view paramstr{link.substr(startpos, endpos - startpos)};
+    debuglog << "Found parameters in Link header: " << paramstr << '\n';
+
+    startpos = 0;
+    parametermap parameters;
+    while ((endpos = paramstr.find('=', startpos)) != string_view::npos)
+    {
+        parameterpair param;
+        param.first = paramstr.substr(startpos, endpos - startpos);
+        startpos = endpos + 1;
+        endpos = paramstr.find('&', startpos);
+        param.second = paramstr.substr(startpos, endpos - startpos);
+        parameters.insert(param);
+
+        if (endpos == string_view::npos)
+        {
+            break;
+        }
+        startpos = endpos + 1;
+    }
+
+    return parameters;
 }
 
 } // namespace mastodonpp

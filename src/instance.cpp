@@ -14,7 +14,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "answer.hpp"
 #include "instance.hpp"
 #include "log.hpp"
 
@@ -54,19 +53,16 @@ uint64_t Instance::get_max_chars() noexcept
 
         _max_chars = [&answer]
         {
-            auto &body{answer.body};
-            size_t pos_start{body.find("max_toot_chars")};
-            if (pos_start == string::npos)
-            {
-                debuglog << "max_toot_chars not found.\n";
-                return default_max_chars;
-            }
-            pos_start = body.find(':', pos_start) + 1;
-            const size_t pos_end{body.find(',', pos_start)};
+            const regex re_chars{R"("max_toot_chars"\s*:\s*([^"]+))"};
+            smatch match;
 
-            const auto max_toot_chars{body.substr(pos_start,
-                                                  pos_end - pos_start)};
-            return static_cast<uint64_t>(stoull(max_toot_chars));
+            if (regex_search(answer.body, match, re_chars))
+            {
+                return static_cast<uint64_t>(stoull(match[1].str()));
+            }
+
+            debuglog << "max_toot_chars not found.\n";
+            return default_max_chars;
         }();
         debuglog << "Set _max_chars to: " << _max_chars << '\n';
     }
@@ -81,7 +77,6 @@ uint64_t Instance::get_max_chars() noexcept
 
 answer_type Instance::get_nodeinfo()
 {
-    debuglog << "Finding location of NodeInfo on " << _hostname << "…\n";
     auto answer{make_request(http_method::GET,
                              _baseuri + "/.well-known/nodeinfo", {})};
     if (!answer)
@@ -90,15 +85,15 @@ answer_type Instance::get_nodeinfo()
         return answer;
     }
 
-    size_t pos{0};
     vector<string> hrefs;
-    constexpr string_view searchstring{R"("href":")"};
-    while ((pos = answer.body.find(searchstring, pos)) != string::npos)
+    const regex re_href{R"("href"\s*:\s*"([^"]+)\")"};
+    smatch match;
+    string body = answer.body;
+    while (regex_search(body, match, re_href))
     {
-        pos += searchstring.size();
-        auto endpos{answer.body.find('"', pos)};
-        hrefs.push_back(answer.body.substr(pos, endpos - pos));
+        hrefs.push_back(match[1].str());
         debuglog << "Found href: " << hrefs.back() << '\n';
+        body = match.suffix();
     }
     sort(hrefs.begin(), hrefs.end()); // We assume they are sortable strings.
     debuglog << "Selecting href: " << hrefs.back() << '\n';
@@ -126,23 +121,23 @@ vector<string> Instance::get_post_formats() noexcept
             return _post_formats;
         }
 
-        constexpr string_view searchstring{R"("postFormats":[)"};
-        auto pos{answer.body.find(searchstring)};
-        if (pos == string::npos)
+        const regex re_allformats(R"("postFormats"\s*:\s*\[([^\]]+)\])");
+        smatch match;
+        if (!regex_search(answer.body, match, re_allformats))
         {
             debuglog << "Couldn't find metadata.postFormats.\n";
             _post_formats = {default_value};
             return _post_formats;
         }
-        pos += searchstring.size();
-        auto endpos{answer.body.find("],", pos)};
-        string formats{answer.body.substr(pos, endpos - pos)};
-        debuglog << "Extracted postFormats: " << formats << '\n';
+        string allformats{match[1].str()};
+        debuglog << "Found postFormats: " << allformats << '\n';
 
-        while ((pos = formats.find('"', 1)) != string::npos)
+        const regex re_format(R"(\s*"([^"]+)\"\s*,?)");
+
+        while (regex_search(allformats, match, re_format))
         {
-            _post_formats.push_back(formats.substr(1, pos - 1));
-            formats.erase(0, pos + 2); // 2 is the length of: ",
+            _post_formats.push_back(match[1].str());
+            allformats = match.suffix();
             debuglog << "Found postFormat: " << _post_formats.back() << '\n';
         }
     }
