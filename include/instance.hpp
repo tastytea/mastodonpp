@@ -226,7 +226,7 @@ public:
     class ObtainToken : public CURLWrapper
     {
     public:
-        ObtainToken(Instance &instance)
+        explicit ObtainToken(Instance &instance)
             : _instance{instance}
             , _baseuri{instance.get_baseuri()}
         {
