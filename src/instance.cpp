@@ -121,23 +121,23 @@ vector<string> Instance::get_post_formats() noexcept
             return _post_formats;
         }
 
-        constexpr string_view searchstring{R"("postFormats":[)"};
-        auto pos{answer.body.find(searchstring)};
-        if (pos == string::npos)
+        const regex re_allformats(R"("postFormats"\s*:\s*\[([^\]]+)\])");
+        smatch match;
+        if (!regex_search(answer.body, match, re_allformats))
         {
             debuglog << "Couldn't find metadata.postFormats.\n";
             _post_formats = {default_value};
             return _post_formats;
         }
-        pos += searchstring.size();
-        auto endpos{answer.body.find("],", pos)};
-        string formats{answer.body.substr(pos, endpos - pos)};
-        debuglog << "Extracted postFormats: " << formats << '\n';
+        string allformats{match[1].str()};
+        debuglog << "Found postFormats: " << allformats << '\n';
 
-        while ((pos = formats.find('"', 1)) != string::npos)
+        const regex re_format(R"(\s*"([^"]+)\"\s*,?)");
+
+        while (regex_search(allformats, match, re_format))
         {
-            _post_formats.push_back(formats.substr(1, pos - 1));
-            formats.erase(0, pos + 2); // 2 is the length of: ",
+            _post_formats.push_back(match[1].str());
+            allformats = match.suffix();
             debuglog << "Found postFormat: " << _post_formats.back() << '\n';
         }
     }
