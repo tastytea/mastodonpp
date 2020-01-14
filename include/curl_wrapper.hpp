@@ -239,6 +239,11 @@ protected:
      */
     void set_cainfo(string_view path);
 
+    /*!
+     *  @brief  Sets the User-Agent.
+     *
+     *  @since  0.3.0
+     */
     void set_useragent(string_view useragent);
 
 private:
