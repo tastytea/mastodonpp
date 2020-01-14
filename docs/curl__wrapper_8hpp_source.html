@@ -183,58 +183,58 @@ $(function() {
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">set_cainfo</a>(string_view path);</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordtype">void</span> set_useragent(string_view useragent);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    CURL *_connection;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordtype">char</span> _curl_buffer_error[CURL_ERROR_SIZE];</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordtype">string</span> _curl_buffer_headers;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordtype">string</span> _curl_buffer_body;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordtype">bool</span> _stream_cancelled;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordtype">size_t</span> writer_body(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> nmemb);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> writer_body_wrapper(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> sz,</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                                             <span class="keywordtype">size_t</span> nmemb, <span class="keywordtype">void</span> *f)</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    {</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">return</span> static_cast&lt;CURLWrapper*&gt;(f)-&gt;writer_body(data, sz, nmemb);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    }</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordtype">size_t</span> writer_header(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> nmemb);</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> writer_header_wrapper(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> sz,</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                               <span class="keywordtype">size_t</span> nmemb, <span class="keywordtype">void</span> *f)</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="keywordflow">return</span> static_cast&lt;CURLWrapper*&gt;(f)-&gt;writer_header(data, sz, nmemb);</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">int</span> progress(<span class="keywordtype">void</span> *clientp, curl_off_t dltotal, curl_off_t dlnow,</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                 curl_off_t ultotal, curl_off_t ulnow);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> progress_wrapper(<span class="keywordtype">void</span> *f, <span class="keywordtype">void</span> *clientp,</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                       curl_off_t dltotal, curl_off_t dlnow,</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                                       curl_off_t ultotal, curl_off_t ulnow)</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keywordflow">return</span> static_cast&lt;CURLWrapper*&gt;(f)-&gt;progress(clientp, dltotal, dlnow,</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                                                      ultotal, ulnow);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordtype">void</span> setup_curl();</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordtype">bool</span> replace_parameter_in_uri(<span class="keywordtype">string</span> &amp;uri, <span class="keyword">const</span> <a class="code" href="namespacemastodonpp.html#a63b360bdefd56276e903619eb6a76049">parameterpair</a> &amp;parameter);</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordtype">void</span> add_parameters_to_uri(<span class="keywordtype">string</span> &amp;uri, <span class="keyword">const</span> <a class="code" href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">parametermap</a> &amp;parameters);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordtype">void</span> add_mime_part(curl_mime *mime,</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                       string_view name, string_view data) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    curl_mime *parameters_to_curl_mime(<span class="keywordtype">string</span> &amp;uri,</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                                       <span class="keyword">const</span> <a class="code" href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">parametermap</a> &amp;parameters);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;};</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_CURL_WRAPPER_HPP</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html#ae3b1445f9b94b1f7677d3cac6d538612">set_useragent</a>(string_view useragent);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    CURL *_connection;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordtype">char</span> _curl_buffer_error[CURL_ERROR_SIZE];</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordtype">string</span> _curl_buffer_headers;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordtype">string</span> _curl_buffer_body;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordtype">bool</span> _stream_cancelled;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordtype">size_t</span> writer_body(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> nmemb);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> writer_body_wrapper(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> sz,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                             <span class="keywordtype">size_t</span> nmemb, <span class="keywordtype">void</span> *f)</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">return</span> static_cast&lt;CURLWrapper*&gt;(f)-&gt;writer_body(data, sz, nmemb);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordtype">size_t</span> writer_header(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> nmemb);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> writer_header_wrapper(<span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> sz,</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                                               <span class="keywordtype">size_t</span> nmemb, <span class="keywordtype">void</span> *f)</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="keywordflow">return</span> static_cast&lt;CURLWrapper*&gt;(f)-&gt;writer_header(data, sz, nmemb);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordtype">int</span> progress(<span class="keywordtype">void</span> *clientp, curl_off_t dltotal, curl_off_t dlnow,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                 curl_off_t ultotal, curl_off_t ulnow);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> progress_wrapper(<span class="keywordtype">void</span> *f, <span class="keywordtype">void</span> *clientp,</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                       curl_off_t dltotal, curl_off_t dlnow,</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                                       curl_off_t ultotal, curl_off_t ulnow)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">return</span> static_cast&lt;CURLWrapper*&gt;(f)-&gt;progress(clientp, dltotal, dlnow,</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                                      ultotal, ulnow);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordtype">void</span> setup_curl();</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordtype">bool</span> replace_parameter_in_uri(<span class="keywordtype">string</span> &amp;uri, <span class="keyword">const</span> <a class="code" href="namespacemastodonpp.html#a63b360bdefd56276e903619eb6a76049">parameterpair</a> &amp;parameter);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordtype">void</span> add_parameters_to_uri(<span class="keywordtype">string</span> &amp;uri, <span class="keyword">const</span> <a class="code" href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">parametermap</a> &amp;parameters);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordtype">void</span> add_mime_part(curl_mime *mime,</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                       string_view name, string_view data) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    curl_mime *parameters_to_curl_mime(<span class="keywordtype">string</span> &amp;uri,</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                                       <span class="keyword">const</span> <a class="code" href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">parametermap</a> &amp;parameters);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;};</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_CURL_WRAPPER_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacemastodonpp_html_a7d60fc71ad0fb1fbd467b37fe1f1f100"><div class="ttname"><a href="namespacemastodonpp.html#a7d60fc71ad0fb1fbd467b37fe1f1f100">mastodonpp::http_method</a></div><div class="ttdeci">http_method</div><div class="ttdoc">The HTTP method.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:40</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a7a229cf9eae6bd03adfc2fdfdff62d88"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a7a229cf9eae6bd03adfc2fdfdff62d88">mastodonpp::CURLWrapper::set_access_token</a></div><div class="ttdeci">void set_access_token(const string_view access_token)</div><div class="ttdoc">Set OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:226</div></div>
@@ -250,6 +250,7 @@ $(function() {
 <div class="ttc" id="anamespacemastodonpp_html_a63b360bdefd56276e903619eb6a76049"><div class="ttname"><a href="namespacemastodonpp.html#a63b360bdefd56276e903619eb6a76049">mastodonpp::parameterpair</a></div><div class="ttdeci">pair&lt; string_view, variant&lt; string_view, vector&lt; string_view &gt; &gt;&gt; parameterpair</div><div class="ttdoc">A single parameter of a parametermap.</div><div class="ttdef"><b>Definition:</b> types.hpp:72</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_af3f2bd4dea7c289d590fe19889360444"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">mastodonpp::CURLWrapper::set_cainfo</a></div><div class="ttdeci">void set_cainfo(string_view path)</div><div class="ttdoc">Set path to Certificate Authority (CA) bundle.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:252</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a5f29b7f4d0b58f70bc96f362cdaa4d0a"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a5f29b7f4d0b58f70bc96f362cdaa4d0a">mastodonpp::CURLWrapper::operator=</a></div><div class="ttdeci">CURLWrapper &amp; operator=(const CURLWrapper &amp;other)=delete</div><div class="ttdoc">Copy assignment operator.</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_ae3b1445f9b94b1f7677d3cac6d538612"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#ae3b1445f9b94b1f7677d3cac6d538612">mastodonpp::CURLWrapper::set_useragent</a></div><div class="ttdeci">void set_useragent(string_view useragent)</div><div class="ttdoc">Sets the User-Agent.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:261</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></div><div class="ttdoc">Handles the details of network connections.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:58</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_adc8808c3fad5397176f6755b09ee0be6"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#adc8808c3fad5397176f6755b09ee0be6">mastodonpp::CURLWrapper::make_request</a></div><div class="ttdeci">answer_type make_request(const http_method &amp;method, string uri, const parametermap &amp;parameters)</div><div class="ttdoc">Make a HTTP request.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:67</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a350f7061c9cb54cb5992ae983db3fc19"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a350f7061c9cb54cb5992ae983db3fc19">mastodonpp::CURLWrapper::~CURLWrapper</a></div><div class="ttdeci">virtual ~CURLWrapper() noexcept</div><div class="ttdoc">Cleans up curl and connection.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:55</div></div>

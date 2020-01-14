@@ -167,53 +167,53 @@ $(function() {
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">CURLWrapper::set_cainfo</a>(path);</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordtype">void</span> set_useragent(<span class="keyword">const</span> string_view useragent)</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        _useragent = useragent;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        CURLWrapper::set_useragent(useragent);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance_1_1ObtainToken.html">  226</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html">ObtainToken</a> : <span class="keyword">public</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    {</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html">ObtainToken</a>(<a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;instance)</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            : _instance{instance}</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            , _baseuri{instance.<a class="code" href="classmastodonpp_1_1Instance.html#a859540ec79ea97c0f76185d9036127bb">get_baseuri</a>()}</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            _instance.<a class="code" href="classmastodonpp_1_1Instance.html#aa486bc453907439e33f8402f270ef384">copy_connection_properties</a>(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        }</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        [[nodiscard]]</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> <a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html#a5bd5d631e2fbb186a9df66d2ac3f5402">step_1</a>(string_view client_name, string_view scopes,</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                           string_view website);</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        [[nodiscard]]</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <a class="code" href="structmastodonpp_1_1answer__type.html">answer_type</a> <a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html#addda7f4e1ca4200235764707478f6d51">step_2</a>(string_view code);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;_instance;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">string</span> _baseuri;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordtype">string</span> _scopes;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordtype">string</span> _client_id;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keywordtype">string</span> _client_secret;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    };</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> _hostname;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> _baseuri;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordtype">string</span> _access_token;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    uint64_t _max_chars;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordtype">string</span> _proxy;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    vector&lt;string&gt; _post_formats;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordtype">string</span> _cainfo;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">string</span> _useragent;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;};</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance.html#a72fe275e604f71a0b7424033b04d8a53">  200</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classmastodonpp_1_1Instance.html#a72fe275e604f71a0b7424033b04d8a53">set_useragent</a>(<span class="keyword">const</span> string_view useragent)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        _useragent = useragent;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <a class="code" href="classmastodonpp_1_1CURLWrapper.html#ae3b1445f9b94b1f7677d3cac6d538612">CURLWrapper::set_useragent</a>(useragent);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance_1_1ObtainToken.html">  234</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html">ObtainToken</a> : <span class="keyword">public</span> <a class="code" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1Instance_1_1ObtainToken.html#aa834d9be223856e5711b0e14d9b92eed">  242</a></span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html#aa834d9be223856e5711b0e14d9b92eed">ObtainToken</a>(<a class="code" href="classmastodonpp_1_1Instance.html">Instance</a> &amp;instance)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            : _instance{instance}</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            , _baseuri{instance.<a class="code" href="classmastodonpp_1_1Instance.html#a859540ec79ea97c0f76185d9036127bb">get_baseuri</a>()}</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            _instance.<a class="code" href="classmastodonpp_1_1Instance.html#aa486bc453907439e33f8402f270ef384">copy_connection_properties</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        [[nodiscard]]</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        answer_type <a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html#a5bd5d631e2fbb186a9df66d2ac3f5402">step_1</a>(string_view client_name, string_view scopes,</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                           string_view website);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        [[nodiscard]]</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        answer_type <a class="code" href="classmastodonpp_1_1Instance_1_1ObtainToken.html#addda7f4e1ca4200235764707478f6d51">step_2</a>(string_view code);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <a class="code" href="classmastodonpp_1_1Instance.html#a04dc593589b69f9f71c4acecb39d995a">Instance</a> &amp;_instance;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">string</span> _baseuri;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordtype">string</span> _scopes;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordtype">string</span> _client_id;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="keywordtype">string</span> _client_secret;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    };</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_INSTANCE_HPP</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> _hostname;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> _baseuri;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordtype">string</span> _access_token;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    uint64_t _max_chars;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordtype">string</span> _proxy;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    vector&lt;string&gt; _post_formats;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordtype">string</span> _cainfo;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordtype">string</span> _useragent;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;};</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_INSTANCE_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1Instance_1_1ObtainToken_html"><div class="ttname"><a href="classmastodonpp_1_1Instance_1_1ObtainToken.html">mastodonpp::Instance::ObtainToken</a></div><div class="ttdoc">Simplifies obtaining an OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:226</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_1_1ObtainToken_html"><div class="ttname"><a href="classmastodonpp_1_1Instance_1_1ObtainToken.html">mastodonpp::Instance::ObtainToken</a></div><div class="ttdoc">Simplifies obtaining an OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:234</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_a4d594e1365584a05e5a16fc8aea76e9d"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a4d594e1365584a05e5a16fc8aea76e9d">mastodonpp::Instance::get_nodeinfo</a></div><div class="ttdeci">answer_type get_nodeinfo()</div><div class="ttdoc">Returns the NodeInfo of the instance.</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_a868aae1fae3ad4060759c1325acb3b62"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a868aae1fae3ad4060759c1325acb3b62">mastodonpp::Instance::get_hostname</a></div><div class="ttdeci">string_view get_hostname() const noexcept</div><div class="ttdoc">Returns the hostname.</div><div class="ttdef"><b>Definition:</b> instance.hpp:86</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_1_1ObtainToken_html_a5bd5d631e2fbb186a9df66d2ac3f5402"><div class="ttname"><a href="classmastodonpp_1_1Instance_1_1ObtainToken.html#a5bd5d631e2fbb186a9df66d2ac3f5402">mastodonpp::Instance::ObtainToken::step_1</a></div><div class="ttdeci">answer_type step_1(string_view client_name, string_view scopes, string_view website)</div><div class="ttdoc">Creates an application via /api/v1/apps.</div></div>
@@ -221,6 +221,7 @@ $(function() {
 <div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:19</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_a04dc593589b69f9f71c4acecb39d995a"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a04dc593589b69f9f71c4acecb39d995a">mastodonpp::Instance::Instance</a></div><div class="ttdeci">Instance(const string_view hostname, const string_view access_token)</div><div class="ttdoc">Construct a new Instance object.</div><div class="ttdef"><b>Definition:</b> instance.hpp:56</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_a1e606235a69d150b59bd90c78069de22"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a1e606235a69d150b59bd90c78069de22">mastodonpp::Instance::set_access_token</a></div><div class="ttdeci">void set_access_token(string access_token)</div><div class="ttdoc">Set OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:123</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a72fe275e604f71a0b7424033b04d8a53"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a72fe275e604f71a0b7424033b04d8a53">mastodonpp::Instance::set_useragent</a></div><div class="ttdeci">void set_useragent(const string_view useragent)</div><div class="ttdoc">Sets the User-Agent.</div><div class="ttdef"><b>Definition:</b> instance.hpp:200</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_1_1ObtainToken_html_addda7f4e1ca4200235764707478f6d51"><div class="ttname"><a href="classmastodonpp_1_1Instance_1_1ObtainToken.html#addda7f4e1ca4200235764707478f6d51">mastodonpp::Instance::ObtainToken::step_2</a></div><div class="ttdeci">answer_type step_2(string_view code)</div><div class="ttdoc">Creates a token via /oauth/token.</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_a1564a42794ef7a9d170b725063ef504d"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d">mastodonpp::CURLWrapper::set_proxy</a></div><div class="ttdeci">void set_proxy(string_view proxy)</div><div class="ttdoc">Set the proxy to use.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:216</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_a84b7e4ef6e05f7f7208b557c38b5ad1e"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a84b7e4ef6e05f7f7208b557c38b5ad1e">mastodonpp::Instance::get_post_formats</a></div><div class="ttdeci">vector&lt; string &gt; get_post_formats() noexcept</div><div class="ttdoc">Returns the allowed mime types for statuses.</div></div>
@@ -229,6 +230,8 @@ $(function() {
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_a4aa276f156e3a770e5fd9cbf5c7c0cd5"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5">mastodonpp::Instance::set_proxy</a></div><div class="ttdeci">void set_proxy(const string_view proxy)</div><div class="ttdoc">Set the proxy to use.</div><div class="ttdef"><b>Definition:</b> instance.hpp:147</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_af3f2bd4dea7c289d590fe19889360444"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444">mastodonpp::CURLWrapper::set_cainfo</a></div><div class="ttdeci">void set_cainfo(string_view path)</div><div class="ttdoc">Set path to Certificate Authority (CA) bundle.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:252</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdoc">Holds the access data of an instance.</div><div class="ttdef"><b>Definition:</b> instance.hpp:45</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html_ae3b1445f9b94b1f7677d3cac6d538612"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html#ae3b1445f9b94b1f7677d3cac6d538612">mastodonpp::CURLWrapper::set_useragent</a></div><div class="ttdeci">void set_useragent(string_view useragent)</div><div class="ttdoc">Sets the User-Agent.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.cpp:261</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_1_1ObtainToken_html_aa834d9be223856e5711b0e14d9b92eed"><div class="ttname"><a href="classmastodonpp_1_1Instance_1_1ObtainToken.html#aa834d9be223856e5711b0e14d9b92eed">mastodonpp::Instance::ObtainToken::ObtainToken</a></div><div class="ttdeci">ObtainToken(Instance &amp;instance)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> instance.hpp:242</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_af75272092047c8af95cef8dfb3969dfa"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#af75272092047c8af95cef8dfb3969dfa">mastodonpp::Instance::set_cainfo</a></div><div class="ttdeci">void set_cainfo(string_view path)</div><div class="ttdoc">Set path to Certificate Authority (CA) bundle.</div><div class="ttdef"><b>Definition:</b> instance.hpp:186</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLWrapper_html"><div class="ttname"><a href="classmastodonpp_1_1CURLWrapper.html">mastodonpp::CURLWrapper</a></div><div class="ttdoc">Handles the details of network connections.</div><div class="ttdef"><b>Definition:</b> curl_wrapper.hpp:58</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_aa486bc453907439e33f8402f270ef384"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#aa486bc453907439e33f8402f270ef384">mastodonpp::Instance::copy_connection_properties</a></div><div class="ttdeci">void copy_connection_properties(CURLWrapper &amp;curlwrapper)</div><div class="ttdoc">Set the properties of the connection of the calling class up.</div><div class="ttdef"><b>Definition:</b> instance.hpp:74</div></div>
