@@ -213,8 +213,8 @@ public:
      *
      *  Example:
      *  @code
-     *  mastodonpp::Instance instance("example.com", {});
-     *  mastodonpp::Instance::ObtainToken token(instance);
+     *  mastodonpp::Instance instance{"example.com", {}};
+     *  mastodonpp::Instance::ObtainToken token{instance};
      *  auto answer{token.step1("Good program", "read:blocks read:mutes", "")};
      *  if (answer)
      *  {
