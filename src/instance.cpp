@@ -77,7 +77,6 @@ uint64_t Instance::get_max_chars() noexcept
 
 answer_type Instance::get_nodeinfo()
 {
-    debuglog << "Finding location of NodeInfo on " << _hostname << "…\n";
     auto answer{make_request(http_method::GET,
                              _baseuri + "/.well-known/nodeinfo", {})};
     if (!answer)
@@ -86,15 +85,15 @@ answer_type Instance::get_nodeinfo()
         return answer;
     }
 
-    size_t pos{0};
     vector<string> hrefs;
-    constexpr string_view searchstring{R"("href":")"};
-    while ((pos = answer.body.find(searchstring, pos)) != string::npos)
+    const regex re_href{R"("href"\s*:\s*"([^"]+)\")"};
+    smatch match;
+    string body = answer.body;
+    while (regex_search(body, match, re_href))
     {
-        pos += searchstring.size();
-        auto endpos{answer.body.find('"', pos)};
-        hrefs.push_back(answer.body.substr(pos, endpos - pos));
+        hrefs.push_back(match[1].str());
         debuglog << "Found href: " << hrefs.back() << '\n';
+        body = match.suffix();
     }
     sort(hrefs.begin(), hrefs.end()); // We assume they are sortable strings.
     debuglog << "Selecting href: " << hrefs.back() << '\n';
