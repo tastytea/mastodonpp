@@ -189,6 +189,14 @@ public:
         CURLWrapper::set_cainfo(path);
     }
 
+    /*!
+     *  @brief  Sets the User-Agent.
+     *
+     *  Sets also the User-Agent for all Connection%s that are initialized with
+     *  this Instance afterwards.
+     *
+     *  @since  0.3.0
+     */
     void set_useragent(const string_view useragent)
     {
         _useragent = useragent;
@@ -205,8 +213,8 @@ public:
      *
      *  Example:
      *  @code
-     *  mastodonpp::Instance instance("example.com", {});
-     *  mastodonpp::Instance::ObtainToken token(instance);
+     *  mastodonpp::Instance instance{"example.com", {}};
+     *  mastodonpp::Instance::ObtainToken token{instance};
      *  auto answer{token.step1("Good program", "read:blocks read:mutes", "")};
      *  if (answer)
      *  {
@@ -226,7 +234,12 @@ public:
     class ObtainToken : public CURLWrapper
     {
     public:
-        ObtainToken(Instance &instance)
+        /*!
+         *  @brief  Constructor.
+         *
+         *  @since  0.3.0
+         */
+        explicit ObtainToken(Instance &instance)
             : _instance{instance}
             , _baseuri{instance.get_baseuri()}
         {

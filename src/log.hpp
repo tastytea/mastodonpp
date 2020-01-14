@@ -23,7 +23,7 @@
 namespace mastodonpp
 {
 
-using std::cerr;
+using std::cerr;                // NOLINT(misc-unused-using-decls)
 using std::string_view;
 
 //! @private
@@ -40,13 +40,16 @@ constexpr auto shorten_filename(const string_view &filename)
     return filename;
 }
 
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define commonlog cerr << '[' << shorten_filename(__FILE__) \
                        << ':' << __LINE__ << ']'
 #ifndef NDEBUG
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define debuglog commonlog << " DEBUG: "
 #else
     #define debuglog false && cerr
 #endif
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define errorlog commonlog << " ERROR: "
 
 } // namespace mastodonpp

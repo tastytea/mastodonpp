@@ -30,7 +30,7 @@ namespace mastodonpp
 using std::get;
 using std::holds_alternative;
 using std::any_of;
-using std::array;
+using std::array;               // NOLINT(misc-unused-using-decls)
 using std::atomic;
 using std::uint8_t;
 using std::uint16_t;
@@ -251,6 +251,7 @@ void CURLWrapper::set_access_token(const string_view access_token)
 
 void CURLWrapper::set_cainfo(const string_view path)
 {
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     CURLcode code{curl_easy_setopt(_connection, CURLOPT_CAINFO, path.data())};
     if (code != CURLE_OK)
     {
