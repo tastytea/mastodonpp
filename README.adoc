@@ -49,7 +49,7 @@ Have a look at the link:{uri-reference}[reference].
 int main()
 {
     mastodonpp::Instance instance{"example.com", "123AccessToken123"};
-    instance.set_proxy("socks4a://[fd14::1:1]:9050");
+    instance.set_proxy("socks4a://[::1]:9050");
     mastodonpp::Connection connection{instance};
 
     const mastodonpp::parametermap parameters
