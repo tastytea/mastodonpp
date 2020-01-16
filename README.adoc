@@ -6,7 +6,7 @@
 :uri-mastodon-cpp: https://schlomp.space/tastytea/mastodon-cpp
 :uri-reference: https://doc.schlomp.space/{project}/
 :uri-gcc: https://gcc.gnu.org/
-:uti-clang: https://clang.llvm.org/
+:uri-clang: https://clang.llvm.org/
 :uri-cmake: https://cmake.org/
 :uri-doxygen: http://www.doxygen.nl/
 :uri-catch: https://github.com/catchorg/Catch2
@@ -107,7 +107,7 @@ yum install ./libmastodonpp*.rpm
 ==== Dependencies
 
 * Tested OS: Linux
-* C++ compiler (tested: link:{uri-gcc}[GCC] 7/8/9, link:{uri-lang}[clang] 6/7)
+* C++ compiler (tested: link:{uri-gcc}[GCC] 7/8/9, link:{uri-clang}[clang] 6/7)
 * link:{uri-cmake}[CMake] (at least: 3.9)
 * link:{uri-libcurl}[libcurl] (at least: 7.56)
 * Optional
