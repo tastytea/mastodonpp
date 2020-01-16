@@ -25,8 +25,6 @@
 #include "types.hpp"
 
 /*!
- *  @headerfile mastodonpp.hpp mastodonpp/mastodonpp.hpp
- *
  *  @mainpage mastodonpp Reference
  *
  *  @section using Using the library
@@ -114,6 +112,8 @@
  *  @brief  C++ wrapper for the Mastodon %API.
  *
  *  @since  0.1.0
+ *
+ *  @headerfile mastodonpp.hpp mastodonpp/mastodonpp.hpp
  */
 namespace mastodonpp
 {} // namespace mastodonpp

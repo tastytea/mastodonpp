@@ -75,9 +75,6 @@ using parameterpair =
  *  @brief  Return type for Request%s.
  *
  *  @since  0.1.0
- *
- *  @headerfile answer.hpp mastodonpp/answer.hpp
- *
  */
 struct answer_type
 {
@@ -88,6 +85,8 @@ struct answer_type
      *  [libcurl-errors(3)](https://curl.haxx.se/libcurl/c/libcurl-errors.html).
      *
      *  @since  0.1.0
+     *
+     *  @headerfile types.hpp mastodonpp/types.hpp
      */
     uint8_t curl_error_code{0};
 

@@ -20,6 +20,8 @@
 #include <string>
 #include <string_view>
 
+//! @headerfile helpers.hpp mastodonpp/helpers.hpp
+
 namespace mastodonpp
 {
 
