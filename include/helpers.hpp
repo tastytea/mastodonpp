@@ -40,7 +40,7 @@ using std::string;
  *
  *  @since  0.4.0
  */
-const string unescape_html(string html);
+string unescape_html(string html);
 
 } // namespace mastodonpp
 

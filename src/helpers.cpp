@@ -37,7 +37,7 @@ using std::string_view;
 using std::move;
 using std::pair;
 
-const string unescape_html(string html)
+string unescape_html(string html)
 {
     string buffer{move(html)};
     string output;
