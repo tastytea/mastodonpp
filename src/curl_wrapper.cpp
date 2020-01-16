@@ -221,6 +221,7 @@ void CURLWrapper::set_proxy(const string_view proxy)
     {
         throw CURLException{code, "Failed to set proxy", _curl_buffer_error};
     }
+    debuglog << "Set proxy to: " << proxy << '\n';
 }
 
 void CURLWrapper::set_access_token(const string_view access_token)
