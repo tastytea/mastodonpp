@@ -57,10 +57,7 @@ string unescape_html(string html)
             {
                 return static_cast<char32_t>(stol(match[2].str(), nullptr, 16));
             }
-            else
-            {
-                return static_cast<char32_t>(stol(match[2].str(), nullptr, 10));
-            }
+            return static_cast<char32_t>(stol(match[2].str(), nullptr, 10));
         }()};
         output += match.prefix().str() + u8c.to_bytes(codepoint);
         buffer = match.suffix().str();
