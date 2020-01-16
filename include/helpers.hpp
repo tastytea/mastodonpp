@@ -30,6 +30,12 @@ using std::string;
  *
  *  Supports named and numbered entities, decimal and hexadecimal.
  *
+ *  Example:
+ *  @code
+ *  // Will output: 2€ = 2€ = 2€
+ *  std::cout << mastodonpp::unescape_html("2&euro; = 2&#8364; = 2&#x20ac;");
+ *  @endcode
+ *
  *  @param  html The HTML to unescape.
  *
  *  @since  0.4.0
