@@ -23,7 +23,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
     "-Wformat=2"
     "-ftrapv"
     "-fsanitize=undefined"
-    "-fsanitize=address"
     "-g"
     "-Og"
     "-fno-omit-frame-pointer")
@@ -45,8 +44,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
   add_compile_options("$<$<CONFIG:Debug>:${DEBUG_CXXFLAGS}>")
 
   set(DEBUG_LDFLAGS
-    "-fsanitize=undefined"
-    "-fsanitize=address")
+    "-fsanitize=undefined")
   # add_link_options was introduced in version 3.13.
   if(${CMAKE_VERSION} VERSION_LESS 3.13)
     set(CMAKE_SHARED_LINKER_FLAGS_DEBUG "${DEBUG_LDFLAGS}")
