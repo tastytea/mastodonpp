@@ -66,6 +66,20 @@ $(function() {
 <div class="title">example08_obtain_token.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
+<h2><a class="anchor" id="input"></a>
+Input</h2>
+<ul>
+<li>All text input is expected to be UTF-8.</li>
+<li>To send a file, use “<code>@file:</code>” followed by the file name as value in the <a class="el" href="namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6">parametermap</a>.</li>
+</ul>
+<h1><a class="anchor" id="exceptions"></a>
+Exceptions</h1>
+<p>Any unrecoverable libcurl error will be thrown as a <a class="el" href="classmastodonpp_1_1CURLException.html" title="Exception for libcurl errors.">mastodonpp::CURLException</a>. Network errors will not be thrown, but reported via the return value.</p>
+<h1><a class="anchor" id="thread_safety"></a>
+Thread safety</h1>
+<p>The first time you construct an <a class="el" href="classmastodonpp_1_1Instance.html">Instance</a>, <a href="https://curl.haxx.se/libcurl/c/curl_global_init.html">curl_global_init(3)</a> is called. When the last <a class="el" href="classmastodonpp_1_1Instance.html">Instance </a> is destroyed, <a href="https://curl.haxx.se/libcurl/c/curl_global_cleanup.html">curl_global_cleanup(3)</a> is called. Both are not thread safe.</p>
+<p>Do not make 2 requests with the same <a class="el" href="classmastodonpp_1_1Connection.html">Connection </a> at the same time. You can create as many <a class="el" href="classmastodonpp_1_1Connection.html">Connection</a>s as you want from one <a class="el" href="classmastodonpp_1_1Instance.html">Instance</a>.</p>
+<p>If you are using libcurl with OpenSSL before 1.1.0, please read <a href="https://curl.haxx.se/libcurl/c/threadsafe.html">libcurl-thread(3)</a>.</p>
 <div class="fragment"><div class="line"><span class="comment">/*  This file is part of mastodonpp.</span></div>
 <div class="line"><span class="comment"> *  Copyright © 2020 tastytea &lt;tastytea@tastytea.de&gt;</span></div>
 <div class="line"><span class="comment"> *</span></div>
