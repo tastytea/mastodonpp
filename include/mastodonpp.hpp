@@ -20,6 +20,7 @@
 #include "api.hpp"
 #include "connection.hpp"
 #include "exceptions.hpp"
+#include "helpers.hpp"
 #include "instance.hpp"
 #include "types.hpp"
 
