@@ -25,8 +25,6 @@
 #include "types.hpp"
 
 /*!
- *  @headerfile mastodonpp.hpp mastodonpp/mastodonpp.hpp
- *
  *  @mainpage mastodonpp Reference
  *
  *  @section using Using the library
@@ -57,7 +55,7 @@
  *
  *  int main()
  *  {
- *      mastodonpp::Instance instance{"example.com", ""};
+ *      mastodonpp::Instance instance{"example.com", {}};
  *      std::cout << "Maximum characters per post: "
  *                << instance.get_max_chars() << std::endl;
  *
@@ -85,12 +83,10 @@
  *
  *  @section thread_safety Thread safety
  *
- *  The first time you construct an @link mastodonpp::Instance Instance @endlink
- *  or @link mastodonpp::Connection Connection @endlink, [curl_global_init(3)]
- *  (https://curl.haxx.se/libcurl/c/curl_global_init.html) is called. When the
- *  last @link mastodonpp::Instance Instance @endlink or @link
- *  mastodonpp::Connection Connection @endlink is destroyed,
- *  [curl_global_cleanup(3)]
+ *  The first time you construct an @link mastodonpp::Instance Instance@endlink,
+ *  [curl_global_init(3)](https://curl.haxx.se/libcurl/c/curl_global_init.html)
+ *  is called. When the last @link mastodonpp::Instance Instance @endlink is
+ *  destroyed, [curl_global_cleanup(3)]
  *  (https://curl.haxx.se/libcurl/c/curl_global_cleanup.html) is called. Both
  *  are not thread safe.
  *
@@ -116,6 +112,8 @@
  *  @brief  C++ wrapper for the Mastodon %API.
  *
  *  @since  0.1.0
+ *
+ *  @headerfile mastodonpp.hpp mastodonpp/mastodonpp.hpp
  */
 namespace mastodonpp
 {} // namespace mastodonpp
