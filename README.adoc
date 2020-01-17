@@ -107,7 +107,8 @@ yum install ./libmastodonpp*.rpm
 ==== Dependencies
 
 * Tested OS: Linux
-* C++ compiler (tested: link:{uri-gcc}[GCC] 7/8/9, link:{uri-clang}[clang] 6/7)
+* C\++ compiler with C++17 support (tested: link:{uri-gcc}[GCC] 7/8/9,
+  link:{uri-clang}[clang] 6/7)
 * link:{uri-cmake}[CMake] (at least: 3.9)
 * link:{uri-libcurl}[libcurl] (at least: 7.56)
 * Optional

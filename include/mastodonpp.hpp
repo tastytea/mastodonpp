@@ -46,6 +46,9 @@
  *
  *  Or compile your code with `g++ $(pkg-config --cflags --libs mastodonpp)`.
  *
+ *  Since we use C++17 features in the headers of this library, your program
+ *  needs to be compiled as C++17 or higher too.
+ *
  *  @subsection example Example
  *
  *  @code
