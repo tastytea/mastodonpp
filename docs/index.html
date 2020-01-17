@@ -74,6 +74,7 @@ Using the library</h1>
 <div class="fragment"><div class="line">find_package(<a class="code" href="namespacemastodonpp.html">mastodonpp</a> REQUIRED CONFIG)</div>
 <div class="line">target_link_libraries(MyProject mastodonpp::mastodonpp)</div>
 </div><!-- fragment --><p>Or compile your code with <code>g++ $(pkg-config --cflags --libs mastodonpp)</code>.</p>
+<p>Since we use C++17 features in the headers of this library, your program needs to be compiled as C++17 or higher too.</p>
 <h2><a class="anchor" id="example"></a>
 Example</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;mastodonpp/mastodonpp.hpp&gt;</span></div>
@@ -81,7 +82,7 @@ Example</h2>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">    <a class="code" href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a> instance{<span class="stringliteral">&quot;example.com&quot;</span>, {}};</div>
+<div class="line">    <a class="code" href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a> instance{<span class="stringliteral">&quot;example.com&quot;</span>, <span class="stringliteral">&quot;&quot;</span>};</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Maximum characters per post: &quot;</span></div>
 <div class="line">              &lt;&lt; instance.<a class="code" href="classmastodonpp_1_1Instance.html#a3d9f535570e6083b7f37b3c5e42c08dd">get_max_chars</a>() &lt;&lt; std::endl;</div>
 <div class="line"> </div>
@@ -104,7 +105,7 @@ Exceptions</h1>
 <p>Any unrecoverable libcurl error will be thrown as a <a class="el" href="classmastodonpp_1_1CURLException.html" title="Exception for libcurl errors.">mastodonpp::CURLException</a>. Network errors will not be thrown, but reported via the return value.</p>
 <h1><a class="anchor" id="thread_safety"></a>
 Thread safety</h1>
-<p>The first time you construct an <a class="el" href="classmastodonpp_1_1Instance.html">Instance</a>, <a href="https://curl.haxx.se/libcurl/c/curl_global_init.html">curl_global_init(3)</a> is called. When the last <a class="el" href="classmastodonpp_1_1Instance.html">Instance </a> is destroyed, <a href="https://curl.haxx.se/libcurl/c/curl_global_cleanup.html">curl_global_cleanup(3)</a> is called. Both are not thread safe.</p>
+<p>The first time you construct an <a class="el" href="classmastodonpp_1_1Instance.html">Instance </a> or <a class="el" href="classmastodonpp_1_1Connection.html">Connection </a>, <a href="https://curl.haxx.se/libcurl/c/curl_global_init.html">curl_global_init(3)</a> is called. When the last <a class="el" href="classmastodonpp_1_1Instance.html">Instance </a> or <a class="el" href="classmastodonpp_1_1Connection.html">Connection </a> is destroyed, <a href="https://curl.haxx.se/libcurl/c/curl_global_cleanup.html">curl_global_cleanup(3)</a> is called. Both are not thread safe.</p>
 <p>Do not make 2 requests with the same <a class="el" href="classmastodonpp_1_1Connection.html">Connection </a> at the same time. You can create as many <a class="el" href="classmastodonpp_1_1Connection.html">Connection</a>s as you want from one <a class="el" href="classmastodonpp_1_1Instance.html">Instance</a>.</p>
 <p>If you are using libcurl with OpenSSL before 1.1.0, please read <a href="https://curl.haxx.se/libcurl/c/threadsafe.html">libcurl-thread(3)</a>. </p>
 </div></div><!-- PageDoc -->
