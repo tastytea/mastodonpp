@@ -151,4 +151,6 @@ cmake --build . -- -j$(nproc --ignore=1)
   ** `-DWITH_DEB=YES` if you want to be able to generate a deb-package.
   ** `-DWITH_RPM=YES` if you want to be able to generate an rpm-package.
 
+To create a deb or rpm package, run `make package` after compiling.
+
 include::{uri-base}/raw/branch/main/CONTRIBUTING.adoc[]
