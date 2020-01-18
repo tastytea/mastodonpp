@@ -83,7 +83,11 @@ $(function() {
 <div class="line"> </div>
 <div class="line"><span class="comment">// Post a status (/api/v1/status) with an attachment (/api/v1/media).</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &quot;mastodonpp.hpp&quot;</span></div>
+<div class="line"><span class="preprocessor">#if __has_include(&quot;mastodonpp.hpp&quot;)</span></div>
+<div class="line"><span class="preprocessor">#    include &quot;mastodonpp.hpp&quot;</span>            <span class="comment">// We&#39;re building mastodonpp.</span></div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line"><span class="preprocessor">#    include &lt;mastodonpp/mastodonpp.hpp&gt;</span> <span class="comment">// We&#39;re building outside mastodonpp.</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
