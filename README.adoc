@@ -13,7 +13,7 @@
 :uri-dpkg: https://packages.qa.debian.org/dpkg
 :uri-rpm-build: http://www.rpm.org
 :uri-libcurl: https://curl.haxx.se/libcurl/
-_uri-nodeinfo: https://nodeinfo.diaspora.software/
+:uri-nodeinfo: https://nodeinfo.diaspora.software/
 
 *{project}* is a C++ wrapper for the Mastodon and Pleroma APIs. It replaces
 link:{uri-mastodon-cpp}[mastodon-cpp].
