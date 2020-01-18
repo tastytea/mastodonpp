@@ -177,7 +177,7 @@ public:
      */
     [[nodiscard]]
     answer_type patch(const endpoint_variant &endpoint,
-                    const parametermap &parameters);
+                      const parametermap &parameters);
 
     /*!
      *  @brief  Make a HTTP PATCH call.

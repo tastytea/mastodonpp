@@ -13,6 +13,7 @@
 :uri-dpkg: https://packages.qa.debian.org/dpkg
 :uri-rpm-build: http://www.rpm.org
 :uri-libcurl: https://curl.haxx.se/libcurl/
+_uri-nodeinfo: https://nodeinfo.diaspora.software/
 
 *{project}* is a C++ wrapper for the Mastodon and Pleroma APIs. It replaces
 link:{uri-mastodon-cpp}[mastodon-cpp].
@@ -27,13 +28,16 @@ favorite JSON library and we don't want to impose our choice on you!
 
 == Features
 
-This is still a work in progress; here is a rough overview of the features:
+Here is a rough overview of the features:
 
-* [x]  `GET`, Streaming `GET`, `POST`, `PATCH`, `PUT` and `DELETE` requests.
-* [x] Report maximum allowed character per post.
+* [x] `GET`, Streaming `GET`, `POST`, `PATCH`, `PUT` and `DELETE` requests.
 * [x] Comfortable access to pagination headers.
-* [x] Comfortable function to register a new “app” (get an access token).
+* [x] Report maximum allowed character per post.
+* [x] Simple function to register a new “app” (get an access token).
 * [x] Report which mime types are allowed for posting statuses.
+* [x] Find and retrieve link:{uri-nodeinfo}[NodeInfo].
+* [x] Easy access to the libcurl handle for maximum configurability.
+* [x] Set proxy server, User-Agent and the path to the CA bundle.
 
 == Usage
 
@@ -146,5 +150,7 @@ cmake --build . -- -j$(nproc --ignore=1)
 * One of:
   ** `-DWITH_DEB=YES` if you want to be able to generate a deb-package.
   ** `-DWITH_RPM=YES` if you want to be able to generate an rpm-package.
+
+To create a deb or rpm package, run `make package` after compiling.
 
 include::{uri-base}/raw/branch/main/CONTRIBUTING.adoc[]
