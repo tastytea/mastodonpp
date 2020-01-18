@@ -47,7 +47,7 @@ Have a look at the link:{uri-reference}[reference].
 
 [source,cpp]
 --------------------------------------------------------------------------------
-#include "mastodonpp.hpp"
+#include <mastodonpp/mastodonpp.hpp>
 #include <iostream>
 
 int main()
