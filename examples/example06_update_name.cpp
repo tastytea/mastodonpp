@@ -15,7 +15,11 @@
 
 // Update account display name settings (/api/v1/accounts/update_credentials).
 
-#include "mastodonpp.hpp"
+#if __has_include("mastodonpp.hpp")
+#    include "mastodonpp.hpp"            // We're building mastodonpp.
+#else
+#    include <mastodonpp/mastodonpp.hpp> // We're building outside mastodonpp.
+#endif
 
 #include <iostream>
 #include <string>

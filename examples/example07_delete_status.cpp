@@ -15,7 +15,11 @@
 
 // Post a status (/api/v1/status), then delete it (/api/v1/statuses/:id).
 
-#include "mastodonpp.hpp"
+#if __has_include("mastodonpp.hpp")
+#    include "mastodonpp.hpp"            // We're building mastodonpp.
+#else
+#    include <mastodonpp/mastodonpp.hpp> // We're building outside mastodonpp.
+#endif
 
 #include <chrono>
 #include <iostream>
