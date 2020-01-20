@@ -206,7 +206,7 @@ public:
     /*!
      *  @brief  Simplifies obtaining an OAuth 2.0 Bearer Access Token.
      *
-     *  * Create an Instance() and initialize this class with it.
+     *  * Create an Instance and initialize this class with it.
      *  * Call step_1() to get the URI your user has to visit.
      *  * Get the authorization code from your user.
      *  * Call step_2() with the code.
