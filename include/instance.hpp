@@ -230,6 +230,8 @@ public:
      *  @endcode
      *
      *  @since  0.3.0
+     *
+     *  @headerfile instance.hpp mastodonpp/instance.hpp
      */
     class ObtainToken : public CURLWrapper
     {
