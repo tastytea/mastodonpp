@@ -70,7 +70,7 @@ string Connection::get_new_stream_contents()
 {
     buffer_mutex.lock();
     auto &buffer{get_buffer()};
-    auto buffer_copy{buffer};
+    const string buffer_copy{buffer};
     buffer.clear();
     buffer_mutex.unlock();
     return buffer_copy;

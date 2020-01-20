@@ -124,7 +124,7 @@ public:
     {
         char *cbuf{curl_easy_escape(_connection, url.data(),
                                     static_cast<int>(url.size()))};
-        string sbuf{cbuf};
+        const string sbuf{cbuf};
         curl_free(cbuf);
         return sbuf;
     }
@@ -146,7 +146,7 @@ public:
     {
         char *cbuf{curl_easy_unescape(_connection, url.data(),
                                       static_cast<int>(url.size()), nullptr)};
-        string sbuf{cbuf};
+        const string sbuf{cbuf};
         curl_free(cbuf);
         return sbuf;
     }
