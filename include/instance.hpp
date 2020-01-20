@@ -274,7 +274,8 @@ public:
          *  The `body` of the returned @link answer_type answer @endlink
          *  contains only the access token, not the whole JSON response.
          *
-         *  The access token will be set in the parent Instance.
+         *  The access token will be set in the Instance you initialized
+         *  this ObtainToken with.
          *
          *  @param  code The authorization code you got from the user.
          *
