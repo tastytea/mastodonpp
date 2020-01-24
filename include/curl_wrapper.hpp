@@ -193,7 +193,7 @@ protected:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    string &get_buffer()
+    inline string &get_buffer()
     {
         return _curl_buffer_body;
     }
