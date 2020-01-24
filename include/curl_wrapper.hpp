@@ -79,7 +79,7 @@ public:
     /*!
      *  @brief  Cleans up curl and connection.
      *
-     *  Calls `curl_global_cleanup`, which is not thread-safe. For more
+     *  May call `curl_global_cleanup`, which is not thread-safe. For more
      *  information consult [curl_global_cleanup(3)]
      *  (https://curl.haxx.se/libcurl/c/curl_global_cleanup.html).
      *
