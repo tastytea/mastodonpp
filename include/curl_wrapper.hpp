@@ -222,7 +222,7 @@ protected:
      *
      *  @since  0.1.0
      */
-    void set_proxy(string_view proxy);
+    virtual void set_proxy(string_view proxy);
 
     /*!
      *  @brief  Set OAuth 2.0 Bearer Access Token.
@@ -237,14 +237,14 @@ protected:
      *
      *  @since  0.3.0
      */
-    void set_cainfo(string_view path);
+    virtual void set_cainfo(string_view path);
 
     /*!
      *  @brief  Sets the User-Agent.
      *
      *  @since  0.3.0
      */
-    void set_useragent(string_view useragent);
+    virtual void set_useragent(string_view useragent);
 
 private:
     CURL *_connection;

@@ -148,7 +148,7 @@ public:
      *  Sets also the proxy for all Connection%s that are initialized with this
      *  Instance afterwards.
      */
-    void set_proxy(const string_view proxy)
+    void set_proxy(const string_view proxy) override
     {
         _proxy = proxy;
         CURLWrapper::set_proxy(proxy);
@@ -187,7 +187,7 @@ public:
      *
      *  @since  0.3.0
      */
-    void set_cainfo(string_view path)
+    void set_cainfo(string_view path) override
     {
         _cainfo = path;
         CURLWrapper::set_cainfo(path);
@@ -201,7 +201,7 @@ public:
      *
      *  @since  0.3.0
      */
-    void set_useragent(const string_view useragent)
+    void set_useragent(const string_view useragent) override
     {
         _useragent = useragent;
         CURLWrapper::set_useragent(useragent);
