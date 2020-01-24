@@ -68,6 +68,9 @@ struct event_type
 /*!
  *  @brief  Represents a connection to an instance. Used for requests.
  *
+ *  Do not make 2 requests with the same Connection at the same time. You can
+ *  create as many Connection%s as you want from one Instance.
+ *
  *  @since  0.1.0
  *
  *  @headerfile connection.hpp mastodonpp/connection.hpp

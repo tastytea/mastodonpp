@@ -38,6 +38,10 @@ using std::vector;
 /*!
  *  @brief  Holds the access data of an instance.
  *
+ *  Instance%s are needed to initialize Connection%s. All properties you set
+ *  here (with set_proxy(), set_useragent() and so on) are copied to every
+ *  Connection you initialize afterwards.
+ *
  *  @since  0.1.0
  *
  *  @headerfile instance.hpp mastodonpp/instance.hpp
