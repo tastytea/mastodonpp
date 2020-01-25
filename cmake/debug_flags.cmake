@@ -23,7 +23,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
     "-Wformat=2"
     "-ftrapv"
     "-fsanitize=undefined"
-    "-g"
     "-Og"
     "-fno-omit-frame-pointer")
   if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")

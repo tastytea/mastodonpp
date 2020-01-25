@@ -38,6 +38,10 @@ using std::vector;
 /*!
  *  @brief  Holds the access data of an instance.
  *
+ *  Instance%s are needed to initialize Connection%s. All properties you set
+ *  here (with set_proxy(), set_useragent() and so on) are copied to every
+ *  Connection you initialize afterwards.
+ *
  *  @since  0.1.0
  *
  *  @headerfile instance.hpp mastodonpp/instance.hpp
@@ -144,7 +148,7 @@ public:
      *  Sets also the proxy for all Connection%s that are initialized with this
      *  Instance afterwards.
      */
-    void set_proxy(const string_view proxy)
+    void set_proxy(const string_view proxy) override
     {
         _proxy = proxy;
         CURLWrapper::set_proxy(proxy);
@@ -183,7 +187,7 @@ public:
      *
      *  @since  0.3.0
      */
-    void set_cainfo(string_view path)
+    void set_cainfo(string_view path) override
     {
         _cainfo = path;
         CURLWrapper::set_cainfo(path);
@@ -197,7 +201,7 @@ public:
      *
      *  @since  0.3.0
      */
-    void set_useragent(const string_view useragent)
+    void set_useragent(const string_view useragent) override
     {
         _useragent = useragent;
         CURLWrapper::set_useragent(useragent);
@@ -206,7 +210,7 @@ public:
     /*!
      *  @brief  Simplifies obtaining an OAuth 2.0 Bearer Access Token.
      *
-     *  * Create an Instance() and initialize this class with it.
+     *  * Create an Instance and initialize this class with it.
      *  * Call step_1() to get the URI your user has to visit.
      *  * Get the authorization code from your user.
      *  * Call step_2() with the code.
@@ -230,6 +234,8 @@ public:
      *  @endcode
      *
      *  @since  0.3.0
+     *
+     *  @headerfile instance.hpp mastodonpp/instance.hpp
      */
     class ObtainToken : public CURLWrapper
     {
@@ -272,7 +278,8 @@ public:
          *  The `body` of the returned @link answer_type answer @endlink
          *  contains only the access token, not the whole JSON response.
          *
-         *  The access token will be set in the parent Instance.
+         *  The access token will be set in the Instance you initialized
+         *  this ObtainToken with.
          *
          *  @param  code The authorization code you got from the user.
          *

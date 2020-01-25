@@ -79,7 +79,7 @@ public:
     /*!
      *  @brief  Cleans up curl and connection.
      *
-     *  Calls `curl_global_cleanup`, which is not thread-safe. For more
+     *  May call `curl_global_cleanup`, which is not thread-safe. For more
      *  information consult [curl_global_cleanup(3)]
      *  (https://curl.haxx.se/libcurl/c/curl_global_cleanup.html).
      *
@@ -124,7 +124,7 @@ public:
     {
         char *cbuf{curl_easy_escape(_connection, url.data(),
                                     static_cast<int>(url.size()))};
-        string sbuf{cbuf};
+        const string sbuf{cbuf};
         curl_free(cbuf);
         return sbuf;
     }
@@ -146,7 +146,7 @@ public:
     {
         char *cbuf{curl_easy_unescape(_connection, url.data(),
                                       static_cast<int>(url.size()), nullptr)};
-        string sbuf{cbuf};
+        const string sbuf{cbuf};
         curl_free(cbuf);
         return sbuf;
     }
@@ -193,7 +193,7 @@ protected:
      *  @since  0.1.0
      */
     [[nodiscard]]
-    string &get_buffer()
+    inline string &get_buffer()
     {
         return _curl_buffer_body;
     }
@@ -222,7 +222,7 @@ protected:
      *
      *  @since  0.1.0
      */
-    void set_proxy(string_view proxy);
+    virtual void set_proxy(string_view proxy);
 
     /*!
      *  @brief  Set OAuth 2.0 Bearer Access Token.
@@ -237,14 +237,14 @@ protected:
      *
      *  @since  0.3.0
      */
-    void set_cainfo(string_view path);
+    virtual void set_cainfo(string_view path);
 
     /*!
      *  @brief  Sets the User-Agent.
      *
      *  @since  0.3.0
      */
-    void set_useragent(string_view useragent);
+    virtual void set_useragent(string_view useragent);
 
 private:
     CURL *_connection;
