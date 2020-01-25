@@ -25,9 +25,9 @@ We aim to create a library that is comfortable, yet minimal. All API endpoints
 from Mastodon and Pleroma are stored in ``enum class``es, to counteract typos
 and make your life easier. The network-facing code is built on
 link:{uri-libcurl}[libcurl], a mature and stable library that is available on
-virtually every operating system. The library does not parse the responses
-itself, but returns to you the raw data, because we know everyone has their
-favorite JSON library and we don't want to impose our choice on you!
+most operating systems. The library does not parse the responses itself, but
+returns to you the raw data, because we know everyone has their favorite JSON
+library and we don't want to impose our choice on you!
 
 == Features
 
