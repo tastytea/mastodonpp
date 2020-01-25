@@ -3,6 +3,8 @@
 :project: mastodonpp
 :uri-base: https://schlomp.space/tastytea/{project}
 :uri-branch-main: {uri-base}/src/branch/main
+:uri-wp-mastodon: https://en.wikipedia.org/wiki/Mastodon_(software)
+:uri-pleroma: https://pleroma.social/
 :uri-mastodon-cpp: https://schlomp.space/tastytea/mastodon-cpp
 :uri-reference: https://doc.schlomp.space/{project}/
 :uri-gcc: https://gcc.gnu.org/
@@ -15,7 +17,8 @@
 :uri-libcurl: https://curl.haxx.se/libcurl/
 :uri-nodeinfo: https://nodeinfo.diaspora.software/
 
-*{project}* is a C++ wrapper for the Mastodon and Pleroma APIs. It replaces
+*{project}* is a C++ wrapper for the link:{uri-wp-mastodon}[Mastodon] and
+link:{uri-pleroma}[Pleroma] APIs. It replaces
 link:{uri-mastodon-cpp}[mastodon-cpp].
 
 We aim to create a library that is comfortable, yet minimal. All API endpoints
