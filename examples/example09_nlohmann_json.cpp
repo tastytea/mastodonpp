@@ -106,13 +106,16 @@ int main(int argc, char *argv[])
         {
             handle_error(answer);
         }
-
     }
     catch (const masto::CURLException &e)
     {
         // Only libcurl errors that are not network errors will be thrown.
         // There went probably something wrong with the initialization.
         cerr << e.what() << '\n';
+    }
+    catch (const nlohmann::detail::exception &e)
+    {
+        cerr << "JSON exception: " << e.what() << '\n';
     }
 }
 
