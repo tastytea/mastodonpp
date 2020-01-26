@@ -415,7 +415,7 @@ void CURLWrapper::add_parameters_to_uri(string &uri,
 }
 
 void CURLWrapper::add_mime_part(curl_mime *mime,
-                                string_view name, string_view data) const
+                                string_view name, string_view data)
 {
     curl_mimepart *part{curl_mime_addpart(mime)};
     if (part == nullptr)
