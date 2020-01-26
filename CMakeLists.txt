@@ -22,6 +22,7 @@ option(WITH_TESTS "Compile tests." NO)
 option(WITH_EXAMPLES "Compile examples." NO)
 option(WITH_DEB "Prepare for the building of .deb packages." NO)
 option(WITH_RPM "Prepare for the building of .rpm packages." NO)
+option(WITH_CLANG-TIDY "Check sourcecode with clang-tidy while compiling." NO)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -29,6 +30,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(debug_flags)
 
+if(WITH_CLANG-TIDY)
+  set(CMAKE_CXX_CLANG_TIDY
+    "clang-tidy"
+    "-p=build"
+    "-header-filter=${PROJECT_SOURCE_DIR}"
+    "-quiet")
 endif()
 
 add_subdirectory(src)

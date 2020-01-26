@@ -16,6 +16,7 @@
 :uri-rpm-build: http://www.rpm.org
 :uri-libcurl: https://curl.haxx.se/libcurl/
 :uri-nodeinfo: https://nodeinfo.diaspora.software/
+:uri-clang-tidy: https://clang.llvm.org/extra/clang-tidy/
 
 *{project}* is a C++ wrapper for the link:{uri-wp-mastodon}[Mastodon] and
 link:{uri-pleroma}[Pleroma] APIs. It replaces
@@ -150,6 +151,8 @@ cmake --build . -- -j$(nproc --ignore=1)
 * `-DCMAKE_BUILD_TYPE=Debug` for a debug build.
 * `-DWITH_TESTS=YES` if you want to compile the tests.
 * `-DWITH_EXAMPLES=YES` if you want to compile the examples.
+* `-DWITH_CLANG-TIDY=YES` to check the sourcecode with
+  link:{uri-clang-tidy}[clang-tidy] while compiling.
 * One of:
   ** `-DWITH_DEB=YES` if you want to be able to generate a deb-package.
   ** `-DWITH_RPM=YES` if you want to be able to generate an rpm-package.
