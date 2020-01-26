@@ -337,7 +337,7 @@ void CURLWrapper::setup_curl()
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     curl_easy_setopt(_connection, CURLOPT_NOPROGRESS, 0L);
 
-    set_useragent((string("mastodonpp/") += version));
+    CURLWrapper::set_useragent((string("mastodonpp/") += version));
 
     // The next 2 only fail if HTTP is not supported.
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
