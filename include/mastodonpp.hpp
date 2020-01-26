@@ -106,6 +106,7 @@
  *  @example example06_update_name.cpp
  *  @example example07_delete_status.cpp
  *  @example example08_obtain_token.cpp
+ *  @example example09_nlohmann_json.cpp
  */
 
 /*!

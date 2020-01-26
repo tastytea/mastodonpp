@@ -320,7 +320,8 @@ private:
      *
      *  @since  0.1.0
      */
-    bool replace_parameter_in_uri(string &uri, const parameterpair &parameter);
+    static bool replace_parameter_in_uri(string &uri,
+                                         const parameterpair &parameter);
 
     /*!
      *  @brief  Add parameters to URI.
@@ -330,7 +331,8 @@ private:
      *
      *  @since  0.1.0
      */
-    void add_parameters_to_uri(string &uri, const parametermap &parameters);
+    static void add_parameters_to_uri(string &uri,
+                                      const parametermap &parameters);
 
     /*!
      *  @brief  Add `*curl_mimepart` to `*curl_mime`.
@@ -341,8 +343,8 @@ private:
      *
      *  @since  0.2.0
      */
-    void add_mime_part(curl_mime *mime,
-                       string_view name, string_view data) const;
+    static void add_mime_part(curl_mime *mime,
+                              string_view name, string_view data);
 
     /*!
      *  @brief  Convert parametermap to `*curl_mime`.

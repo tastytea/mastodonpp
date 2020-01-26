@@ -3,6 +3,8 @@
 :project: mastodonpp
 :uri-base: https://schlomp.space/tastytea/{project}
 :uri-branch-main: {uri-base}/src/branch/main
+:uri-wp-mastodon: https://en.wikipedia.org/wiki/Mastodon_(software)
+:uri-pleroma: https://pleroma.social/
 :uri-mastodon-cpp: https://schlomp.space/tastytea/mastodon-cpp
 :uri-reference: https://doc.schlomp.space/{project}/
 :uri-gcc: https://gcc.gnu.org/
@@ -14,17 +16,19 @@
 :uri-rpm-build: http://www.rpm.org
 :uri-libcurl: https://curl.haxx.se/libcurl/
 :uri-nodeinfo: https://nodeinfo.diaspora.software/
+:uri-clang-tidy: https://clang.llvm.org/extra/clang-tidy/
 
-*{project}* is a C++ wrapper for the Mastodon and Pleroma APIs. It replaces
+*{project}* is a C++ wrapper for the link:{uri-wp-mastodon}[Mastodon] and
+link:{uri-pleroma}[Pleroma] APIs. It replaces
 link:{uri-mastodon-cpp}[mastodon-cpp].
 
 We aim to create a library that is comfortable, yet minimal. All API endpoints
 from Mastodon and Pleroma are stored in ``enum class``es, to counteract typos
 and make your life easier. The network-facing code is built on
 link:{uri-libcurl}[libcurl], a mature and stable library that is available on
-virtually every operating system. The library does not parse the responses
-itself, but returns to you the raw data, because we know everyone has their
-favorite JSON library and we don't want to impose our choice on you!
+most operating systems. The library does not parse the responses itself, but
+returns to you the raw data, because we know everyone has their favorite JSON
+library and we don't want to impose our choice on you!
 
 == Features
 
@@ -147,6 +151,8 @@ cmake --build . -- -j$(nproc --ignore=1)
 * `-DCMAKE_BUILD_TYPE=Debug` for a debug build.
 * `-DWITH_TESTS=YES` if you want to compile the tests.
 * `-DWITH_EXAMPLES=YES` if you want to compile the examples.
+* `-DWITH_CLANG-TIDY=YES` to check the sourcecode with
+  link:{uri-clang-tidy}[clang-tidy] while compiling.
 * One of:
   ** `-DWITH_DEB=YES` if you want to be able to generate a deb-package.
   ** `-DWITH_RPM=YES` if you want to be able to generate an rpm-package.

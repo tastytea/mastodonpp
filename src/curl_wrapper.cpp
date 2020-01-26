@@ -40,7 +40,7 @@ static atomic<uint16_t> curlwrapper_instances{0};
 
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
-    , _stream_cancelled(false)
+    , _stream_cancelled{false}
 {
     if (curlwrapper_instances == 0)
     {
@@ -337,7 +337,7 @@ void CURLWrapper::setup_curl()
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     curl_easy_setopt(_connection, CURLOPT_NOPROGRESS, 0L);
 
-    set_useragent((string("mastodonpp/") += version));
+    CURLWrapper::set_useragent((string("mastodonpp/") += version));
 
     // The next 2 only fail if HTTP is not supported.
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
@@ -415,7 +415,7 @@ void CURLWrapper::add_parameters_to_uri(string &uri,
 }
 
 void CURLWrapper::add_mime_part(curl_mime *mime,
-                                string_view name, string_view data) const
+                                string_view name, string_view data)
 {
     curl_mimepart *part{curl_mime_addpart(mime)};
     if (part == nullptr)
