@@ -40,7 +40,7 @@ static atomic<uint16_t> curlwrapper_instances{0};
 
 CURLWrapper::CURLWrapper()
     : _curl_buffer_error{}
-    , _stream_cancelled(false)
+    , _stream_cancelled{false}
 {
     if (curlwrapper_instances == 0)
     {
