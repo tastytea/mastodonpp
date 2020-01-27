@@ -1,0 +1,41 @@
+# -*- mode: conf; fill-column: 100; -*-
+# Written for clang-tidy 9.
+
+---
+Checks:         '*,
+                -cppcoreguidelines-non-private-member-variables-in-classes,
+                -fuchsia-default-arguments-calls,
+                -fuchsia-default-arguments,
+                -llvm-include-order,
+                -llvm-header-guard,
+                -misc-non-private-member-variables-in-classes,
+                -fuchsia-overloaded-operator,
+                -cppcoreguidelines-avoid-magic-numbers,
+                -readability-magic-numbers,
+                -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+                -hicpp-no-array-decay,
+                -modernize-avoid-c-arrays,
+                -cppcoreguidelines-avoid-c-arrays,
+                -hicpp-avoid-c-arrays,
+                -google-build-using-namespace,
+                -readability-named-parameter,
+                -google-runtime-references,
+                -hicpp-avoid-goto,
+                -hicpp-vararg,
+                -fuchsia-statically-constructed-objects,
+                -google-readability-todo,
+                -modernize-use-trailing-return-type'
+CheckOptions:   - { key: readability-identifier-naming.ClassCase,           value: CamelCase  }
+                # Clashes with constant private member prefix. (const int _var;)
+                # - { key: readability-identifier-naming.ConstantCase,        value: lower_case }
+                - { key: readability-identifier-naming.EnumCase,            value: lower_case }
+                - { key: readability-identifier-naming.FunctionCase,        value: lower_case }
+                - { key: readability-identifier-naming.MemberCase,          value: lower_case }
+                - { key: readability-identifier-naming.NamespaceCase,       value: lower_case }
+                - { key: readability-identifier-naming.ParameterCase,       value: lower_case }
+                - { key: readability-identifier-naming.PrivateMemberCase,   value: lower_case }
+                - { key: readability-identifier-naming.PrivateMemberPrefix, value: _          }
+                - { key: readability-identifier-naming.StructCase,          value: lower_case }
+                # Clashes with static private member prefix. (static int _var;)
+                # - { key: readability-identifier-naming.VariableCase,        value: lower_case }
+...
