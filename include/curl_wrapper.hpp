@@ -39,11 +39,11 @@ using std::string_view;
  */
 enum class http_method
 {
-    GET,
-    POST,
-    PATCH,
-    PUT,
-    DELETE
+    GET,                        // NOLINT(readability-identifier-naming)
+    POST,                       // NOLINT(readability-identifier-naming)
+    PATCH,                      // NOLINT(readability-identifier-naming)
+    PUT,                        // NOLINT(readability-identifier-naming)
+    DELETE                      // NOLINT(readability-identifier-naming)
 };
 
 /*!
