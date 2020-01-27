@@ -33,7 +33,6 @@ include(debug_flags)
 if(WITH_CLANG-TIDY)
   set(CMAKE_CXX_CLANG_TIDY
     "clang-tidy"
-    "-p=build"
     "-header-filter=${PROJECT_SOURCE_DIR}"
     "-quiet")
 endif()
