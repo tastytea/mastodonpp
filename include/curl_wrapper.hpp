@@ -172,7 +172,7 @@ protected:
      *
      *  @since  0.1.0
      */
-    mutex buffer_mutex;
+    mutex _buffer_mutex;
 
     /*!
      *  @brief  Make a HTTP request.
