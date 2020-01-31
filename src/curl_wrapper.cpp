@@ -280,9 +280,9 @@ size_t CURLWrapper::writer_body(char *data, size_t size, size_t nmemb)
         return 0;
     }
 
-    buffer_mutex.lock();
+    _buffer_mutex.lock();
     _curl_buffer_body.append(data, size * nmemb);
-    buffer_mutex.unlock();
+    _buffer_mutex.unlock();
 
     return size * nmemb;
 }

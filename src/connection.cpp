@@ -68,17 +68,17 @@ answer_type Connection::del(const endpoint_variant &endpoint,
 
 string Connection::get_new_stream_contents()
 {
-    buffer_mutex.lock();
+    _buffer_mutex.lock();
     auto &buffer{get_buffer()};
     const string buffer_copy{buffer};
     buffer.clear();
-    buffer_mutex.unlock();
+    _buffer_mutex.unlock();
     return buffer_copy;
 }
 
 vector<event_type> Connection::get_new_events()
 {
-    buffer_mutex.lock();
+    _buffer_mutex.lock();
     auto &buffer{get_buffer()};
     vector<event_type> events;
 
@@ -103,7 +103,7 @@ vector<event_type> Connection::get_new_events()
         buffer.erase(0, endpos);
     }
 
-    buffer_mutex.unlock();
+    _buffer_mutex.unlock();
     return events;
 }
 
