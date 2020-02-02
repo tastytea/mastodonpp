@@ -4,6 +4,8 @@
 :contact-email: tastytea@tastytea.de
 :contact-xmpp: {contact-email}
 :contact-fediverse: https://likeable.space/users/tastytea
+:uri-git-format-patch: https://git-scm.com/docs/git-format-patch
+:uri-git-send-email: https://git-scm.com/docs/git-send-email
 
 == How to contribute
 
@@ -26,4 +28,5 @@ Please use similar coding conventions as the rest of the project. The basic rule
 to remember is to write code in the same style as the existing/surrounding code.
 
 You can also send me your patches via mailto:{contact-email}[E-Mail], ideally
-using `git format-patch` or `git send-email`.
+using link:{uri-git-format-patch}[git format-patch] or
+link:{uri-git-send-email}[git send-email].
