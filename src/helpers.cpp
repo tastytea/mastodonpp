@@ -16,57 +16,34 @@
 
 #include "helpers.hpp"
 
-#include <array>
 #include <codecvt>
 #include <locale>
+#include <map>
 #include <regex>
+#include <stdexcept>
 #include <string_view>
-#include <utility>
 
 namespace mastodonpp
 {
 
-using std::array;
-using std::stol;
+using std::stoul;
 using std::codecvt_utf8;
 using std::wstring_convert;
+using std::map;
 using std::regex;
 using std::regex_search;
 using std::smatch;
 using std::string_view;
 using std::move;
-using std::pair;
 
 string unescape_html(string html)
 {
     string buffer{move(html)};
     string output;
 
-    // Used to convert int to utf-8 char.
-    wstring_convert<codecvt_utf8<char32_t>, char32_t> u8c;
-    // Matches numbered entities between 1 and 8 digits, decimal or hexadecimal.
-    const regex re_entity{"&#(x)?([[:alnum:]]{1,8});"};
-    smatch match;
-
-    while (regex_search(buffer, match, re_entity))
-    {
-        const char32_t codepoint{[&match]
-        {
-            // 'x' in front of the number means it's hexadecimal, else decimal.
-            if (match[1].length() == 1)
-            {
-                return static_cast<char32_t>(stol(match[2].str(), nullptr, 16));
-            }
-            return static_cast<char32_t>(stol(match[2].str(), nullptr, 10));
-        }()};
-        output += match.prefix().str() + u8c.to_bytes(codepoint);
-        buffer = match.suffix().str();
-    }
-    output += buffer;
-
     // Source: https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_
     //         entity_references#Character_entity_references_in_HTML
-    constexpr array<const pair<const string_view, const char32_t>, 258> names
+    const map<string_view, char32_t> names
         {{
             { "exclamation", 0x0021 },
             { "quot", 0x0022 },
@@ -328,11 +305,45 @@ string unescape_html(string html)
             { "diams", 0x2666 }
         }};
 
-    for (const auto &pair : names)
+    // Used to convert number to utf-8 char.
+    wstring_convert<codecvt_utf8<char32_t>, char32_t> u8c;
+    // Matches numbered entities between 1 and 8 digits, decimal or hexadecimal,
+    // or named entities.
+    const regex re_entity{"&(#(x)?([[:alnum:]]{1,8})"
+        "|[^;[:space:][:punct:]]+);"};
+    smatch match;
+
+    while (regex_search(buffer, match, re_entity))
     {
-        const regex re((string("&") += pair.first) += ';');
-        output = regex_replace(output, re, u8c.to_bytes(pair.second));
+        output += match.prefix().str();
+        try
+        {
+            const char32_t codepoint{[&match, &names]
+            {
+                // If it doesn't start with a '#' it is a named entity.
+                if (match[1].str()[0] != '#')
+                {
+                    return names.at(match[1].str());
+                }
+                // 'x' after '#' means the number is hexadecimal.
+                if (match[2].length() == 1)
+                {
+                    return static_cast<char32_t>(stoul(match[3].str(),
+                                                      nullptr, 16));
+                }
+                // '#' without 'x' means the number is decimal.
+                return static_cast<char32_t>(stoul(match[3].str(),
+                                                   nullptr, 10));
+            }()};
+            output += u8c.to_bytes(codepoint);
+        }
+        catch (const std::out_of_range &) // Named entity could not be found.
+        {
+            output += match.str();
+        }
+        buffer = match.suffix().str();
     }
+    output += buffer;
 
     return output;
 }
