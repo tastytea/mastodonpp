@@ -42,6 +42,7 @@ using std::string;
  *
  *  @since  0.4.0
  */
+[[nodiscard]]
 string unescape_html(string html);
 
 } // namespace mastodonpp
