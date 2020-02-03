@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['set_5faccess_5ftoken_52',['set_access_token',['../classmastodonpp_1_1CURLWrapper.html#a94aba6daedea376ccc20e5c983bd3358',1,'mastodonpp::CURLWrapper::set_access_token()'],['../classmastodonpp_1_1Instance.html#a1e606235a69d150b59bd90c78069de22',1,'mastodonpp::Instance::set_access_token()']]],
-  ['set_5fcainfo_53',['set_cainfo',['../classmastodonpp_1_1CURLWrapper.html#af3f2bd4dea7c289d590fe19889360444',1,'mastodonpp::CURLWrapper::set_cainfo()'],['../classmastodonpp_1_1Instance.html#af75272092047c8af95cef8dfb3969dfa',1,'mastodonpp::Instance::set_cainfo()']]],
-  ['set_5fproxy_54',['set_proxy',['../classmastodonpp_1_1CURLWrapper.html#a1564a42794ef7a9d170b725063ef504d',1,'mastodonpp::CURLWrapper::set_proxy()'],['../classmastodonpp_1_1Instance.html#a4aa276f156e3a770e5fd9cbf5c7c0cd5',1,'mastodonpp::Instance::set_proxy()']]],
-  ['set_5fuseragent_55',['set_useragent',['../classmastodonpp_1_1CURLWrapper.html#ae3b1445f9b94b1f7677d3cac6d538612',1,'mastodonpp::CURLWrapper::set_useragent()'],['../classmastodonpp_1_1Instance.html#a72fe275e604f71a0b7424033b04d8a53',1,'mastodonpp::Instance::set_useragent()']]],
-  ['setup_5fconnection_5fproperties_56',['setup_connection_properties',['../classmastodonpp_1_1CURLWrapper.html#a0059ecb78b53c4b3c941b19f8dc897f7',1,'mastodonpp::CURLWrapper']]],
-  ['step_5f1_57',['step_1',['../classmastodonpp_1_1Instance_1_1ObtainToken.html#a5bd5d631e2fbb186a9df66d2ac3f5402',1,'mastodonpp::Instance::ObtainToken']]],
-  ['step_5f2_58',['step_2',['../classmastodonpp_1_1Instance_1_1ObtainToken.html#addda7f4e1ca4200235764707478f6d51',1,'mastodonpp::Instance::ObtainToken']]]
+  ['parametermap_45',['parametermap',['../namespacemastodonpp.html#af8b3b89118adeccc71c54dfd36c987f6',1,'mastodonpp']]],
+  ['parameterpair_46',['parameterpair',['../namespacemastodonpp.html#a63b360bdefd56276e903619eb6a76049',1,'mastodonpp']]],
+  ['patch_47',['patch',['../classmastodonpp_1_1Connection.html#a10f838c74d2ccc83f64f29e2aad2f157',1,'mastodonpp::Connection::patch(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)'],['../classmastodonpp_1_1Connection.html#a3f1e0440b68a44cf678bfdbe33295197',1,'mastodonpp::Connection::patch(const endpoint_variant &amp;endpoint)']]],
+  ['pleroma_48',['pleroma',['../classmastodonpp_1_1API.html#a146a96ee58a8829042f406b9d42cf37e',1,'mastodonpp::API']]],
+  ['post_49',['post',['../classmastodonpp_1_1Connection.html#ad7cebeeef7c285ff4666dc6850f20164',1,'mastodonpp::Connection::post(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)'],['../classmastodonpp_1_1Connection.html#af27eb5d94f5a0e39a703988fdcc54173',1,'mastodonpp::Connection::post(const endpoint_variant &amp;endpoint)']]],
+  ['prev_50',['prev',['../structmastodonpp_1_1answer__type.html#a54baac6518a4178062d6963661ba50e9',1,'mastodonpp::answer_type']]],
+  ['put_51',['put',['../classmastodonpp_1_1Connection.html#ac5afc2e5d419c8bee3a8994ce0a940aa',1,'mastodonpp::Connection::put(const endpoint_variant &amp;endpoint, const parametermap &amp;parameters)'],['../classmastodonpp_1_1Connection.html#ad05ff1b33460bfedf0b46f4e5e755399',1,'mastodonpp::Connection::put(const endpoint_variant &amp;endpoint)']]]
 ];

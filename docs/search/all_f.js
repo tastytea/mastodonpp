@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['v1_63',['v1',['../classmastodonpp_1_1API.html#aee8f590426914a36f948dafa78e330f2',1,'mastodonpp::API']]],
-  ['v2_64',['v2',['../classmastodonpp_1_1API.html#a67ba7c7a8d94ec7905e45466255648ba',1,'mastodonpp::API']]]
+  ['unescape_5fhtml_61',['unescape_html',['../namespacemastodonpp.html#a4e42b93c60074920fb731ab6ba797935',1,'mastodonpp']]],
+  ['unescape_5furl_62',['unescape_url',['../classmastodonpp_1_1CURLWrapper.html#aed6d09b5c32d71276a851ddf321b5891',1,'mastodonpp::CURLWrapper']]]
 ];

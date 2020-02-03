@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['data_123',['data',['../structmastodonpp_1_1event__type.html#af72ad0a57a762c57f0d4e5d650c5d65c',1,'mastodonpp::event_type']]]
+  ['curl_5ferror_5fcode_122',['curl_error_code',['../structmastodonpp_1_1answer__type.html#a7c5582c4500034c0ea36ab1694944139',1,'mastodonpp::answer_type']]]
 ];

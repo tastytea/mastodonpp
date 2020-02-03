@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['body_2',['body',['../structmastodonpp_1_1answer__type.html#a9da206eb4954ff15402083379909cc38',1,'mastodonpp::answer_type']]],
-  ['buffer_5fmutex_3',['buffer_mutex',['../classmastodonpp_1_1CURLWrapper.html#aeb3171d955832b8062dc02b4ac67d195',1,'mastodonpp::CURLWrapper']]]
+  ['answer_5ftype_1',['answer_type',['../structmastodonpp_1_1answer__type.html',1,'mastodonpp']]],
+  ['api_2',['API',['../classmastodonpp_1_1API.html',1,'mastodonpp::API'],['../classmastodonpp_1_1API.html#af9fc7a7d152a851122f8acc3224d4047',1,'mastodonpp::API::API()']]]
 ];

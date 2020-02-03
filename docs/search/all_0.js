@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['answer_5ftype_0',['answer_type',['../structmastodonpp_1_1answer__type.html',1,'mastodonpp']]],
-  ['api_1',['API',['../classmastodonpp_1_1API.html',1,'mastodonpp::API'],['../classmastodonpp_1_1API.html#af9fc7a7d152a851122f8acc3224d4047',1,'mastodonpp::API::API()']]]
+  ['_5fbuffer_5fmutex_0',['_buffer_mutex',['../classmastodonpp_1_1CURLWrapper.html#af7e18dc7c3bdc1c58bc93a46bf00866a',1,'mastodonpp::CURLWrapper']]]
 ];

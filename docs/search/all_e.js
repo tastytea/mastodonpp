@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['unescape_5fhtml_61',['unescape_html',['../namespacemastodonpp.html#a4e42b93c60074920fb731ab6ba797935',1,'mastodonpp']]],
-  ['unescape_5furl_62',['unescape_url',['../classmastodonpp_1_1CURLWrapper.html#aed6d09b5c32d71276a851ddf321b5891',1,'mastodonpp::CURLWrapper']]]
+  ['to_5fstring_5fview_59',['to_string_view',['../classmastodonpp_1_1API.html#aa51c43b5c7cc2afd32520d08d51bcfc3',1,'mastodonpp::API']]],
+  ['type_60',['type',['../structmastodonpp_1_1event__type.html#a193361ac6ffafb474bbc493273a028ce',1,'mastodonpp::event_type']]]
 ];
