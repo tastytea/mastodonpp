@@ -130,7 +130,7 @@ public:
     }
 
     /*!
-     *  @brief  URL decodes the given string .
+     *  @brief  URL decodes the given string.
      *
      *  For more information consult [curl_easy_unescape(3)]
      *  (https://curl.haxx.se/libcurl/c/curl_easy_unescape.html).
