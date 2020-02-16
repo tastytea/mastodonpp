@@ -25,7 +25,9 @@ don't want to open an account.
 === Pull requests
 
 Please use similar coding conventions as the rest of the project. The basic rule
-to remember is to write code in the same style as the existing/surrounding code.
+to remember is to write code in the same style as the existing/surrounding
+code. Add a copyright line with the year, your name and your email address to
+the files you edited, unless you don't want to.
 
 You can also send me your patches via mailto:{contact-email}[E-Mail], ideally
 using link:{uri-git-format-patch}[git format-patch] or
