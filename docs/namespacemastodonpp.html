@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">mastodonpp
-   &#160;<span id="projectnumber">0.5.0</span>
+   &#160;<span id="projectnumber">0.5.1</span>
    </div>
   </td>
  </tr>
@@ -296,309 +296,180 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// Source: https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">//         entity_references#Character_entity_references_in_HTML</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">const</span> map&lt;string_view, char32_t&gt; names</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {{</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            { <span class="stringliteral">&quot;exclamation&quot;</span>, 0x0021 },</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            { <span class="stringliteral">&quot;quot&quot;</span>, 0x0022 },</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            { <span class="stringliteral">&quot;percent&quot;</span>, 0x0025 },</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            { <span class="stringliteral">&quot;amp&quot;</span>, 0x0026 },</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            { <span class="stringliteral">&quot;apos&quot;</span>, 0x0027 },</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            { <span class="stringliteral">&quot;add&quot;</span>, 0x002B },</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            { <span class="stringliteral">&quot;lt&quot;</span>, 0x003C },</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            { <span class="stringliteral">&quot;equal&quot;</span>, 0x003D },</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            { <span class="stringliteral">&quot;gt&quot;</span>, 0x003E },</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            { <span class="stringliteral">&quot;nbsp&quot;</span>, 0x00A0 },</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            { <span class="stringliteral">&quot;iexcl&quot;</span>, 0x00A1 },</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            { <span class="stringliteral">&quot;cent&quot;</span>, 0x00A2 },</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            { <span class="stringliteral">&quot;pound&quot;</span>, 0x00A3 },</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            { <span class="stringliteral">&quot;curren&quot;</span>, 0x00A4 },</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            { <span class="stringliteral">&quot;yen&quot;</span>, 0x00A5 },</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            { <span class="stringliteral">&quot;brvbar&quot;</span>, 0x00A6 },</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            { <span class="stringliteral">&quot;sect&quot;</span>, 0x00A7 },</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            { <span class="stringliteral">&quot;uml&quot;</span>, 0x00A8 },</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            { <span class="stringliteral">&quot;copy&quot;</span>, 0x00A9 },</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            { <span class="stringliteral">&quot;ordf&quot;</span>, 0x00AA },</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            { <span class="stringliteral">&quot;laquo&quot;</span>, 0x00AB },</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            { <span class="stringliteral">&quot;not&quot;</span>, 0x00AC },</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            { <span class="stringliteral">&quot;shy&quot;</span>, 0x00AD },</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            { <span class="stringliteral">&quot;reg&quot;</span>, 0x00AE },</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            { <span class="stringliteral">&quot;macr&quot;</span>, 0x00AF },</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            { <span class="stringliteral">&quot;deg&quot;</span>, 0x00B0 },</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            { <span class="stringliteral">&quot;plusmn&quot;</span>, 0x00B1 },</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            { <span class="stringliteral">&quot;sup2&quot;</span>, 0x00B2 },</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            { <span class="stringliteral">&quot;sup3&quot;</span>, 0x00B3 },</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            { <span class="stringliteral">&quot;acute&quot;</span>, 0x00B4 },</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            { <span class="stringliteral">&quot;micro&quot;</span>, 0x00B5 },</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            { <span class="stringliteral">&quot;para&quot;</span>, 0x00B6 },</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            { <span class="stringliteral">&quot;middot&quot;</span>, 0x00B7 },</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            { <span class="stringliteral">&quot;cedil&quot;</span>, 0x00B8 },</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            { <span class="stringliteral">&quot;sup1&quot;</span>, 0x00B9 },</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            { <span class="stringliteral">&quot;ordm&quot;</span>, 0x00BA },</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            { <span class="stringliteral">&quot;raquo&quot;</span>, 0x00BB },</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            { <span class="stringliteral">&quot;frac14&quot;</span>, 0x00BC },</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            { <span class="stringliteral">&quot;frac12&quot;</span>, 0x00BD },</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            { <span class="stringliteral">&quot;frac34&quot;</span>, 0x00BE },</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            { <span class="stringliteral">&quot;iquest&quot;</span>, 0x00BF },</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            { <span class="stringliteral">&quot;Agrave&quot;</span>, 0x00C0 },</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            { <span class="stringliteral">&quot;Aacute&quot;</span>, 0x00C1 },</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            { <span class="stringliteral">&quot;Acirc&quot;</span>, 0x00C2 },</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            { <span class="stringliteral">&quot;Atilde&quot;</span>, 0x00C3 },</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            { <span class="stringliteral">&quot;Auml&quot;</span>, 0x00C4 },</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            { <span class="stringliteral">&quot;Aring&quot;</span>, 0x00C5 },</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            { <span class="stringliteral">&quot;AElig&quot;</span>, 0x00C6 },</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            { <span class="stringliteral">&quot;Ccedil&quot;</span>, 0x00C7 },</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            { <span class="stringliteral">&quot;Egrave&quot;</span>, 0x00C8 },</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            { <span class="stringliteral">&quot;Eacute&quot;</span>, 0x00C9 },</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            { <span class="stringliteral">&quot;Ecirc&quot;</span>, 0x00CA },</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            { <span class="stringliteral">&quot;Euml&quot;</span>, 0x00CB },</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            { <span class="stringliteral">&quot;Igrave&quot;</span>, 0x00CC },</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            { <span class="stringliteral">&quot;Iacute&quot;</span>, 0x00CD },</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            { <span class="stringliteral">&quot;Icirc&quot;</span>, 0x00CE },</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            { <span class="stringliteral">&quot;Iuml&quot;</span>, 0x00CF },</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            { <span class="stringliteral">&quot;ETH&quot;</span>, 0x00D0 },</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            { <span class="stringliteral">&quot;Ntilde&quot;</span>, 0x00D1 },</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            { <span class="stringliteral">&quot;Ograve&quot;</span>, 0x00D2 },</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            { <span class="stringliteral">&quot;Oacute&quot;</span>, 0x00D3 },</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            { <span class="stringliteral">&quot;Ocirc&quot;</span>, 0x00D4 },</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            { <span class="stringliteral">&quot;Otilde&quot;</span>, 0x00D5 },</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            { <span class="stringliteral">&quot;Ouml&quot;</span>, 0x00D6 },</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            { <span class="stringliteral">&quot;times&quot;</span>, 0x00D7 },</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            { <span class="stringliteral">&quot;Oslash&quot;</span>, 0x00D8 },</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            { <span class="stringliteral">&quot;Ugrave&quot;</span>, 0x00D9 },</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            { <span class="stringliteral">&quot;Uacute&quot;</span>, 0x00DA },</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            { <span class="stringliteral">&quot;Ucirc&quot;</span>, 0x00DB },</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            { <span class="stringliteral">&quot;Uuml&quot;</span>, 0x00DC },</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            { <span class="stringliteral">&quot;Yacute&quot;</span>, 0x00DD },</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            { <span class="stringliteral">&quot;THORN&quot;</span>, 0x00DE },</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            { <span class="stringliteral">&quot;szlig&quot;</span>, 0x00DF },</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            { <span class="stringliteral">&quot;agrave&quot;</span>, 0x00E0 },</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            { <span class="stringliteral">&quot;aacute&quot;</span>, 0x00E1 },</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            { <span class="stringliteral">&quot;acirc&quot;</span>, 0x00E2 },</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            { <span class="stringliteral">&quot;atilde&quot;</span>, 0x00E3 },</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            { <span class="stringliteral">&quot;auml&quot;</span>, 0x00E4 },</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            { <span class="stringliteral">&quot;aring&quot;</span>, 0x00E5 },</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            { <span class="stringliteral">&quot;aelig&quot;</span>, 0x00E6 },</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            { <span class="stringliteral">&quot;ccedil&quot;</span>, 0x00E7 },</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            { <span class="stringliteral">&quot;egrave&quot;</span>, 0x00E8 },</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            { <span class="stringliteral">&quot;eacute&quot;</span>, 0x00E9 },</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            { <span class="stringliteral">&quot;ecirc&quot;</span>, 0x00EA },</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            { <span class="stringliteral">&quot;euml&quot;</span>, 0x00EB },</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            { <span class="stringliteral">&quot;igrave&quot;</span>, 0x00EC },</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            { <span class="stringliteral">&quot;iacute&quot;</span>, 0x00ED },</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            { <span class="stringliteral">&quot;icirc&quot;</span>, 0x00EE },</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            { <span class="stringliteral">&quot;iuml&quot;</span>, 0x00EF },</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            { <span class="stringliteral">&quot;eth&quot;</span>, 0x00F0 },</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            { <span class="stringliteral">&quot;ntilde&quot;</span>, 0x00F1 },</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            { <span class="stringliteral">&quot;ograve&quot;</span>, 0x00F2 },</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            { <span class="stringliteral">&quot;oacute&quot;</span>, 0x00F3 },</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            { <span class="stringliteral">&quot;ocirc&quot;</span>, 0x00F4 },</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            { <span class="stringliteral">&quot;otilde&quot;</span>, 0x00F5 },</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            { <span class="stringliteral">&quot;ouml&quot;</span>, 0x00F6 },</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            { <span class="stringliteral">&quot;divide&quot;</span>, 0x00F7 },</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            { <span class="stringliteral">&quot;oslash&quot;</span>, 0x00F8 },</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            { <span class="stringliteral">&quot;ugrave&quot;</span>, 0x00F9 },</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            { <span class="stringliteral">&quot;uacute&quot;</span>, 0x00FA },</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            { <span class="stringliteral">&quot;ucirc&quot;</span>, 0x00FB },</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            { <span class="stringliteral">&quot;uuml&quot;</span>, 0x00FC },</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            { <span class="stringliteral">&quot;yacute&quot;</span>, 0x00FD },</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            { <span class="stringliteral">&quot;thorn&quot;</span>, 0x00FE },</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            { <span class="stringliteral">&quot;yuml&quot;</span>, 0x00FF },</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            { <span class="stringliteral">&quot;OElig&quot;</span>, 0x0152 },</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            { <span class="stringliteral">&quot;oelig&quot;</span>, 0x0153 },</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            { <span class="stringliteral">&quot;Scaron&quot;</span>, 0x0160 },</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            { <span class="stringliteral">&quot;scaron&quot;</span>, 0x0161 },</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            { <span class="stringliteral">&quot;Yuml&quot;</span>, 0x0178 },</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            { <span class="stringliteral">&quot;fnof&quot;</span>, 0x0192 },</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            { <span class="stringliteral">&quot;circ&quot;</span>, 0x02C6 },</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            { <span class="stringliteral">&quot;tilde&quot;</span>, 0x02DC },</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            { <span class="stringliteral">&quot;Alpha&quot;</span>, 0x0391 },</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            { <span class="stringliteral">&quot;Beta&quot;</span>, 0x0392 },</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            { <span class="stringliteral">&quot;Gamma&quot;</span>, 0x0393 },</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            { <span class="stringliteral">&quot;Delta&quot;</span>, 0x0394 },</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            { <span class="stringliteral">&quot;Epsilon&quot;</span>, 0x0395 },</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            { <span class="stringliteral">&quot;Zeta&quot;</span>, 0x0396 },</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            { <span class="stringliteral">&quot;Eta&quot;</span>, 0x0397 },</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            { <span class="stringliteral">&quot;Theta&quot;</span>, 0x0398 },</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            { <span class="stringliteral">&quot;Iota&quot;</span>, 0x0399 },</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            { <span class="stringliteral">&quot;Kappa&quot;</span>, 0x039A },</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            { <span class="stringliteral">&quot;Lambda&quot;</span>, 0x039B },</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            { <span class="stringliteral">&quot;Mu&quot;</span>, 0x039C },</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            { <span class="stringliteral">&quot;Nu&quot;</span>, 0x039D },</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            { <span class="stringliteral">&quot;Xi&quot;</span>, 0x039E },</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            { <span class="stringliteral">&quot;Omicron&quot;</span>, 0x039F },</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            { <span class="stringliteral">&quot;Pi&quot;</span>, 0x03A0 },</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            { <span class="stringliteral">&quot;Rho&quot;</span>, 0x03A1 },</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            { <span class="stringliteral">&quot;Sigma&quot;</span>, 0x03A3 },</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            { <span class="stringliteral">&quot;Tau&quot;</span>, 0x03A4 },</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            { <span class="stringliteral">&quot;Upsilon&quot;</span>, 0x03A5 },</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            { <span class="stringliteral">&quot;Phi&quot;</span>, 0x03A6 },</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            { <span class="stringliteral">&quot;Chi&quot;</span>, 0x03A7 },</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            { <span class="stringliteral">&quot;Psi&quot;</span>, 0x03A8 },</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            { <span class="stringliteral">&quot;Omega&quot;</span>, 0x03A9 },</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            { <span class="stringliteral">&quot;alpha&quot;</span>, 0x03B1 },</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            { <span class="stringliteral">&quot;beta&quot;</span>, 0x03B2 },</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            { <span class="stringliteral">&quot;gamma&quot;</span>, 0x03B3 },</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            { <span class="stringliteral">&quot;delta&quot;</span>, 0x03B4 },</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            { <span class="stringliteral">&quot;epsilon&quot;</span>, 0x03B5 },</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            { <span class="stringliteral">&quot;zeta&quot;</span>, 0x03B6 },</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            { <span class="stringliteral">&quot;eta&quot;</span>, 0x03B7 },</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            { <span class="stringliteral">&quot;theta&quot;</span>, 0x03B8 },</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            { <span class="stringliteral">&quot;iota&quot;</span>, 0x03B9 },</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            { <span class="stringliteral">&quot;kappa&quot;</span>, 0x03BA },</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            { <span class="stringliteral">&quot;lambda&quot;</span>, 0x03BB },</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            { <span class="stringliteral">&quot;mu&quot;</span>, 0x03BC },</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            { <span class="stringliteral">&quot;nu&quot;</span>, 0x03BD },</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            { <span class="stringliteral">&quot;xi&quot;</span>, 0x03BE },</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            { <span class="stringliteral">&quot;omicron&quot;</span>, 0x03BF },</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            { <span class="stringliteral">&quot;pi&quot;</span>, 0x03C0 },</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            { <span class="stringliteral">&quot;rho&quot;</span>, 0x03C1 },</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            { <span class="stringliteral">&quot;sigmaf&quot;</span>, 0x03C2 },</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            { <span class="stringliteral">&quot;sigma&quot;</span>, 0x03C3 },</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            { <span class="stringliteral">&quot;tau&quot;</span>, 0x03C4 },</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            { <span class="stringliteral">&quot;upsilon&quot;</span>, 0x03C5 },</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            { <span class="stringliteral">&quot;phi&quot;</span>, 0x03C6 },</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            { <span class="stringliteral">&quot;chi&quot;</span>, 0x03C7 },</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            { <span class="stringliteral">&quot;psi&quot;</span>, 0x03C8 },</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            { <span class="stringliteral">&quot;omega&quot;</span>, 0x03C9 },</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            { <span class="stringliteral">&quot;thetasym&quot;</span>, 0x03D1 },</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            { <span class="stringliteral">&quot;upsih&quot;</span>, 0x03D2 },</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            { <span class="stringliteral">&quot;piv&quot;</span>, 0x03D6 },</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            { <span class="stringliteral">&quot;ensp&quot;</span>, 0x2002 },</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            { <span class="stringliteral">&quot;emsp&quot;</span>, 0x2003 },</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            { <span class="stringliteral">&quot;thinsp&quot;</span>, 0x2009 },</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            { <span class="stringliteral">&quot;zwnj&quot;</span>, 0x200C },</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            { <span class="stringliteral">&quot;zwj&quot;</span>, 0x200D },</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            { <span class="stringliteral">&quot;lrm&quot;</span>, 0x200E },</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            { <span class="stringliteral">&quot;rlm&quot;</span>, 0x200F },</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            { <span class="stringliteral">&quot;ndash&quot;</span>, 0x2013 },</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            { <span class="stringliteral">&quot;mdash&quot;</span>, 0x2014 },</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            { <span class="stringliteral">&quot;horbar&quot;</span>, 0x2015 },</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            { <span class="stringliteral">&quot;lsquo&quot;</span>, 0x2018 },</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            { <span class="stringliteral">&quot;rsquo&quot;</span>, 0x2019 },</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            { <span class="stringliteral">&quot;sbquo&quot;</span>, 0x201A },</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            { <span class="stringliteral">&quot;ldquo&quot;</span>, 0x201C },</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            { <span class="stringliteral">&quot;rdquo&quot;</span>, 0x201D },</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            { <span class="stringliteral">&quot;bdquo&quot;</span>, 0x201E },</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            { <span class="stringliteral">&quot;dagger&quot;</span>, 0x2020 },</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            { <span class="stringliteral">&quot;Dagger&quot;</span>, 0x2021 },</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            { <span class="stringliteral">&quot;bull&quot;</span>, 0x2022 },</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            { <span class="stringliteral">&quot;hellip&quot;</span>, 0x2026 },</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            { <span class="stringliteral">&quot;permil&quot;</span>, 0x2030 },</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            { <span class="stringliteral">&quot;prime&quot;</span>, 0x2032 },</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            { <span class="stringliteral">&quot;Prime&quot;</span>, 0x2033 },</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            { <span class="stringliteral">&quot;lsaquo&quot;</span>, 0x2039 },</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            { <span class="stringliteral">&quot;rsaquo&quot;</span>, 0x203A },</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            { <span class="stringliteral">&quot;oline&quot;</span>, 0x203E },</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            { <span class="stringliteral">&quot;frasl&quot;</span>, 0x2044 },</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            { <span class="stringliteral">&quot;euro&quot;</span>, 0x20AC },</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            { <span class="stringliteral">&quot;image&quot;</span>, 0x2111 },</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            { <span class="stringliteral">&quot;weierp&quot;</span>, 0x2118 },</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            { <span class="stringliteral">&quot;real&quot;</span>, 0x211C },</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            { <span class="stringliteral">&quot;trade&quot;</span>, 0x2122 },</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            { <span class="stringliteral">&quot;alefsym&quot;</span>, 0x2135 },</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            { <span class="stringliteral">&quot;larr&quot;</span>, 0x2190 },</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            { <span class="stringliteral">&quot;uarr&quot;</span>, 0x2191 },</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            { <span class="stringliteral">&quot;rarr&quot;</span>, 0x2192 },</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            { <span class="stringliteral">&quot;darr&quot;</span>, 0x2193 },</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            { <span class="stringliteral">&quot;harr&quot;</span>, 0x2194 },</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            { <span class="stringliteral">&quot;crarr&quot;</span>, 0x21B5 },</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            { <span class="stringliteral">&quot;lArr&quot;</span>, 0x21D0 },</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            { <span class="stringliteral">&quot;uArr&quot;</span>, 0x21D1 },</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            { <span class="stringliteral">&quot;rArr&quot;</span>, 0x21D2 },</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            { <span class="stringliteral">&quot;dArr&quot;</span>, 0x21D3 },</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            { <span class="stringliteral">&quot;hArr&quot;</span>, 0x21D4 },</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            { <span class="stringliteral">&quot;forall&quot;</span>, 0x2200 },</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            { <span class="stringliteral">&quot;part&quot;</span>, 0x2202 },</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            { <span class="stringliteral">&quot;exist&quot;</span>, 0x2203 },</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            { <span class="stringliteral">&quot;empty&quot;</span>, 0x2205 },</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            { <span class="stringliteral">&quot;nabla&quot;</span>, 0x2207 },</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            { <span class="stringliteral">&quot;isin&quot;</span>, 0x2208 },</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            { <span class="stringliteral">&quot;notin&quot;</span>, 0x2209 },</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            { <span class="stringliteral">&quot;ni&quot;</span>, 0x220B },</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            { <span class="stringliteral">&quot;prod&quot;</span>, 0x220F },</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            { <span class="stringliteral">&quot;sum&quot;</span>, 0x2211 },</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            { <span class="stringliteral">&quot;minus&quot;</span>, 0x2212 },</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            { <span class="stringliteral">&quot;lowast&quot;</span>, 0x2217 },</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            { <span class="stringliteral">&quot;radic&quot;</span>, 0x221A },</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            { <span class="stringliteral">&quot;prop&quot;</span>, 0x221D },</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            { <span class="stringliteral">&quot;infin&quot;</span>, 0x221E },</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            { <span class="stringliteral">&quot;ang&quot;</span>, 0x2220 },</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            { <span class="stringliteral">&quot;and&quot;</span>, 0x2227 },</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            { <span class="stringliteral">&quot;or&quot;</span>, 0x2228 },</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            { <span class="stringliteral">&quot;cap&quot;</span>, 0x2229 },</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            { <span class="stringliteral">&quot;cup&quot;</span>, 0x222A },</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            { <span class="stringliteral">&quot;int&quot;</span>, 0x222B },</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            { <span class="stringliteral">&quot;there4&quot;</span>, 0x2234 },</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            { <span class="stringliteral">&quot;sim&quot;</span>, 0x223C },</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            { <span class="stringliteral">&quot;cong&quot;</span>, 0x2245 },</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            { <span class="stringliteral">&quot;asymp&quot;</span>, 0x2248 },</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            { <span class="stringliteral">&quot;ne&quot;</span>, 0x2260 },</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            { <span class="stringliteral">&quot;equiv&quot;</span>, 0x2261 },</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            { <span class="stringliteral">&quot;le&quot;</span>, 0x2264 },</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            { <span class="stringliteral">&quot;ge&quot;</span>, 0x2265 },</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            { <span class="stringliteral">&quot;sub&quot;</span>, 0x2282 },</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            { <span class="stringliteral">&quot;sup&quot;</span>, 0x2283 },</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            { <span class="stringliteral">&quot;nsub&quot;</span>, 0x2284 },</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            { <span class="stringliteral">&quot;sube&quot;</span>, 0x2286 },</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            { <span class="stringliteral">&quot;supe&quot;</span>, 0x2287 },</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            { <span class="stringliteral">&quot;oplus&quot;</span>, 0x2295 },</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            { <span class="stringliteral">&quot;otimes&quot;</span>, 0x2297 },</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            { <span class="stringliteral">&quot;perp&quot;</span>, 0x22A5 },</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            { <span class="stringliteral">&quot;sdot&quot;</span>, 0x22C5 },</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            { <span class="stringliteral">&quot;lceil&quot;</span>, 0x2308 },</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            { <span class="stringliteral">&quot;rceil&quot;</span>, 0x2309 },</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            { <span class="stringliteral">&quot;lfloor&quot;</span>, 0x230A },</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            { <span class="stringliteral">&quot;rfloor&quot;</span>, 0x230B },</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            { <span class="stringliteral">&quot;lang&quot;</span>, 0x2329 },</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            { <span class="stringliteral">&quot;rang&quot;</span>, 0x232A },</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            { <span class="stringliteral">&quot;loz&quot;</span>, 0x25CA },</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            { <span class="stringliteral">&quot;spades&quot;</span>, 0x2660 },</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            { <span class="stringliteral">&quot;clubs&quot;</span>, 0x2663 },</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            { <span class="stringliteral">&quot;hearts&quot;</span>, 0x2665 },</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            { <span class="stringliteral">&quot;diams&quot;</span>, 0x2666 }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        }};</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="comment">// Used to convert number to utf-8 char.</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    wstring_convert&lt;codecvt_utf8&lt;char32_t&gt;, char32_t&gt; u8c;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="comment">// Matches numbered entities between 1 and 8 digits, decimal or hexadecimal,</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="comment">// or named entities.</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keyword">const</span> regex re_entity{<span class="stringliteral">&quot;&amp;(#(x)?([[:alnum:]]{1,8})&quot;</span></div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="stringliteral">&quot;|[^;[:space:][:punct:]]+);&quot;</span>};</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    smatch match;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">while</span> (regex_search(buffer, match, re_entity))</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        output += match.prefix().str();</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keyword">const</span> char32_t codepoint{[&amp;match, &amp;names]</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            {</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                <span class="comment">// If it doesn&#39;t start with a &#39;#&#39; it is a named entity.</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                <span class="keywordflow">if</span> (match[1].str()[0] != <span class="charliteral">&#39;#&#39;</span>)</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                {</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                    <span class="keywordflow">return</span> names.at(match[1].str());</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                <span class="comment">// &#39;x&#39; after &#39;#&#39; means the number is hexadecimal.</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                <span class="keywordflow">if</span> (match[2].length() == 1)</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                {</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                    <span class="keywordflow">return</span> static_cast&lt;char32_t&gt;(stoul(match[3].str(),</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                                                      <span class="keyword">nullptr</span>, 16));</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                }</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                <span class="comment">// &#39;#&#39; without &#39;x&#39; means the number is decimal.</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                <span class="keywordflow">return</span> static_cast&lt;char32_t&gt;(stoul(match[3].str(),</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                                                   <span class="keyword">nullptr</span>, 10));</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            }()};</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            output += u8c.to_bytes(codepoint);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::out_of_range &amp;) <span class="comment">// Named entity could not be found.</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            output += match.str();</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        }</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        buffer = match.suffix().str();</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    }</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    output += buffer;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">return</span> output;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            { <span class="stringliteral">&quot;exclamation&quot;</span>,  0x0021 }, { <span class="stringliteral">&quot;quot&quot;</span>,         0x0022 },</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            { <span class="stringliteral">&quot;percent&quot;</span>,      0x0025 }, { <span class="stringliteral">&quot;amp&quot;</span>,          0x0026 },</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            { <span class="stringliteral">&quot;apos&quot;</span>,         0x0027 }, { <span class="stringliteral">&quot;add&quot;</span>,          0x002B },</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            { <span class="stringliteral">&quot;lt&quot;</span>,           0x003C }, { <span class="stringliteral">&quot;equal&quot;</span>,        0x003D },</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            { <span class="stringliteral">&quot;gt&quot;</span>,           0x003E }, { <span class="stringliteral">&quot;nbsp&quot;</span>,         0x00A0 },</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            { <span class="stringliteral">&quot;iexcl&quot;</span>,        0x00A1 }, { <span class="stringliteral">&quot;cent&quot;</span>,         0x00A2 },</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            { <span class="stringliteral">&quot;pound&quot;</span>,        0x00A3 }, { <span class="stringliteral">&quot;curren&quot;</span>,       0x00A4 },</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            { <span class="stringliteral">&quot;yen&quot;</span>,          0x00A5 }, { <span class="stringliteral">&quot;brvbar&quot;</span>,       0x00A6 },</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            { <span class="stringliteral">&quot;sect&quot;</span>,         0x00A7 }, { <span class="stringliteral">&quot;uml&quot;</span>,          0x00A8 },</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            { <span class="stringliteral">&quot;copy&quot;</span>,         0x00A9 }, { <span class="stringliteral">&quot;ordf&quot;</span>,         0x00AA },</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            { <span class="stringliteral">&quot;laquo&quot;</span>,        0x00AB }, { <span class="stringliteral">&quot;not&quot;</span>,          0x00AC },</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            { <span class="stringliteral">&quot;shy&quot;</span>,          0x00AD }, { <span class="stringliteral">&quot;reg&quot;</span>,          0x00AE },</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            { <span class="stringliteral">&quot;macr&quot;</span>,         0x00AF }, { <span class="stringliteral">&quot;deg&quot;</span>,          0x00B0 },</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            { <span class="stringliteral">&quot;plusmn&quot;</span>,       0x00B1 }, { <span class="stringliteral">&quot;sup2&quot;</span>,         0x00B2 },</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            { <span class="stringliteral">&quot;sup3&quot;</span>,         0x00B3 }, { <span class="stringliteral">&quot;acute&quot;</span>,        0x00B4 },</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            { <span class="stringliteral">&quot;micro&quot;</span>,        0x00B5 }, { <span class="stringliteral">&quot;para&quot;</span>,         0x00B6 },</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            { <span class="stringliteral">&quot;middot&quot;</span>,       0x00B7 }, { <span class="stringliteral">&quot;cedil&quot;</span>,        0x00B8 },</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            { <span class="stringliteral">&quot;sup1&quot;</span>,         0x00B9 }, { <span class="stringliteral">&quot;ordm&quot;</span>,         0x00BA },</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            { <span class="stringliteral">&quot;raquo&quot;</span>,        0x00BB }, { <span class="stringliteral">&quot;frac14&quot;</span>,       0x00BC },</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            { <span class="stringliteral">&quot;frac12&quot;</span>,       0x00BD }, { <span class="stringliteral">&quot;frac34&quot;</span>,       0x00BE },</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            { <span class="stringliteral">&quot;iquest&quot;</span>,       0x00BF }, { <span class="stringliteral">&quot;Agrave&quot;</span>,       0x00C0 },</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            { <span class="stringliteral">&quot;Aacute&quot;</span>,       0x00C1 }, { <span class="stringliteral">&quot;Acirc&quot;</span>,        0x00C2 },</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            { <span class="stringliteral">&quot;Atilde&quot;</span>,       0x00C3 }, { <span class="stringliteral">&quot;Auml&quot;</span>,         0x00C4 },</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            { <span class="stringliteral">&quot;Aring&quot;</span>,        0x00C5 }, { <span class="stringliteral">&quot;AElig&quot;</span>,        0x00C6 },</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            { <span class="stringliteral">&quot;Ccedil&quot;</span>,       0x00C7 }, { <span class="stringliteral">&quot;Egrave&quot;</span>,       0x00C8 },</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            { <span class="stringliteral">&quot;Eacute&quot;</span>,       0x00C9 }, { <span class="stringliteral">&quot;Ecirc&quot;</span>,        0x00CA },</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            { <span class="stringliteral">&quot;Euml&quot;</span>,         0x00CB }, { <span class="stringliteral">&quot;Igrave&quot;</span>,       0x00CC },</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            { <span class="stringliteral">&quot;Iacute&quot;</span>,       0x00CD }, { <span class="stringliteral">&quot;Icirc&quot;</span>,        0x00CE },</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            { <span class="stringliteral">&quot;Iuml&quot;</span>,         0x00CF }, { <span class="stringliteral">&quot;ETH&quot;</span>,          0x00D0 },</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            { <span class="stringliteral">&quot;Ntilde&quot;</span>,       0x00D1 }, { <span class="stringliteral">&quot;Ograve&quot;</span>,       0x00D2 },</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            { <span class="stringliteral">&quot;Oacute&quot;</span>,       0x00D3 }, { <span class="stringliteral">&quot;Ocirc&quot;</span>,        0x00D4 },</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            { <span class="stringliteral">&quot;Otilde&quot;</span>,       0x00D5 }, { <span class="stringliteral">&quot;Ouml&quot;</span>,         0x00D6 },</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            { <span class="stringliteral">&quot;times&quot;</span>,        0x00D7 }, { <span class="stringliteral">&quot;Oslash&quot;</span>,       0x00D8 },</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            { <span class="stringliteral">&quot;Ugrave&quot;</span>,       0x00D9 }, { <span class="stringliteral">&quot;Uacute&quot;</span>,       0x00DA },</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            { <span class="stringliteral">&quot;Ucirc&quot;</span>,        0x00DB }, { <span class="stringliteral">&quot;Uuml&quot;</span>,         0x00DC },</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            { <span class="stringliteral">&quot;Yacute&quot;</span>,       0x00DD }, { <span class="stringliteral">&quot;THORN&quot;</span>,        0x00DE },</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            { <span class="stringliteral">&quot;szlig&quot;</span>,        0x00DF }, { <span class="stringliteral">&quot;agrave&quot;</span>,       0x00E0 },</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            { <span class="stringliteral">&quot;aacute&quot;</span>,       0x00E1 }, { <span class="stringliteral">&quot;acirc&quot;</span>,        0x00E2 },</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            { <span class="stringliteral">&quot;atilde&quot;</span>,       0x00E3 }, { <span class="stringliteral">&quot;auml&quot;</span>,         0x00E4 },</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            { <span class="stringliteral">&quot;aring&quot;</span>,        0x00E5 }, { <span class="stringliteral">&quot;aelig&quot;</span>,        0x00E6 },</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            { <span class="stringliteral">&quot;ccedil&quot;</span>,       0x00E7 }, { <span class="stringliteral">&quot;egrave&quot;</span>,       0x00E8 },</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            { <span class="stringliteral">&quot;eacute&quot;</span>,       0x00E9 }, { <span class="stringliteral">&quot;ecirc&quot;</span>,        0x00EA },</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            { <span class="stringliteral">&quot;euml&quot;</span>,         0x00EB }, { <span class="stringliteral">&quot;igrave&quot;</span>,       0x00EC },</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            { <span class="stringliteral">&quot;iacute&quot;</span>,       0x00ED }, { <span class="stringliteral">&quot;icirc&quot;</span>,        0x00EE },</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            { <span class="stringliteral">&quot;iuml&quot;</span>,         0x00EF }, { <span class="stringliteral">&quot;eth&quot;</span>,          0x00F0 },</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            { <span class="stringliteral">&quot;ntilde&quot;</span>,       0x00F1 }, { <span class="stringliteral">&quot;ograve&quot;</span>,       0x00F2 },</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            { <span class="stringliteral">&quot;oacute&quot;</span>,       0x00F3 }, { <span class="stringliteral">&quot;ocirc&quot;</span>,        0x00F4 },</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            { <span class="stringliteral">&quot;otilde&quot;</span>,       0x00F5 }, { <span class="stringliteral">&quot;ouml&quot;</span>,         0x00F6 },</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            { <span class="stringliteral">&quot;divide&quot;</span>,       0x00F7 }, { <span class="stringliteral">&quot;oslash&quot;</span>,       0x00F8 },</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            { <span class="stringliteral">&quot;ugrave&quot;</span>,       0x00F9 }, { <span class="stringliteral">&quot;uacute&quot;</span>,       0x00FA },</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            { <span class="stringliteral">&quot;ucirc&quot;</span>,        0x00FB }, { <span class="stringliteral">&quot;uuml&quot;</span>,         0x00FC },</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            { <span class="stringliteral">&quot;yacute&quot;</span>,       0x00FD }, { <span class="stringliteral">&quot;thorn&quot;</span>,        0x00FE },</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            { <span class="stringliteral">&quot;yuml&quot;</span>,         0x00FF }, { <span class="stringliteral">&quot;OElig&quot;</span>,        0x0152 },</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            { <span class="stringliteral">&quot;oelig&quot;</span>,        0x0153 }, { <span class="stringliteral">&quot;Scaron&quot;</span>,       0x0160 },</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            { <span class="stringliteral">&quot;scaron&quot;</span>,       0x0161 }, { <span class="stringliteral">&quot;Yuml&quot;</span>,         0x0178 },</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            { <span class="stringliteral">&quot;fnof&quot;</span>,         0x0192 }, { <span class="stringliteral">&quot;circ&quot;</span>,         0x02C6 },</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            { <span class="stringliteral">&quot;tilde&quot;</span>,        0x02DC }, { <span class="stringliteral">&quot;Alpha&quot;</span>,        0x0391 },</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            { <span class="stringliteral">&quot;Beta&quot;</span>,         0x0392 }, { <span class="stringliteral">&quot;Gamma&quot;</span>,        0x0393 },</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            { <span class="stringliteral">&quot;Delta&quot;</span>,        0x0394 }, { <span class="stringliteral">&quot;Epsilon&quot;</span>,      0x0395 },</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            { <span class="stringliteral">&quot;Zeta&quot;</span>,         0x0396 }, { <span class="stringliteral">&quot;Eta&quot;</span>,          0x0397 },</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            { <span class="stringliteral">&quot;Theta&quot;</span>,        0x0398 }, { <span class="stringliteral">&quot;Iota&quot;</span>,         0x0399 },</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            { <span class="stringliteral">&quot;Kappa&quot;</span>,        0x039A }, { <span class="stringliteral">&quot;Lambda&quot;</span>,       0x039B },</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            { <span class="stringliteral">&quot;Mu&quot;</span>,           0x039C }, { <span class="stringliteral">&quot;Nu&quot;</span>,           0x039D },</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            { <span class="stringliteral">&quot;Xi&quot;</span>,           0x039E }, { <span class="stringliteral">&quot;Omicron&quot;</span>,      0x039F },</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            { <span class="stringliteral">&quot;Pi&quot;</span>,           0x03A0 }, { <span class="stringliteral">&quot;Rho&quot;</span>,          0x03A1 },</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            { <span class="stringliteral">&quot;Sigma&quot;</span>,        0x03A3 }, { <span class="stringliteral">&quot;Tau&quot;</span>,          0x03A4 },</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            { <span class="stringliteral">&quot;Upsilon&quot;</span>,      0x03A5 }, { <span class="stringliteral">&quot;Phi&quot;</span>,          0x03A6 },</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            { <span class="stringliteral">&quot;Chi&quot;</span>,          0x03A7 }, { <span class="stringliteral">&quot;Psi&quot;</span>,          0x03A8 },</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            { <span class="stringliteral">&quot;Omega&quot;</span>,        0x03A9 }, { <span class="stringliteral">&quot;alpha&quot;</span>,        0x03B1 },</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            { <span class="stringliteral">&quot;beta&quot;</span>,         0x03B2 }, { <span class="stringliteral">&quot;gamma&quot;</span>,        0x03B3 },</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            { <span class="stringliteral">&quot;delta&quot;</span>,        0x03B4 }, { <span class="stringliteral">&quot;epsilon&quot;</span>,      0x03B5 },</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            { <span class="stringliteral">&quot;zeta&quot;</span>,         0x03B6 }, { <span class="stringliteral">&quot;eta&quot;</span>,          0x03B7 },</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            { <span class="stringliteral">&quot;theta&quot;</span>,        0x03B8 }, { <span class="stringliteral">&quot;iota&quot;</span>,         0x03B9 },</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            { <span class="stringliteral">&quot;kappa&quot;</span>,        0x03BA }, { <span class="stringliteral">&quot;lambda&quot;</span>,       0x03BB },</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            { <span class="stringliteral">&quot;mu&quot;</span>,           0x03BC }, { <span class="stringliteral">&quot;nu&quot;</span>,           0x03BD },</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            { <span class="stringliteral">&quot;xi&quot;</span>,           0x03BE }, { <span class="stringliteral">&quot;omicron&quot;</span>,      0x03BF },</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            { <span class="stringliteral">&quot;pi&quot;</span>,           0x03C0 }, { <span class="stringliteral">&quot;rho&quot;</span>,          0x03C1 },</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            { <span class="stringliteral">&quot;sigmaf&quot;</span>,       0x03C2 }, { <span class="stringliteral">&quot;sigma&quot;</span>,        0x03C3 },</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            { <span class="stringliteral">&quot;tau&quot;</span>,          0x03C4 }, { <span class="stringliteral">&quot;upsilon&quot;</span>,      0x03C5 },</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            { <span class="stringliteral">&quot;phi&quot;</span>,          0x03C6 }, { <span class="stringliteral">&quot;chi&quot;</span>,          0x03C7 },</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            { <span class="stringliteral">&quot;psi&quot;</span>,          0x03C8 }, { <span class="stringliteral">&quot;omega&quot;</span>,        0x03C9 },</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            { <span class="stringliteral">&quot;thetasym&quot;</span>,     0x03D1 }, { <span class="stringliteral">&quot;upsih&quot;</span>,        0x03D2 },</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            { <span class="stringliteral">&quot;piv&quot;</span>,          0x03D6 }, { <span class="stringliteral">&quot;ensp&quot;</span>,         0x2002 },</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            { <span class="stringliteral">&quot;emsp&quot;</span>,         0x2003 }, { <span class="stringliteral">&quot;thinsp&quot;</span>,       0x2009 },</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            { <span class="stringliteral">&quot;zwnj&quot;</span>,         0x200C }, { <span class="stringliteral">&quot;zwj&quot;</span>,          0x200D },</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            { <span class="stringliteral">&quot;lrm&quot;</span>,          0x200E }, { <span class="stringliteral">&quot;rlm&quot;</span>,          0x200F },</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            { <span class="stringliteral">&quot;ndash&quot;</span>,        0x2013 }, { <span class="stringliteral">&quot;mdash&quot;</span>,        0x2014 },</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            { <span class="stringliteral">&quot;horbar&quot;</span>,       0x2015 }, { <span class="stringliteral">&quot;lsquo&quot;</span>,        0x2018 },</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            { <span class="stringliteral">&quot;rsquo&quot;</span>,        0x2019 }, { <span class="stringliteral">&quot;sbquo&quot;</span>,        0x201A },</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            { <span class="stringliteral">&quot;ldquo&quot;</span>,        0x201C }, { <span class="stringliteral">&quot;rdquo&quot;</span>,        0x201D },</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            { <span class="stringliteral">&quot;bdquo&quot;</span>,        0x201E }, { <span class="stringliteral">&quot;dagger&quot;</span>,       0x2020 },</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            { <span class="stringliteral">&quot;Dagger&quot;</span>,       0x2021 }, { <span class="stringliteral">&quot;bull&quot;</span>,         0x2022 },</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            { <span class="stringliteral">&quot;hellip&quot;</span>,       0x2026 }, { <span class="stringliteral">&quot;permil&quot;</span>,       0x2030 },</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            { <span class="stringliteral">&quot;prime&quot;</span>,        0x2032 }, { <span class="stringliteral">&quot;Prime&quot;</span>,        0x2033 },</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            { <span class="stringliteral">&quot;lsaquo&quot;</span>,       0x2039 }, { <span class="stringliteral">&quot;rsaquo&quot;</span>,       0x203A },</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            { <span class="stringliteral">&quot;oline&quot;</span>,        0x203E }, { <span class="stringliteral">&quot;frasl&quot;</span>,        0x2044 },</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            { <span class="stringliteral">&quot;euro&quot;</span>,         0x20AC }, { <span class="stringliteral">&quot;image&quot;</span>,        0x2111 },</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            { <span class="stringliteral">&quot;weierp&quot;</span>,       0x2118 }, { <span class="stringliteral">&quot;real&quot;</span>,         0x211C },</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            { <span class="stringliteral">&quot;trade&quot;</span>,        0x2122 }, { <span class="stringliteral">&quot;alefsym&quot;</span>,      0x2135 },</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            { <span class="stringliteral">&quot;larr&quot;</span>,         0x2190 }, { <span class="stringliteral">&quot;uarr&quot;</span>,         0x2191 },</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            { <span class="stringliteral">&quot;rarr&quot;</span>,         0x2192 }, { <span class="stringliteral">&quot;darr&quot;</span>,         0x2193 },</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            { <span class="stringliteral">&quot;harr&quot;</span>,         0x2194 }, { <span class="stringliteral">&quot;crarr&quot;</span>,        0x21B5 },</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            { <span class="stringliteral">&quot;lArr&quot;</span>,         0x21D0 }, { <span class="stringliteral">&quot;uArr&quot;</span>,         0x21D1 },</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            { <span class="stringliteral">&quot;rArr&quot;</span>,         0x21D2 }, { <span class="stringliteral">&quot;dArr&quot;</span>,         0x21D3 },</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            { <span class="stringliteral">&quot;hArr&quot;</span>,         0x21D4 }, { <span class="stringliteral">&quot;forall&quot;</span>,       0x2200 },</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            { <span class="stringliteral">&quot;part&quot;</span>,         0x2202 }, { <span class="stringliteral">&quot;exist&quot;</span>,        0x2203 },</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            { <span class="stringliteral">&quot;empty&quot;</span>,        0x2205 }, { <span class="stringliteral">&quot;nabla&quot;</span>,        0x2207 },</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            { <span class="stringliteral">&quot;isin&quot;</span>,         0x2208 }, { <span class="stringliteral">&quot;notin&quot;</span>,        0x2209 },</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            { <span class="stringliteral">&quot;ni&quot;</span>,           0x220B }, { <span class="stringliteral">&quot;prod&quot;</span>,         0x220F },</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            { <span class="stringliteral">&quot;sum&quot;</span>,          0x2211 }, { <span class="stringliteral">&quot;minus&quot;</span>,        0x2212 },</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            { <span class="stringliteral">&quot;lowast&quot;</span>,       0x2217 }, { <span class="stringliteral">&quot;radic&quot;</span>,        0x221A },</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            { <span class="stringliteral">&quot;prop&quot;</span>,         0x221D }, { <span class="stringliteral">&quot;infin&quot;</span>,        0x221E },</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            { <span class="stringliteral">&quot;ang&quot;</span>,          0x2220 }, { <span class="stringliteral">&quot;and&quot;</span>,          0x2227 },</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            { <span class="stringliteral">&quot;or&quot;</span>,           0x2228 }, { <span class="stringliteral">&quot;cap&quot;</span>,          0x2229 },</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            { <span class="stringliteral">&quot;cup&quot;</span>,          0x222A }, { <span class="stringliteral">&quot;int&quot;</span>,          0x222B },</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            { <span class="stringliteral">&quot;there4&quot;</span>,       0x2234 }, { <span class="stringliteral">&quot;sim&quot;</span>,          0x223C },</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            { <span class="stringliteral">&quot;cong&quot;</span>,         0x2245 }, { <span class="stringliteral">&quot;asymp&quot;</span>,        0x2248 },</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            { <span class="stringliteral">&quot;ne&quot;</span>,           0x2260 }, { <span class="stringliteral">&quot;equiv&quot;</span>,        0x2261 },</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            { <span class="stringliteral">&quot;le&quot;</span>,           0x2264 }, { <span class="stringliteral">&quot;ge&quot;</span>,           0x2265 },</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            { <span class="stringliteral">&quot;sub&quot;</span>,          0x2282 }, { <span class="stringliteral">&quot;sup&quot;</span>,          0x2283 },</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            { <span class="stringliteral">&quot;nsub&quot;</span>,         0x2284 }, { <span class="stringliteral">&quot;sube&quot;</span>,         0x2286 },</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            { <span class="stringliteral">&quot;supe&quot;</span>,         0x2287 }, { <span class="stringliteral">&quot;oplus&quot;</span>,        0x2295 },</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            { <span class="stringliteral">&quot;otimes&quot;</span>,       0x2297 }, { <span class="stringliteral">&quot;perp&quot;</span>,         0x22A5 },</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            { <span class="stringliteral">&quot;sdot&quot;</span>,         0x22C5 }, { <span class="stringliteral">&quot;lceil&quot;</span>,        0x2308 },</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            { <span class="stringliteral">&quot;rceil&quot;</span>,        0x2309 }, { <span class="stringliteral">&quot;lfloor&quot;</span>,       0x230A },</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            { <span class="stringliteral">&quot;rfloor&quot;</span>,       0x230B }, { <span class="stringliteral">&quot;lang&quot;</span>,         0x2329 },</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            { <span class="stringliteral">&quot;rang&quot;</span>,         0x232A }, { <span class="stringliteral">&quot;loz&quot;</span>,          0x25CA },</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            { <span class="stringliteral">&quot;spades&quot;</span>,       0x2660 }, { <span class="stringliteral">&quot;clubs&quot;</span>,        0x2663 },</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            { <span class="stringliteral">&quot;hearts&quot;</span>,       0x2665 }, { <span class="stringliteral">&quot;diams&quot;</span>,        0x2666 }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        };</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">// Used to convert number to utf-8 char.</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    wstring_convert&lt;codecvt_utf8&lt;char32_t&gt;, char32_t&gt; u8c;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="comment">// Matches numbered entities between 1 and 8 digits, decimal or hexadecimal,</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="comment">// or named entities.</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keyword">const</span> regex re_entity{<span class="stringliteral">&quot;&amp;(#(x)?([[:alnum:]]{1,8})&quot;</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="stringliteral">&quot;|[^;[:space:][:punct:]]+);&quot;</span>};</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    smatch match;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">while</span> (regex_search(buffer, match, re_entity))</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        output += match.prefix().str();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keyword">const</span> char32_t codepoint{[&amp;match, &amp;names]</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="comment">// If it doesn&#39;t start with a &#39;#&#39; it is a named entity.</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">if</span> (match[1].str()[0] != <span class="charliteral">&#39;#&#39;</span>)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    <span class="keywordflow">return</span> names.at(match[1].str());</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="comment">// &#39;x&#39; after &#39;#&#39; means the number is hexadecimal.</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                <span class="keywordflow">if</span> (match[2].length() == 1)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    <span class="keywordflow">return</span> static_cast&lt;char32_t&gt;(stoul(match[3].str(),</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                                      <span class="keyword">nullptr</span>, 16));</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="comment">// &#39;#&#39; without &#39;x&#39; means the number is decimal.</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="keywordflow">return</span> static_cast&lt;char32_t&gt;(stoul(match[3].str(),</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                                   <span class="keyword">nullptr</span>, 10));</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            }()};</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            output += u8c.to_bytes(codepoint);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::out_of_range &amp;) <span class="comment">// Named entity could not be found.</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            output += match.str();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        buffer = match.suffix().str();</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    output += buffer;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">return</span> output;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
