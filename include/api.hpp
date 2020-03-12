@@ -31,7 +31,7 @@ using std::variant;
 /*!
  *  @brief  Holds %API endpoints.
  *
- *  Supported %API endpoints: Mastodon 3.0.1, Pleroma 1.1.7.
+ *  Supported %API endpoints: Mastodon 3.0.1, Pleroma 2.0.0.
  *
  *  @since  0.1.0
  *
@@ -43,7 +43,7 @@ public:
     /*!
      *  @brief  An enumeration of all v1 %API endpoints.
      *
-     *  The original `/` are substituted with `_`.
+     *  The original `/` are substituted with `_`. `:` are omitted.
      *
      *  @since  0.1.0
      */
@@ -184,7 +184,6 @@ public:
         admin_reports_id_reopen,
 
         pleroma_notifications_read,
-
         pleroma_accounts_id_subscribe,
         pleroma_accounts_id_unsubscribe,
         pleroma_accounts_id_favourites,
@@ -192,17 +191,20 @@ public:
         pleroma_accounts_update_banner,
         pleroma_accounts_update_background,
         pleroma_accounts_confirmation_resend,
-
         pleroma_mascot,
-
         pleroma_conversations_id_statuses,
         pleroma_conversations_id,
+        pleroma_conversations_id_read,
+        pleroma_accounts_id_scrobbles,
+        pleroma_scrobble,
+        pleroma_statuses_id_reactions_emoji,
+        pleroma_statuses_id_reactions,
     };
 
     /*!
      *  @brief  An enumeration of all v2 %API endpoints.
      *
-     *  The original `/` are substituted with `_`.
+     *  The original `/` are substituted with `_`. `:` are omitted.
      *
      *  @since  0.1.0
      */
@@ -214,7 +216,7 @@ public:
     /*!
      *  @brief  An enumeration of all oauth %API endpoints.
      *
-     *  The original `/` are substituted with `_`.
+     *  The original `/` are substituted with `_`. `:` are omitted.
      *
      *  @since  0.1.0
      */
@@ -230,7 +232,7 @@ public:
      *
      *  These endpoints are directly under `/api/`.
      *
-     *  The original `/` are substituted with `_`.
+     *  The original `/` are substituted with `_`. `:` are omitted.
      *
      *  @since  0.1.0
      */
@@ -243,7 +245,7 @@ public:
     /*!
      *  @brief  An enumeration of all pleroma %API endpoints.
      *
-     *  The original `/` are substituted with `_`.
+     *  The original `/` are substituted with `_`. `:` are omitted.
      *
      *  @since  0.1.0
      */
@@ -252,38 +254,65 @@ public:
         admin_users,
         admin_users_follow,
         admin_users_unfollow,
-        admin_users_nickname,
+        admin_users_nickname_toggle_activation,
         admin_users_tag,
         admin_users_nickname_permission_group,
         admin_users_nickname_permission_group_permission_group,
-        admin_users_nickname_activation_status,
+        admin_users_permission_group_permission_group,
+        admin_users_activate,
+        admin_users_deactivate,
         admin_users_nickname_or_id,
         admin_users_nickname_or_id_statuses,
+        admin_instances_instance_statuses,
+        admin_statuses,
         admin_relay,
         admin_users_invite_token,
         admin_users_invites,
         admin_users_revoke_invite,
         admin_users_email_invite,
         admin_users_nickname_password_reset,
+        admin_users_force_password_reset,
         admin_reports,
+        admin_grouped_reports,
         admin_reports_id,
-        admin_reports_id_respond,
+        admin_reports_id_notes,
+        admin_reports_report_id_notes_id,
         admin_statuses_id,
+        admin_restart,
+        admin_config,
+        admin_config_descriptions,
+        admin_moderation_log,
+        admin_reload_emoji,
+        admin_users_confirm_email,
+        admin_users_resend_confirm_email,
+        admin_stats,
+
+        // No longer documented for Pleroma 2.0.0.
+        admin_users_nickname,
+        admin_users_nickname_activation_status,
+        admin_reports_id_respond,
         admin_config_migrate_to_db,
         admin_config_migrate_from_db,
-        admin_config,
 
         emoji,
         follow_import,
         captcha,
-
         delete_account,
         disable_account,
-        account_register,
-
         notification_settings,
         healthcheck,
-        change_email
+        change_email,
+        emoji_packs,
+        emoji_packs_name,
+        emoji_packs_name_update_file,
+        emoji_packs_name_update_metadata,
+        emoji_packs_download_from,
+        emoji_packs_list_from,
+        emoji_packs_name_download_shared,
+
+        // No longer documented for Pleroma 2.0.0.
+        account_register,
+
     };
 
     /*!
