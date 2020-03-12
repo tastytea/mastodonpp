@@ -355,8 +355,9 @@ bool CURLWrapper::replace_parameter_in_uri(string &uri,
 {
     static constexpr array replace
         {
-            "id", "nickname", "nickname_or_id", "account_id",
-            "list_id", "hashtag", "permission_group"
+            "id", "nickname", "nickname_or_id", "account_id", "list_id",
+            "hashtag", "permission_group", "instance", "report_id", "name",
+            "emoji"
         };
     if (any_of(replace.begin(), replace.end(),
                [&parameter](const auto &s) { return s == parameter.first; }))
