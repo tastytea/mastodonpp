@@ -22,6 +22,7 @@
 #include <algorithm>
 #include <array>
 #include <atomic>
+#include <cctype>
 #include <cstdint>
 
 namespace mastodonpp
@@ -30,8 +31,10 @@ namespace mastodonpp
 using std::get;
 using std::holds_alternative;
 using std::any_of;
+using std::transform;
 using std::array;               // NOLINT(misc-unused-using-decls)
 using std::atomic;
+using std::toupper;
 using std::uint8_t;
 using std::uint16_t;
 
@@ -362,7 +365,15 @@ bool CURLWrapper::replace_parameter_in_uri(string &uri,
     if (any_of(replace.begin(), replace.end(),
                [&parameter](const auto &s) { return s == parameter.first; }))
     {
-        const auto pos{uri.find('<')};
+        const string searchstring{[&parameter]
+        {
+            string s{"<"};
+            s += parameter.first;
+            transform(s.begin(), s.end(), s.begin(),
+                      [](const unsigned char c){ return toupper(c); });
+            return s;
+        }()};
+        const auto pos{uri.find(searchstring)};
         if (pos != string::npos)
         {
             uri.replace(pos, parameter.first.size() + 2,
