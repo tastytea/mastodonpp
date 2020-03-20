@@ -94,7 +94,7 @@ public:
      *
      *  @since  0.3.0
      */
-    inline void copy_connection_properties(CURLWrapper &curlwrapper)
+    inline void copy_connection_properties(CURLWrapper &curlwrapper) const
     {
         curlwrapper.setup_connection_properties(_proxy, _access_token, _cainfo,
                                                 _useragent);
