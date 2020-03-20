@@ -41,9 +41,7 @@ using std::uint16_t;
 // No one will ever need more than 65535 connections. 😉
 static atomic<uint16_t> curlwrapper_instances{0};
 
-CURLWrapper::CURLWrapper()
-    : _curl_buffer_error{}
-    , _stream_cancelled{false}
+void CURLWrapper::init()
 {
     if (curlwrapper_instances == 0)
     {
@@ -55,6 +53,23 @@ CURLWrapper::CURLWrapper()
     _connection = curl_easy_init();
     setup_curl();
 }
+
+CURLWrapper::CURLWrapper()
+    : _connection{}
+    , _curl_buffer_error{}
+    , _stream_cancelled{false}
+{
+    init();
+}
+
+CURLWrapper::CURLWrapper(const CURLWrapper &)
+    : _connection{}
+    , _curl_buffer_error{}
+    , _stream_cancelled{false}
+{
+    init();
+}
+
 CURLWrapper::~CURLWrapper() noexcept
 {
     curl_easy_cleanup(_connection);
