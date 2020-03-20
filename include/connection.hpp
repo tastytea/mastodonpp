@@ -85,7 +85,7 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit Connection(Instance &instance)
+    explicit Connection(const Instance &instance)
         : _instance{instance}
         , _baseuri{instance.get_baseuri()}
     {
@@ -292,7 +292,7 @@ public:
         CURLWrapper::cancel_stream();
     }
 private:
-    Instance &_instance;
+    const Instance &_instance;
     const string_view _baseuri;
 
     [[nodiscard]]
