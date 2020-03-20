@@ -405,6 +405,7 @@ bool CURLWrapper::replace_parameter_in_uri(string &uri,
 void CURLWrapper::add_parameters_to_uri(string &uri,
                                         const parametermap &parameters)
 {
+    bool first{true};
     // Replace <ID> with the value of parameter “id” and so on.
     for (const auto &param : parameters)
     {
@@ -413,7 +414,6 @@ void CURLWrapper::add_parameters_to_uri(string &uri,
             continue;
         }
 
-        static bool first{true};
         if (first)
         {
             uri += "?";
