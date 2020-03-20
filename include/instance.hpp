@@ -66,6 +66,25 @@ public:
     {}
 
     /*!
+     *  @brief  Copy constructor. A new CURLWrapper is constructed.
+     *
+     *  @since  0.5.2
+     */
+    Instance(const Instance &other) = default;
+
+    //! Move constructor
+    Instance(Instance &&other) noexcept = delete;
+
+    //! Destructor
+    ~Instance() noexcept override = default;
+
+    //! Copy assignment operator
+    Instance& operator=(const Instance &other) = delete;
+
+    //! Move assignment operator
+    Instance& operator=(Instance &&other) noexcept = delete;
+
+    /*!
      *  @brief  Set the properties of the connection of the calling class up.
      *
      *  Meant for internal use. This aligns the properties of the connection of

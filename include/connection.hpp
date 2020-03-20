@@ -93,6 +93,25 @@ public:
     }
 
     /*!
+     *  @brief  Copy constructor. A new CURLWrapper is constructed.
+     *
+     *  @since  0.5.2
+     */
+    Connection(const Connection &other) = default;
+
+    //! Move constructor
+    Connection(Connection &&other) noexcept = delete;
+
+    //! Destructor
+    ~Connection() noexcept override = default;
+
+    //! Copy assignment operator
+    Connection& operator=(const Connection &other) = delete;
+
+    //! Move assignment operator
+    Connection& operator=(Connection &&other) noexcept = delete;
+
+    /*!
      *  @brief  Make a HTTP GET call with parameters.
      *
      *  Example:

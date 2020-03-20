@@ -70,8 +70,12 @@ public:
      */
     CURLWrapper();
 
-    //! Copy constructor
-    CURLWrapper(const CURLWrapper &other) = delete;
+    /*!
+     *  @brief  Copy constructor. Does the same as the Constructor.
+     *
+     *  @since  0.5.2
+     */
+    CURLWrapper(const CURLWrapper &);
 
     //! Move constructor
     CURLWrapper(CURLWrapper &&other) noexcept = delete;
@@ -252,6 +256,13 @@ private:
     string _curl_buffer_headers;
     string _curl_buffer_body;
     bool _stream_cancelled;
+
+    /*!
+     *  @brief  Initializes curl and sets up connection.
+     *
+     *  @since  0.5.2
+     */
+    void init();
 
     /*!
      *  @brief  libcurl write callback function.
