@@ -31,6 +31,29 @@ using std::regex;
 using std::regex_search;
 using std::smatch;
 
+Instance::Instance(const string_view hostname, const string_view access_token)
+    : _hostname{hostname}
+    , _baseuri{"https://" + _hostname}
+    , _max_chars{0}
+{
+    set_access_token(access_token);
+}
+
+Instance::Instance(const Instance &other)
+    : CURLWrapper{other}
+    , _hostname{other._hostname}
+    , _baseuri{other._baseuri}
+    , _access_token{other._access_token}
+    , _max_chars{other._max_chars}
+    , _proxy{other._proxy}
+    , _post_formats{other._post_formats}
+    , _cainfo{other._cainfo}
+    , _useragent{other._useragent}
+{
+    CURLWrapper::setup_connection_properties(_proxy, _access_token,
+                                             _cainfo, _useragent);
+}
+
 uint64_t Instance::get_max_chars() noexcept
 {
     constexpr uint64_t default_max_chars{500};
