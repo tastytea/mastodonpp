@@ -11,7 +11,7 @@ set(CMAKE_BUILD_TYPE "Release" CACHE STRING "The type of build.")
 option(BUILD_SHARED_LIBS "Build shared libraries." YES)
 
 project(mastodonpp
-  VERSION 0.5.3
+  VERSION 0.5.4
   DESCRIPTION "C++ wrapper for the Mastodon and Pleroma APIs."
   LANGUAGES CXX)
 
