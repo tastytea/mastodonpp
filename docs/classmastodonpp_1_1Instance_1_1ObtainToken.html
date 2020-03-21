@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">mastodonpp
-   &#160;<span id="projectnumber">0.5.1</span>
+   &#160;<span id="projectnumber">0.5.3</span>
    </div>
   </td>
  </tr>
@@ -103,9 +103,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a736572303fbec7a307514e611e6a468c inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">CURLWrapper</a> ()</td></tr>
 <tr class="memdesc:a736572303fbec7a307514e611e6a468c inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes curl and sets up connection.  <a href="classmastodonpp_1_1CURLWrapper.html#a736572303fbec7a307514e611e6a468c">More...</a><br /></td></tr>
 <tr class="separator:a736572303fbec7a307514e611e6a468c inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a108929a9985c76a8e2cd1f531ac6d321 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a108929a9985c76a8e2cd1f531ac6d321">CURLWrapper</a> (const <a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;other)=delete</td></tr>
-<tr class="memdesc:a108929a9985c76a8e2cd1f531ac6d321 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="classmastodonpp_1_1CURLWrapper.html#a108929a9985c76a8e2cd1f531ac6d321">More...</a><br /></td></tr>
-<tr class="separator:a108929a9985c76a8e2cd1f531ac6d321 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6885296f3807f446963b2f32b298f051 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a6885296f3807f446963b2f32b298f051">CURLWrapper</a> (const <a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;)</td></tr>
+<tr class="memdesc:a6885296f3807f446963b2f32b298f051 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor. Does the same as the Constructor.  <a href="classmastodonpp_1_1CURLWrapper.html#a6885296f3807f446963b2f32b298f051">More...</a><br /></td></tr>
+<tr class="separator:a6885296f3807f446963b2f32b298f051 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d79b9a4525ac4b4b8954ccc794af0f9 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmastodonpp_1_1CURLWrapper.html#a4d79b9a4525ac4b4b8954ccc794af0f9">CURLWrapper</a> (<a class="el" href="classmastodonpp_1_1CURLWrapper.html">CURLWrapper</a> &amp;&amp;other) noexcept=delete</td></tr>
 <tr class="memdesc:a4d79b9a4525ac4b4b8954ccc794af0f9 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="classmastodonpp_1_1CURLWrapper.html#a4d79b9a4525ac4b4b8954ccc794af0f9">More...</a><br /></td></tr>
 <tr class="separator:a4d79b9a4525ac4b4b8954ccc794af0f9 inherit pub_methods_classmastodonpp_1_1CURLWrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,11 +210,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructor. </p>
 <dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            : _instance{instance}</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            , _baseuri{instance.get_baseuri()}</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            _instance.<a class="code" href="classmastodonpp_1_1Instance.html#aa486bc453907439e33f8402f270ef384">copy_connection_properties</a>(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            : _instance{instance}</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            , _baseuri{instance.get_baseuri()}</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            _instance.<a class="code" href="classmastodonpp_1_1Instance.html#a921c4b83815c0d98dea983a9409c00ac">copy_connection_properties</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -300,9 +300,9 @@ Additional Inherited Members</h2></td></tr>
 <li>include/<a class="el" href="instance_8hpp_source.html">instance.hpp</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1Instance_1_1ObtainToken_html"><div class="ttname"><a href="classmastodonpp_1_1Instance_1_1ObtainToken.html">mastodonpp::Instance::ObtainToken</a></div><div class="ttdoc">Simplifies obtaining an OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:240</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_1_1ObtainToken_html"><div class="ttname"><a href="classmastodonpp_1_1Instance_1_1ObtainToken.html">mastodonpp::Instance::ObtainToken</a></div><div class="ttdoc">Simplifies obtaining an OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:254</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_html_a921c4b83815c0d98dea983a9409c00ac"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a921c4b83815c0d98dea983a9409c00ac">mastodonpp::Instance::copy_connection_properties</a></div><div class="ttdeci">void copy_connection_properties(CURLWrapper &amp;curlwrapper) const</div><div class="ttdoc">Set the properties of the connection of the calling class up.</div><div class="ttdef"><b>Definition:</b> instance.hpp:91</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdoc">Holds the access data of an instance.</div><div class="ttdef"><b>Definition:</b> instance.hpp:49</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1Instance_html_aa486bc453907439e33f8402f270ef384"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#aa486bc453907439e33f8402f270ef384">mastodonpp::Instance::copy_connection_properties</a></div><div class="ttdeci">void copy_connection_properties(CURLWrapper &amp;curlwrapper)</div><div class="ttdoc">Set the properties of the connection of the calling class up.</div><div class="ttdef"><b>Definition:</b> instance.hpp:78</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
