@@ -57,13 +57,7 @@ public:
      *
      *  @since  0.1.0
      */
-    explicit Instance(const string_view hostname,
-                      const string_view access_token)
-        : _hostname{hostname}
-        , _baseuri{"https://" + _hostname}
-        , _access_token{access_token}
-        , _max_chars{0}
-    {}
+    explicit Instance(string_view hostname, string_view access_token);
 
     /*!
      *  @brief  Copy constructor. A new CURLWrapper is constructed.
@@ -143,9 +137,10 @@ public:
      *
      *  @since  0.1.0
      */
-    inline void set_access_token(string access_token)
+    inline void set_access_token(const string_view access_token)
     {
-        _access_token = move(access_token);
+        _access_token = access_token;
+        CURLWrapper::set_access_token(access_token);
     }
 
     /*!

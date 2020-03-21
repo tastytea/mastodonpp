@@ -31,6 +31,14 @@ using std::regex;
 using std::regex_search;
 using std::smatch;
 
+Instance::Instance(const string_view hostname, const string_view access_token)
+    : _hostname{hostname}
+    , _baseuri{"https://" + _hostname}
+    , _max_chars{0}
+{
+    set_access_token(access_token);
+}
+
 uint64_t Instance::get_max_chars() noexcept
 {
     constexpr uint64_t default_max_chars{500};
