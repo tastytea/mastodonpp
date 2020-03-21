@@ -64,7 +64,7 @@ public:
      *
      *  @since  0.5.2
      */
-    Instance(const Instance &other) = default;
+    Instance(const Instance &other);
 
     //! Move constructor
     Instance(Instance &&other) noexcept = delete;
