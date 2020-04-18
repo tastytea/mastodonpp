@@ -234,6 +234,8 @@ const map<API::endpoint_type,string_view> API::_endpoint_map
             "/api/pleroma/admin/users/email_invite"},
     {pleroma::admin_users_nickname_password_reset,
             "/api/pleroma/admin/users/<NICKNAME>/password_reset"},
+    {pleroma::admin_users_nickname_update_credentials,
+            "/api/pleroma/admin/users/<NICKNAME>/update_credentials"},
     {pleroma::admin_users_force_password_reset,
             "/api/pleroma/admin/users/force_password_reset"},
     {pleroma::admin_reports, "/api/pleroma/admin/reports"},
