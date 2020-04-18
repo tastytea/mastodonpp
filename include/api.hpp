@@ -31,7 +31,7 @@ using std::variant;
 /*!
  *  @brief  Holds %API endpoints.
  *
- *  Supported %API endpoints: Mastodon 3.0.1, Pleroma 2.0.0.
+ *  Supported %API endpoints: Mastodon 3.0.1, Pleroma 2.0.2.
  *
  *  @since  0.1.0
  *
@@ -271,6 +271,7 @@ public:
         admin_users_revoke_invite,
         admin_users_email_invite,
         admin_users_nickname_password_reset,
+        admin_users_nickname_update_credentials,
         admin_users_force_password_reset,
         admin_reports,
         admin_grouped_reports,
