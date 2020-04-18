@@ -32,7 +32,6 @@ namespace mastodonpp
 using std::uint64_t;
 using std::string;
 using std::string_view;
-using std::move;
 using std::vector;
 
 /*!
