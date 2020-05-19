@@ -11,8 +11,12 @@ set(CMAKE_BUILD_TYPE "Release" CACHE STRING "The type of build.")
 option(BUILD_SHARED_LIBS "Build shared libraries." YES)
 
 # Not every non-debug build type adds -DNDEBUG.
-if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
-  add_compile_definitions(NDEBUG)
+if(NOT ${CMAKE_BUILD_TYPE} MATCHES "Debug")
+  if(${CMAKE_VERSION} VERSION_LESS 3.12)
+    add_definitions("-DNDEBUG")
+  else()
+    add_compile_definitions("NDEBUG")
+  endif()
 endif()
 
 project(mastodonpp
