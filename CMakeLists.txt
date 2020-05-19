@@ -10,6 +10,11 @@ endif()
 set(CMAKE_BUILD_TYPE "Release" CACHE STRING "The type of build.")
 option(BUILD_SHARED_LIBS "Build shared libraries." YES)
 
+# Not every non-debug build type adds -DNDEBUG.
+if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
+  add_compile_definitions(NDEBUG)
+endif()
+
 project(mastodonpp
   VERSION 0.5.4
   DESCRIPTION "C++ wrapper for the Mastodon and Pleroma APIs."
