@@ -226,14 +226,11 @@ answer_type Instance::ObtainToken::step_1(const string_view client_name,
 
 answer_type Instance::ObtainToken::step_2(const string_view code)
 {
-    parametermap parameters
-        {
-            {"client_id", _client_id},
-            {"client_secret", _client_secret},
-            {"redirect_uri", "urn:ietf:wg:oauth:2.0:oob"},
-            {"code", code},
-            {"grant_type", "client_credentials"}
-        };
+    parametermap parameters{{"client_id", _client_id},
+                            {"client_secret", _client_secret},
+                            {"redirect_uri", "urn:ietf:wg:oauth:2.0:oob"},
+                            {"code", code},
+                            {"grant_type", "authorization_code"}};
     if (!_scopes.empty())
     {
         parameters.insert({"scope", _scopes});
