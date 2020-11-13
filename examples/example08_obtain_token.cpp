@@ -57,7 +57,9 @@ int main(int argc, char *argv[])
 
         // Create an “Application” (/api/v1/apps),
         // and get URI for the authorization code (/oauth/authorize).
-        auto answer{token.step_1("Testclient", "read:blocks read:mutes",
+        // NOTE: Mastodon only needs read:accounts for verify_credentials but
+        // Pleroma needs the full read scope.
+        auto answer{token.step_1("Testclient", "read write:favourites",
                                  "https://example.com/")};
         if (!answer)
         {
