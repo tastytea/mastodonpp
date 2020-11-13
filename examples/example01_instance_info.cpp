@@ -16,7 +16,7 @@
 // Print information about an instance (/api/v1/instance).
 
 #if __has_include("mastodonpp.hpp")
-#    include "mastodonpp.hpp"            // We're building mastodonpp.
+#    include "mastodonpp.hpp" // We're building mastodonpp.
 #else
 #    include <mastodonpp/mastodonpp.hpp> // We're building outside mastodonpp.
 #endif
@@ -27,11 +27,11 @@
 #include <vector>
 
 namespace masto = mastodonpp;
-using std::cout;
 using std::cerr;
+using std::cout;
 using std::endl;
-using std::to_string;
 using std::string_view;
+using std::to_string;
 using std::vector;
 
 int main(int argc, char *argv[])

@@ -16,7 +16,7 @@
 // Print new public events (/api/v1/streaming/public).
 
 #if __has_include("mastodonpp.hpp")
-#    include "mastodonpp.hpp"            // We're building mastodonpp.
+#    include "mastodonpp.hpp" // We're building mastodonpp.
 #else
 #    include <mastodonpp/mastodonpp.hpp> // We're building outside mastodonpp.
 #endif
@@ -30,14 +30,14 @@
 
 namespace masto = mastodonpp;
 using namespace std::chrono_literals;
-using std::cout;
 using std::cerr;
+using std::cout;
 using std::endl;
-using std::to_string;
 using std::string_view;
 using std::thread;
-using std::this_thread::sleep_for;
+using std::to_string;
 using std::vector;
+using std::this_thread::sleep_for;
 
 int main(int argc, char *argv[])
 {
@@ -61,8 +61,10 @@ int main(int argc, char *argv[])
         if (answer && answer.body == "OK")
         {
             // Make a thread, get all public events.
+            // clang-format off
             thread stream_thread{[&]
             {
+                // clang-format on
                 answer = connection.get(masto::API::v1::streaming_public);
             }};
 
@@ -73,8 +75,8 @@ int main(int argc, char *argv[])
                 for (const auto &event : connection.get_new_events())
                 {
                     // Print type of event and the beginning of the data.
-                    cout << event.type << ": "
-                         << event.data.substr(0, 70) << " …" << endl;
+                    cout << event.type << ": " << event.data.substr(0, 70)
+                         << " …" << endl;
                 }
             }
 

@@ -16,7 +16,7 @@
 // Post a status (/api/v1/status), then delete it (/api/v1/statuses/:id).
 
 #if __has_include("mastodonpp.hpp")
-#    include "mastodonpp.hpp"            // We're building mastodonpp.
+#    include "mastodonpp.hpp" // We're building mastodonpp.
 #else
 #    include <mastodonpp/mastodonpp.hpp> // We're building outside mastodonpp.
 #endif
@@ -30,13 +30,13 @@
 
 namespace masto = mastodonpp;
 using namespace std::chrono_literals;
-using std::cout;
 using std::cerr;
+using std::cout;
 using std::endl;
-using std::to_string;
 using std::string_view;
-using std::this_thread::sleep_for;
+using std::to_string;
 using std::vector;
+using std::this_thread::sleep_for;
 
 int main(int argc, char *argv[])
 {

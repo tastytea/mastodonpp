@@ -16,7 +16,7 @@
 // Obtain an access token and verify that it works.
 
 #if __has_include("mastodonpp.hpp")
-#    include "mastodonpp.hpp"            // We're building mastodonpp.
+#    include "mastodonpp.hpp" // We're building mastodonpp.
 #else
 #    include <mastodonpp/mastodonpp.hpp> // We're building outside mastodonpp.
 #endif
@@ -28,14 +28,14 @@
 #include <vector>
 
 namespace masto = mastodonpp;
-using std::exit;
-using std::cout;
 using std::cerr;
-using std::endl;
 using std::cin;
+using std::cout;
+using std::endl;
+using std::exit;
 using std::string;
-using std::to_string;
 using std::string_view;
+using std::to_string;
 using std::vector;
 
 void handle_error(const masto::answer_type &answer);
@@ -109,8 +109,8 @@ void handle_error(const masto::answer_type &answer)
     else
     {
         // Network errors like “Couldn't resolve host.”.
-        cerr << "libcurl error " << to_string(answer.curl_error_code)
-             << ": " << answer.error_message << endl;
+        cerr << "libcurl error " << to_string(answer.curl_error_code) << ": "
+             << answer.error_message << endl;
     }
 
     exit(1);

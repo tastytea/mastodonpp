@@ -17,7 +17,7 @@
 // nlohmann-json. <https://github.com/nlohmann/json>
 
 #if __has_include("mastodonpp.hpp")
-#    include "mastodonpp.hpp"            // We're building mastodonpp.
+#    include "mastodonpp.hpp" // We're building mastodonpp.
 #else
 #    include <mastodonpp/mastodonpp.hpp> // We're building outside mastodonpp.
 #endif
@@ -26,19 +26,19 @@
 #if __has_include(<nlohmann/json.hpp>)
 #    include <nlohmann/json.hpp>
 
-#include <cstdlib>
-#include <iostream>
-#include <string>
-#include <string_view>
-#include <vector>
+#    include <cstdlib>
+#    include <iostream>
+#    include <string>
+#    include <string_view>
+#    include <vector>
 
 namespace masto = mastodonpp;
 using json = nlohmann::json;
-using std::exit;
-using std::cout;
 using std::cerr;
-using std::to_string;
+using std::cout;
+using std::exit;
 using std::string_view;
+using std::to_string;
 using std::vector;
 
 void handle_error(const masto::answer_type &answer);
@@ -60,10 +60,7 @@ int main(int argc, char *argv[])
 
         // Get the last 4 public statuses of the instance.
         auto answer{connection.get(masto::API::v1::timelines_public,
-                                   {
-                                       {"limit", "4"},
-                                       {"local", "true"}
-                                   })};
+                                   {{"limit", "4"}, {"local", "true"}})};
         if (answer)
         {
             // Parse JSON string.
@@ -129,8 +126,8 @@ void handle_error(const masto::answer_type &answer)
     else
     {
         // Network errors like “Couldn't resolve host.”.
-        cerr << "libcurl error " << to_string(answer.curl_error_code)
-             << ": " << answer.error_message << '\n';
+        cerr << "libcurl error " << to_string(answer.curl_error_code) << ": "
+             << answer.error_message << '\n';
     }
 
     exit(1);
@@ -138,11 +135,11 @@ void handle_error(const masto::answer_type &answer)
 
 #else
 
-#include <iostream>
+#    include <iostream>
 int main()
 {
     std::cout << "Example could not be compiled "
-        "because nlohmann-json was not found.\n";
+                 "because nlohmann-json was not found.\n";
 }
 
-#endif  // __has_include(<nlohmann/json.hpp>)
+#endif // __has_include(<nlohmann/json.hpp>)

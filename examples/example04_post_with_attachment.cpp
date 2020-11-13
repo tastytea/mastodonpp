@@ -16,7 +16,7 @@
 // Post a status (/api/v1/status) with an attachment (/api/v1/media).
 
 #if __has_include("mastodonpp.hpp")
-#    include "mastodonpp.hpp"            // We're building mastodonpp.
+#    include "mastodonpp.hpp" // We're building mastodonpp.
 #else
 #    include <mastodonpp/mastodonpp.hpp> // We're building outside mastodonpp.
 #endif
@@ -27,12 +27,12 @@
 #include <vector>
 
 namespace masto = mastodonpp;
-using std::cout;
 using std::cerr;
+using std::cout;
 using std::endl;
 using std::string;
-using std::to_string;
 using std::string_view;
+using std::to_string;
 using std::vector;
 
 int main(int argc, char *argv[])
@@ -54,10 +54,8 @@ int main(int argc, char *argv[])
 
         // Create attachment.
         auto answer{connection.post(masto::API::v1::media,
-                                    {
-                                        {"file", string("@file:") += filename},
-                                        {"description", "Test."}
-                                    })};
+                                    {{"file", string("@file:") += filename},
+                                     {"description", "Test."}})};
 
         // Get the ID of the attachment.
         // You normally would use a JSON parser, of course. I don't use one
@@ -69,11 +67,9 @@ int main(int argc, char *argv[])
 
         // Post the status. Note that “media_ids” always has to be a vector.
         answer = connection.post(masto::API::v1::statuses,
-                                 {
-                                     {"status", "Attachment test."},
-                                     {"media_ids",
-                                      vector<string_view>{media_id}}
-                                 });
+                                 {{"status", "Attachment test."},
+                                  {"media_ids",
+                                   vector<string_view>{media_id}}});
         if (answer)
         {
             cout << "Successfully posted " << filename << ".\n";
