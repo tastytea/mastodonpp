@@ -20,7 +20,7 @@ if(NOT ${CMAKE_BUILD_TYPE} MATCHES "Debug")
 endif()
 
 project(mastodonpp
-  VERSION 0.5.5
+  VERSION 0.5.7
   DESCRIPTION "C++ wrapper for the Mastodon and Pleroma APIs."
   LANGUAGES CXX)
 
