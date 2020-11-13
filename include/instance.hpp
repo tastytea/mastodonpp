@@ -271,6 +271,9 @@ public:
          *  The `body` of the returned @link answer_type answer @endlink
          *  contains only the URI, not the whole JSON response.
          *
+         *  Note that the required scopes may be different between Mastodon and
+         *  other implementations, like Pleroma.
+         *
          *  @param  client_name The name of your application.
          *  @param  scopes      Space separated list of scopes. Defaults to
          *                      “read” if empty.
