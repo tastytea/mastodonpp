@@ -15,6 +15,7 @@
  */
 
 #include "curl_wrapper.hpp"
+
 #include "exceptions.hpp"
 #include "log.hpp"
 #include "version.hpp"
@@ -28,15 +29,15 @@
 namespace mastodonpp
 {
 
+using std::any_of;
+using std::array; // NOLINT(misc-unused-using-decls)
+using std::atomic;
 using std::get;
 using std::holds_alternative;
-using std::any_of;
-using std::transform;
-using std::array;               // NOLINT(misc-unused-using-decls)
-using std::atomic;
 using std::toupper;
-using std::uint8_t;
+using std::transform;
 using std::uint16_t;
+using std::uint8_t;
 
 // No one will ever need more than 65535 connections. 😉
 static atomic<uint16_t> curlwrapper_instances{0};
@@ -185,7 +186,7 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     if (code == CURLE_OK
         || (code == CURLE_ABORTED_BY_CALLBACK && _stream_cancelled))
     {
-        long http_status;       // NOLINT(google-runtime-int)
+        long http_status; // NOLINT(google-runtime-int)
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         curl_easy_getinfo(_connection, CURLINFO_RESPONSE_CODE, &http_status);
         answer.http_status = static_cast<uint16_t>(http_status);
@@ -250,11 +251,11 @@ void CURLWrapper::set_access_token(const string_view access_token)
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Could not set authorization token.",
-                _curl_buffer_error};
+                            _curl_buffer_error};
     }
 
 #if (LIBCURL_VERSION_NUM < 0x073d00) // libcurl < 7.61.0.
-#define CURLAUTH_BEARER CURLAUTH_ANY
+#    define CURLAUTH_BEARER CURLAUTH_ANY
 #endif
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg, hicpp-signed-bitwise)
@@ -262,7 +263,7 @@ void CURLWrapper::set_access_token(const string_view access_token)
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Could not set authorization token.",
-                _curl_buffer_error};
+                            _curl_buffer_error};
     }
 
     debuglog << "Set authorization token.\n";
@@ -281,19 +282,19 @@ void CURLWrapper::set_cainfo(const string_view path)
 void CURLWrapper::set_useragent(const string_view useragent)
 {
     // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-    CURLcode code{curl_easy_setopt(_connection, CURLOPT_USERAGENT,
-                                   useragent.data())};
+    CURLcode code{
+        curl_easy_setopt(_connection, CURLOPT_USERAGENT, useragent.data())};
     if (code != CURLE_OK)
     {
         throw CURLException{code, "Failed to set User-Agent",
-                _curl_buffer_error};
+                            _curl_buffer_error};
     }
     debuglog << "Set User-Agent to: " << useragent << '\n';
 }
 
 size_t CURLWrapper::writer_body(char *data, size_t size, size_t nmemb)
 {
-    if(data == nullptr)
+    if (data == nullptr)
     {
         return 0;
     }
@@ -307,7 +308,7 @@ size_t CURLWrapper::writer_body(char *data, size_t size, size_t nmemb)
 
 size_t CURLWrapper::writer_header(char *data, size_t size, size_t nmemb)
 {
-    if(data == nullptr)
+    if (data == nullptr)
     {
         return 0;
     }
@@ -317,8 +318,8 @@ size_t CURLWrapper::writer_header(char *data, size_t size, size_t nmemb)
     return size * nmemb;
 }
 
-int CURLWrapper::progress(void *, curl_off_t , curl_off_t ,
-                          curl_off_t , curl_off_t )
+int CURLWrapper::progress(void *, curl_off_t, curl_off_t, curl_off_t,
+                          curl_off_t)
 {
     if (_stream_cancelled)
     {
@@ -371,21 +372,25 @@ void CURLWrapper::setup_curl()
 bool CURLWrapper::replace_parameter_in_uri(string &uri,
                                            const parameterpair &parameter)
 {
-    static constexpr array replace
-        {
-            "id", "nickname", "nickname_or_id", "account_id", "list_id",
-            "hashtag", "permission_group", "instance", "report_id", "name",
-            "emoji"
-        };
+    static constexpr array replace{"id",
+                                   "nickname",
+                                   "nickname_or_id",
+                                   "account_id",
+                                   "list_id",
+                                   "hashtag",
+                                   "permission_group",
+                                   "instance",
+                                   "report_id",
+                                   "name",
+                                   "emoji"};
     if (any_of(replace.begin(), replace.end(),
                [&parameter](const auto &s) { return s == parameter.first; }))
     {
-        const string searchstring{[&parameter]
-        {
+        const string searchstring{[&parameter] {
             string s{"<"};
             s += parameter.first;
             transform(s.begin(), s.end(), s.begin(),
-                      [](const unsigned char c){ return toupper(c); });
+                      [](const unsigned char c) { return toupper(c); });
             return s;
         }()};
         const auto pos{uri.find(searchstring)};
@@ -441,8 +446,8 @@ void CURLWrapper::add_parameters_to_uri(string &uri,
     }
 }
 
-void CURLWrapper::add_mime_part(curl_mime *mime,
-                                string_view name, string_view data)
+void CURLWrapper::add_mime_part(curl_mime *mime, string_view name,
+                                string_view data)
 {
     curl_mimepart *part{curl_mime_addpart(mime)};
     if (part == nullptr)

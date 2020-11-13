@@ -25,8 +25,8 @@ string Connection::endpoint_to_uri(const endpoint_variant &endpoint) const
 {
     if (holds_alternative<API::endpoint_type>(endpoint))
     {
-        return string(_baseuri)
-            += API{std::get<API::endpoint_type>(endpoint)}.to_string_view();
+        return string(_baseuri) += API{std::get<API::endpoint_type>(endpoint)}
+                                       .to_string_view();
     }
     return string(_baseuri) += std::get<string_view>(endpoint);
 }
@@ -34,36 +34,36 @@ string Connection::endpoint_to_uri(const endpoint_variant &endpoint) const
 answer_type Connection::get(const endpoint_variant &endpoint,
                             const parametermap &parameters)
 {
-    return make_request(http_method::GET,
-                        endpoint_to_uri(endpoint), parameters);
+    return make_request(http_method::GET, endpoint_to_uri(endpoint),
+                        parameters);
 }
 
 answer_type Connection::post(const endpoint_variant &endpoint,
                              const parametermap &parameters)
 {
-    return make_request(http_method::POST,
-                        endpoint_to_uri(endpoint), parameters);
+    return make_request(http_method::POST, endpoint_to_uri(endpoint),
+                        parameters);
 }
 
 answer_type Connection::patch(const endpoint_variant &endpoint,
                               const parametermap &parameters)
 {
-    return make_request(http_method::PATCH,
-                        endpoint_to_uri(endpoint), parameters);
+    return make_request(http_method::PATCH, endpoint_to_uri(endpoint),
+                        parameters);
 }
 
 answer_type Connection::put(const endpoint_variant &endpoint,
                             const parametermap &parameters)
 {
-    return make_request(http_method::PUT,
-                        endpoint_to_uri(endpoint), parameters);
+    return make_request(http_method::PUT, endpoint_to_uri(endpoint),
+                        parameters);
 }
 
 answer_type Connection::del(const endpoint_variant &endpoint,
                             const parametermap &parameters)
 {
-    return make_request(http_method::DELETE,
-                        endpoint_to_uri(endpoint), parameters);
+    return make_request(http_method::DELETE, endpoint_to_uri(endpoint),
+                        parameters);
 }
 
 string Connection::get_new_stream_contents()

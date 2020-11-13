@@ -15,6 +15,7 @@
  */
 
 #include "instance.hpp"
+
 #include "log.hpp"
 
 #include <algorithm>
@@ -24,12 +25,12 @@
 namespace mastodonpp
 {
 
-using std::sort;
-using std::stoull;
 using std::exception;
 using std::regex;
 using std::regex_search;
 using std::smatch;
+using std::sort;
+using std::stoull;
 
 Instance::Instance(const string_view hostname, const string_view access_token)
     : _hostname{hostname}
@@ -50,8 +51,8 @@ Instance::Instance(const Instance &other)
     , _cainfo{other._cainfo}
     , _useragent{other._useragent}
 {
-    CURLWrapper::setup_connection_properties(_proxy, _access_token,
-                                             _cainfo, _useragent);
+    CURLWrapper::setup_connection_properties(_proxy, _access_token, _cainfo,
+                                             _useragent);
 }
 
 uint64_t Instance::get_max_chars() noexcept
@@ -66,16 +67,18 @@ uint64_t Instance::get_max_chars() noexcept
     try
     {
         debuglog << "Querying " << _hostname << " for max_toot_chars…\n";
-        const auto answer{make_request(http_method::GET,
-                                       _baseuri + "/api/v1/instance", {})};
+        const auto answer{
+            make_request(http_method::GET, _baseuri + "/api/v1/instance", {})};
         if (!answer)
         {
             debuglog << "Could not get instance info.\n";
             return default_max_chars;
         }
 
+        // clang-format off
         _max_chars = [&answer]
         {
+            // clang-format on
             const regex re_chars{R"("max_toot_chars"\s*:\s*([^"]+))"};
             smatch match;
 
@@ -100,8 +103,8 @@ uint64_t Instance::get_max_chars() noexcept
 
 answer_type Instance::get_nodeinfo()
 {
-    auto answer{make_request(http_method::GET,
-                             _baseuri + "/.well-known/nodeinfo", {})};
+    auto answer{
+        make_request(http_method::GET, _baseuri + "/.well-known/nodeinfo", {})};
     if (!answer)
     {
         debuglog << "NodeInfo not found.\n";
@@ -177,11 +180,8 @@ answer_type Instance::ObtainToken::step_1(const string_view client_name,
                                           const string_view scopes,
                                           const string_view website)
 {
-    parametermap parameters
-        {
-            {"client_name", client_name},
-            {"redirect_uris", "urn:ietf:wg:oauth:2.0:oob"}
-        };
+    parametermap parameters{{"client_name", client_name},
+                            {"redirect_uris", "urn:ietf:wg:oauth:2.0:oob"}};
     if (!scopes.empty())
     {
         _scopes = scopes;
@@ -192,8 +192,8 @@ answer_type Instance::ObtainToken::step_1(const string_view client_name,
         parameters.insert({"website", website});
     }
 
-    auto answer{make_request(http_method::POST, _baseuri + "/api/v1/apps",
-                             parameters)};
+    auto answer{
+        make_request(http_method::POST, _baseuri + "/api/v1/apps", parameters)};
     if (answer)
     {
         const regex re_id{R"("client_id"\s*:\s*"([^"]+)\")"};
@@ -210,9 +210,10 @@ answer_type Instance::ObtainToken::step_1(const string_view client_name,
         }
 
         string uri{_baseuri + "/oauth/authorize?scope=" + escape_url(scopes)
-            + "&response_type=code"
-            "&redirect_uri=" + escape_url("urn:ietf:wg:oauth:2.0:oob")
-            + "&client_id=" + _client_id};
+                   + "&response_type=code"
+                     "&redirect_uri="
+                   + escape_url("urn:ietf:wg:oauth:2.0:oob")
+                   + "&client_id=" + _client_id};
         if (!website.empty())
         {
             uri += "&website=" + escape_url(website);
@@ -236,8 +237,8 @@ answer_type Instance::ObtainToken::step_2(const string_view code)
         parameters.insert({"scope", _scopes});
     }
 
-    auto answer{make_request(http_method::POST, _baseuri + "/oauth/token",
-                             parameters)};
+    auto answer{
+        make_request(http_method::POST, _baseuri + "/oauth/token", parameters)};
     if (answer)
     {
         const regex re_token{R"("access_token"\s*:\s*"([^"]+)\")"};

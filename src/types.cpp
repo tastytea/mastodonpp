@@ -14,8 +14,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "log.hpp"
 #include "types.hpp"
+
+#include "log.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -36,7 +37,7 @@ answer_type::operator string_view() const
     return body;
 }
 
-std::ostream &operator <<(std::ostream &out, const answer_type &answer)
+std::ostream &operator<<(std::ostream &out, const answer_type &answer)
 {
     out << answer.body;
     return out;
@@ -45,10 +46,11 @@ std::ostream &operator <<(std::ostream &out, const answer_type &answer)
 string_view answer_type::get_header(const string_view field) const
 {
     const string_view searchstring{string(field) += ':'};
-    auto it{search(headers.begin(), headers.end(),
-                   searchstring.begin(), searchstring.end(),
-                   [](unsigned char a, unsigned char b)
+    // clang-format off
+    auto it{search(headers.begin(), headers.end(), searchstring.begin(),
+                   searchstring.end(), [](unsigned char a, unsigned char b)
                    { return tolower(a) == tolower(b); })};
+    // clang-format on
 
     if (it != headers.end())
     {

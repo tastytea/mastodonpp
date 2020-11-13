@@ -21,8 +21,8 @@
 namespace mastodonpp
 {
 
-using std::to_string;
 using std::move;
+using std::to_string;
 
 CURLException::CURLException(const CURLcode &error, string message)
     : error_code{error}
