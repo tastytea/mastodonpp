@@ -29,7 +29,7 @@ using std::string_view;
 //! @private
 constexpr auto shorten_filename(const string_view &filename)
 {
-    for (const string_view &dir : {"/src/", "/include/"})
+    for (const string_view dir : {"/src/", "/include/"})
     {
         const auto pos{filename.rfind(dir)};
         if (pos != string_view::npos)
