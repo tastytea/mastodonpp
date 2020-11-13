@@ -24,6 +24,7 @@
    <div id="projectname">mastodonpp
    &#160;<span id="projectnumber">0.5.5</span>
    </div>
+   <div id="projectbrief">C++ wrapper for the Mastodon and Pleroma APIs.</div>
   </td>
  </tr>
  </tbody>
@@ -84,7 +85,7 @@ $(function() {
 <div class="line"><span class="comment">// Update notification settings (/api/pleroma/notification_settings).</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#if __has_include(&quot;mastodonpp.hpp&quot;)</span></div>
-<div class="line"><span class="preprocessor">#    include &quot;mastodonpp.hpp&quot;</span>            <span class="comment">// We&#39;re building mastodonpp.</span></div>
+<div class="line"><span class="preprocessor">#    include &quot;mastodonpp.hpp&quot;</span> <span class="comment">// We&#39;re building mastodonpp.</span></div>
 <div class="line"><span class="preprocessor">#else</span></div>
 <div class="line"><span class="preprocessor">#    include &lt;mastodonpp/mastodonpp.hpp&gt;</span> <span class="comment">// We&#39;re building outside mastodonpp.</span></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
@@ -95,11 +96,11 @@ $(function() {
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span>masto = <a class="code" href="namespacemastodonpp.html">mastodonpp</a>;</div>
-<div class="line"><span class="keyword">using</span> std::cout;</div>
 <div class="line"><span class="keyword">using</span> std::cerr;</div>
+<div class="line"><span class="keyword">using</span> std::cout;</div>
 <div class="line"><span class="keyword">using</span> std::endl;</div>
-<div class="line"><span class="keyword">using</span> std::to_string;</div>
 <div class="line"><span class="keyword">using</span> std::string_view;</div>
+<div class="line"><span class="keyword">using</span> std::to_string;</div>
 <div class="line"><span class="keyword">using</span> std::vector;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
@@ -118,14 +119,14 @@ $(function() {
 <div class="line">        masto::Connection connection{instance};</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Update the settings.</span></div>
-<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> answer{connection.put(</div>
-<div class="line">                masto::API::pleroma::notification_settings,</div>
-<div class="line">                {</div>
-<div class="line">                    {<span class="stringliteral">&quot;followers&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>},</div>
-<div class="line">                    {<span class="stringliteral">&quot;follows&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>},</div>
-<div class="line">                    {<span class="stringliteral">&quot;remote&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>},</div>
-<div class="line">                    {<span class="stringliteral">&quot;local&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>},</div>
-<div class="line">                })};</div>
+<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> answer{</div>
+<div class="line">            connection.put(masto::API::pleroma::notification_settings,</div>
+<div class="line">                           {</div>
+<div class="line">                               {<span class="stringliteral">&quot;followers&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>},</div>
+<div class="line">                               {<span class="stringliteral">&quot;follows&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>},</div>
+<div class="line">                               {<span class="stringliteral">&quot;remote&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>},</div>
+<div class="line">                               {<span class="stringliteral">&quot;local&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>},</div>
+<div class="line">                           })};</div>
 <div class="line">        <span class="keywordflow">if</span> (answer)</div>
 <div class="line">        {</div>
 <div class="line">            cout &lt;&lt; answer &lt;&lt; endl;</div>
@@ -155,7 +156,7 @@ $(function() {
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
-<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:19</div></div>
+<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.hpp:24</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -24,6 +24,7 @@
    <div id="projectname">mastodonpp
    &#160;<span id="projectnumber">0.5.5</span>
    </div>
+   <div id="projectbrief">C++ wrapper for the Mastodon and Pleroma APIs.</div>
   </td>
  </tr>
  </tbody>
@@ -85,7 +86,7 @@ $(function() {
 <div class="line"><span class="comment">// nlohmann-json. &lt;https://github.com/nlohmann/json&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#if __has_include(&quot;mastodonpp.hpp&quot;)</span></div>
-<div class="line"><span class="preprocessor">#    include &quot;mastodonpp.hpp&quot;</span>            <span class="comment">// We&#39;re building mastodonpp.</span></div>
+<div class="line"><span class="preprocessor">#    include &quot;mastodonpp.hpp&quot;</span> <span class="comment">// We&#39;re building mastodonpp.</span></div>
 <div class="line"><span class="preprocessor">#else</span></div>
 <div class="line"><span class="preprocessor">#    include &lt;mastodonpp/mastodonpp.hpp&gt;</span> <span class="comment">// We&#39;re building outside mastodonpp.</span></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
@@ -94,19 +95,19 @@ $(function() {
 <div class="line"><span class="preprocessor">#if __has_include(&lt;nlohmann/json.hpp&gt;)</span></div>
 <div class="line"><span class="preprocessor">#    include &lt;nlohmann/json.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;string_view&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><span class="preprocessor">#    include &lt;cstdlib&gt;</span></div>
+<div class="line"><span class="preprocessor">#    include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#    include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#    include &lt;string_view&gt;</span></div>
+<div class="line"><span class="preprocessor">#    include &lt;vector&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span>masto = <a class="code" href="namespacemastodonpp.html">mastodonpp</a>;</div>
 <div class="line"><span class="keyword">using</span> json = nlohmann::json;</div>
-<div class="line"><span class="keyword">using</span> std::exit;</div>
-<div class="line"><span class="keyword">using</span> std::cout;</div>
 <div class="line"><span class="keyword">using</span> std::cerr;</div>
-<div class="line"><span class="keyword">using</span> std::to_string;</div>
+<div class="line"><span class="keyword">using</span> std::cout;</div>
+<div class="line"><span class="keyword">using</span> std::exit;</div>
 <div class="line"><span class="keyword">using</span> std::string_view;</div>
+<div class="line"><span class="keyword">using</span> std::to_string;</div>
 <div class="line"><span class="keyword">using</span> std::vector;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> handle_error(<span class="keyword">const</span> masto::answer_type &amp;answer);</div>
@@ -128,10 +129,7 @@ $(function() {
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Get the last 4 public statuses of the instance.</span></div>
 <div class="line">        <span class="keyword">auto</span> answer{connection.get(masto::API::v1::timelines_public,</div>
-<div class="line">                                   {</div>
-<div class="line">                                       {<span class="stringliteral">&quot;limit&quot;</span>, <span class="stringliteral">&quot;4&quot;</span>},</div>
-<div class="line">                                       {<span class="stringliteral">&quot;local&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>}</div>
-<div class="line">                                   })};</div>
+<div class="line">                                   {{<span class="stringliteral">&quot;limit&quot;</span>, <span class="stringliteral">&quot;4&quot;</span>}, {<span class="stringliteral">&quot;local&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>}})};</div>
 <div class="line">        <span class="keywordflow">if</span> (answer)</div>
 <div class="line">        {</div>
 <div class="line">            <span class="comment">// Parse JSON string.</span></div>
@@ -197,8 +195,8 @@ $(function() {
 <div class="line">    <span class="keywordflow">else</span></div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Network errors like “Couldn&#39;t resolve host.”.</span></div>
-<div class="line">        cerr &lt;&lt; <span class="stringliteral">&quot;libcurl error &quot;</span> &lt;&lt; to_string(answer.curl_error_code)</div>
-<div class="line">             &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; answer.error_message &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line">        cerr &lt;&lt; <span class="stringliteral">&quot;libcurl error &quot;</span> &lt;&lt; to_string(answer.curl_error_code) &lt;&lt; <span class="stringliteral">&quot;: &quot;</span></div>
+<div class="line">             &lt;&lt; answer.error_message &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    exit(1);</div>
@@ -206,16 +204,16 @@ $(function() {
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#else</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#    include &lt;iostream&gt;</span></div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Example could not be compiled &quot;</span></div>
-<div class="line">        <span class="stringliteral">&quot;because nlohmann-json was not found.\n&quot;</span>;</div>
+<div class="line">                 <span class="stringliteral">&quot;because nlohmann-json was not found.\n&quot;</span>;</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#endif  // __has_include(&lt;nlohmann/json.hpp&gt;)</span></div>
+<div class="line"><span class="preprocessor">#endif // __has_include(&lt;nlohmann/json.hpp&gt;)</span></div>
 </div><!-- fragment --> </div><!-- contents -->
-<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:19</div></div>
+<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.hpp:24</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

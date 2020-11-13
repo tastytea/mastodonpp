@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['endpoint_5ftype_133',['endpoint_type',['../classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f',1,'mastodonpp::API']]],
-  ['endpoint_5fvariant_134',['endpoint_variant',['../namespacemastodonpp.html#ad228a850ba86374f95d9fa1fece3c33b',1,'mastodonpp']]]
+  ['endpoint_5ftype_133',['endpoint_type',['../classmastodonpp_1_1API.html#a7f74ce81c1f0cbc0ed6ad66b2bd24318',1,'mastodonpp::API']]],
+  ['endpoint_5fvariant_134',['endpoint_variant',['../namespacemastodonpp.html#ad5d7bf6713e986f130ec200963e0f208',1,'mastodonpp']]]
 ];

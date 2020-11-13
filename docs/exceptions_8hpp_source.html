@@ -24,6 +24,7 @@
    <div id="projectname">mastodonpp
    &#160;<span id="projectnumber">0.5.5</span>
    </div>
+   <div id="projectbrief">C++ wrapper for the Mastodon and Pleroma APIs.</div>
   </td>
  </tr>
  </tbody>
@@ -98,9 +99,9 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> std::uint16_t;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> std::exception;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> std::exception;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> std::uint16_t;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1CURLException.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmastodonpp_1_1CURLException.html">CURLException</a> : <span class="keyword">public</span> exception</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
@@ -114,21 +115,20 @@ $(function() {
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72">   73</a></span>&#160;    <span class="keyword">const</span> CURLcode <a class="code" href="classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72">error_code</a>;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    [[nodiscard]]</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmastodonpp_1_1CURLException.html#aa5d6aaec95758bc7db42ef1ee8831ecc">what</a>() const noexcept override;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;private:</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    const <span class="keywordtype">string</span> _message;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    const <span class="keywordtype">string</span> _error_buffer;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;};</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_EXCEPTIONS_HPP</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    [[nodiscard]] <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmastodonpp_1_1CURLException.html#aa5d6aaec95758bc7db42ef1ee8831ecc">what</a>() const noexcept override;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;private:</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    const <span class="keywordtype">string</span> _message;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    const <span class="keywordtype">string</span> _error_buffer;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif // MASTODONPP_EXCEPTIONS_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassmastodonpp_1_1CURLException_html_a91eedb1a1d70015afdb4645d87d10e72"><div class="ttname"><a href="classmastodonpp_1_1CURLException.html#a91eedb1a1d70015afdb4645d87d10e72">mastodonpp::CURLException::error_code</a></div><div class="ttdeci">const CURLcode error_code</div><div class="ttdoc">The error code returned by libcurl.</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:73</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLException_html"><div class="ttname"><a href="classmastodonpp_1_1CURLException.html">mastodonpp::CURLException</a></div><div class="ttdoc">Exception for libcurl errors.</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:40</div></div>
-<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:19</div></div>
+<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.hpp:24</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLException_html_aa5d6aaec95758bc7db42ef1ee8831ecc"><div class="ttname"><a href="classmastodonpp_1_1CURLException.html#aa5d6aaec95758bc7db42ef1ee8831ecc">mastodonpp::CURLException::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdoc">Returns the error code, message and error buffer.</div><div class="ttdef"><b>Definition:</b> exceptions.cpp:44</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1CURLException_html_af43d29b726eceb3f80a71cdd7c3d55d4"><div class="ttname"><a href="classmastodonpp_1_1CURLException.html#af43d29b726eceb3f80a71cdd7c3d55d4">mastodonpp::CURLException::CURLException</a></div><div class="ttdeci">CURLException(const CURLcode &amp;error, string message)</div><div class="ttdoc">Constructor with error code and message.</div><div class="ttdef"><b>Definition:</b> exceptions.cpp:27</div></div>
 <!-- start footer part -->

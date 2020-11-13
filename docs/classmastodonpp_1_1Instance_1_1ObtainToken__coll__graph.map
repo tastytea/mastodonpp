@@ -1,0 +1,5 @@
+<map id="mastodonpp::Instance::ObtainToken" name="mastodonpp::Instance::ObtainToken">
+<area shape="rect" id="node1" title="Simplifies obtaining an OAuth 2.0 Bearer Access Token." alt="" coords="23,171,174,212"/>
+<area shape="rect" id="node2" href="$classmastodonpp_1_1CURLWrapper.html" title="Handles the details of network connections." alt="" coords="5,95,192,121"/>
+<area shape="rect" id="node3" title="STL class." alt="" coords="57,5,141,32"/>
+</map>

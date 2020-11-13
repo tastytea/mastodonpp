@@ -24,6 +24,7 @@
    <div id="projectname">mastodonpp
    &#160;<span id="projectnumber">0.5.5</span>
    </div>
+   <div id="projectbrief">C++ wrapper for the Mastodon and Pleroma APIs.</div>
   </td>
  </tr>
  </tbody>
@@ -81,12 +82,22 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for mastodonpp::Instance::ObtainToken:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classmastodonpp_1_1Instance_1_1ObtainToken.png" usemap="#mastodonpp::Instance::ObtainToken_map" alt=""/>
-  <map id="mastodonpp::Instance::ObtainToken_map" name="mastodonpp::Instance::ObtainToken_map">
-<area href="classmastodonpp_1_1CURLWrapper.html" title="Handles the details of network connections." alt="mastodonpp::CURLWrapper" shape="rect" coords="0,0,209,24"/>
-  </map>
-</div></div>
+<div class="center"><img src="classmastodonpp_1_1Instance_1_1ObtainToken__inherit__graph.png" border="0" usemap="#mastodonpp_1_1Instance_1_1ObtainToken_inherit__map" alt="Inheritance graph"/></div>
+<map name="mastodonpp_1_1Instance_1_1ObtainToken_inherit__map" id="mastodonpp_1_1Instance_1_1ObtainToken_inherit__map">
+<area shape="rect" title="Simplifies obtaining an OAuth 2.0 Bearer Access Token." alt="" coords="23,80,174,121"/>
+<area shape="rect" href="classmastodonpp_1_1CURLWrapper.html" title="Handles the details of network connections." alt="" coords="5,5,192,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for mastodonpp::Instance::ObtainToken:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmastodonpp_1_1Instance_1_1ObtainToken__coll__graph.png" border="0" usemap="#mastodonpp_1_1Instance_1_1ObtainToken_coll__map" alt="Collaboration graph"/></div>
+<map name="mastodonpp_1_1Instance_1_1ObtainToken_coll__map" id="mastodonpp_1_1Instance_1_1ObtainToken_coll__map">
+<area shape="rect" title="Simplifies obtaining an OAuth 2.0 Bearer Access Token." alt="" coords="23,171,174,212"/>
+<area shape="rect" href="classmastodonpp_1_1CURLWrapper.html" title="Handles the details of network connections." alt="" coords="5,95,192,121"/>
+<area shape="rect" title="STL class." alt="" coords="57,5,141,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -210,11 +221,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructor. </p>
 <dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
-<div class="fragment"><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            : _instance{instance}</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            , _baseuri{instance.get_baseuri()}</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            _instance.<a class="code" href="classmastodonpp_1_1Instance.html#a921c4b83815c0d98dea983a9409c00ac">copy_connection_properties</a>(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            : _instance{instance}</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            , _baseuri{instance.get_baseuri()}</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            _instance.<a class="code" href="classmastodonpp_1_1Instance.html#a921c4b83815c0d98dea983a9409c00ac">copy_connection_properties</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -301,7 +312,7 @@ Additional Inherited Members</h2></td></tr>
 <li>include/<a class="el" href="instance_8hpp_source.html">instance.hpp</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassmastodonpp_1_1Instance_1_1ObtainToken_html"><div class="ttname"><a href="classmastodonpp_1_1Instance_1_1ObtainToken.html">mastodonpp::Instance::ObtainToken</a></div><div class="ttdoc">Simplifies obtaining an OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:253</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1Instance_1_1ObtainToken_html"><div class="ttname"><a href="classmastodonpp_1_1Instance_1_1ObtainToken.html">mastodonpp::Instance::ObtainToken</a></div><div class="ttdoc">Simplifies obtaining an OAuth 2.0 Bearer Access Token.</div><div class="ttdef"><b>Definition:</b> instance.hpp:248</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html_a921c4b83815c0d98dea983a9409c00ac"><div class="ttname"><a href="classmastodonpp_1_1Instance.html#a921c4b83815c0d98dea983a9409c00ac">mastodonpp::Instance::copy_connection_properties</a></div><div class="ttdeci">void copy_connection_properties(CURLWrapper &amp;curlwrapper) const</div><div class="ttdoc">Set the properties of the connection of the calling class up.</div><div class="ttdef"><b>Definition:</b> instance.hpp:90</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1Instance_html"><div class="ttname"><a href="classmastodonpp_1_1Instance.html">mastodonpp::Instance</a></div><div class="ttdoc">Holds the access data of an instance.</div><div class="ttdef"><b>Definition:</b> instance.hpp:48</div></div>
 <!-- start footer part -->

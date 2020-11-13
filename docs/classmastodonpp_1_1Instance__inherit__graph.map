@@ -1,0 +1,4 @@
+<map id="mastodonpp::Instance" name="mastodonpp::Instance">
+<area shape="rect" id="node1" title="Holds the access data of an instance." alt="" coords="23,80,174,107"/>
+<area shape="rect" id="node2" href="$classmastodonpp_1_1CURLWrapper.html" title="Handles the details of network connections." alt="" coords="5,5,192,32"/>
+</map>

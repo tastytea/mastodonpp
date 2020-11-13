@@ -1,0 +1,5 @@
+<map id="mastodonpp::Connection" name="mastodonpp::Connection">
+<area shape="rect" id="node1" title="Represents a connection to an instance. Used for requests." alt="" coords="15,171,182,197"/>
+<area shape="rect" id="node2" href="$classmastodonpp_1_1CURLWrapper.html" title="Handles the details of network connections." alt="" coords="5,95,192,121"/>
+<area shape="rect" id="node3" title="STL class." alt="" coords="57,5,141,32"/>
+</map>

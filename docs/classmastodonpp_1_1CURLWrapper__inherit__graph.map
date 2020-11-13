@@ -1,0 +1,6 @@
+<map id="mastodonpp::CURLWrapper" name="mastodonpp::CURLWrapper">
+<area shape="rect" id="node1" title="Handles the details of network connections." alt="" coords="178,5,365,32"/>
+<area shape="rect" id="node2" href="$classmastodonpp_1_1Connection.html" title="Represents a connection to an instance. Used for requests." alt="" coords="5,87,172,114"/>
+<area shape="rect" id="node3" href="$classmastodonpp_1_1Instance.html" title="Holds the access data of an instance." alt="" coords="196,87,347,114"/>
+<area shape="rect" id="node4" href="$classmastodonpp_1_1Instance_1_1ObtainToken.html" title="Simplifies obtaining an OAuth 2.0 Bearer Access Token." alt="" coords="371,80,521,121"/>
+</map>

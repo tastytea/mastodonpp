@@ -24,6 +24,7 @@
    <div id="projectname">mastodonpp
    &#160;<span id="projectnumber">0.5.5</span>
    </div>
+   <div id="projectbrief">C++ wrapper for the Mastodon and Pleroma APIs.</div>
   </td>
  </tr>
  </tbody>
@@ -93,7 +94,7 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;variant&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespacemastodonpp.html">   24</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemastodonpp.html">mastodonpp</a></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> std::map;</div>
@@ -342,35 +343,34 @@ $(function() {
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    };</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">  325</a></span>&#160;    <span class="keyword">using</span> <a class="code" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">endpoint_type</a> = variant&lt;v1,v2,oauth,other,pleroma&gt;;</div>
+<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1API.html#a7f74ce81c1f0cbc0ed6ad66b2bd24318">  325</a></span>&#160;    <span class="keyword">using</span> <a class="code" href="classmastodonpp_1_1API.html#a7f74ce81c1f0cbc0ed6ad66b2bd24318">endpoint_type</a> = variant&lt;v1, v2, oauth, other, pleroma&gt;;</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1API.html#af9fc7a7d152a851122f8acc3224d4047">API</a>(<span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">endpoint_type</a> &amp;endpoint);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmastodonpp_1_1API.html#af9fc7a7d152a851122f8acc3224d4047">API</a>(<span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1API.html#a7f74ce81c1f0cbc0ed6ad66b2bd24318">endpoint_type</a> &amp;endpoint);</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    [[nodiscard]]</div>
-<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1API.html#aa51c43b5c7cc2afd32520d08d51bcfc3">  343</a></span>&#160;    <span class="keyword">inline</span> string_view <a class="code" href="classmastodonpp_1_1API.html#aa51c43b5c7cc2afd32520d08d51bcfc3">to_string_view</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">return</span> _endpoint_map.at(_endpoint);</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    }</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">endpoint_type</a> _endpoint;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> map&lt;endpoint_type,string_view&gt; _endpoint_map;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;};</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="preprocessor">#endif  // MASTODONPP_API_HPP</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno"><a class="line" href="classmastodonpp_1_1API.html#aa51c43b5c7cc2afd32520d08d51bcfc3">  342</a></span>&#160;    [[nodiscard]] <span class="keyword">inline</span> string_view <a class="code" href="classmastodonpp_1_1API.html#aa51c43b5c7cc2afd32520d08d51bcfc3">to_string_view</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keywordflow">return</span> _endpoint_map.at(_endpoint);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keyword">const</span> <a class="code" href="classmastodonpp_1_1API.html#a7f74ce81c1f0cbc0ed6ad66b2bd24318">endpoint_type</a> _endpoint;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> map&lt;endpoint_type, string_view&gt; _endpoint_map;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;};</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;} <span class="comment">// namespace mastodonpp</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">#endif // MASTODONPP_API_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassmastodonpp_1_1API_html_a67ba7c7a8d94ec7905e45466255648ba"><div class="ttname"><a href="classmastodonpp_1_1API.html#a67ba7c7a8d94ec7905e45466255648ba">mastodonpp::API::v2</a></div><div class="ttdeci">v2</div><div class="ttdoc">An enumeration of all v2 API endpoints.</div><div class="ttdef"><b>Definition:</b> api.hpp:211</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1API_html_a36332bb17e8603f0ba40b63b0b604bcc"><div class="ttname"><a href="classmastodonpp_1_1API.html#a36332bb17e8603f0ba40b63b0b604bcc">mastodonpp::API::oauth</a></div><div class="ttdeci">oauth</div><div class="ttdoc">An enumeration of all oauth API endpoints.</div><div class="ttdef"><b>Definition:</b> api.hpp:223</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1API_html_aa51c43b5c7cc2afd32520d08d51bcfc3"><div class="ttname"><a href="classmastodonpp_1_1API.html#aa51c43b5c7cc2afd32520d08d51bcfc3">mastodonpp::API::to_string_view</a></div><div class="ttdeci">string_view to_string_view() const</div><div class="ttdoc">Convert endpoint_type to std::string_view.</div><div class="ttdef"><b>Definition:</b> api.hpp:343</div></div>
-<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.cpp:19</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1API_html_aa51c43b5c7cc2afd32520d08d51bcfc3"><div class="ttname"><a href="classmastodonpp_1_1API.html#aa51c43b5c7cc2afd32520d08d51bcfc3">mastodonpp::API::to_string_view</a></div><div class="ttdeci">string_view to_string_view() const</div><div class="ttdoc">Convert endpoint_type to std::string_view.</div><div class="ttdef"><b>Definition:</b> api.hpp:342</div></div>
+<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.hpp:24</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1API_html"><div class="ttname"><a href="classmastodonpp_1_1API.html">mastodonpp::API</a></div><div class="ttdoc">Holds API endpoints.</div><div class="ttdef"><b>Definition:</b> api.hpp:40</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1API_html_a146a96ee58a8829042f406b9d42cf37e"><div class="ttname"><a href="classmastodonpp_1_1API.html#a146a96ee58a8829042f406b9d42cf37e">mastodonpp::API::pleroma</a></div><div class="ttdeci">pleroma</div><div class="ttdoc">An enumeration of all pleroma API endpoints.</div><div class="ttdef"><b>Definition:</b> api.hpp:252</div></div>
+<div class="ttc" id="aclassmastodonpp_1_1API_html_a7f74ce81c1f0cbc0ed6ad66b2bd24318"><div class="ttname"><a href="classmastodonpp_1_1API.html#a7f74ce81c1f0cbc0ed6ad66b2bd24318">mastodonpp::API::endpoint_type</a></div><div class="ttdeci">variant&lt; v1, v2, oauth, other, pleroma &gt; endpoint_type</div><div class="ttdoc">Type for endpoints. Can be API::v1, API::v2, API::oauth, API::other or API::pleroma.</div><div class="ttdef"><b>Definition:</b> api.hpp:325</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1API_html_aee8f590426914a36f948dafa78e330f2"><div class="ttname"><a href="classmastodonpp_1_1API.html#aee8f590426914a36f948dafa78e330f2">mastodonpp::API::v1</a></div><div class="ttdeci">v1</div><div class="ttdoc">An enumeration of all v1 API endpoints.</div><div class="ttdef"><b>Definition:</b> api.hpp:50</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1API_html_abd51b671f4bd4f6021d8044e281d4c76"><div class="ttname"><a href="classmastodonpp_1_1API.html#abd51b671f4bd4f6021d8044e281d4c76">mastodonpp::API::other</a></div><div class="ttdeci">other</div><div class="ttdoc">An enumeration of all other API endpoints.</div><div class="ttdef"><b>Definition:</b> api.hpp:239</div></div>
 <div class="ttc" id="aclassmastodonpp_1_1API_html_af9fc7a7d152a851122f8acc3224d4047"><div class="ttname"><a href="classmastodonpp_1_1API.html#af9fc7a7d152a851122f8acc3224d4047">mastodonpp::API::API</a></div><div class="ttdeci">API(const endpoint_type &amp;endpoint)</div><div class="ttdoc">Constructs an API object. You should never need this.</div><div class="ttdef"><b>Definition:</b> api.cpp:22</div></div>
-<div class="ttc" id="aclassmastodonpp_1_1API_html_a66d340a2e61c4254feb79f17f6773e4f"><div class="ttname"><a href="classmastodonpp_1_1API.html#a66d340a2e61c4254feb79f17f6773e4f">mastodonpp::API::endpoint_type</a></div><div class="ttdeci">variant&lt; v1, v2, oauth, other, pleroma &gt; endpoint_type</div><div class="ttdoc">Type for endpoints. Can be API::v1, API::v2, API::oauth, API::other or API::pleroma.</div><div class="ttdef"><b>Definition:</b> api.hpp:325</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
