@@ -56,17 +56,11 @@ void CURLWrapper::init()
 }
 
 CURLWrapper::CURLWrapper()
-    : _connection{}
-    , _curl_buffer_error{}
-    , _stream_cancelled{false}
 {
     init();
 }
 
 CURLWrapper::CURLWrapper(const CURLWrapper &)
-    : _connection{}
-    , _curl_buffer_error{}
-    , _stream_cancelled{false}
 {
     init();
 }
@@ -90,7 +84,7 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     _curl_buffer_headers.clear();
     _curl_buffer_body.clear();
 
-    CURLcode code;
+    CURLcode code{CURLE_OK};
     switch (method)
     {
     case http_method::GET:
@@ -186,7 +180,7 @@ answer_type CURLWrapper::make_request(const http_method &method, string uri,
     if (code == CURLE_OK
         || (code == CURLE_ABORTED_BY_CALLBACK && _stream_cancelled))
     {
-        long http_status; // NOLINT(google-runtime-int)
+        long http_status{0}; // NOLINT(google-runtime-int)
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         curl_easy_getinfo(_connection, CURLINFO_RESPONSE_CODE, &http_status);
         answer.http_status = static_cast<uint16_t>(http_status);
@@ -281,8 +275,8 @@ void CURLWrapper::set_cainfo(const string_view path)
 
 void CURLWrapper::set_useragent(const string_view useragent)
 {
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
     CURLcode code{
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
         curl_easy_setopt(_connection, CURLOPT_USERAGENT, useragent.data())};
     if (code != CURLE_OK)
     {
@@ -319,7 +313,7 @@ size_t CURLWrapper::writer_header(char *data, size_t size, size_t nmemb)
 }
 
 int CURLWrapper::progress(void *, curl_off_t, curl_off_t, curl_off_t,
-                          curl_off_t)
+                          curl_off_t) const
 {
     if (_stream_cancelled)
     {

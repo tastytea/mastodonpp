@@ -245,11 +245,11 @@ protected:
     virtual void set_useragent(string_view useragent);
 
 private:
-    CURL *_connection;
-    char _curl_buffer_error[CURL_ERROR_SIZE];
+    CURL *_connection{nullptr};
+    char _curl_buffer_error[CURL_ERROR_SIZE]{'\0'};
     string _curl_buffer_headers;
     string _curl_buffer_body;
-    bool _stream_cancelled;
+    bool _stream_cancelled{false};
 
     /*!
      *  @brief  Initializes curl and sets up connection.
@@ -297,7 +297,7 @@ private:
      *  @since  0.1.0
      */
     int progress(void *clientp, curl_off_t dltotal, curl_off_t dlnow,
-                 curl_off_t ultotal, curl_off_t ulnow);
+                 curl_off_t ultotal, curl_off_t ulnow) const;
 
     //! @copydoc writer_body_wrapper
     static inline int progress_wrapper(void *f, void *clientp,
