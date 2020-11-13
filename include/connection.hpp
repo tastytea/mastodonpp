@@ -40,7 +40,7 @@ using std::vector;
  *
  *  @since  0.1.0
  */
-using endpoint_variant = variant<API::endpoint_type,string_view>;
+using endpoint_variant = variant<API::endpoint_type, string_view>;
 
 /*!
  *  @brief  A stream event.
@@ -106,10 +106,10 @@ public:
     ~Connection() noexcept override = default;
 
     //! Copy assignment operator
-    Connection& operator=(const Connection &other) = delete;
+    Connection &operator=(const Connection &other) = delete;
 
     //! Move assignment operator
-    Connection& operator=(Connection &&other) noexcept = delete;
+    Connection &operator=(Connection &&other) noexcept = delete;
 
     /*!
      *  @brief  Make a HTTP GET call with parameters.
@@ -129,9 +129,8 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    answer_type get(const endpoint_variant &endpoint,
-                    const parametermap &parameters);
+    [[nodiscard]] answer_type get(const endpoint_variant &endpoint,
+                                  const parametermap &parameters);
 
     /*!
      *  @brief  Make a HTTP GET call.
@@ -145,8 +144,7 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    inline answer_type get(const endpoint_variant &endpoint)
+    [[nodiscard]] inline answer_type get(const endpoint_variant &endpoint)
     {
         return get(endpoint, {});
     }
@@ -171,9 +169,8 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    answer_type post(const endpoint_variant &endpoint,
-                     const parametermap &parameters);
+    [[nodiscard]] answer_type post(const endpoint_variant &endpoint,
+                                   const parametermap &parameters);
 
     /*!
      *  @brief  Make a HTTP POST call.
@@ -182,8 +179,7 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    inline answer_type post(const endpoint_variant &endpoint)
+    [[nodiscard]] inline answer_type post(const endpoint_variant &endpoint)
     {
         return post(endpoint, {});
     }
@@ -197,9 +193,8 @@ public:
      *
      *  @since  0.2.0
      */
-    [[nodiscard]]
-    answer_type patch(const endpoint_variant &endpoint,
-                      const parametermap &parameters);
+    [[nodiscard]] answer_type patch(const endpoint_variant &endpoint,
+                                    const parametermap &parameters);
 
     /*!
      *  @brief  Make a HTTP PATCH call.
@@ -208,8 +203,7 @@ public:
      *
      *  @since  0.2.0
      */
-    [[nodiscard]]
-    inline answer_type patch(const endpoint_variant &endpoint)
+    [[nodiscard]] inline answer_type patch(const endpoint_variant &endpoint)
     {
         return patch(endpoint, {});
     }
@@ -223,9 +217,8 @@ public:
      *
      *  @since  0.2.0
      */
-    [[nodiscard]]
-    answer_type put(const endpoint_variant &endpoint,
-                    const parametermap &parameters);
+    [[nodiscard]] answer_type put(const endpoint_variant &endpoint,
+                                  const parametermap &parameters);
 
     /*!
      *  @brief  Make a HTTP PUT call.
@@ -234,8 +227,7 @@ public:
      *
      *  @since  0.2.0
      */
-    [[nodiscard]]
-    inline answer_type put(const endpoint_variant &endpoint)
+    [[nodiscard]] inline answer_type put(const endpoint_variant &endpoint)
     {
         return put(endpoint, {});
     }
@@ -249,9 +241,8 @@ public:
      *
      *  @since  0.2.0
      */
-    [[nodiscard]]
-    answer_type del(const endpoint_variant &endpoint,
-                    const parametermap &parameters);
+    [[nodiscard]] answer_type del(const endpoint_variant &endpoint,
+                                  const parametermap &parameters);
 
     /*!
      *  @brief  Make a HTTP DELETE call.
@@ -260,8 +251,7 @@ public:
      *
      *  @since  0.2.0
      */
-    [[nodiscard]]
-    inline answer_type del(const endpoint_variant &endpoint)
+    [[nodiscard]] inline answer_type del(const endpoint_variant &endpoint)
     {
         return del(endpoint, {});
     }
@@ -291,14 +281,15 @@ public:
     {
         CURLWrapper::cancel_stream();
     }
+
 private:
     const Instance &_instance;
     const string_view _baseuri;
 
-    [[nodiscard]]
-    string endpoint_to_uri(const endpoint_variant &endpoint) const;
+    [[nodiscard]] string
+    endpoint_to_uri(const endpoint_variant &endpoint) const;
 };
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_CONNECTION_HPP
+#endif // MASTODONPP_CONNECTION_HPP

@@ -31,13 +31,13 @@
 namespace mastodonpp
 {
 
-using std::uint8_t;
-using std::uint16_t;
 using std::map;
 using std::ostream;
+using std::pair;
 using std::string;
 using std::string_view;
-using std::pair;
+using std::uint16_t;
+using std::uint8_t;
 using std::variant;
 using std::vector;
 
@@ -60,16 +60,16 @@ using std::vector;
  *
  *  @since  0.1.0
  */
-using parametermap =
-    map<string_view, variant<string_view, vector<string_view>>>;
+using parametermap = map<string_view,
+                         variant<string_view, vector<string_view>>>;
 
 /*!
  *  @brief  A single parameter of a parametermap.
  *
  *  @since  0.1.0
  */
-using parameterpair =
-    pair<string_view, variant<string_view, vector<string_view>>>;
+using parameterpair = pair<string_view,
+                           variant<string_view, vector<string_view>>>;
 
 /*!
  *  @brief  Return type for Request%s.
@@ -138,7 +138,7 @@ struct answer_type
      *
      *  @since  0.1.0
      */
-    friend ostream &operator <<(ostream &out, const answer_type &answer);
+    friend ostream &operator<<(ostream &out, const answer_type &answer);
 
     /*!
      *  @brief  Returns the value of a header field.
@@ -149,8 +149,7 @@ struct answer_type
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    string_view get_header(string_view field) const;
+    [[nodiscard]] string_view get_header(string_view field) const;
 
     /*!
      *  @brief  Returns the parameters needed for the next entries.
@@ -159,8 +158,7 @@ struct answer_type
      *
      *  @since  0.3.0
      */
-    [[nodiscard]]
-    inline parametermap next() const
+    [[nodiscard]] inline parametermap next() const
     {
         return parse_pagination(true);
     }
@@ -173,8 +171,7 @@ struct answer_type
      *
      *  @since  0.3.0
      */
-    [[nodiscard]]
-    inline parametermap prev() const
+    [[nodiscard]] inline parametermap prev() const
     {
         return parse_pagination(false);
     }
@@ -188,10 +185,9 @@ private:
      *
      *  @since  0.3.0
      */
-    [[nodiscard]]
-    parametermap parse_pagination(bool next) const;
+    [[nodiscard]] parametermap parse_pagination(bool next) const;
 };
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_TYPES_HPP
+#endif // MASTODONPP_TYPES_HPP

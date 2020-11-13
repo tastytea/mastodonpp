@@ -322,7 +322,7 @@ public:
      *
      *  @since  0.1.0
      */
-    using endpoint_type = variant<v1,v2,oauth,other,pleroma>;
+    using endpoint_type = variant<v1, v2, oauth, other, pleroma>;
 
     /*!
      *  @brief  Constructs an API object. You should never need this.
@@ -339,17 +339,16 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    inline string_view to_string_view() const
+    [[nodiscard]] inline string_view to_string_view() const
     {
         return _endpoint_map.at(_endpoint);
     }
 
 private:
     const endpoint_type _endpoint;
-    static const map<endpoint_type,string_view> _endpoint_map;
+    static const map<endpoint_type, string_view> _endpoint_map;
 };
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_API_HPP
+#endif // MASTODONPP_API_HPP

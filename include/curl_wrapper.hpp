@@ -17,9 +17,8 @@
 #ifndef MASTODONPP_CURL_WRAPPER_HPP
 #define MASTODONPP_CURL_WRAPPER_HPP
 
-#include "types.hpp"
-
 #include "curl/curl.h"
+#include "types.hpp"
 
 #include <mutex>
 #include <string>
@@ -39,11 +38,11 @@ using std::string_view;
  */
 enum class http_method
 {
-    GET,                        // NOLINT(readability-identifier-naming)
-    POST,                       // NOLINT(readability-identifier-naming)
-    PATCH,                      // NOLINT(readability-identifier-naming)
-    PUT,                        // NOLINT(readability-identifier-naming)
-    DELETE                      // NOLINT(readability-identifier-naming)
+    GET,   // NOLINT(readability-identifier-naming)
+    POST,  // NOLINT(readability-identifier-naming)
+    PATCH, // NOLINT(readability-identifier-naming)
+    PUT,   // NOLINT(readability-identifier-naming)
+    DELETE // NOLINT(readability-identifier-naming)
 };
 
 /*!
@@ -92,10 +91,10 @@ public:
     virtual ~CURLWrapper() noexcept;
 
     //! Copy assignment operator
-    CURLWrapper& operator=(const CURLWrapper &other) = delete;
+    CURLWrapper &operator=(const CURLWrapper &other) = delete;
 
     //! Move assignment operator
-    CURLWrapper& operator=(CURLWrapper &&other) noexcept = delete;
+    CURLWrapper &operator=(CURLWrapper &&other) noexcept = delete;
 
     /*!
      *  @brief  Returns pointer to the CURL easy handle.
@@ -162,8 +161,7 @@ public:
      */
     void setup_connection_properties(string_view proxy,
                                      string_view access_token,
-                                     string_view cainfo,
-                                     string_view useragent);
+                                     string_view cainfo, string_view useragent);
 
 protected:
     /*!
@@ -185,17 +183,16 @@ protected:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    answer_type make_request(const http_method &method, string uri,
-                             const parametermap &parameters);
+    [[nodiscard]] answer_type make_request(const http_method &method,
+                                           string uri,
+                                           const parametermap &parameters);
 
     /*!
      *  @brief  Returns a reference to the buffer libcurl writes into.
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    inline string &get_buffer()
+    [[nodiscard]] inline string &get_buffer()
     {
         return _curl_buffer_body;
     }
@@ -232,7 +229,6 @@ protected:
      *  @since  0.1.0
      */
     void set_access_token(string_view access_token);
-
 
     /*!
      *  @brief  Set path to Certificate Authority (CA) bundle.
@@ -280,7 +276,7 @@ private:
     static inline size_t writer_body_wrapper(char *data, size_t sz,
                                              size_t nmemb, void *f)
     {
-        return static_cast<CURLWrapper*>(f)->writer_body(data, sz, nmemb);
+        return static_cast<CURLWrapper *>(f)->writer_body(data, sz, nmemb);
     }
 
     //! @copydoc writer_body
@@ -290,7 +286,7 @@ private:
     static inline size_t writer_header_wrapper(char *data, size_t sz,
                                                size_t nmemb, void *f)
     {
-        return static_cast<CURLWrapper*>(f)->writer_header(data, sz, nmemb);
+        return static_cast<CURLWrapper *>(f)->writer_header(data, sz, nmemb);
     }
 
     /*!
@@ -308,8 +304,8 @@ private:
                                        curl_off_t dltotal, curl_off_t dlnow,
                                        curl_off_t ultotal, curl_off_t ulnow)
     {
-        return static_cast<CURLWrapper*>(f)->progress(clientp, dltotal, dlnow,
-                                                      ultotal, ulnow);
+        return static_cast<CURLWrapper *>(f)->progress(clientp, dltotal, dlnow,
+                                                       ultotal, ulnow);
     }
 
     /*!
@@ -352,8 +348,8 @@ private:
      *
      *  @since  0.2.0
      */
-    static void add_mime_part(curl_mime *mime,
-                              string_view name, string_view data);
+    static void add_mime_part(curl_mime *mime, string_view name,
+                              string_view data);
 
     /*!
      *  @brief  Convert parametermap to `*curl_mime`.
@@ -375,4 +371,4 @@ private:
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_CURL_WRAPPER_HPP
+#endif // MASTODONPP_CURL_WRAPPER_HPP

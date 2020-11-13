@@ -26,9 +26,9 @@
 namespace mastodonpp
 {
 
-using std::uint16_t;
 using std::exception;
 using std::string;
+using std::uint16_t;
 
 /*!
  *  @brief  Exception for libcurl errors.
@@ -77,8 +77,7 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    const char *what() const noexcept override;
+    [[nodiscard]] const char *what() const noexcept override;
 
 private:
     const string _message;
@@ -87,4 +86,4 @@ private:
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_EXCEPTIONS_HPP
+#endif // MASTODONPP_EXCEPTIONS_HPP

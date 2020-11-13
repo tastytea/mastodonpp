@@ -42,9 +42,8 @@ using std::string;
  *
  *  @since  0.4.0
  */
-[[nodiscard]]
-string unescape_html(string html);
+[[nodiscard]] string unescape_html(string html);
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_HELPERS_HPP
+#endif // MASTODONPP_HELPERS_HPP

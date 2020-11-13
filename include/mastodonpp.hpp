@@ -119,4 +119,4 @@
 namespace mastodonpp
 {} // namespace mastodonpp
 
-#endif  // MASTODONPP_HPP
+#endif // MASTODONPP_HPP

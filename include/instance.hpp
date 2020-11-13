@@ -29,9 +29,9 @@
 namespace mastodonpp
 {
 
-using std::uint64_t;
 using std::string;
 using std::string_view;
+using std::uint64_t;
 using std::vector;
 
 /*!
@@ -72,10 +72,10 @@ public:
     ~Instance() noexcept override = default;
 
     //! Copy assignment operator
-    Instance& operator=(const Instance &other) = delete;
+    Instance &operator=(const Instance &other) = delete;
 
     //! Move assignment operator
-    Instance& operator=(Instance &&other) noexcept = delete;
+    Instance &operator=(Instance &&other) noexcept = delete;
 
     /*!
      *  @brief  Set the properties of the connection of the calling class up.
@@ -98,8 +98,7 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    inline string_view get_hostname() const noexcept
+    [[nodiscard]] inline string_view get_hostname() const noexcept
     {
         return _hostname;
     }
@@ -111,8 +110,7 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    inline string_view get_baseuri() const noexcept
+    [[nodiscard]] inline string_view get_baseuri() const noexcept
     {
         return _baseuri;
     }
@@ -122,8 +120,7 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    inline string_view get_access_token() const noexcept
+    [[nodiscard]] inline string_view get_access_token() const noexcept
     {
         return _access_token;
     }
@@ -153,8 +150,7 @@ public:
      *
      *  @since  0.1.0
      */
-    [[nodiscard]]
-    uint64_t get_max_chars() noexcept;
+    [[nodiscard]] uint64_t get_max_chars() noexcept;
 
     /*! @copydoc CURLWrapper::set_proxy(string_view)
      *
@@ -176,8 +172,7 @@ public:
      *
      *  @since  0.3.0
      */
-    [[nodiscard]]
-    answer_type get_nodeinfo();
+    [[nodiscard]] answer_type get_nodeinfo();
 
     /*!
      *  @brief  Returns the allowed mime types for statuses.
@@ -284,9 +279,9 @@ public:
          *
          *  @since  0.3.0
          */
-        [[nodiscard]]
-        answer_type step_1(string_view client_name, string_view scopes,
-                           string_view website);
+        [[nodiscard]] answer_type step_1(string_view client_name,
+                                         string_view scopes,
+                                         string_view website);
 
         /*!
          *  @brief  Creates a token via `/oauth/token`.
@@ -303,8 +298,7 @@ public:
          *
          *  @since  0.3.0
          */
-        [[nodiscard]]
-        answer_type step_2(string_view code);
+        [[nodiscard]] answer_type step_2(string_view code);
 
     private:
         Instance &_instance;
@@ -327,4 +321,4 @@ private:
 
 } // namespace mastodonpp
 
-#endif  // MASTODONPP_INSTANCE_HPP
+#endif // MASTODONPP_INSTANCE_HPP
