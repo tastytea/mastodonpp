@@ -26,11 +26,11 @@ namespace mastodonpp
 
 using std::string;
 
-SCENARIO ("mastopp::Instance")
+SCENARIO("mastopp::Instance")
 {
     bool exception = false;
 
-    WHEN ("Instance is instantiated.")
+    WHEN("Instance is instantiated.")
     {
         try
         {
@@ -41,13 +41,13 @@ SCENARIO ("mastopp::Instance")
             exception = true;
         }
 
-        THEN ("No exception is thrown")
+        THEN("No exception is thrown")
         {
             REQUIRE_FALSE(exception);
         }
     }
 
-    WHEN ("Variables are set.")
+    WHEN("Variables are set.")
     {
         constexpr auto hostname{"likeable.space"};
         constexpr auto proxy{"socks4a://[::1]:9050"};
@@ -64,10 +64,10 @@ SCENARIO ("mastopp::Instance")
             exception = true;
         }
 
-        THEN ("No exception is thrown")
-            AND_THEN ("get_access_token() returns the set value.")
-            AND_THEN ("get_hostname() returns the set value.")
-            AND_THEN ("get_baseuri() returns the expected value.")
+        THEN("No exception is thrown")
+        AND_THEN("get_access_token() returns the set value.")
+        AND_THEN("get_hostname() returns the set value.")
+        AND_THEN("get_baseuri() returns the expected value.")
         {
             REQUIRE_FALSE(exception);
             REQUIRE(instance.get_access_token() == access_token);

@@ -14,8 +14,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "instance.hpp"
 #include "connection.hpp"
+#include "instance.hpp"
 
 #include <catch.hpp>
 
@@ -24,12 +24,11 @@
 namespace mastodonpp
 {
 
-
-SCENARIO ("mastodonpp::Connection.")
+SCENARIO("mastodonpp::Connection.")
 {
     bool exception = false;
 
-    WHEN ("Connection is instantiated.")
+    WHEN("Connection is instantiated.")
     {
         try
         {
@@ -41,7 +40,7 @@ SCENARIO ("mastodonpp::Connection.")
             exception = true;
         }
 
-        THEN ("No exception is thrown")
+        THEN("No exception is thrown")
         {
             REQUIRE_FALSE(exception);
         }

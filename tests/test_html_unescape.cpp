@@ -26,11 +26,11 @@ namespace mastodonpp
 
 using std::string;
 
-SCENARIO ("mastodonpp::html_unescape()")
+SCENARIO("mastodonpp::html_unescape()")
 {
     bool exception = false;
 
-    WHEN ("html_unescape() is called.")
+    WHEN("html_unescape() is called.")
     {
         string result;
         try
@@ -42,8 +42,8 @@ SCENARIO ("mastodonpp::html_unescape()")
             exception = true;
         }
 
-        THEN ("No exception is thrown")
-            AND_THEN("Result is as expected.")
+        THEN("No exception is thrown")
+        AND_THEN("Result is as expected.")
         {
             REQUIRE_FALSE(exception);
             REQUIRE(result == "2€ = 2€ = 2€");
