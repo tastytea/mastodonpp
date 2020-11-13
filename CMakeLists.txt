@@ -29,6 +29,7 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # Project build options.
 option(WITH_TESTS "Compile tests." NO)
 option(WITH_EXAMPLES "Compile examples." NO)
+option(WITH_DOC "Generate API documentation." NO)
 option(WITH_DEB "Prepare for the building of .deb packages." NO)
 option(WITH_RPM "Prepare for the building of .rpm packages." NO)
 option(WITH_CLANG-TIDY "Check sourcecode with clang-tidy while compiling." NO)
@@ -58,6 +59,13 @@ endif()
 
 if(WITH_EXAMPLES)
   add_subdirectory(examples)
+endif()
+
+if(WITH_DOC)
+  include(cmake/Doxygen.cmake)
+  enable_doxygen(
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src")
 endif()
 
 include(cmake/packages.cmake)

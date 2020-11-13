@@ -1,0 +1,43 @@
+include(GNUInstallDirs)
+
+function(enable_doxygen)
+  find_package(Doxygen REQUIRED dot)
+
+  set(DOXYGEN_RECURSIVE              YES)
+  set(DOXYGEN_STRIP_FROM_INC_PATH    "include")
+  if (WITH_EXAMPLES)
+    set(DOXYGEN_EXAMPLE_PATH         "examples/")
+    set(DOXYGEN_EXAMPLE_RECURSIVE    YES)
+  endif()
+  set(DOXYGEN_GENERATE_HTML          YES)
+  set(DOXYGEN_HTML_OUTPUT            "doc/html")
+  set(DOXYGEN_GENERATE_LATEX         NO)
+  set(DOXYGEN_ALLOW_UNICODE_NAMES    YES)
+  set(DOXYGEN_BRIEF_MEMBER_DESC      YES)
+  set(DOXYGEN_REPEAT_BRIEF           YES)
+  set(DOXYGEN_ALWAYS_DETAILED_SEC    YES)
+  set(DOXYGEN_INLINE_INHERITED_MEMB  NO)
+  set(DOXYGEN_INHERIT_DOCS           YES)
+  set(DOXYGEN_SEPARATE_MEMBER_PAGES  NO)
+  set(DOXYGEN_TAB_SIZE               4)
+  set(DOXYGEN_MARKDOWN_SUPPORT       YES)
+  set(DOXYGEN_AUTOLINK_SUPPORT       YES)
+  set(DOXYGEN_INLINE_SIMPLE_STRUCTS  NO)
+  set(DOXYGEN_QUIET                  YES)
+  set(DOXYGEN_WARNINGS               YES)
+  set(DOXYGEN_WARN_IF_UNDOCUMENTED   YES)
+  set(DOXYGEN_BUILTIN_STL_SUPPORT    YES)
+  set(DOXYGEN_VERBATIM_HEADERS       YES)
+  set(DOXYGEN_INLINE_SOURCES         YES)
+  set(DOXYGEN_SEARCHENGINE           YES)
+  set(DOXYGEN_SHOW_FILES             YES)
+
+  file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/doc")
+
+  doxygen_add_docs(${PROJECT_NAME}_doxygen "${ARGV}")
+  # Make sure doxygen is run with every build.
+  add_custom_target(${PROJECT_NAME}_docs ALL DEPENDS ${PROJECT_NAME}_doxygen)
+
+  install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doc/html
+    DESTINATION "${CMAKE_INSTALL_DOCDIR}")
+endfunction()

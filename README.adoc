@@ -151,6 +151,7 @@ cmake --build . -- -j$(nproc --ignore=1)
 * `-DCMAKE_BUILD_TYPE=Debug` for a debug build.
 * `-DWITH_TESTS=YES` if you want to compile the tests.
 * `-DWITH_EXAMPLES=YES` if you want to compile the examples.
+* `-DWITH_DOC=YES` if you want to generate the API documentation.
 * `-DWITH_CLANG-TIDY=YES` to check the sourcecode with
   link:{uri-clang-tidy}[clang-tidy] while compiling.
 * One of:
