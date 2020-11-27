@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">mastodonpp
-   &#160;<span id="projectnumber">0.5.5</span>
+   &#160;<span id="projectnumber">0.5.7</span>
    </div>
    <div id="projectbrief">C++ wrapper for the Mastodon and Pleroma APIs.</div>
   </td>
@@ -67,125 +67,7 @@ $(function() {
 <div class="title">example08_obtain_token.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">/*  This file is part of mastodonpp.</span></div>
-<div class="line"><span class="comment"> *  Copyright © 2020 tastytea &lt;tastytea@tastytea.de&gt;</span></div>
-<div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> *  Permission to use, copy, modify, and/or distribute this software for any</span></div>
-<div class="line"><span class="comment"> *  purpose with or without fee is hereby granted.</span></div>
-<div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> *  THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES</span></div>
-<div class="line"><span class="comment"> *  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span></div>
-<div class="line"><span class="comment"> *  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY</span></div>
-<div class="line"><span class="comment"> *  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span></div>
-<div class="line"><span class="comment"> *  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION</span></div>
-<div class="line"><span class="comment"> *  OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN</span></div>
-<div class="line"><span class="comment"> *  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span></div>
-<div class="line"><span class="comment"> */</span></div>
-<div class="line"> </div>
-<div class="line"><span class="comment">// Obtain an access token and verify that it works.</span></div>
-<div class="line"> </div>
-<div class="line"><span class="preprocessor">#if __has_include(&quot;mastodonpp.hpp&quot;)</span></div>
-<div class="line"><span class="preprocessor">#    include &quot;mastodonpp.hpp&quot;</span> <span class="comment">// We&#39;re building mastodonpp.</span></div>
-<div class="line"><span class="preprocessor">#else</span></div>
-<div class="line"><span class="preprocessor">#    include &lt;mastodonpp/mastodonpp.hpp&gt;</span> <span class="comment">// We&#39;re building outside mastodonpp.</span></div>
-<div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;string_view&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">namespace </span>masto = <a class="code" href="namespacemastodonpp.html">mastodonpp</a>;</div>
-<div class="line"><span class="keyword">using</span> std::cerr;</div>
-<div class="line"><span class="keyword">using</span> std::cin;</div>
-<div class="line"><span class="keyword">using</span> std::cout;</div>
-<div class="line"><span class="keyword">using</span> std::endl;</div>
-<div class="line"><span class="keyword">using</span> std::exit;</div>
-<div class="line"><span class="keyword">using</span> std::string;</div>
-<div class="line"><span class="keyword">using</span> std::string_view;</div>
-<div class="line"><span class="keyword">using</span> std::to_string;</div>
-<div class="line"><span class="keyword">using</span> std::vector;</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> handle_error(<span class="keyword">const</span> masto::answer_type &amp;answer);</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
-<div class="line">{</div>
-<div class="line">    <span class="keyword">const</span> vector&lt;string_view&gt; args(argv, argv + argc);</div>
-<div class="line">    <span class="keywordflow">if</span> (args.size() &lt;= 1)</div>
-<div class="line">    {</div>
-<div class="line">        cerr &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; args[0] &lt;&lt; <span class="stringliteral">&quot; &lt;instance hostname&gt;\n&quot;</span>;</div>
-<div class="line">        <span class="keywordflow">return</span> 1;</div>
-<div class="line">    }</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">try</span></div>
-<div class="line">    {</div>
-<div class="line">        <span class="comment">// Initialize Instance and Instance::ObtainToken.</span></div>
-<div class="line">        masto::Instance instance{args[1], {}};</div>
-<div class="line">        masto::Instance::ObtainToken token{instance};</div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">// Create an “Application” (/api/v1/apps),</span></div>
-<div class="line">        <span class="comment">// and get URI for the authorization code (/oauth/authorize).</span></div>
-<div class="line">        <span class="comment">// NOTE: Mastodon only needs read:accounts for verify_credentials but</span></div>
-<div class="line">        <span class="comment">// Pleroma needs the full read scope.</span></div>
-<div class="line">        <span class="keyword">auto</span> answer{token.step_1(<span class="stringliteral">&quot;Testclient&quot;</span>, <span class="stringliteral">&quot;read write:favourites&quot;</span>,</div>
-<div class="line">                                 <span class="stringliteral">&quot;https://example.com/&quot;</span>)};</div>
-<div class="line">        <span class="keywordflow">if</span> (!answer)</div>
-<div class="line">        {</div>
-<div class="line">            handle_error(answer);</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line">        cout &lt;&lt; <span class="stringliteral">&quot;Please visit &quot;</span> &lt;&lt; answer &lt;&lt; <span class="stringliteral">&quot;\nand paste the code here: &quot;</span>;</div>
-<div class="line">        <span class="keywordtype">string</span> code;</div>
-<div class="line">        cin &gt;&gt; code;</div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">// Obtain the token (/oauth/token).</span></div>
-<div class="line">        answer = token.step_2(code);</div>
-<div class="line">        <span class="keywordflow">if</span> (!answer)</div>
-<div class="line">        {</div>
-<div class="line">            handle_error(answer);</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line">        cout &lt;&lt; <span class="stringliteral">&quot;Your access token is: &quot;</span> &lt;&lt; answer &lt;&lt; endl;</div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">// Test if the token works.</span></div>
-<div class="line">        masto::Connection connection{instance};</div>
-<div class="line">        answer = connection.get(masto::API::v1::apps_verify_credentials);</div>
-<div class="line">        <span class="keywordflow">if</span> (!answer)</div>
-<div class="line">        {</div>
-<div class="line">            handle_error(answer);</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line">        cout &lt;&lt; answer &lt;&lt; endl;</div>
-<div class="line">    }</div>
-<div class="line">    <span class="keywordflow">catch</span> (<span class="keyword">const</span> masto::CURLException &amp;e)</div>
-<div class="line">    {</div>
-<div class="line">        <span class="comment">// Only libcurl errors that are not network errors will be thrown.</span></div>
-<div class="line">        <span class="comment">// There went probably something wrong with the initialization.</span></div>
-<div class="line">        cerr &lt;&lt; e.what() &lt;&lt; endl;</div>
-<div class="line">    }</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> handle_error(<span class="keyword">const</span> masto::answer_type &amp;answer)</div>
-<div class="line">{</div>
-<div class="line">    <span class="keywordflow">if</span> (answer.curl_error_code == 0)</div>
-<div class="line">    {</div>
-<div class="line">        <span class="comment">// If it is no libcurl error, it must be an HTTP error.</span></div>
-<div class="line">        cerr &lt;&lt; <span class="stringliteral">&quot;HTTP status: &quot;</span> &lt;&lt; answer.http_status &lt;&lt; endl;</div>
-<div class="line">    }</div>
-<div class="line">    <span class="keywordflow">else</span></div>
-<div class="line">    {</div>
-<div class="line">        <span class="comment">// Network errors like “Couldn&#39;t resolve host.”.</span></div>
-<div class="line">        cerr &lt;&lt; <span class="stringliteral">&quot;libcurl error &quot;</span> &lt;&lt; to_string(answer.curl_error_code) &lt;&lt; <span class="stringliteral">&quot;: &quot;</span></div>
-<div class="line">             &lt;&lt; answer.error_message &lt;&lt; endl;</div>
-<div class="line">    }</div>
-<div class="line"> </div>
-<div class="line">    exit(1);</div>
-<div class="line">}</div>
-</div><!-- fragment --> </div><!-- contents -->
-<div class="ttc" id="anamespacemastodonpp_html"><div class="ttname"><a href="namespacemastodonpp.html">mastodonpp</a></div><div class="ttdoc">C++ wrapper for the Mastodon API.</div><div class="ttdef"><b>Definition:</b> api.hpp:24</div></div>
+<div class="fragment"></div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
