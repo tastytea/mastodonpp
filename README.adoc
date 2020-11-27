@@ -89,6 +89,11 @@ emaint sync -r tastytea
 emerge -a dev-cpp/mastodonpp
 --------------------------------------------------------------------------------
 
+=== Arch
+
+The git-version is available via the AUR:
+<https://aur.archlinux.org/packages/mastodonpp-git/>.
+
 === Debian and Ubuntu
 
 We automatically generate packages for Debian buster (10) and Ubuntu bionic
