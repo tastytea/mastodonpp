@@ -83,9 +83,9 @@ link:{uri-reference}/examples.html[More examples] are included in the reference.
 
 [source,shell]
 --------------------------------------------------------------------------------
-eselect repository enable tastytea
+eselect repository enable guru
 echo 'dev-cpp/mastodonpp' >> /etc/portage/package.accept_keywords/mastodonpp
-emaint sync -r tastytea
+emaint sync -r guru
 emerge -a dev-cpp/mastodonpp
 --------------------------------------------------------------------------------
 
