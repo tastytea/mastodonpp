@@ -1,5 +1,5 @@
 /*  This file is part of mastodonpp.
- *  Copyright © 2020 tastytea <tastytea@tastytea.de>
+ *  Copyright © 2020, 2021 tastytea <tastytea@tastytea.de>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -71,7 +71,7 @@ parametermap answer_type::parse_pagination(const bool next) const
         return {};
     }
 
-    const auto direction{next ? R"(rel="next")" : R"(rel="prev")"};
+    const string_view direction{next ? R"(rel="next")" : R"(rel="prev")"};
     auto endpos{link.find(direction)};
     endpos = link.rfind('>', endpos);
     auto startpos{link.rfind('?', endpos) + 1};
