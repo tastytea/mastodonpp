@@ -79,6 +79,9 @@ link:{uri-reference}/examples.html[More examples] are included in the reference.
 
 == Install
 
+[alt="Packaging status" link=https://repology.org/project/mastodonpp/versions]
+image::https://repology.org/badge/vertical-allrepos/mastodonpp.svg[]
+
 === Gentoo
 
 [source,shell]
