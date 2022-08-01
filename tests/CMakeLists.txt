@@ -3,11 +3,16 @@ include(CTest)
 file(GLOB sources_tests test_*.cpp)
 
 find_package(Catch2 CONFIG)
-if(Catch2_FOUND)                # Catch 2.x
+if(Catch2_FOUND)                # Catch 2.x / 3.x
   include(Catch)
   add_executable(all_tests main.cpp ${sources_tests})
-  target_link_libraries(all_tests
-    PRIVATE Catch2::Catch2 ${PROJECT_NAME})
+  if(TARGET Catch2::Catch2WithMain) # Catch 3.x
+    target_link_libraries(all_tests
+      PRIVATE Catch2::Catch2WithMain ${PROJECT_NAME})
+  else()                        # Catch 2.x
+    target_link_libraries(all_tests
+      PRIVATE Catch2::Catch2 ${PROJECT_NAME})
+  endif()
   target_include_directories(all_tests PRIVATE "/usr/include/catch2")
   catch_discover_tests(all_tests EXTRA_ARGS "${EXTRA_TEST_ARGS}")
 else()                          # Catch 1.x

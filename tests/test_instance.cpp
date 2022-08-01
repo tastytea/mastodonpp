@@ -1,5 +1,5 @@
 /*  This file is part of mastodonpp.
- *  Copyright © 2020 tastytea <tastytea@tastytea.de>
+ *  Copyright © 2020, 2022 tastytea <tastytea@tastytea.de>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -16,7 +16,12 @@
 
 #include "instance.hpp"
 
-#include <catch.hpp>
+// catch 3 does not have catch.hpp anymore
+#if __has_include(<catch.hpp>)
+#    include <catch.hpp>
+#else
+#    include <catch_all.hpp>
+#endif
 
 #include <exception>
 #include <string>
