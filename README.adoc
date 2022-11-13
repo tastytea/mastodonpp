@@ -168,4 +168,10 @@ cmake --build . -- -j$(nproc --ignore=1)
 
 To create a deb or rpm package, run `make package` after compiling.
 
+===== Windows
+
+mastodonpp has been reported to compile with MinGW GCC, but
+`http_method::DELETE` has to be renamed, because Windows headers define a
+`DELETE` macro.
+
 include::{uri-base}/raw/branch/main/CONTRIBUTING.adoc[]
