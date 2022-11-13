@@ -22,7 +22,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
     "-Wdouble-promotion"
     "-Wformat=2"
     "-ftrapv"
-    "-fsanitize=undefined"
     "-Og"
     "-fno-omit-frame-pointer")
   if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
@@ -40,15 +39,21 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
       endif()
     endif()
   endif()
+  if(NOT MINGW)
+    list(APPEND DEBUG_CXXFLAGS
+      "-fsanitize=undefined")
+  endif()
   add_compile_options("$<$<CONFIG:Debug>:${DEBUG_CXXFLAGS}>")
 
-  set(DEBUG_LDFLAGS
-    "-fsanitize=undefined")
-  # add_link_options was introduced in version 3.13.
-  if(${CMAKE_VERSION} VERSION_LESS 3.13)
-    set(CMAKE_SHARED_LINKER_FLAGS_DEBUG "${DEBUG_LDFLAGS}")
-  else()
-    add_link_options("$<$<CONFIG:Debug>:${DEBUG_LDFLAGS}>")
+  if(NOT MINGW)
+    set(DEBUG_LDFLAGS
+      "-fsanitize=undefined")
+    # add_link_options was introduced in version 3.13.
+    if(${CMAKE_VERSION} VERSION_LESS 3.13)
+      set(CMAKE_SHARED_LINKER_FLAGS_DEBUG "${DEBUG_LDFLAGS}")
+    else()
+      add_link_options("$<$<CONFIG:Debug>:${DEBUG_LDFLAGS}>")
+    endif()
   endif()
 else()
   message(STATUS
